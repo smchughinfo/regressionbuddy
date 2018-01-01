@@ -425,19 +425,19 @@ const generateSiteRSS = () => {
     let rss = '\
 <?xml version="1.0" encoding="utf-8"?>\n\
     <rss version="2.0">\n\
-    <channel>\n\
-    <title>Regression Buddy RSS</title>\n\
-    <link>https://www.regressionbuddy.com/</link>\n\
-    <description>' + description + '</description>';
+        <channel>\n\
+            <title>Regression Buddy RSS</title>\n\
+            <link>https://www.regressionbuddy.com/</link>\n\
+            <description>' + description + '</description>';
 
     let template  = '\
-    <item>\n\
-        <title>[TITLE]</title>\n\
-        <link>[LINK]</link>\n\
-        <guid>POST-[POST NUMBER]</guid>\n\
-        <pubDate>[POST DATE]</pubDate>\n\
-        <description>[DESCRIPTION]</description>\n\
-    </item>';
+            <item>\n\
+                <title>[TITLE]</title>\n\
+                <link>[LINK]</link>\n\
+                <guid>POST-[POST NUMBER]</guid>\n\
+                <pubDate>[POST DATE]</pubDate>\n\
+                <description>[DESCRIPTION]</description>\n\
+            </item>';
 
     let postJsons = getPostNumbers().reverse().map(postNumber => {
         let postJSONPath = `${process.env.postsDir}/${postNumber}/post.json`;
@@ -464,7 +464,8 @@ const generateSiteRSS = () => {
         rss += `\n${item}`;
     });
 
-    rss += "\
+    rss += "\n\
+        </channel>\n\
     </rss>\n\
 </xml>";
     writeFileSync(`${process.env.buildDir}/rss.xml`, rss);
