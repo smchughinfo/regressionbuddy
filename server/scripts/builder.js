@@ -5,6 +5,7 @@ const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, ge
 const zlib = require('zlib');
 const { minify } = require("html-minifier");
 const cheerio = require('cheerio');
+const stripDebug = require('strip-debug');
 
 const jsMinifier = "uglifyjs";
 const cssMinifier = "clean-css";
@@ -39,6 +40,8 @@ const minimizeSiteJavaScript = () => {
         output: siteJavaScriptPathMin,
         sync: true
     });
+    // couldn't get ^this to strip console.log. so used stripDebug...
+    writeFileSync(siteJavaScriptPathMin, stripDebug(readFileSync(siteJavaScriptPathMin).toString()));
 };
 
 const integrateSiteCSS = () => {
@@ -219,7 +222,7 @@ const minimizePageHTML = outFile => {
         collapseWhitespace: true,
         html5: true,
         removeComments: true
-    });
+    }).replace(/\n/g, "");
 };
 
 const buildPost = (postNumber, subject) => {
@@ -315,7 +318,7 @@ const buildIndex = () => {
 
     let indexContent = readFileSync(indexFileContentPath).toString();
     if(/<title>.*?<\/title>/.test(indexContent) === false) {
-        throw "couldn't fine title;"
+        throw "couldn't find title;"
     }
     else {
         indexContent = indexContent.replace(/<title>.*?<\/title>/, "<title>Regression Buddy - Math Practice Problems</title>");

@@ -63,6 +63,7 @@ document.getElementById("appendixDropdown").addEventListener("click", showButton
         var redirectUrl = window.location.href + postNumber + "/" + subject;
         document.title = "Week " + postNumber + " - " + subject
         try {
+            console.log("this needs to run before getting disqus comment count");
             history.replaceState(null, document.title, redirectUrl);            
         }
         catch (ex) {
@@ -133,7 +134,11 @@ function getCommentCount(callback) {
     script.id = "CommentCountScript";
     var apiKey = "api_key=5g0ElGRpBQoGnXjTQWoac3VdOC7R4c2OKYlhbL0ZZpeeU9B0uWQuo8qbRNChro3j";
     var forum = "forum=regressionbuddy"
-    var thread = "thread=" + "link:" + window.location.href;
+    var link = window.location.href;
+    if(link.indexOf("regressionbuddy") !== -1) { // not localhost
+        link = "https://" + link.substring(link.indexOf("regressionbuddy"));
+    }
+    var thread = "thread=" + "link:" + link;
     script.src = 'https://disqus.com/api/3.0/threads/set.jsonp?callback=countCallback&' + apiKey + "&" + forum + "&" + thread;
     countCallerCallback = callback;
     document.getElementsByTagName('head')[0].appendChild(script);
