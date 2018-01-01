@@ -422,7 +422,7 @@ function countCallback(data) // returns comment count or -1 if error
         var thread = data.response.filter(function(site) {
             return site.feed.indexOf("regressionbuddy") !== -1;
         })[0];
-        count = thread.posts;  
+        count = thread === undefined ? "0" : thread.posts;  
     }
     catch (ex) {
         console.log("FAILED TO PARSE COMMENT COUNT");
