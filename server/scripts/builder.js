@@ -27,8 +27,8 @@ const createOrCleanBuildDirectory = () => {
 
 const integrateSiteJavaScript = () => {
     let js = [
-        `${process.env.clientDir}/scripts/master.js`,
-        `${process.env.clientDir}/scripts/utilities.js`
+        `${process.env.clientDir}/scripts/utilities.js`,
+        `${process.env.clientDir}/scripts/master.js`
     ].map(path => readFileSync(path)).join("\r\n");
     writeFileSync(siteJavaScriptPath, js);
 };

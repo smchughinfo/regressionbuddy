@@ -53,7 +53,7 @@ document.getElementById("appendixDropdown").addEventListener("click", showButton
 (function() {
     var a = document.createElement("a");
     a.href = window.location.href;
-    if(a.pathname === "/") {
+    if(a.pathname === "" || a.pathname === "/") {
         console.log("Changing title here. Trying to get it to show up right on google but still make sense to users");
         // TOOO: maybe - google "regression buddy" and site title is "Algebra: Week 2" except for the "index" page it should be more general
         // serve it with a general title and then change it here. hope that works.
