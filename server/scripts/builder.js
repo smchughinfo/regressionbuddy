@@ -5,6 +5,7 @@ const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, ge
 const zlib = require('zlib');
 const { minify } = require("html-minifier");
 const cheerio = require('cheerio');
+const stripDebug = require('strip-debug');
 
 const jsMinifier = "uglifyjs";
 const cssMinifier = "clean-css";
@@ -39,6 +40,8 @@ const minimizeSiteJavaScript = () => {
         output: siteJavaScriptPathMin,
         sync: true
     });
+    // couldn't get ^this to strip console.log. so used stripDebug...
+    writeFileSync(siteJavaScriptPathMin, stripDebug(readFileSync(siteJavaScriptPathMin).toString()));
 };
 
 const integrateSiteCSS = () => {
@@ -219,7 +222,7 @@ const minimizePageHTML = outFile => {
         collapseWhitespace: true,
         html5: true,
         removeComments: true
-    });
+    }).replace(/\n/g, "");
 };
 
 const buildPost = (postNumber, subject) => {
@@ -315,7 +318,7 @@ const buildIndex = () => {
 
     let indexContent = readFileSync(indexFileContentPath).toString();
     if(/<title>.*?<\/title>/.test(indexContent) === false) {
-        throw "couldn't fine title;"
+        throw "couldn't find title;"
     }
     else {
         indexContent = indexContent.replace(/<title>.*?<\/title>/, "<title>Regression Buddy - Math Practice Problems</title>");
@@ -425,19 +428,19 @@ const generateSiteRSS = () => {
     let rss = '\
 <?xml version="1.0" encoding="utf-8"?>\n\
     <rss version="2.0">\n\
-    <channel>\n\
-    <title>Regression Buddy RSS</title>\n\
-    <link>https://www.regressionbuddy.com/</link>\n\
-    <description>' + description + '</description>';
+        <channel>\n\
+            <title>Regression Buddy RSS</title>\n\
+            <link>https://www.regressionbuddy.com/</link>\n\
+            <description>' + description + '</description>';
 
     let template  = '\
-    <item>\n\
-        <title>[TITLE]</title>\n\
-        <link>[LINK]</link>\n\
-        <guid>POST-[POST NUMBER]</guid>\n\
-        <pubDate>[POST DATE]</pubDate>\n\
-        <description>[DESCRIPTION]</description>\n\
-    </item>';
+            <item>\n\
+                <title>[TITLE]</title>\n\
+                <link>[LINK]</link>\n\
+                <guid>POST-[POST NUMBER]</guid>\n\
+                <pubDate>[POST DATE]</pubDate>\n\
+                <description>[DESCRIPTION]</description>\n\
+            </item>';
 
     let postJsons = getPostNumbers().reverse().map(postNumber => {
         let postJSONPath = `${process.env.postsDir}/${postNumber}/post.json`;
@@ -464,7 +467,8 @@ const generateSiteRSS = () => {
         rss += `\n${item}`;
     });
 
-    rss += "\
+    rss += "\n\
+        </channel>\n\
     </rss>\n\
 </xml>";
     writeFileSync(`${process.env.buildDir}/rss.xml`, rss);

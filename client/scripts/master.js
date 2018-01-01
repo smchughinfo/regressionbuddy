@@ -18,34 +18,6 @@ forEachElement("#componentLinksContainer > li > a", function(link) {
     link.addEventListener("click", switchComponent)
 });
 
-function toggleShowComments(e) {
-    var commentsLink = document.querySelector("#showCommentsLink");
-    var comments = document.getElementById("comments");
-    var show = comments.getAttribute("data-showing") === "false";
-
-    toggleVisibility("#comments");
-    if(show && commentsLoaded === false) {
-        loadComments();
-        document.querySelector("#comments").scrollIntoView();
-    }
-
-    if(show) {
-        commentsLink.innerHTML = "hide comments";
-
-    }
-    else {
-        DISQUSWIDGETS.getCount({reset: true});
-    }
-
-    history.replaceState({}, document.title, window.location.pathname); // don't show #disqus_thread in url    
-    e.preventDefault();
-}
-var commentsLink = document.querySelector("#showCommentsLink");
-if(commentsLink) {
-    // blows up if a page doesn't have comments. just keeping it here though so i dont have to architect a heirarchy for types of pages.
-    commentsLink.addEventListener("click", toggleShowComments);
-}
-
 function setRandomLink() {
     var last = parseInt(document.body.getAttribute("data-last-post-number"), 10);
     var postNumber = getPostNumber();
@@ -91,6 +63,7 @@ document.getElementById("appendixDropdown").addEventListener("click", showButton
         var redirectUrl = window.location.href + postNumber + "/" + subject;
         document.title = "Week " + postNumber + " - " + subject
         try {
+            console.log("this needs to run before getting disqus comment count");
             history.replaceState(null, document.title, redirectUrl);            
         }
         catch (ex) {
@@ -120,31 +93,97 @@ window.addEventListener("load", function() {
 // disqus
 var commentsLoaded = false;
 function loadComments() {
+    var d = document, s = d.createElement('script');
+    s.src = 'https://regressionbuddy.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
     commentsLoaded = true;
-    
-    /**
-    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-
-    // impossible to use
-    /*var disqus_config = function () {
-        console.log("ANCDEFG");
-        this.page.url = "[CANONICAL URL]";  // Replace PAGE_URL with your page's canonical URL variable
-        this.page.identifier = "[PAGE IDENTIFIER]"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-        console.log("IDENTIFIER: " + this.page.identifier);
-    };*/
-
-    (function() { // DON'T EDIT BELOW THIS LINE
-        var d = document, s = d.createElement('script');
-        s.src = 'https://regressionbuddy.disqus.com/embed.js';
-        s.setAttribute('data-timestamp', +new Date());
-        (d.head || d.body).appendChild(s);
-    })();
 }
-window.addEventListener("load", function() {
-    setTimeout(function() {
-        if(document.getElementById("showCommentsLink").innerText === '\xa0') {
-            document.getElementById("showCommentsLink").innerText = "0 Comments";
-        }
-    }, 500);
+
+// BEGIN DISQUS GET COUNT MONSTROSITY
+var gettingCount = false;
+var countCallerCallback = null;
+function countCallback(data) // returns comment count or -1 if error
+{
+    var count = -1;
+    try {
+        var thread = data.response.filter(function(site) {
+            return site.feed.indexOf("regressionbuddy") !== -1;
+        })[0];
+        count = thread === undefined ? "0" : thread.posts;  
+    }
+    catch (ex) {
+        console.log("FAILED TO PARSE COMMENT COUNT");
+        console.log(ex);
+    }
+
+    // always do this part
+    var commentCountScript = document.getElementById("CommentCountScript");
+    document.getElementsByTagName('head')[0].removeChild(commentCountScript);
+    countCallerCallback(count);
+    gettingCount = false;
+    countCallerCallback = null; // if this got reset in the line above this would break something
+}
+function getCommentCount(callback) {
+    if(gettingCount) {
+        return;
+    }
+    gettingCount = true;
+
+    var script = document.createElement('script');
+    script.id = "CommentCountScript";
+    var apiKey = "api_key=5g0ElGRpBQoGnXjTQWoac3VdOC7R4c2OKYlhbL0ZZpeeU9B0uWQuo8qbRNChro3j";
+    var forum = "forum=regressionbuddy"
+    var link = window.location.href;
+    if(link.indexOf("regressionbuddy") !== -1) { // not localhost
+        link = "https://" + link.substring(link.indexOf("regressionbuddy"));
+    }
+    var thread = "thread=" + "link:" + link;
+    script.src = 'https://disqus.com/api/3.0/threads/set.jsonp?callback=countCallback&' + apiKey + "&" + forum + "&" + thread;
+    countCallerCallback = callback;
+    document.getElementsByTagName('head')[0].appendChild(script);
+}
+
+var togglingShowComments = true;
+getCommentCount(function(count) {
+    var commentsLink = document.querySelector("#showCommentsLink");    
+    var message = count === -1 ? "show comments" : count + " Comments";
+    commentsLink.innerHTML = message;
+    togglingShowComments = false;
 });
+function toggleShowComments(e) {
+    if(togglingShowComments) {
+        return;
+    }
+    toggleShowComments = true;
+
+    var commentsLink = document.querySelector("#showCommentsLink");
+    var comments = document.getElementById("comments");
+    var show = comments.getAttribute("data-showing") === "false";
+
+    toggleVisibility("#comments");
+    if(show && commentsLoaded === false) {
+        loadComments();
+        document.querySelector("#comments").scrollIntoView();
+    }
+
+    if(show) {
+        commentsLink.innerHTML = "hide comments";
+        togglingShowComments = false;
+    }
+    else {
+        getCommentCount(function(count) {
+            var message = count === -1 ? "show comments" : count + " Comments";
+            commentsLink.innerHTML = message;
+            togglingShowComments = false;
+        });
+    }
+
+    history.replaceState({}, document.title, window.location.pathname); // don't show #disqus_thread in url    
+    e.preventDefault();
+}
+var commentsLink = document.querySelector("#showCommentsLink");
+if(commentsLink) {
+    // blows up if a page doesn't have comments. just keeping it here though so i dont have to architect a heirarchy for types of pages.
+    commentsLink.addEventListener("click", toggleShowComments);
+}
