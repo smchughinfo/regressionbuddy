@@ -1,0 +1,81 @@
+.date {
+    margin-top: 20px;
+}
+
+.subject-options {
+    margin-bottom: 4px;
+}
+
+    .subject-options > .badge {
+        margin-left: 4px;
+    }
+
+.post-nav > ul {
+    margin: 16px;
+}
+
+/******* NAV *********/
+#solutions,
+#work {
+    display: none;
+}
+
+[data-showing="true"]  {
+    display: block;
+}
+[data-showing="false"] {
+    display: none !important;
+}
+[data-showing="true"] {
+    display: block !important;    
+}
+
+@media only screen and (max-width: 500px) {
+    body > .navbar {
+        justify-content: center;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .post-nav > ul {
+        display: block;
+    }
+    .post-nav > ul > li {
+        text-align: center;
+    }
+}
+/******* Problems, Solutions and Work *********/
+#problems > ol > li,
+#solutions > ol > li,
+#work > ol > li {
+    list-style-position: inside;
+}
+#post .img-fluid {
+    display: block;
+}
+#post .mjx-math {
+    background-color: white;
+}
+/******* GLOSSARY *********/
+/*https://stackoverflow.com/questions/10405945/html-ordered-list-1-1-1-2-nested-counters-and-scope-not-working*/
+#glossary ol {
+    counter-reset: item;
+    padding-left: 16px;
+}
+
+#glossary ol > li {
+    counter-increment: item;
+}
+
+#glossary .topic-list > li {
+    display: block;
+}
+
+#glossary .topic-list > li:before {
+    content: counters(item, ".") " ";
+}
+
+/******* APPENDIX *********/
+#appendix .alert {
+    display: inline-block;
+}

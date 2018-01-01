@@ -1,0 +1,51 @@
+/* 
+    https://codepen.io/uimax/pen/NRWVmo 
+    it didn't have all the styles so i had to mess with it. decreased padding by 1px to compensate for border
+*/
+
+  .badge.badge-outlined,
+  .badge.badge-outlined:hover,
+  .badge.badge-outlined:active {
+    background-color: transparent !important;
+    border-width: 1px !important;
+    border-style: solid !important;
+    padding-top: calc(.25em - 1px);
+    padding-bottom: calc(.25em - 1px);
+    padding-left: calc(.4em - 1px);
+    padding-right: calc(.4em - 1px);    
+  }
+  
+  .badge.badge-outlined.badge-default {
+    border-color: #B0BEC5;
+    color: #B0BEC5
+  }
+  
+  .badge.badge-outlined.badge-primary {
+    border-color: #2196F3;
+    color: #2196F3
+  }
+  
+  .badge.badge-outlined.badge-secondary {
+    border-color: #323a45;
+    color: #323a45
+  }
+  
+  .badge.badge-outlined.badge-success {
+    border-color: #64DD17;
+    color: #64DD17
+  }
+  
+  .badge.badge-outlined.badge-warning {
+    border-color: #FFD600;
+    color: #FFD600
+  }
+  
+  .badge.badge-outlined.badge-info {
+    border-color: #29B6F6;
+    color: #29B6F6
+  }
+  
+  .badge.badge-outlined.badge-danger {
+    border-color: #ef1c1c;
+    color: #ef1c1c
+  }

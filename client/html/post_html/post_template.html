@@ -1,0 +1,31 @@
+  <div class="container-fluid">
+    <span>[POST PHRASE]
+  </div>
+  <h4 class="text-center date">[POST DATE]</h4>
+  [PAGINATION]
+  <div class="container-fluid subject-options">
+    [POST SUBJECT NAVIGATION]
+  </div>
+  <div id="post">
+      [POST HTML]
+  </div>
+  <div class="container-fluid">
+    Topics:&nbsp;[POST TOPICS]
+    <br>                
+    <!-- if you change the inner text of #showCommentsLink update the window onload event listener in master.js that sets this to say 0 comments -->
+    <!-- the reason is because disqus doesnt return anything unless the thread has been "initialized" so this will always remain blank unless -->
+    <!-- you manually set the inner text to something that way there is something to click on. this approach balances jittery 0 THEN 7 against -->
+    <!-- waiting a weird amount of time and then having it show up. -->
+    <a id="showCommentsLink" href="[CANONICAL URL]#disqus_thread">&nbsp;</a>
+  </div>
+  <div id="comments" data-showing="false">
+    <br>
+    <div class="container-fluid">
+        <div class="card">
+          <div class="card-body">
+            [POST COMMENTS]
+          </div>
+        </div>
+    </div>
+  </div>
+  [PAGINATION]
