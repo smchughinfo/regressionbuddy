@@ -28,6 +28,7 @@ const createOrCleanBuildDirectory = () => {
 
 const integrateSiteJavaScript = () => {
     let js = [
+        `${process.env.clientDir}/scripts/modernizer.js`,
         `${process.env.clientDir}/scripts/utilities.js`,
         `${process.env.clientDir}/scripts/master.js`
     ].map(path => readFileSync(path)).join("\r\n");
@@ -447,14 +448,14 @@ const generateSiteRSS = () => {
         item = item.replace("[LINK]", `https://www.regressionbuddy.com/${postNumber}`);
         item = item.replace("[POST NUMBER]", `${postNumber}`);
 
-        let year = postJson.date.split("/")[2];
-        let month = postJson.date.split("/")[0];
-        let day = postJson.date.split("/")[1];
+        let year = parseInt(postJson.date.split("/")[2], 10);
+        let month = parseInt(postJson.date.split("/")[0], 10) - 1;
+        let day = parseInt(postJson.date.split("/")[1], 10);
         let rfc = new Date(year, month, day);
         item = item.replace("[POST DATE]", `${rfc.toDateString()}`);
 
         let description = getPostSubjects(postNumber).map(subject => {
-            let subjectHumanFormat = capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, ""));
+            let subjectHumanFormat = capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, " "));
             let subjectIdentifier = subject.replace(/_/g, "-");
             return subjectHumanFormat + " (" + postJson.topics[subjectIdentifier].join(", ") + ")";
         }).join(", ");
@@ -492,6 +493,7 @@ const addGraphic = path => {
 }
 
 const build = () => {
+    console.log("linear algebra, at least, title is messed up in browser");
     console.log("building...");
     console.warn("cheerio adds a body tag if it encounters a text node. e.g. [REPLACE THIS]");
     console.log("reminder: subscribe to disqus for api calls");
