@@ -17,6 +17,7 @@ const siteCSSPathMin = `${process.env.buildDir}/site.min.css`;
 const siteHTMLPath = `${process.env.buildDir}/site.master.html`;
 
 const description = "Practice Problems for Algebra, Trigonometry, Calculus, Vector Calculus, Statistics, and Linear Algebra";
+const shortDescription = "Regression Buddy - Math Practice Problems";
 
 const createOrCleanBuildDirectory = () => {
     if (!existsSync(process.env.buildDir)){
@@ -130,10 +131,6 @@ const buildPostSubjectNavigation = (postNumber, subject) => {
 const buildPostComments = (outFile, postNumber, subject) => {
     let comments = readFileSync(`${process.env.postTemplatesDir}/comments.html`).toString();
     outFile = outFile.replace("[POST COMMENTS]", comments);
-
-    outFile = outFile.replace("[CANONICAL URL]", `${process.env.hostName}/${postNumber}/${subject}`);
-    //outFile = outFile.replace(/\[PAGE IDENTIFIER\]/g, `${process.env.name}/${postNumber}/${subject}`);
-
     return outFile;
 };
 
@@ -289,7 +286,7 @@ const buildStaticContentPage = (staticContent, title, description, outFilePath) 
     outFile = outFile.replace(' data-post-number=""', "");
     outFile = outFile.replace(' data-last-post-number=""', "");
 
-    if(process.env.name !== "dev") {
+    if(isDev() === false) {
         outFile = minimizePageHTML(outFile);
     }
 
@@ -321,7 +318,7 @@ const buildIndex = () => {
         throw "couldn't find title;"
     }
     else {
-        indexContent = indexContent.replace(/<title>.*?<\/title>/, "<title>Regression Buddy - Math Practice Problems</title>");
+        indexContent = indexContent.replace(/<title>.*?<\/title>/, "<title>" + shortDescription + "</title>");
     }
     writeFileSync(indexFilePath, indexContent);
 }
@@ -497,6 +494,7 @@ const addGraphic = path => {
 const build = () => {
     console.log("building...");
     console.warn("cheerio adds a body tag if it encounters a text node. e.g. [REPLACE THIS]");
+    console.log("reminder: subscribe to disqus for api calls");
 
     createOrCleanBuildDirectory();
 

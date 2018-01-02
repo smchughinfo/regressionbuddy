@@ -179,7 +179,7 @@ function toggleShowComments(e) {
         });
     }
 
-    history.replaceState({}, document.title, window.location.pathname); // don't show #disqus_thread in url    
+    history.replaceState({}, document.title, window.location.pathname); // don't show # in url    
     e.preventDefault();
 }
 var commentsLink = document.querySelector("#showCommentsLink");
