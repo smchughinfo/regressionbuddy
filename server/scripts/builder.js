@@ -171,7 +171,8 @@ const setPostNavigationLinks = (outFile, postNumber, subject) => {
     outFile = outFile.replace(/\[PAGINATION\]/g, readFileSync(`${process.env.postTemplatesDir}/pagination.html`).toString());
     $ = cheerio.load(outFile);
     let last = getLargestPostNumber();
-    
+    subject = subject.replace(/_/g, "-").toLowerCase();
+
     // first and prev
     if(postNumber === 1) {
         $('[data-link-to="first"]').parent().addClass("disabled");
@@ -233,7 +234,7 @@ const buildPost = (postNumber, subject) => {
     outFile = outFile.replace("[CONTENT]", buildPostTemplate());
     outFile = outFile.replace("[POST SUBJECT NAVIGATION]", buildPostSubjectNavigation(postNumber, subject));
     outFile = outFile.replace("[POST HTML]", buildPostHTML(htmlPath, postNumber, subject));
-    outFile = outFile.replace("[TITLE]", `Week ${postNumber} - ${capatalizeFirstLetterOfEveryWord(subject)}`); // note - if you change this title change the title for the index page in master.js
+    outFile = outFile.replace("[TITLE]", `Week ${postNumber} - ${capatalizeFirstLetterOfEveryWord(subject.replace(/-/g, " "))}`); // note - if you change this title change the title for the index page in master.js
     outFile = buildPostComments(outFile, postNumber, subject);
     outFile = buildPostConfiguration(jsonPath, outFile, subject);
     outFile = setPostMetaTags(outFile, jsonPath, subject);

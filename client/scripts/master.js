@@ -2,21 +2,30 @@ function switchComponent(e) {
     var toCompontent = e.target.href.split("#").pop();
     
     forEachElement("#componentLinksContainer > li > a", function(a) {
-        a.classList.remove("active")
+        a.className = a.className.replace(/\bactive\b/g, "");
     });
-    e.target.classList.add("active");
+    e.target.className += " active";
 
     forEachElement("#componentsContainer > div", function(div) {
         div.setAttribute("data-showing", "false");
     });
     document.querySelector("#" + toCompontent).setAttribute("data-showing", "true");
 
-    history.replaceState({}, document.title, window.location.pathname); // hash would only ever get used if a user didnt have javascript. in that case it's used to show hide problems, solutions, and work'
+    clearHash();
     e.preventDefault();
 }
 forEachElement("#componentLinksContainer > li > a", function(link) {
     link.addEventListener("click", switchComponent)
 });
+
+function clearHash() {
+    try {
+        history.replaceState({}, document.title, window.location.pathname); // hash would only ever get used if a user didnt have javascript. in that case it's used to show hide problems, solutions, and work'
+    }
+    catch(ex) {
+        window.location.hash = "";
+    }
+}
 
 function setRandomLink() {
     var last = parseInt(document.body.getAttribute("data-last-post-number"), 10);
@@ -179,7 +188,7 @@ function toggleShowComments(e) {
         });
     }
 
-    history.replaceState({}, document.title, window.location.pathname); // don't show # in url    
+    clearHash();
     e.preventDefault();
 }
 var commentsLink = document.querySelector("#showCommentsLink");

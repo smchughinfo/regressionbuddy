@@ -13,7 +13,6 @@
 .post-nav > ul {
     margin: 16px;
 }
-
 /******* NAV *********/
 #solutions,
 #work {
@@ -45,15 +44,40 @@
     }
 }
 /******* Problems, Solutions and Work *********/
-#problems > ol > li,
-#solutions > ol > li,
-#work > ol > li {
+#post li {
     list-style-position: inside;
 }
-#post .img-fluid {
+#post ol {
+    font-weight:bold;
+}
+#post li > * {
+    font-weight: normal;
+}
+#problems > ol > li,
+#solutions > ol > li,
+#problems > ol > li ol > li:not(:last-child),
+#solutions > ol > li ol > li:not(:last-child) {
+    margin-bottom:5px;
+}
+#problems > ol > li > *,
+#solutions > ol > li > *,
+#work > ol > li > * {
+    display: inline-block;
+    vertical-align: top;
 }
 #post .mjx-math {
     background-color: white;
+}
+#work img {
+    max-width: 180px;
+}
+#problems > ol > li > * {
+    display: inline-block;
+}
+#post ol ol li {
+    list-style-type: lower-alpha;
+}
+#post ol ol li > * {
 }
 /******* GLOSSARY *********/
 /*https://stackoverflow.com/questions/10405945/html-ordered-list-1-1-1-2-nested-counters-and-scope-not-working*/
@@ -76,9 +100,15 @@
 
 /******* APPENDIX *********/
 #appendix .alert {
-    display: inline-block;
+    display: inline-block; /********** ???????????????????????????????????????? */
 }
-
+#appendix .definition {
+    vertical-align: top;
+    padding-left:50px;
+}
+#appendix .appendix-seperator {
+    border-top:1px solid gray;
+}
 /******* NO FLEXBOX SHIM *******/
 .no-flexbox > body {
     min-width: 600px;
