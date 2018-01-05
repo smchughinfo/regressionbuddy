@@ -43,27 +43,12 @@
         text-align: center;
     }
 }
-/******* Problems, Solutions and Work *********/
-#post li {
-    list-style-position: inside;
-}
+/******* EASY POST STYLES *********/
 #post ol {
     font-weight:bold;
 }
 #post li > * {
     font-weight: normal;
-}
-#problems > ol > li,
-#solutions > ol > li,
-#problems > ol > li ol > li:not(:last-child),
-#solutions > ol > li ol > li:not(:last-child) {
-    margin-bottom:5px;
-}
-#problems > ol > li > *,
-#solutions > ol > li > *,
-#work > ol > li > * {
-    display: inline-block;
-    vertical-align: top;
 }
 #post .mjx-math {
     background-color: white;
@@ -71,14 +56,33 @@
 #work img {
     max-width: 180px;
 }
-#problems > ol > li > * {
-    display: inline-block;
-}
 #post ol ol li {
     list-style-type: lower-alpha;
 }
-#post ol ol li > * {
+/******* PROBLEM SPACING ********/
+#componentsContainer li {
+    list-style-position: inside;
 }
+
+.problem > *,
+#work img {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.problem:not(:last-child) {
+    padding-bottom: 12px;
+}
+.question {
+    padding-bottom: 2px;
+}
+.problem li:not(:last-child) {
+    padding-bottom:5px;
+}
+.mjx-chtml {
+    font-size: 100% !important;
+}
+
 /******* GLOSSARY *********/
 /*https://stackoverflow.com/questions/10405945/html-ordered-list-1-1-1-2-nested-counters-and-scope-not-working*/
 #glossary ol {
@@ -101,6 +105,9 @@
 /******* APPENDIX *********/
 #appendix .alert {
     display: inline-block; /********** ???????????????????????????????????????? */
+}
+#appendix .alert > strong {
+    display: block;
 }
 #appendix .definition {
     vertical-align: top;
