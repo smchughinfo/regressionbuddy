@@ -1,0 +1,31 @@
+
+<html>
+    <head>
+        <style>
+            canvas {
+                border:1px solid gray;
+            }
+        </style>
+    </head>
+    <body>
+        <input id="bottom" type="text">
+        <input id="side" type="text">
+        <input id="hyp" type="text">
+        <button>Generate</button>
+        <br>
+        <br>
+        <canvas ></canvas>
+    </body>
+    <script>
+        var canvas = document.querySelector("canvas");
+        
+        function updateCanvas() {
+            var bottom = parseInt(document.getElementById("bottom").value, 10);
+            var side = parseInt(document.getElementById("side").value, 10);
+            var hyp = parseInt(document.getElementById("hyp").value, 10);
+
+            alert(bottom + " | " + side + " | " + hyp);
+        }
+        document.querySelector("button").addEventListener("click", updateCanvas);
+    </script>
+</html>
