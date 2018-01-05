@@ -82,10 +82,6 @@ const handleFileRequest = (req, res) => {
     ) {
         filePath = `${process.env.publicDir}/build${urn}`
     }
-    else if (urn === "/triangle-generator") {
-        console.log("DID THE MATCH")
-        filePath = `${process.env.publicDir}/utilities/triangle_generator.html`;
-    }
 
     console.log(filePath);
     serveFile(filePath, req, res);
