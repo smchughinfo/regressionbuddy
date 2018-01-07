@@ -426,34 +426,34 @@ const generateSiteMap = () => {
 const generateSiteRSS = () => {
     let rss = '\
 <?xml version="1.0" encoding="utf-8"?>\n\
-    <rss version="2.0">\n\
-        <channel>\n\
-            <title>Regression Buddy RSS</title>\n\
-            <link>https://www.regressionbuddy.com/</link>\n\
-            <description>' + description + '</description>';
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n\
+    <channel>\n\
+        <title>Regression Buddy RSS</title>\n\
+        <link>https://www.regressionbuddy.com/</link>\n\
+        <description>' + description + '</description>\n\
+        <atom:link href="https://www.regressionbuddy.com/rss.xml" rel="self" type="application/rss+xml" />';
 
     let template  = '\
-            <item>\n\
-                <title>[TITLE]</title>\n\
-                <link>[LINK]</link>\n\
-                <guid>POST-[POST NUMBER]</guid>\n\
-                <pubDate>[POST DATE]</pubDate>\n\
-                <description>[DESCRIPTION]</description>\n\
-            </item>';
+        <item>\n\
+            <title>[TITLE]</title>\n\
+            <link>[LINK]</link>\n\
+            <guid>[LINK]</guid>\n\
+            <pubDate>[POST DATE]</pubDate>\n\
+            <description>[DESCRIPTION]</description>\n\
+        </item>';
 
     let postJsons = getPostNumbers().reverse().map(postNumber => {
         let postJSONPath = `${process.env.postsDir}/${postNumber}/post.json`;
         let postJson = JSON.parse(readFileSync(postJSONPath));        
         let item = template;
         item = item.replace("[TITLE]", postJson.date);
-        item = item.replace("[LINK]", `https://www.regressionbuddy.com/${postNumber}`);
-        item = item.replace("[POST NUMBER]", `${postNumber}`);
+        item = item.replace(/\[LINK\]/g, `https://www.regressionbuddy.com/${postNumber}`);
 
         let year = parseInt(postJson.date.split("/")[2], 10);
         let month = parseInt(postJson.date.split("/")[0], 10) - 1;
         let day = parseInt(postJson.date.split("/")[1], 10);
         let rfc = new Date(year, month, day);
-        item = item.replace("[POST DATE]", `${rfc.toDateString()}`);
+        item = item.replace("[POST DATE]", `${rfc.toUTCString()}`);
 
         let description = getPostSubjects(postNumber).map(subject => {
             let subjectHumanFormat = capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, " "));
@@ -467,9 +467,8 @@ const generateSiteRSS = () => {
     });
 
     rss += "\n\
-        </channel>\n\
-    </rss>\n\
-</xml>";
+    </channel>\n\
+</rss>";
     writeFileSync(`${process.env.buildDir}/rss.xml`, rss);
 };
 
@@ -498,6 +497,8 @@ const build = () => {
     console.log("building...");
     console.warn("cheerio adds a body tag if it encounters a text node. e.g. [REPLACE THIS]");
     console.log("reminder: subscribe to disqus for api calls");
+    console.log("check browserstack for bottom of appendix. does <br> work?");
+    console.log("udpate lambda to redirect if given https://regressionbuddy.com/2/algebra/");
 
     createOrCleanBuildDirectory();
 
