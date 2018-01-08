@@ -61,9 +61,25 @@
 #post ol ol li {
     list-style-type: lower-alpha;
 }
+#post ol ol ol li {
+    font-weight: bold;
+    list-style-type: lower-roman;
+}
+
+
+
+/* FOR THIS THIRD LIST ITEM NOT LINING UP GO BACK TO THE SPACE HACK. WRAP IT IN PARENT WITH WHITESPACE NO WRAP. THEN ON THE RIGHT DIV ALLOW WRAP*/
+
+
 /******* PROBLEM SPACING ********/
 #componentsContainer li {
     list-style-position: inside;
+}
+.problem {
+    white-space: nowrap;
+}
+.problem > * {
+    white-space: normal;
 }
 .problem > *,
 #work img {
@@ -83,7 +99,6 @@
 #post .mjx-chtml {
     font-size: 100% !important;
 }
-
 /******* GLOSSARY *********/
 /*https://stackoverflow.com/questions/10405945/html-ordered-list-1-1-1-2-nested-counters-and-scope-not-working*/
 #glossary ol {
@@ -117,7 +132,9 @@
 #appendix .appendix-seperator {
     border-top:1px solid gray;
 }
-
+#appendix ol.list-group {
+    padding-left: 3em;
+}
 /******* FUNCTION GROUP *******/
 .function-group-carrier {
     display: inline-block;
@@ -135,7 +152,8 @@
 .function-group *  {
     white-space: nowrap;
 }
-.function-group-space-hack {
+.space-hack {
+    font-weight: bold;
     visibility: hidden;
 }
 /******* APPENDIX DIAGRAM BY EXAMPLE *******/

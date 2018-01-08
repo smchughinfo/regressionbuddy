@@ -1,26 +1,56 @@
 <div id="solutions">5</div>
 <div id="work">40</div>
 <div id="problems">
-        <ol class="list-group">
-            <li>
-            This is POST 2 sta tis ticks
-            </li>
-            <li>
-            When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are.
-            </li>
-            <li>
-            When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are.
-            <ol type="A">
-                <li>first</li>
-                <li>second</li>
-                <li>third</li>
-            </ol>
-            </li>
-            <li>
-            When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are.
-            </li>
-            <li>
-            When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are.
-            </li>
-        </ol>
-    </div>
+    <ol class="list-group">
+        <li class="problem">
+            <div>
+                <div class="question">Provide an example of the variable types a, i, and ii.</div>
+                <ol class="list-group">
+                    <li class="problem">
+                        <div>
+                            <span >Qualitative</span>
+                        </div>
+                        
+                    </li>
+                    <li class="problem">
+                        <div>
+                            <div class="question">Quantitative:</div>
+                            <ol class="list-group">
+                                <li class="problem">
+                                    <div> 
+                                        <span style="font-weight: bold" class="space-hack">i</span><span >Discrete</span>
+                                    </div>
+                                </li>
+                                <li class="problem">
+                                    <div> 
+                                        Continuous
+                                    </div>
+                                </li>
+                            </ol>
+                        </div>
+                        
+                        <br>
+
+
+                    </li>
+                </ol>
+            </div>
+        </li>
+    </ol>
+</div>
+
+<style>
+    .list-group {
+        display: inline-block !important; /* discovered IE wasn't wrapping in a flex box. regression tested on ff/chrome and it seems to be fine. lists have been a trouble area anyway */
+    }
+
+    #post ol > * {
+        padding-right: 7.5px;
+    }
+    #post ol ol > * {
+        padding-right: 15px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
+    }
+    #post ol ol ol > * {
+        padding-right: 30px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
+    }
+</style>
