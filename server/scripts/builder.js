@@ -502,6 +502,8 @@ const build = () => {
     console.log("still need styles for last/bottom function in function group. can handle not being wrapped and being wrapped");
     console.log("please look at spacing around the problem class. make sure it is applied consistently. maybe it sohuldnt be named problem or that functionality can be abstracted");
     //console.log("add section about mistakes in about. please send me a message if you encounter a mistake so that ");
+    console.log("add linksin svg");
+
     createOrCleanBuildDirectory();
 
     integrateSiteJavaScript();
