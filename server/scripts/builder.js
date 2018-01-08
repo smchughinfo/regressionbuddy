@@ -499,6 +499,7 @@ const build = () => {
     console.log("reminder: subscribe to disqus for api calls");
     console.log("check browserstack for bottom of appendix. does <br> work?");
     console.log("udpate lambda to redirect if given https://regressionbuddy.com/2/algebra/");
+    console.log("still need styles for last/bottom function in function group. can handle not being wrapped and being wrapped");
 
     createOrCleanBuildDirectory();
 

@@ -99,6 +99,26 @@
 #post .mjx-chtml {
     font-size: 100% !important;
 }
+
+/******* STILL PROBLEM SPACING - im just more ashamed of these ********/
+.list-group {
+    display: inline-block !important; /* discovered IE wasn't wrapping in a flex box. regression tested on ff/chrome and it seems to be fine. lists have been a trouble area anyway */
+}
+#post ol > * {
+    padding-right: 7.5px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
+}
+#post ol ol > * {
+    padding-right: 15px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
+}
+#post ol ol ol > * {
+    padding-right: 30px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
+}
+
+
+
+
+
+
 /******* GLOSSARY *********/
 /*https://stackoverflow.com/questions/10405945/html-ordered-list-1-1-1-2-nested-counters-and-scope-not-working*/
 #glossary ol {
