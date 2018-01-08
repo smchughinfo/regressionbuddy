@@ -101,14 +101,14 @@
 }
 
 /******* STILL PROBLEM SPACING - im just more ashamed of these ********/
-.list-group {
+#post .list-group {
     display: inline-block !important; /* discovered IE wasn't wrapping in a flex box. regression tested on ff/chrome and it seems to be fine. lists have been a trouble area anyway */
 }
 #post ol > * {
-    padding-right: 7.5px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
+    padding-right: 10px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
 }
 #post ol ol > * {
-    padding-right: 15px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
+    padding-right: 20px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
 }
 #post ol ol ol > * {
     padding-right: 30px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
