@@ -2,21 +2,30 @@ function switchComponent(e) {
     var toCompontent = e.target.href.split("#").pop();
     
     forEachElement("#componentLinksContainer > li > a", function(a) {
-        a.classList.remove("active")
+        a.className = a.className.replace(/\bactive\b/g, "");
     });
-    e.target.classList.add("active");
+    e.target.className += " active";
 
     forEachElement("#componentsContainer > div", function(div) {
         div.setAttribute("data-showing", "false");
     });
     document.querySelector("#" + toCompontent).setAttribute("data-showing", "true");
 
-    history.replaceState({}, document.title, window.location.pathname); // hash would only ever get used if a user didnt have javascript. in that case it's used to show hide problems, solutions, and work'
+    clearHash();
     e.preventDefault();
 }
 forEachElement("#componentLinksContainer > li > a", function(link) {
     link.addEventListener("click", switchComponent)
 });
+
+function clearHash() {
+    try {
+        history.replaceState({}, document.title, window.location.pathname); // hash would only ever get used if a user didnt have javascript. in that case it's used to show hide problems, solutions, and work'
+    }
+    catch(ex) {
+        window.location.hash = "";
+    }
+}
 
 function setRandomLink() {
     var last = parseInt(document.body.getAttribute("data-last-post-number"), 10);
@@ -90,7 +99,9 @@ window.addEventListener("load", function() {
     setTimeout(loadImages, 2000);
 });
 
-// disqus
+var commentsLink = document.querySelector("#showCommentsLink");
+if(commentsLink) {
+    // disqus
 var commentsLoaded = false;
 function loadComments() {
     var d = document, s = d.createElement('script');
@@ -179,11 +190,21 @@ function toggleShowComments(e) {
         });
     }
 
-    history.replaceState({}, document.title, window.location.pathname); // don't show # in url    
+    clearHash();
     e.preventDefault();
 }
-var commentsLink = document.querySelector("#showCommentsLink");
-if(commentsLink) {
     // blows up if a page doesn't have comments. just keeping it here though so i dont have to architect a heirarchy for types of pages.
     commentsLink.addEventListener("click", toggleShowComments);
 }
+
+// MATHJAX
+MathJax.Hub.Config({
+    CommonHTML: {
+        linebreaks: {automatic: true}
+    }
+});
+// RESIZE MATHJAX -- makes the page jump too much. can produce double output.
+/*function resetMathJax() { 
+    MathJax.Hub.Reprocess(document.body); 
+}*/
+//window.addEventListener('resize', debounce(resetMathJax, 1));

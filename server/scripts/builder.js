@@ -28,6 +28,7 @@ const createOrCleanBuildDirectory = () => {
 
 const integrateSiteJavaScript = () => {
     let js = [
+        `${process.env.clientDir}/scripts/modernizer.js`,
         `${process.env.clientDir}/scripts/utilities.js`,
         `${process.env.clientDir}/scripts/master.js`
     ].map(path => readFileSync(path)).join("\r\n");
@@ -170,7 +171,8 @@ const setPostNavigationLinks = (outFile, postNumber, subject) => {
     outFile = outFile.replace(/\[PAGINATION\]/g, readFileSync(`${process.env.postTemplatesDir}/pagination.html`).toString());
     $ = cheerio.load(outFile);
     let last = getLargestPostNumber();
-    
+    subject = subject.replace(/_/g, "-").toLowerCase();
+
     // first and prev
     if(postNumber === 1) {
         $('[data-link-to="first"]').parent().addClass("disabled");
@@ -232,7 +234,7 @@ const buildPost = (postNumber, subject) => {
     outFile = outFile.replace("[CONTENT]", buildPostTemplate());
     outFile = outFile.replace("[POST SUBJECT NAVIGATION]", buildPostSubjectNavigation(postNumber, subject));
     outFile = outFile.replace("[POST HTML]", buildPostHTML(htmlPath, postNumber, subject));
-    outFile = outFile.replace("[TITLE]", `Week ${postNumber} - ${capatalizeFirstLetterOfEveryWord(subject)}`); // note - if you change this title change the title for the index page in master.js
+    outFile = outFile.replace("[TITLE]", `Week ${postNumber} - ${capatalizeFirstLetterOfEveryWord(subject.replace(/-/g, " "))}`); // note - if you change this title change the title for the index page in master.js
     outFile = buildPostComments(outFile, postNumber, subject);
     outFile = buildPostConfiguration(jsonPath, outFile, subject);
     outFile = setPostMetaTags(outFile, jsonPath, subject);
@@ -424,37 +426,37 @@ const generateSiteMap = () => {
 const generateSiteRSS = () => {
     let rss = '\
 <?xml version="1.0" encoding="utf-8"?>\n\
-    <rss version="2.0">\n\
-        <channel>\n\
-            <title>Regression Buddy RSS</title>\n\
-            <link>https://www.regressionbuddy.com/</link>\n\
-            <description>' + description + '</description>';
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n\
+    <channel>\n\
+        <title>Regression Buddy RSS</title>\n\
+        <link>https://www.regressionbuddy.com/</link>\n\
+        <description>' + description + '</description>\n\
+        <atom:link href="https://www.regressionbuddy.com/rss.xml" rel="self" type="application/rss+xml" />';
 
     let template  = '\
-            <item>\n\
-                <title>[TITLE]</title>\n\
-                <link>[LINK]</link>\n\
-                <guid>POST-[POST NUMBER]</guid>\n\
-                <pubDate>[POST DATE]</pubDate>\n\
-                <description>[DESCRIPTION]</description>\n\
-            </item>';
+        <item>\n\
+            <title>[TITLE]</title>\n\
+            <link>[LINK]</link>\n\
+            <guid>[LINK]</guid>\n\
+            <pubDate>[POST DATE]</pubDate>\n\
+            <description>[DESCRIPTION]</description>\n\
+        </item>';
 
     let postJsons = getPostNumbers().reverse().map(postNumber => {
         let postJSONPath = `${process.env.postsDir}/${postNumber}/post.json`;
         let postJson = JSON.parse(readFileSync(postJSONPath));        
         let item = template;
         item = item.replace("[TITLE]", postJson.date);
-        item = item.replace("[LINK]", `https://www.regressionbuddy.com/${postNumber}`);
-        item = item.replace("[POST NUMBER]", `${postNumber}`);
+        item = item.replace(/\[LINK\]/g, `https://www.regressionbuddy.com/${postNumber}`);
 
-        let year = postJson.date.split("/")[2];
-        let month = postJson.date.split("/")[0];
-        let day = postJson.date.split("/")[1];
+        let year = parseInt(postJson.date.split("/")[2], 10);
+        let month = parseInt(postJson.date.split("/")[0], 10) - 1;
+        let day = parseInt(postJson.date.split("/")[1], 10);
         let rfc = new Date(year, month, day);
-        item = item.replace("[POST DATE]", `${rfc.toDateString()}`);
+        item = item.replace("[POST DATE]", `${rfc.toUTCString()}`);
 
         let description = getPostSubjects(postNumber).map(subject => {
-            let subjectHumanFormat = capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, ""));
+            let subjectHumanFormat = capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, " "));
             let subjectIdentifier = subject.replace(/_/g, "-");
             return subjectHumanFormat + " (" + postJson.topics[subjectIdentifier].join(", ") + ")";
         }).join(", ");
@@ -465,9 +467,8 @@ const generateSiteRSS = () => {
     });
 
     rss += "\n\
-        </channel>\n\
-    </rss>\n\
-</xml>";
+    </channel>\n\
+</rss>";
     writeFileSync(`${process.env.buildDir}/rss.xml`, rss);
 };
 
@@ -492,9 +493,16 @@ const addGraphic = path => {
 }
 
 const build = () => {
+    console.log("linear algebra, at least, title is messed up in browser");
     console.log("building...");
     console.warn("cheerio adds a body tag if it encounters a text node. e.g. [REPLACE THIS]");
     console.log("reminder: subscribe to disqus for api calls");
+    console.log("check browserstack for bottom of appendix. does <br> work?");
+    console.log("udpate lambda to redirect if given https://regressionbuddy.com/2/algebra/");
+    console.log("still need styles for last/bottom function in function group. can handle not being wrapped and being wrapped");
+    console.log("please look at spacing around the problem class. make sure it is applied consistently. maybe it sohuldnt be named problem or that functionality can be abstracted");
+    //console.log("add section about mistakes in about. please send me a message if you encounter a mistake so that ");
+    console.log("add linksin svg");
 
     createOrCleanBuildDirectory();
 

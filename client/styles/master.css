@@ -44,17 +44,81 @@
         text-align: center;
     }
 }
-/******* Problems, Solutions and Work *********/
-#problems > ol > li,
-#solutions > ol > li,
-#work > ol > li {
-    list-style-position: inside;
+/******* EASY POST STYLES *********/
+#post ol,
+#post .function-group-count {
+    font-weight:bold;
 }
-#post .img-fluid {
+#post li > * {
+    font-weight: normal;
 }
 #post .mjx-math {
     background-color: white;
 }
+#work img {
+    max-width: 180px;
+}
+#post ol ol li {
+    list-style-type: lower-alpha;
+}
+#post ol ol ol li {
+    font-weight: bold;
+    list-style-type: lower-roman;
+}
+
+
+
+/* FOR THIS THIRD LIST ITEM NOT LINING UP GO BACK TO THE SPACE HACK. WRAP IT IN PARENT WITH WHITESPACE NO WRAP. THEN ON THE RIGHT DIV ALLOW WRAP*/
+
+
+/******* PROBLEM SPACING ********/
+#componentsContainer li {
+    list-style-position: inside;
+}
+.problem {
+    white-space: nowrap;
+}
+.problem > * {
+    white-space: normal;
+}
+.problem > *,
+#work img {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.problem:not(:last-child) {
+    padding-bottom: 12px;
+}
+.question {
+    padding-bottom: 2px;
+}
+.problem li:not(:last-child) {
+    padding-bottom:5px;
+}
+#post .mjx-chtml {
+    font-size: 100% !important;
+}
+
+/******* STILL PROBLEM SPACING - im just more ashamed of these ********/
+#post .list-group {
+    display: inline-block !important; /* discovered IE wasn't wrapping in a flex box. regression tested on ff/chrome and it seems to be fine. lists have been a trouble area anyway */
+}
+#post ol > * {
+    padding-right: 10px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
+}
+#post ol ol > * {
+    padding-right: 20px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
+}
+#post ol ol ol > * {
+    padding-right: 30px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
+}
+
+
+
+
+
+
 /******* GLOSSARY *********/
 /*https://stackoverflow.com/questions/10405945/html-ordered-list-1-1-1-2-nested-counters-and-scope-not-working*/
 #glossary ol {
@@ -78,3 +142,99 @@
 #appendix .alert {
     display: inline-block;
 }
+#appendix .alert > strong {
+    display: block;
+}
+#appendix .definition {
+    vertical-align: top;
+    padding-left:50px;
+}
+#appendix .appendix-seperator {
+    border-top:1px solid gray;
+}
+#appendix ol.list-group {
+    padding-left: 3em;
+}
+/******* FUNCTION GROUP *******/
+.function-group-carrier {
+    display: inline-block;
+    vertical-align: middle;
+}
+.function-group {
+    display: inline-block;
+}
+.function-group > * {
+    margin-right: 15px;
+}
+.function-group > :not(:last-child) {
+    margin-bottom: 15px;    
+}
+.function-group *  {
+    white-space: nowrap;
+}
+.space-hack {
+    font-weight: bold;
+    visibility: hidden;
+}
+/******* APPENDIX DIAGRAM BY EXAMPLE *******/
+#appendix .diagram-by-example {
+    display: inline-block;
+}
+#appendix .diagram-by-example > img {
+    display: inline-block;
+    width: 100%;
+}
+#appendix .function-group > * {
+    margin-left: 1em;
+    margin-bottom:25px;
+}
+
+#appendix .triangle-basic {
+    max-width: 250px;
+}
+#appendix .triangle-1-sqrt3-3 {
+    max-width: 198.5px;    
+}
+
+@media only screen and (max-width: 800px) {
+    #appendix .function-group-carrier {
+        display: block;
+    }
+    #appendix .diagram-by-example {
+        text-align: center;
+    }
+    #appendix .diagram-by-example > img {
+        margin-bottom: 25px;
+    }
+    #appendix .function-group > * {
+        margin-left: 7.5px;
+        margin-right: 7.5px;
+        text-align: left;
+    }
+}
+
+
+/******* NO FLEXBOX SHIM *******/
+.no-flexbox > body {
+    min-width: 600px;
+}
+    .no-flexbox > body > nav > .btn-group {
+        display: inline-block;
+        float: right;
+    }
+    .no-flexbox > body .post-nav {
+        text-align: center;
+    }
+    .no-flexbox > body .post-nav > ul {
+        display: inline-block;
+    }
+    .no-flexbox > body .post-nav > ul > li {
+        display: inline-block;
+        float:left;
+    }
+    .no-flexbox > body > #post .card-header ul {
+        text-align: left;
+    }
+    .no-flexbox > body > #post .card-header li {
+        display: inline-block;
+    }
