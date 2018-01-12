@@ -1,24 +1,201 @@
 <h4 class="text-center date">Linear Algebra Appendix</h4>
 <br>
 <div id="appendix" class="container-fluid">
-    <div class="card text-center">
-        <div id="addition-property-of-equality" class="card-body text-left">
-            <h4>Addition Property of Equality</h4>
-            <p><i>"Adding a number to both sides of the equation doesn't change the solution."</i></p>
-
-            <p>If <i>A</i>, <i>B</i> and <i>C</i> are real numbers then</p>
+    <div class="card">
+        <div id="linear-equations-in-n-variables" class="card-body text-left">
+            <h4>Linear Equations in n Variables</h4>
             <div class="alert alert-info" role="alert">
-                \(\textbf{A = B}\) and \(\textbf{A + C = B + C}\)
+                <strong>Two Variables</strong>
+                <span>
+                    \(Ax+By=C\)
+                    <br> 
+                    The line crosses the x axis at \(\frac{C}{A}\) when \(A \neq 0\). The line crosses the y axis at  \(\frac{C}{B}\) when \(B \neq 0\). The slope of the line is \(-\frac{A}{B}\).
+                </span>
+                <hr>
+                <strong>Three Variables</strong>
+                <span>
+                    \(Ax+By+Cz=D\)
+                    <br> 
+                    The vector \((A,B,C)\) is normal (orthogonal, at a 90 degree angle) to the plane.
+                    The distance from the origin to point on the plane closest to the origin is \( \frac{\left|D\right|}{\sqrt{A^2+B^2+C^2}} \).
+                    <br>
+                </span>
             </div>
-            <p>are equivelant.</p>
-            <div class="alert alert-success" role="alert">
-                \(X - 5 = 11\)
+            <br>
+            <div class="alert alert-success text-center" role="alert">
+                <strong>Two Variables Example</strong>
+                <img src="\images\linear-algebra-appendix\example-2d-linear-equation.png" class="img-fluid bound-200">
+                <br>                
+                <span>
+                    \(4x+2y=4\)
+                </span>
+                <hr>
+                <strong>Three Variables Example</strong>
+                <img src="\images\linear-algebra-appendix\example-3d-linear-equation.png"  class="img-fluid bound-200">
                 <br>
-                \(X - 5\textbf{ + 5} = 11\textbf{ + 5}\)
-                <br>
-                \(X = 16\)
+                <span>
+                    \(2x+2y+2z=4\)
+                </span>
+                <!--<br>
+                <small><a href="https://ggbm.at/WbdyaUF5" target="_blank" >Fiddle.</a></small>-->
             </div>
             <hr>
         </div>
     </div>
+    <hr>
+
+    <div class="card">
+            <div id="the-number-of-solutions-to-a-system-of-linear-equations" class="card-body text-left">
+                <h4>Linear Equations in n Variables</h4>
+                <p><i>A solution of a system linear equations is a point that every equation in the system touches.</i></p>
+                <div class="alert alert-info" role="alert">
+                    <p>A system of linear equations can have no solutions, one solutions, or an infinite number of solutions.</p>
+                    <ol class="list-group">
+                        <li>Systems with no solutions are called inconsistent.</li>
+                        <li>Systems that have a solution are called consistent.</li>
+                    </ol>
+                </div>
+                <br>
+                <div class="alert alert-success text-center" role="alert">
+                    <strong class="text-left">Two Variables Example</strong>
+
+                    
+
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 col-lg-4">
+                                <img src="\images\linear-algebra-appendix\no-solutions-2d.png" class="img-fluid bound-200">
+                                <div class="text-center">
+                                    No Solutions
+                                    <br>
+                                    \(\hphantom{\-}x-y=1\)
+                                    <br>
+                                    \(-x+y=1\)
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-4">
+                                <img src="\images\linear-algebra-appendix\one-solution-2d.png" class="img-fluid bound-200">
+                                <div class="text-center">
+                                    One Solution
+                                    <br>
+                                    \(\hphantom{2}x-\hphantom{2}y=1\)
+                                    <br>
+                                    \(2x-2y=2\)
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-4">
+                                <img src="\images\linear-algebra-appendix\infinite-solutions-2d.png" class="img-fluid bound-200">
+                                <div class="text-center">
+                                    Infinite Solutions
+                                    <br>
+                                    \(\hphantom{-}x+\hphantom{3}y=2\)
+                                    <br>
+                                    \(-x+3y=2\)
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr>
+                    <strong class="text-left">Three Variables Example</strong>
+                    <div class="container">
+                        <div class="row">
+                                <div class="col-md-12 col-lg-4">
+                                    <img src="\images\linear-algebra-appendix\no-solutions-3d.png" class="img-fluid bound-200">
+                                    <div class="text-center">
+                                        No Solutions
+                                        <br>
+                                        \(x+y+z=1\)
+                                        <br>
+                                        \(x+y+z=\frac{5}{2}\)
+                                        <br>
+                                        \(x+y+z=5\)
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-4">
+                                    <img src="\images\linear-algebra-appendix\one-solution-3d.png" class="img-fluid bound-200">
+                                    <div class="text-center">
+                                        One Solution
+                                        <br>
+                                        \(\hphantom{-}x+y+z=1\)
+                                        <br>
+                                        \(\hphantom{-}x+y-z=1\)
+                                        <br>
+                                        \(-x+y\hphantom{-zz}=5\)
+                                        <!-- not sure why zz works but i tried a bunch of different things. -->
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-4">
+                                    <img src="\images\linear-algebra-appendix\infinite-solutions-3d.png" class="img-fluid bound-200">
+                                    <div class="text-center">
+                                        Infinite Solutions
+                                        <br>
+                                        \(\hphantom{-}x+\hphantom{3}y=2\)
+                                        <br>
+                                        \(-x+3y=2\)
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+
+
+
+
+
+                </div>
+                <hr>
+            </div>
+        </div>
+    <!-- -->"The Number of Solutions to a System of Linear Equations
 </div>
+
+<style>
+    .bound-200 {
+        max-width:300px;
+        width: 100%;
+    }
+</style>
+
+
+
+<!--
+
+              <style>
+                    .widget-super-con {
+                        max-width: 100%;
+                        outline:3px solid orange;
+                    }
+                    .widget-con {
+                        width: 100%;
+                        outline:1px solid red;
+                    }
+                    .widget-con > *{
+                        box-shadow: inset 0 0 5px 5px blue;
+                    }
+                </style>
+                    <div class="widget-con">
+                        <div id="applet_container1"></div>
+                        <div id="applet_container2"></div>
+                    </div>
+                    
+                    <script>  
+                        window.addEventListener("load", function() {
+                            // geogebra/appendix/linear-algebra/linear-equation-in-three-variables.ggb
+                            var applet1 = new GGBApplet(
+                                    {filename: "/geogebra/appendix/linear-algebra/linear-equation-in-three-variables.ggb",
+                                    "showToolbar":true,
+                                    "scaleContainerClass": "widget-con"
+                            }, true);
+                            applet1.inject('applet_container1');
+
+                            var applet2 = new GGBApplet(
+                                    {filename: "/geogebra/appendix/linear-algebra/linear-equation-in-three-variables.ggb",
+                                    "showToolbar":true,
+                                    "scaleContainerClass": "widget-con"
+                            }, true);
+                            applet2.inject('applet_container2');
+                        });
+                    </script>
+
+-->

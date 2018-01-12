@@ -15,7 +15,8 @@ const mimeTypes = {
     xml: {
         sitemap: "application/xml",
         rss: "application/rss+xml"
-    }
+    },
+    ggb: "application-x/geogebra-file"
 };
 const defaultSubject = process.env.defaultSubject;
 
