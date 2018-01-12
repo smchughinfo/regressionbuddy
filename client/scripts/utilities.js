@@ -105,11 +105,7 @@ function displayFullScreenIframe(src) {
     img.className = "close-graph";
     img.src = "/images/graph-down.png";
     img.title = "Close Graph";;
-
-    var closer = document.createElement("div");
-    closer.className += "close-iframe";
-    closer.appendChild(img);
-    document.body.appendChild(closer);
+    document.body.appendChild(img);
 
     var layover = document.createElement("div");
     layover.className = "layover";
@@ -126,7 +122,7 @@ function displayFullScreenIframe(src) {
 
 function closeFullScreenIframe() {
     removeElements("iframe");
-    removeElements(".close-iframe");
+    removeElements(".close-graph");
     removeElements(".layover");
     document.body.className = document.body.className.replace(/\bblur\b/g, "");
 }

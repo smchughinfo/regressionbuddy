@@ -78,31 +78,26 @@
                         z-index:2;
                         background-color:rgba(255, 255, 255, .5);
                     }
-                    .blur > *:not(iframe):not(.close-iframe) {
+                    .blur > *:not(iframe):not(.close-graph) {
                         filter: blur(2px);
                     }
-                    .close-iframe {
+                   .close-graph {
                         position:absolute;
                         position:fixed;
-                        top:0;
-                        left:0;
+                        top:5px;
+                        left:100px;
+                        left: calc(50% - 12px);
                         width:100%;
                         z-index:4;
-                        text-align: center;
-                    }
-                    .close-iframe .close-graph {
-                        display: inline-block;
-                        margin-top: 5px;
                         height:24px;
                         width:24px;
-                        text-align: center;
                         opacity:.4;
                         transition: .5s;
                         transform-origin: center;
                         animation-name: close-iframe-animation;
                         animation-duration: 10s;
                     }
-                    .close-iframe .close-graph:hover {
+                    .close-graph:hover {
                         opacity:.6;
                         transform: translateZ(0);
                     }
@@ -212,7 +207,15 @@
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-lg-4">
-                                    <img src="\images\linear-algebra-appendix\one-solution-3d.png" class="img-fluid bound-200">
+                                    <div class="graph-con">
+                                            <img 
+                                                src="\images\linear-algebra-appendix\one-solution-3d.png" class="img-fluid bound-200"
+                                                data-link="https://www.geogebra.org/3d/gvBZPARm"
+                                            >
+                                            <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                                    </div>
+
+
                                     <div class="text-center">
                                         One Solution
                                         <br>
