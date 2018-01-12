@@ -24,7 +24,106 @@
             <br>
             <div class="alert alert-success text-center" role="alert">
                 <strong>Two Variables Example</strong>
-                <img src="\images\linear-algebra-appendix\example-2d-linear-equation.png" class="img-fluid bound-200">
+                <div class="graph-con">
+                        <img 
+                            src="/images/linear-algebra-appendix/example-2d-linear-equation.png" class="img-fluid bound-200"
+                            data-link="https://www.geogebra.org/graphing/PtP4Y9xu"
+                        >
+                        <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                </div>
+                <script>
+                    document.addEventListener("click", function(e) {
+                        if(/\bopen-graph\b/.test(e.target.className)) {
+                            var src =  e.target.closest(".graph-con").querySelector("[data-link]").getAttribute("data-link");
+                            displayFullScreenIframe(src);
+                        }
+                        if(/\bclose-graph\b/.test(e.target.className)) {
+                            closeFullScreenIframe(src);
+                        }
+                    });
+                </script>
+                <style>
+                    .graph-con {
+                        position:relative;
+                    }
+                    .graph-con .open-graph {
+                        height:24px;
+                        width:24px;
+                        position:absolute;
+                        top:0;
+                        right:0;
+                        opacity:.2;
+                        transition: .5s;
+                        transform: translateZ(0);
+                    }
+                    .graph-con .open-graph:hover {
+                        opacity:.4;
+                    }
+                    .full-screen-iframe {
+                        position:absolute;
+                        position:fixed;
+                        top:0;
+                        left:0;
+                        height:100%;
+                        width:100%;
+                        z-index:3;
+                    }
+                    .layover {
+                        position:absolute;
+                        position:fixed;
+                        top:0;
+                        left:0;
+                        height:100%;
+                        width:100%;
+                        z-index:2;
+                        background-color:rgba(255, 255, 255, .5);
+                    }
+                    .blur > *:not(iframe):not(.close-iframe) {
+                        filter: blur(2px);
+                    }
+                    .close-iframe {
+                        position:absolute;
+                        position:fixed;
+                        top:0;
+                        left:0;
+                        width:100%;
+                        z-index:4;
+                        text-align: center;
+                    }
+                    .close-iframe .close-graph {
+                        display: inline-block;
+                        margin-top: 5px;
+                        height:24px;
+                        width:24px;
+                        text-align: center;
+                        opacity:.4;
+                        transition: .5s;
+                        transform-origin: center;
+                        animation-name: close-iframe-animation;
+                        animation-duration: 10s;
+                    }
+                    .close-iframe .close-graph:hover {
+                        opacity:.6;
+                        transform: translateZ(0);
+                    }
+                    @keyframes close-iframe-animation {
+                        0% {
+                            transform: translateZ(0) scale(1);
+                        }
+                        25% {
+                            transform: translateZ(0) scale(1.5);
+                        }
+                        50% {
+                            transform: translateZ(0) scale(1);
+                        }
+                        75% {
+                            transform: translateZ(0) scale(1.5);
+                        }
+                        100% {
+                            transform: translateZ(0) scale(1);
+                        }
+                    }
+                </style>
                 <br>                
                 <span>
                     \(4x+2y=4\)
@@ -141,6 +240,7 @@
 
 
 
+                <!--<iframe src="https://www.geogebra.org/3d/gvBZPARm" style="position:fixed;height: 100%;width: 100%;top:0;left:0;"></iframe>-->
 
 
                 </div>
@@ -156,6 +256,10 @@
         width: 100%;
     }
 </style>
+
+
+
+
 
 
 
