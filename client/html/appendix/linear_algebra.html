@@ -20,6 +20,12 @@
                     The distance from the origin to point on the plane closest to the origin is \( \frac{\left|D\right|}{\sqrt{A^2+B^2+C^2}} \).
                     <br>
                 </span>
+                <hr>
+                <strong>n Variables</strong>
+                <span>
+                    \(a_1^\hphantom{1} x_1^\hphantom{1} + a_2^\hphantom{1} x_2^\hphantom{1} +a_3^\hphantom{1} x_3^\hphantom{1} + \cdot \; \cdot \; \cdot \; + a_n^\hphantom{1} x_n^\hphantom{1} = b\)
+                    <br>
+                </span>
             </div>
             <br>
             <div class="alert alert-success text-center" role="alert">
@@ -118,6 +124,13 @@
                             transform: translateZ(0) scale(1);
                         }
                     }
+
+
+                    /**** BOUND-200 IS A DIFFERENT THING ****/
+                    .bound-200 {
+                        max-width:300px;
+                        width: 100%;
+                    }
                 </style>
                 <br>                
                 <span>
@@ -125,19 +138,43 @@
                 </span>
                 <hr>
                 <strong>Three Variables Example</strong>
-                <img src="\images\linear-algebra-appendix\example-3d-linear-equation.png"  class="img-fluid bound-200">
+
+
+                <div class="graph-con">
+                    <img 
+                        src="\images\linear-algebra-appendix\example-3d-linear-equation.png" class="img-fluid bound-200"
+                        data-link="https://www.geogebra.org/3d/WbdyaUF5"
+                    >
+                    <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                </div>
+
+                
                 <br>
                 <span>
                     \(2x+2y+2z=4\)
                 </span>
+                <hr>
+                <strong>n Variables Example</strong>
+                <span>
+                    \(
+                        4x_1^\hphantom{1}-
+                        7x_2^\hphantom{1}+
+                        2x_3^\hphantom{1}+
+                        x_4^\hphantom{1}=
+                        8
+                    \)
+                </span>
                 <!--<br>
                 <small><a href="https://ggbm.at/WbdyaUF5" target="_blank" >Fiddle.</a></small>-->
             </div>
-            <hr>
         </div>
     </div>
-    <hr>
+</div>
 
+<!-- TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC -->
+<br>
+
+    <div class="container-fluid">
     <div class="card">
             <div id="the-number-of-solutions-to-a-system-of-linear-equations" class="card-body text-left">
                 <h4>Linear Equations in n Variables</h4>
@@ -158,33 +195,74 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-md-12 col-lg-4">
-                                <img src="\images\linear-algebra-appendix\no-solutions-2d.png" class="img-fluid bound-200">
+
+                                
+                                <div class="graph-con">
+                                        <img 
+                                            src="\images\linear-algebra-appendix\no-solutions-2d.png" class="img-fluid bound-200"
+                                            data-link="https://www.geogebra.org/graphing/JsvmRYJu"
+                                        >
+                                        <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                                    </div>
                                 <div class="text-center">
                                     No Solutions
                                     <br>
-                                    \(\hphantom{\-}x-y=1\)
-                                    <br>
-                                    \(-x+y=1\)
+                                    \begin{align}
+                                        x-y=1 \\ -x+y=1
+                                    \end{align}
                                 </div>
                             </div>
                             <div class="col-md-12 col-lg-4">
-                                <img src="\images\linear-algebra-appendix\one-solution-2d.png" class="img-fluid bound-200">
+
+
+
+                                    <div class="graph-con">
+                                            <img 
+                                                src="\images\linear-algebra-appendix\one-solution-2d.png" class="img-fluid bound-200"
+                                                data-link="https://www.geogebra.org/graphing/wpt46e8P"
+                                            >
+                                            <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                                        </div>
+
+
+
+                                
                                 <div class="text-center">
                                     One Solution
                                     <br>
-                                    \(\hphantom{2}x-\hphantom{2}y=1\)
-                                    <br>
-                                    \(2x-2y=2\)
+
+                                    \begin{align}
+                                        \hphantom{2}x-\hphantom{2}y &= 1 \\ 
+                                        2x-2y &= 2
+                                    \end{align}
+
                                 </div>
                             </div>
                             <div class="col-md-12 col-lg-4">
-                                <img src="\images\linear-algebra-appendix\infinite-solutions-2d.png" class="img-fluid bound-200">
+
+
+
+
+                                    <div class="graph-con">
+                                            <img 
+                                                src="\images\linear-algebra-appendix\infinite-solutions-2d.png" class="img-fluid bound-200"
+                                                data-link="https://www.geogebra.org/graphing/pk4s7AE6"
+                                            >
+                                            <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                                        </div>
+
+                                    
+
+
+                                        
                                 <div class="text-center">
                                     Infinite Solutions
                                     <br>
-                                    \(\hphantom{-}x+\hphantom{3}y=2\)
-                                    <br>
-                                    \(-x+3y=2\)
+
+                                    \begin{align}
+                                        \hphantom{2}x-\hphantom{2}y &= 1 \\ 
+                                        2x-2y &= 2
+                                    \end{align}
                                 </div>
                             </div>
                         </div>
@@ -195,15 +273,29 @@
                     <div class="container">
                         <div class="row">
                                 <div class="col-md-12 col-lg-4">
-                                    <img src="\images\linear-algebra-appendix\no-solutions-3d.png" class="img-fluid bound-200">
+                                    
+                                    
+                                        <div class="graph-con">
+                                                <img 
+                                                    src="\images\linear-algebra-appendix\no-solutions-3d.png" class="img-fluid bound-200"
+                                                    data-link="https://www.geogebra.org/3d/X3QpGghW"
+                                                >
+                                                <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                                            </div>
+
+
+
+
+
                                     <div class="text-center">
                                         No Solutions
                                         <br>
-                                        \(x+y+z=1\)
-                                        <br>
-                                        \(x+y+z=\frac{5}{2}\)
-                                        <br>
-                                        \(x+y+z=5\)
+
+                                        \begin{align*}
+                                            x+y+z &= 0 \\ 
+                                            x+y+z &= 2.5 \\ 
+                                            x+y+z &= 5
+                                        \end{align*}
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-lg-4">
@@ -219,22 +311,31 @@
                                     <div class="text-center">
                                         One Solution
                                         <br>
-                                        \(\hphantom{-}x+y+z=1\)
-                                        <br>
-                                        \(\hphantom{-}x+y-z=1\)
-                                        <br>
-                                        \(-x+y\hphantom{-zz}=5\)
-                                        <!-- not sure why zz works but i tried a bunch of different things. -->
+
+                                        \begin{align}
+                                            x+y+z &= 1 \\ 
+                                            x+y-z &= 1 \\
+                                            -\,x+y &= 1
+                                        \end{align}
                                     </div>
                                 </div>
                                 <div class="col-md-12 col-lg-4">
-                                    <img src="\images\linear-algebra-appendix\infinite-solutions-3d.png" class="img-fluid bound-200">
+                                    <div class="graph-con">
+                                            <img 
+                                                src="\images\linear-algebra-appendix\infinite-solutions-3d.png" class="img-fluid bound-200"
+                                                data-link="https://www.geogebra.org/3d/uMgPftYT"
+                                            >
+                                            <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                                    </div>
+
+
+
+
                                     <div class="text-center">
                                         Infinite Solutions
-                                        <br>
-                                        \(\hphantom{-}x+\hphantom{3}y=2\)
-                                        <br>
-                                        \(-x+3y=2\)
+                                        \begin{align}
+                                            x+y+z=1 \\ -x-y+z=1 \\ z=1
+                                        \end{align}
                                     </div>
                                 </div>
                             </div>
@@ -243,22 +344,94 @@
 
 
 
-                <!--<iframe src="https://www.geogebra.org/3d/gvBZPARm" style="position:fixed;height: 100%;width: 100%;top:0;left:0;"></iframe>-->
+
+
+
+
+                    <hr>
+                    <strong class="text-left">n Variables Example</strong>
+                    <div class="container">
+                        <div class="row">
+                                <div class="col-md-12 col-lg-4">
+                                    <div class="text-center">
+                                        No Solutions
+                                        <br>
+                                        \begin{align*}
+                                             x_1^\hphantom{1}-x_2^\hphantom{1}+x_3^\hphantom{1}-x_3^\hphantom{1} &= 5 \\
+                                            -x_1^\hphantom{1}+x_2^\hphantom{1}-x_3^\hphantom{1}+x_3^\hphantom{1} &= 5 \\
+                                             x_1^\hphantom{1}-x_2^\hphantom{1}+x_3^\hphantom{1}1x_3^\hphantom{1} &= 5 \\
+                                        \end{align*}
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-4">
+                                    <div class="text-center">
+                                        One Solution
+                                        <br>
+
+                                        \begin{align}
+                                            x+y+z &= 1 \\ 
+                                            x+y-z &= 1 \\
+                                            -\,x+y &= 1
+                                        \end{align}
+                                    </div>
+                                </div>
+                                <div class="col-md-12 col-lg-4">
+                                    <div class="text-center">
+                                        Infinite Solutions
+                                        \begin{align}
+                                            x+y+z=1 \\ -x-y+z=1 \\ z=1
+                                        \end{align}
+                                    </div>
+                                </div>
+                            </div>
+                    </div>
+
+
+
+
+
 
 
                 </div>
-                <hr>
             </div>
         </div>
-    <!-- -->"The Number of Solutions to a System of Linear Equations
+    </div>
+    
+    <!-- TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC -->
+    <br>
+
+    <div class="container-fluid">
+            <div class="card text-center">
+                <div id="back-substitution" class="card-body text-left">
+                    <h4>Back-Substitution</h4>
+                    <p><i>Once you've found a variable in one equation you can use it in the other equations.</i></p>
+                    <div class="alert alert-success" role="alert">
+                        <strong>Back-Substitution Example</strong>
+                        <span>
+                            <br>
+                            \(x+y+z=5\)
+                            <br>
+                            \(y+z=4\)
+                            <br>
+                            \(z=7\)
+                            <br>
+                            <br>
+                            \(y+(7)=4\)
+                            <br>
+                            \(y=-3\)
+                            <br>
+                            <br>
+                            \(x+(-3)+(7)=5\)
+                            <br>
+                            \(x=1\)
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
 </div>
 
-<style>
-    .bound-200 {
-        max-width:300px;
-        width: 100%;
-    }
-</style>
 
 
 
@@ -266,43 +439,3 @@
 
 
 
-<!--
-
-              <style>
-                    .widget-super-con {
-                        max-width: 100%;
-                        outline:3px solid orange;
-                    }
-                    .widget-con {
-                        width: 100%;
-                        outline:1px solid red;
-                    }
-                    .widget-con > *{
-                        box-shadow: inset 0 0 5px 5px blue;
-                    }
-                </style>
-                    <div class="widget-con">
-                        <div id="applet_container1"></div>
-                        <div id="applet_container2"></div>
-                    </div>
-                    
-                    <script>  
-                        window.addEventListener("load", function() {
-                            // geogebra/appendix/linear-algebra/linear-equation-in-three-variables.ggb
-                            var applet1 = new GGBApplet(
-                                    {filename: "/geogebra/appendix/linear-algebra/linear-equation-in-three-variables.ggb",
-                                    "showToolbar":true,
-                                    "scaleContainerClass": "widget-con"
-                            }, true);
-                            applet1.inject('applet_container1');
-
-                            var applet2 = new GGBApplet(
-                                    {filename: "/geogebra/appendix/linear-algebra/linear-equation-in-three-variables.ggb",
-                                    "showToolbar":true,
-                                    "scaleContainerClass": "widget-con"
-                            }, true);
-                            applet2.inject('applet_container2');
-                        });
-                    </script>
-
--->
