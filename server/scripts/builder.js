@@ -274,6 +274,13 @@ const buildAboutPage = () => {
     buildStaticContentPage(aboutPage, title, description, outFilePath);
 };
 
+const build404Page = () => {
+    let aboutPage = readFileSync(`${process.env.clientDir}/html/404.html`).toString();
+    let outFilePath = `${process.env.buildDir}/404.html`;
+    let title = "404"
+    buildStaticContentPage(aboutPage, title, description, outFilePath);
+}
+
 const buildStaticContentPage = (staticContent, title, description, outFilePath) => {
     let outFile = readFileSync(siteHTMLPath).toString();
     
@@ -307,6 +314,7 @@ const buildPages = () => {
     getGlossarySubjects().forEach(buildGlossary);
     getAppendixSubjects().forEach(buildAppendix);
     buildAboutPage();
+    build404Page();
 };
 
 const buildIndex = () => {

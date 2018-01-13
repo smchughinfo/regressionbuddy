@@ -29,6 +29,9 @@
 [data-showing="true"] {
     display: block !important;    
 }
+.hidden {
+    visibility: hidden;
+}
 
 @media only screen and (max-width: 500px) {
     body > .navbar {

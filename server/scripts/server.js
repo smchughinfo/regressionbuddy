@@ -44,9 +44,9 @@ const serveFile = (filePath, req, res) => {
 
 const serve404 = (req, res) => {
     console.log(`404: ${req.url} not found`);
-    res.writeHead(404, {"Content-Type": "text/plain"});        
-    res.write("404 Not Found");
-    res.end();
+    res.writeHead(404, mimeTypes.html);
+    let _404Path = `${process.env.buildDir}/404.html`;
+    createReadStream(_404Path).pipe(res);
 }
 
 const handleFileRequest = (req, res) => {
