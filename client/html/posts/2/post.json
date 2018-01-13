@@ -5,7 +5,7 @@
     "algebra": ["Properties of Real Numbers", "Fractions", "Like Terms"],
     "trigonometry": ["The Trigonometric Ratios"],
     "calculus": ["Limit Theorems"],
-    "linear-algebra": ["Linear Equations in n Variables", "The Number of Solutions to a System of Linear Equations"],
+    "linear-algebra": ["Linear Equations in n Variables", "The Number of Solutions to a System of Linear Equations", "Back-Substitution"],
     "statistics": ["Variables", "Levels of Measurement"],
     "vector-calculus": ["V!!!!!!!!!!!!!!"]
   }
