@@ -1,184 +1,88 @@
 <h4 class="text-center date">Linear Algebra Appendix</h4>
 <br>
-<div id="appendix" class="container-fluid">
-    <div class="card">
-        <div id="linear-equations-in-n-variables" class="card-body text-left">
-            <h4>Linear Equations in n Variables</h4>
-            <div class="alert alert-info" role="alert">
-                <strong>Two Variables</strong>
-                <span>
-                    \(Ax+By=C\)
-                    <br> 
-                    The line crosses the x axis at \(\frac{C}{A}\) when \(A \neq 0\). The line crosses the y axis at  \(\frac{C}{B}\) when \(B \neq 0\). The slope of the line is \(-\frac{A}{B}\).
-                </span>
-                <hr>
-                <strong>Three Variables</strong>
-                <span>
-                    \(Ax+By+Cz=D\)
-                    <br> 
-                    The vector \((A,B,C)\) is normal (orthogonal, at a 90 degree angle) to the plane.
-                    The distance from the origin to point on the plane closest to the origin is \( \frac{\left|D\right|}{\sqrt{A^2+B^2+C^2}} \).
-                    <br>
-                </span>
-                <hr>
-                <strong>n Variables</strong>
-                <span>
-                    \(a_1^\hphantom{1} x_1^\hphantom{1} + a_2^\hphantom{1} x_2^\hphantom{1} +a_3^\hphantom{1} x_3^\hphantom{1} + \cdot \; \cdot \; \cdot \; + a_n^\hphantom{1} x_n^\hphantom{1} = b\)
-                    <br>
-                </span>
-            </div>
-            <br>
-            <div class="alert alert-success text-center" role="alert">
-                <strong>Two Variables Example</strong>
-                <div class="graph-con">
-                        <img 
-                            src="/images/linear-algebra-appendix/example-2d-linear-equation.png" class="img-fluid bound-200"
-                            data-link="https://www.geogebra.org/graphing/PtP4Y9xu"
-                        >
-                        <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+<div id="appendix">
+    <div class="container-fluid">
+        <div class="card">
+            <div id="linear-equations-in-n-variables" class="card-body text-left">
+                <h4>Linear Equations in n Variables</h4>
+                <div class="alert alert-info" role="alert">
+                    <strong>Two Variables</strong>
+                    <span>
+                        \(Ax+By=C\)
+                        <br> The line crosses the x axis at \(\frac{C}{A}\) when \(A \neq 0\). The line crosses the y axis at
+                        \(\frac{C}{B}\) when \(B \neq 0\). The slope of the line is \(-\frac{A}{B}\).
+                    </span>
+                    <hr>
+                    <strong>Three Variables</strong>
+                    <span>
+                        \(Ax+By+Cz=D\)
+                        <br> The vector \((A,B,C)\) is normal (orthogonal, at a 90 degree angle) to the plane. The distance from
+                        the origin to point on the plane closest to the origin is \( \frac{\left|D\right|}{\sqrt{A^2+B^2+C^2}}
+                        \).
+                        <br>
+                    </span>
+                    <hr>
+                    <strong>n Variables</strong>
+                    <span>
+                        \(a_1^\hphantom{1} x_1^\hphantom{1} + a_2^\hphantom{1} x_2^\hphantom{1} +a_3^\hphantom{1} x_3^\hphantom{1} + \cdot \; \cdot
+                        \; \cdot \; + a_n^\hphantom{1} x_n^\hphantom{1} = b\)
+                        <br>
+                    </span>
                 </div>
-                <script>
-                    document.addEventListener("click", function(e) {
-                        if(/\bopen-graph\b/.test(e.target.className)) {
-                            var src =  e.target.closest(".graph-con").querySelector("[data-link]").getAttribute("data-link");
-                            displayFullScreenIframe(src);
-                        }
-                        if(/\bclose-graph\b/.test(e.target.className)) {
-                            closeFullScreenIframe(src);
-                        }
-                    });
-                </script>
-                <style>
-                    .graph-con {
-                        position:relative;
-                    }
-                    .graph-con .open-graph {
-                        height:24px;
-                        width:24px;
-                        position:absolute;
-                        top:0;
-                        right:0;
-                        opacity:.2;
-                        transition: .5s;
-                        transform: translateZ(0);
-                    }
-                    .graph-con .open-graph:hover {
-                        opacity:.4;
-                    }
-                    .full-screen-iframe {
-                        position:absolute;
-                        position:fixed;
-                        top:0;
-                        left:0;
-                        height:100%;
-                        width:100%;
-                        z-index:3;
-                    }
-                    .layover {
-                        position:absolute;
-                        position:fixed;
-                        top:0;
-                        left:0;
-                        height:100%;
-                        width:100%;
-                        z-index:2;
-                        background-color:rgba(255, 255, 255, .5);
-                    }
-                    .blur > *:not(iframe):not(.close-graph) {
-                        filter: blur(2px);
-                    }
-                   .close-graph {
-                        position:absolute;
-                        position:fixed;
-                        top:5px;
-                        left:100px;
-                        left: calc(50% - 12px);
-                        width:100%;
-                        z-index:4;
-                        height:24px;
-                        width:24px;
-                        opacity:.4;
-                        transition: .5s;
-                        transform-origin: center;
-                        animation-name: close-iframe-animation;
-                        animation-duration: 10s;
-                    }
-                    .close-graph:hover {
-                        opacity:.6;
-                        transform: translateZ(0);
-                    }
-                    @keyframes close-iframe-animation {
-                        0% {
-                            transform: translateZ(0) scale(1);
-                        }
-                        25% {
-                            transform: translateZ(0) scale(1.5);
-                        }
-                        50% {
-                            transform: translateZ(0) scale(1);
-                        }
-                        75% {
-                            transform: translateZ(0) scale(1.5);
-                        }
-                        100% {
-                            transform: translateZ(0) scale(1);
-                        }
-                    }
-
-
-                    /**** BOUND-200 IS A DIFFERENT THING ****/
-                    .bound-200 {
-                        max-width:300px;
-                        width: 100%;
-                    }
-                </style>
-                <br>                
-                <span>
-                    \(4x+2y=4\)
-                </span>
-                <hr>
-                <strong>Three Variables Example</strong>
-
-
-                <div class="graph-con">
-                    <img 
-                        src="\images\linear-algebra-appendix\example-3d-linear-equation.png" class="img-fluid bound-200"
-                        data-link="https://www.geogebra.org/3d/WbdyaUF5"
-                    >
-                    <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
-                </div>
-
-                
                 <br>
-                <span>
-                    \(2x+2y+2z=4\)
-                </span>
-                <hr>
-                <strong>n Variables Example</strong>
-                <span>
-                    \(
-                        4x_1^\hphantom{1}-
-                        7x_2^\hphantom{1}+
-                        2x_3^\hphantom{1}+
-                        x_4^\hphantom{1}=
-                        8
-                    \)
-                </span>
-                <!--<br>
-                <small><a href="https://ggbm.at/WbdyaUF5" target="_blank" >Fiddle.</a></small>-->
+                <div class="alert alert-success text-center" role="alert">
+                    <div class="container left-container">
+                        <div class="row">
+                            <div class="col-sm-6 col-md-6 col-lg-4">
+                                <strong>Two Variables Example</strong>
+                                <div class="graph-con">
+                                    <img src="/images/linear-algebra-appendix/example-2d-linear-equation.png" class="img-fluid bound-2d" data-link="https://www.geogebra.org/graphing/PtP4Y9xu">
+                                    <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                                </div>
+                                <br>
+                                <span>
+                                    \(4x+2y=4\)
+                                </span>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-4">
+                                <strong>Three Variables Example</strong>
+                                <div class="graph-con">
+                                    <img src="\images\linear-algebra-appendix\example-3d-linear-equation.png" class="img-fluid bound-3d" data-link="https://www.geogebra.org/3d/WbdyaUF5">
+                                    <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                                </div>
+                                <br>
+                                <span>
+                                    \(2x+2y+2z=4\)
+                                </span>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-4">
+                                <strong>n Variables Example</strong>
+                                <div>
+                                    \( 4x_1^\hphantom{1}- 7x_2^\hphantom{1}+ 2x_3^\hphantom{1}+ x_4^\hphantom{1}= 8 \)
+                                </div>
+                                <!--<br>
+                                                <small><a href="https://ggbm.at/WbdyaUF5" target="_blank" >Fiddle.</a></small>-->
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<!-- TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC -->
-<br>
+    <!-- TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC -->
+    <br>
 
     <div class="container-fluid">
-    <div class="card">
+        <div class="card">
             <div id="the-number-of-solutions-to-a-system-of-linear-equations" class="card-body text-left">
-                <h4>Linear Equations in n Variables</h4>
-                <p><i>A solution of a system linear equations is a point that every equation in the system touches.</i></p>
+                <h4>The Number of Solutions to a System of Linear Equations</h4>
+                <p>
+                    <i>A solution of a system linear equations is a point that every equation in the system touches.</i>
+                </p>
                 <div class="alert alert-info" role="alert">
                     <p>A system of linear equations can have no solutions, one solutions, or an infinite number of solutions.</p>
                     <ol class="list-group">
@@ -190,79 +94,62 @@
                 <div class="alert alert-success text-center" role="alert">
                     <strong class="text-left">Two Variables Example</strong>
 
-                    
+                    <style>
+                        .container.left-container {
+                            margin-left: 0;
+                            max-width: 100%;
+                        }
+                    </style>
 
-                    <div class="container">
+                    <div class="container left-container">
                         <div class="row">
-                            <div class="col-md-12 col-lg-4">
+                            <div class="col-sm-6 col-md-6 col-lg-4">
 
-                                
+
                                 <div class="graph-con">
-                                        <img 
-                                            src="\images\linear-algebra-appendix\no-solutions-2d.png" class="img-fluid bound-200"
-                                            data-link="https://www.geogebra.org/graphing/JsvmRYJu"
-                                        >
-                                        <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
-                                    </div>
+                                    <img src="\images\linear-algebra-appendix\no-solutions-2d.png" class="img-fluid bound-200" data-link="https://www.geogebra.org/graphing/JsvmRYJu">
+                                    <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                                </div>
                                 <div class="text-center">
                                     No Solutions
-                                    <br>
-                                    \begin{align}
-                                        x-y=1 \\ -x+y=1
-                                    \end{align}
+                                    <br> \begin{align} x-y=1 \\ -x+y=1 \end{align}
                                 </div>
                             </div>
-                            <div class="col-md-12 col-lg-4">
+                            <div class="col-sm-6 col-md-6 col-lg-4">
 
 
 
-                                    <div class="graph-con">
-                                            <img 
-                                                src="\images\linear-algebra-appendix\one-solution-2d.png" class="img-fluid bound-200"
-                                                data-link="https://www.geogebra.org/graphing/wpt46e8P"
-                                            >
-                                            <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
-                                        </div>
+                                <div class="graph-con">
+                                    <img src="\images\linear-algebra-appendix\one-solution-2d.png" class="img-fluid bound-200" data-link="https://www.geogebra.org/graphing/wpt46e8P">
+                                    <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                                </div>
 
 
 
-                                
+
                                 <div class="text-center">
                                     One Solution
-                                    <br>
-
-                                    \begin{align}
-                                        \hphantom{2}x-\hphantom{2}y &= 1 \\ 
-                                        2x-2y &= 2
-                                    \end{align}
+                                    <br> \begin{align} \hphantom{2}x-\hphantom{2}y &= 1 \\ 2x-2y &= 2 \end{align}
 
                                 </div>
                             </div>
-                            <div class="col-md-12 col-lg-4">
+                            <div class="col-sm-6 col-md-6 col-lg-4">
 
 
 
 
-                                    <div class="graph-con">
-                                            <img 
-                                                src="\images\linear-algebra-appendix\infinite-solutions-2d.png" class="img-fluid bound-200"
-                                                data-link="https://www.geogebra.org/graphing/pk4s7AE6"
-                                            >
-                                            <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
-                                        </div>
-
-                                    
+                                <div class="graph-con">
+                                    <img src="\images\linear-algebra-appendix\infinite-solutions-2d.png" class="img-fluid bound-200" data-link="https://www.geogebra.org/graphing/pk4s7AE6">
+                                    <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                                </div>
 
 
-                                        
+
+
+
                                 <div class="text-center">
                                     Infinite Solutions
-                                    <br>
-
-                                    \begin{align}
-                                        \hphantom{2}x-\hphantom{2}y &= 1 \\ 
-                                        2x-2y &= 2
-                                    \end{align}
+                                    <br> \begin{align} \hphantom{2}x-\hphantom{2}y &= 1 \\ 2x-2y &= 2 \end{align}
                                 </div>
                             </div>
                         </div>
@@ -270,75 +157,51 @@
 
                     <hr>
                     <strong class="text-left">Three Variables Example</strong>
-                    <div class="container">
+                    <div class="container left-container">
                         <div class="row">
-                                <div class="col-md-12 col-lg-4">
-                                    
-                                    
-                                        <div class="graph-con">
-                                                <img 
-                                                    src="\images\linear-algebra-appendix\no-solutions-3d.png" class="img-fluid bound-200"
-                                                    data-link="https://www.geogebra.org/3d/X3QpGghW"
-                                                >
-                                                <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
-                                            </div>
+                            <div class="col-md-12 col-lg-4">
 
 
-
-
-
-                                    <div class="text-center">
-                                        No Solutions
-                                        <br>
-
-                                        \begin{align*}
-                                            x+y+z &= 0 \\ 
-                                            x+y+z &= 2.5 \\ 
-                                            x+y+z &= 5
-                                        \end{align*}
-                                    </div>
+                                <div class="graph-con">
+                                    <img src="\images\linear-algebra-appendix\no-solutions-3d.png" class="img-fluid bound-200" data-link="https://www.geogebra.org/3d/X3QpGghW">
+                                    <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
                                 </div>
-                                <div class="col-md-12 col-lg-4">
-                                    <div class="graph-con">
-                                            <img 
-                                                src="\images\linear-algebra-appendix\one-solution-3d.png" class="img-fluid bound-200"
-                                                data-link="https://www.geogebra.org/3d/gvBZPARm"
-                                            >
-                                            <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
-                                    </div>
-
-
-                                    <div class="text-center">
-                                        One Solution
-                                        <br>
-
-                                        \begin{align}
-                                            x+y+z &= 1 \\ 
-                                            x+y-z &= 1 \\
-                                            -\,x+y &= 1
-                                        \end{align}
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-lg-4">
-                                    <div class="graph-con">
-                                            <img 
-                                                src="\images\linear-algebra-appendix\infinite-solutions-3d.png" class="img-fluid bound-200"
-                                                data-link="https://www.geogebra.org/3d/uMgPftYT"
-                                            >
-                                            <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
-                                    </div>
 
 
 
 
-                                    <div class="text-center">
-                                        Infinite Solutions
-                                        \begin{align}
-                                            x+y+z=1 \\ -x-y+z=1 \\ z=1
-                                        \end{align}
-                                    </div>
+
+                                <div class="text-center">
+                                    No Solutions
+                                    <br> \begin{align*} x+y+z &= 0 \\ x+y+z &= 2.5 \\ x+y+z &= 5 \end{align*}
                                 </div>
                             </div>
+                            <div class="col-md-12 col-lg-4">
+                                <div class="graph-con">
+                                    <img src="\images\linear-algebra-appendix\one-solution-3d.png" class="img-fluid bound-200" data-link="https://www.geogebra.org/3d/gvBZPARm">
+                                    <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                                </div>
+
+
+                                <div class="text-center">
+                                    One Solution
+                                    <br> \begin{align} x+y+z &= 1 \\ x+y-z &= 1 \\ -\,x+y &= 1 \end{align}
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-lg-4">
+                                <div class="graph-con">
+                                    <img src="\images\linear-algebra-appendix\infinite-solutions-3d.png" class="img-fluid bound-200" data-link="https://www.geogebra.org/3d/uMgPftYT">
+                                    <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                                </div>
+
+
+
+
+                                <div class="text-center">
+                                    Infinite Solutions \begin{align} x+y+z=1 \\ -x-y+z=1 \\ z=1 \end{align}
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -350,40 +213,32 @@
 
                     <hr>
                     <strong class="text-left">n Variables Example</strong>
-                    <div class="container">
+                    <div class="container left-container">
                         <div class="row">
-                                <div class="col-md-12 col-lg-4">
-                                    <div class="text-center">
-                                        No Solutions
-                                        <br>
-                                        \begin{align*}
-                                             x_1^\hphantom{1}-x_2^\hphantom{1}+x_3^\hphantom{1}-x_3^\hphantom{1} &= 5 \\
-                                            -x_1^\hphantom{1}+x_2^\hphantom{1}-x_3^\hphantom{1}+x_3^\hphantom{1} &= 5 \\
-                                             x_1^\hphantom{1}-x_2^\hphantom{1}+x_3^\hphantom{1}1x_3^\hphantom{1} &= 5 \\
-                                        \end{align*}
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-lg-4">
-                                    <div class="text-center">
-                                        One Solution
-                                        <br>
-
-                                        \begin{align}
-                                            x+y+z &= 1 \\ 
-                                            x+y-z &= 1 \\
-                                            -\,x+y &= 1
-                                        \end{align}
-                                    </div>
-                                </div>
-                                <div class="col-md-12 col-lg-4">
-                                    <div class="text-center">
-                                        Infinite Solutions
-                                        \begin{align}
-                                            x+y+z=1 \\ -x-y+z=1 \\ z=1
-                                        \end{align}
-                                    </div>
+                            <div class="col-sm-6 col-md-6 col-lg-4">
+                                <div class="text-center">
+                                    No Solutions
+                                    <br> \begin{align*} x_1^\phantom{1}-x_2^\phantom{1}+x_3^\phantom{1}-x_4^\phantom{1} &=
+                                    1\\ \phantom{x_1^1-x_2^1+}x_3^\phantom{1}+x_4^\phantom{1} &= 4\\ \phantom{x_1^1-x_2^1+}x_3^\phantom{1}\phantom{-x_4^1}\phantom{p}
+                                    &= 2\\ \phantom{x_1^1-x_2^1+x_3^1+}x_4^\phantom{1} &= 1\\ \end{align*}
+                                    <br>
+                                    <p class="text-left">If \(x_4^\phantom{1}=1\) and \(x_3^\phantom{1}=2\) there is no way \(x_3^\phantom{1}+x_4^\phantom{1}\)
+                                        can equal \(4\), so the system is inconsistent.</p>
+                                    <!-- \phantom{p} is just extra space that i couldn't get according to how i thought latex is supposed to work-->
                                 </div>
                             </div>
+                            <div class="col-sm-6 col-md-6 col-lg-4">
+                                <div class="text-center">
+                                    One Solution
+                                    <br> \begin{align} x+y+z &= 1 \\ x+y-z &= 1 \\ -\,x+y &= 1 \end{align}
+                                </div>
+                            </div>
+                            <div class="col-sm-6 col-md-6 col-lg-4">
+                                <div class="text-center">
+                                    Infinite Solutions \begin{align} x+y+z=1 \\ -x-y+z=1 \\ z=1 \end{align}
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -392,50 +247,185 @@
 
 
 
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    
-    <!-- TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC -->
-    <br>
 
-    <div class="container-fluid">
+        <!-- TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC -->
+        <br>
+
+        <div class="container-fluid">
             <div class="card text-center">
                 <div id="back-substitution" class="card-body text-left">
                     <h4>Back-Substitution</h4>
-                    <p><i>Once you've found a variable in one equation you can use it in the other equations.</i></p>
+                    <p>
+                        <i>Once you've found a variable in one equation you can use it in the other equations.</i>
+                    </p>
                     <div class="alert alert-success" role="alert">
                         <strong>Back-Substitution Example</strong>
                         <span>
+                            <br> \(x+y+z=5\)
+                            <br> \(y+z=4\)
+                            <br> \(z=7\)
                             <br>
-                            \(x+y+z=5\)
+                            <br> \(y+(7)=4\)
+                            <br> \(y=-3\)
                             <br>
-                            \(y+z=4\)
-                            <br>
-                            \(z=7\)
-                            <br>
-                            <br>
-                            \(y+(7)=4\)
-                            <br>
-                            \(y=-3\)
-                            <br>
-                            <br>
-                            \(x+(-3)+(7)=5\)
-                            <br>
-                            \(x=1\)
+                            <br> \(x+(-3)+(7)=5\)
+                            <br> \(x=1\)
                         </span>
                     </div>
                 </div>
             </div>
         </div>
 
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    i need to add in classes for each bootsrap column break level. that way 2d and 3d stay the same size when they are on the same line
+
+it's got to be pear reviewed so you don't put out mistakes. there has to be a statement of the 3 or n people that check it every week. like a sign off blog
+
+
+pier review is what makes the whole thing work. it will make it social by default. people will have a vested interest in using the site but at the same time might not want to do it every time and so they will ask their friends to do it for them.
+they get a special page linked to from the about page (they are #1 in terms of site respect (since i mess up a lot) so they are right under the About section) and when you click it the url is something really rude about math people (like nerds, or something meaner. ..like a stereotypical jock would call them or something). then they have an about page, done in bootstrap, the just has their picture and a paragraph about them... they get street cred by being a fact checker.
+this could also guarantee safety in ai
+anyways, at first there might be a schedule because people will say i can check x for you. and and then later you can put into a more automated asp.net kind of CRUD thing. which will make it so much easier than having to track n peopl for each subject.
+
+the reddit post where you ask for these people will be titled "i need three volunteers". the right type of people will respond.
+
+
+    <script>
+        document.addEventListener("click", function (e) {
+            if (/\bopen-graph\b/.test(e.target.className)) {
+                var src = e.target.closest(".graph-con").querySelector("[data-link]").getAttribute("data-link");
+                displayFullScreenIframe(src);
+            }
+            if (/\bclose-graph\b/.test(e.target.className)) {
+                closeFullScreenIframe(src);
+            }
+        });
+    </script>
+    <style>
+        .graph-con {
+            position: relative;
+            display: inline-block;
+        }
+
+        .graph-con .open-graph {
+            height: 24px;
+            width: 24px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            opacity: .2;
+            transition: .5s;
+            transform: translateZ(0);
+        }
+
+        .graph-con .open-graph:hover {
+            opacity: .4;
+        }
+
+        .full-screen-iframe {
+            position: absolute;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 3;
+        }
+
+        .layover {
+            position: absolute;
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            z-index: 2;
+            background-color: rgba(255, 255, 255, .5);
+        }
+
+        .blur>*:not(iframe):not(.close-graph) {
+            filter: blur(2px);
+        }
+
+        .close-graph {
+            position: absolute;
+            position: fixed;
+            top: 5px;
+            left: 100px;
+            left: calc(50% - 12px);
+            width: 100%;
+            z-index: 4;
+            height: 24px;
+            width: 24px;
+            opacity: .4;
+            transition: .5s;
+            transform-origin: center;
+            animation-name: close-iframe-animation;
+            animation-duration: 10s;
+        }
+
+        .close-graph:hover {
+            opacity: .6;
+            transform: translateZ(0);
+        }
+
+        @keyframes close-iframe-animation {
+            0% {
+                transform: translateZ(0) scale(1);
+            }
+            25% {
+                transform: translateZ(0) scale(1.5);
+            }
+            50% {
+                transform: translateZ(0) scale(1);
+            }
+            75% {
+                transform: translateZ(0) scale(1.5);
+            }
+            100% {
+                transform: translateZ(0) scale(1);
+            }
+        }
+
+
+        /**** BOUND-200 IS A DIFFERENT THING ****/
+
+        .bound-2d {
+            max-height: 275px;
+            max-width: 330px;
+            width: 100%;
+            /*max-width: 300px;
+            width: 100%;*/
+            outline: 1px solid red;
+            /*max-width: 200px;
+            max-height: 200px;
+            width: 100%;*/
+        }
+        .bound-3d {
+            max-width: 330px;
+            width: 100%;
+            /*max-width: 300px;
+            width: 100%;*/
+            outline: 1px solid blue;
+            /*max-width: 200px;
+            max-height: 200px;
+            width: 100%;*/
+        }
+    </style>
 </div>
-
-
-
-
-
-
-
-
