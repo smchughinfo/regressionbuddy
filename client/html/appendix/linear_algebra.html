@@ -26,17 +26,144 @@
                     <span>
                         \(a_1^\hphantom{1} x_1^\hphantom{1} + a_2^\hphantom{1} x_2^\hphantom{1} +a_3^\hphantom{1} x_3^\hphantom{1} + \cdot \; \cdot
                         \; \cdot \; + a_n^\hphantom{1} x_n^\hphantom{1} = b\)
-                        <br>
                     </span>
                 </div>
                 <br>
-                <div class="alert alert-success text-center" role="alert">
-                    <div class="container left-container">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <style>
+                        .graph-con {
+                            margin-left:auto;
+                            margin-right: auto;
+                        }
+                        .graph-con-no-image {
+                            flex-grow: 1;
+                        }
+                            .graph-con-no-image > ul {
+                                display:inline-block;
+                                margin-left: 0;
+                                padding-left: 0;
+                                text-align: left;
+                            }
+                                .graph-con-no-image > ul > li {
+                                    list-style-position: inside;
+                                }
+                        .graph-con-2d {
+                            max-width: 275px;
+                        }
+                        .graph-con-3d {
+                            max-width: 330px;
+                        }
+                        .graph-con-2d img {
+                            width: 100%;
+                        }
+                        .graph-con-3d img {
+                            width: 100%;
+                        }
+                        .n-variables-examples {
+                            width: 100%;
+                        }
+
+                        @media only screen and (min-width: 991px) {
+                            .n-variables-examples {
+                                max-width: 1200px;
+                            }
+                        }
+                        @media only screen and (max-width: 1199px) {
+                            .graph-con-2d {
+                                max-width: 208px;
+                            }
+                            .graph-con-3d {
+                                max-width: 250px;
+                            }
+                        }
+                        @media only screen and (max-width: 991px) {
+                            .graph-con-2d {
+                                max-width: 150px;
+                            }
+                            .graph-con-3d {
+                                max-width: 180px;
+                            }
+                        }
+                        @media only screen and (max-width: 767px) {
+                            .n-variables-examples {
+                                max-width: 350px;
+                            }
+                            .horizontal-3part-group:not(:first-of-type) {
+                                border-left: none !important;
+                                border-top: 1px solid #b1dfbb;
+                                margin-top: 1em;
+                                padding-top: 1em;
+                                margin-top: 1rem;
+                                padding-top: 1rem;
+                            }
+                        }
+
+                        .horizontal-3part-group:not(:first-of-type) {
+                            border-left: 1px solid #b1dfbb;
+                        }
+
+                        .horizontal-3part-group {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            flex-grow: 1;
+                        }
+                        .horizontal-3part-group > strong {
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                            max-width: 100%;
+                            white-space: nowrap;
+                            margin-bottom: 1rem;
+                        }
+                    </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <div class="alert alert-success text-center n-variables-examples" role="alert">
+                    <div class="container-fluid left-container">
                         <div class="row">
-                            <div class="col-sm-6 col-md-6 col-lg-4">
+                            <div class="col-sm-12 col-md-4 horizontal-3part-group">
                                 <strong>Two Variables Example</strong>
-                                <div class="graph-con">
-                                    <img src="/images/linear-algebra-appendix/example-2d-linear-equation.png" class="img-fluid bound-2d" data-link="https://www.geogebra.org/graphing/PtP4Y9xu">
+                                <div class="graph-con graph-con-2d">
+                                    <img src="/images/linear-algebra-appendix/example-2d-linear-equation.png" class="img-fluid" data-link="https://www.geogebra.org/graphing/PtP4Y9xu">
                                     <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
                                 </div>
                                 <br>
@@ -44,10 +171,10 @@
                                     \(4x+2y=4\)
                                 </span>
                             </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4">
+                            <div class="col-sm-12 col-md-4 horizontal-3part-group">
                                 <strong>Three Variables Example</strong>
-                                <div class="graph-con">
-                                    <img src="\images\linear-algebra-appendix\example-3d-linear-equation.png" class="img-fluid bound-3d" data-link="https://www.geogebra.org/3d/WbdyaUF5">
+                                <div class="graph-con graph-con-3d">
+                                    <img src="\images\linear-algebra-appendix\example-3d-linear-equation.png" class="img-fluid" data-link="https://www.geogebra.org/3d/WbdyaUF5">
                                     <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
                                 </div>
                                 <br>
@@ -55,17 +182,33 @@
                                     \(2x+2y+2z=4\)
                                 </span>
                             </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4">
+                            <div class="col-sm-12 col-md-4 horizontal-3part-group">
                                 <strong>n Variables Example</strong>
-                                <div>
-                                    \( 4x_1^\hphantom{1}- 7x_2^\hphantom{1}+ 2x_3^\hphantom{1}+ x_4^\hphantom{1}= 8 \)
+                                <div class="graph-con-no-image">
+                                    <ul>
+                                        <li>
+                                            \( 7x_1^\hphantom{1} =1 \)
+                                        </li>
+                                        <li>
+                                            \( 2x_1^\hphantom{1}+x_2^\hphantom{1}=1 \)
+                                        </li>
+                                        <li>
+                                            \( 3x_1^\hphantom{1}-x_2^\hphantom{1}-4x_3^\hphantom{1}=1 \)
+                                        </li>
+                                        <li>
+                                            \( 6x_1^\hphantom{1}+\frac{1}{2}x_2^\hphantom{1}-x_3^\hphantom{1} + 6x_4^\hphantom{1} = 1 \)
+                                        </li>
+                                        <li>
+                                            \( 
+                                                5x_1^\hphantom{1}+5x_2^\hphantom{1}+9x_3^\hphantom{1}
+                                                + \cdot \; \cdot \; \cdot \; + 
+                                                3x_{99}^\hphantom{1} = 1
+                                            \)
+                                        </li>
+                                    </ul>
                                 </div>
-                                <!--<br>
-                                                <small><a href="https://ggbm.at/WbdyaUF5" target="_blank" >Fiddle.</a></small>-->
                             </div>
                         </div>
-
-
                     </div>
 
 
@@ -293,19 +436,6 @@
 
 
 
-    i need to add in classes for each bootsrap column break level. that way 2d and 3d stay the same size when they are on the same line
-
-it's got to be pear reviewed so you don't put out mistakes. there has to be a statement of the 3 or n people that check it every week. like a sign off blog
-
-
-pier review is what makes the whole thing work. it will make it social by default. people will have a vested interest in using the site but at the same time might not want to do it every time and so they will ask their friends to do it for them.
-they get a special page linked to from the about page (they are #1 in terms of site respect (since i mess up a lot) so they are right under the About section) and when you click it the url is something really rude about math people (like nerds, or something meaner. ..like a stereotypical jock would call them or something). then they have an about page, done in bootstrap, the just has their picture and a paragraph about them... they get street cred by being a fact checker.
-this could also guarantee safety in ai
-anyways, at first there might be a schedule because people will say i can check x for you. and and then later you can put into a more automated asp.net kind of CRUD thing. which will make it so much easier than having to track n peopl for each subject.
-
-the reddit post where you ask for these people will be titled "i need three volunteers". the right type of people will respond.
-
-
     <script>
         document.addEventListener("click", function (e) {
             if (/\bopen-graph\b/.test(e.target.className)) {
@@ -405,27 +535,9 @@ the reddit post where you ask for these people will be titled "i need three volu
 
 
         /**** BOUND-200 IS A DIFFERENT THING ****/
-
-        .bound-2d {
-            max-height: 275px;
-            max-width: 330px;
-            width: 100%;
-            /*max-width: 300px;
-            width: 100%;*/
-            outline: 1px solid red;
-            /*max-width: 200px;
-            max-height: 200px;
-            width: 100%;*/
+        @media only screen and (max-width: 992px) {
+            
         }
-        .bound-3d {
-            max-width: 330px;
-            width: 100%;
-            /*max-width: 300px;
-            width: 100%;*/
-            outline: 1px solid blue;
-            /*max-width: 200px;
-            max-height: 200px;
-            width: 100%;*/
-        }
+        
     </style>
 </div>

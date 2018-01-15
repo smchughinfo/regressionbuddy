@@ -58,6 +58,9 @@
 #post .mjx-math {
     background-color: white;
 }
+.alert-success .mjx-math {
+    background-color: #d3edd9;
+}
 #work img {
     max-width: 180px;
 }
