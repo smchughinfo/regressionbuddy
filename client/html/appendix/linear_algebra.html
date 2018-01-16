@@ -48,92 +48,6 @@
 
 
 
-                <style>
-                        .graph-con {
-                            margin-left:auto;
-                            margin-right: auto;
-                        }
-                        .graph-con-no-image {
-                            flex-grow: 1;
-                        }
-                            .graph-con-no-image > ul {
-                                display:inline-block;
-                                margin-left: 0;
-                                padding-left: 0;
-                                text-align: left;
-                            }
-                                .graph-con-no-image > ul > li {
-                                    list-style-position: inside;
-                                }
-                        .graph-con-2d {
-                            max-width: 275px;
-                        }
-                        .graph-con-3d {
-                            max-width: 330px;
-                        }
-                        .graph-con-2d img {
-                            width: 100%;
-                        }
-                        .graph-con-3d img {
-                            width: 100%;
-                        }
-                        .n-variables-examples {
-                            width: 100%;
-                        }
-
-                        @media only screen and (min-width: 991px) {
-                            .n-variables-examples {
-                                max-width: 1200px;
-                            }
-                        }
-                        @media only screen and (max-width: 1199px) {
-                            .graph-con-2d {
-                                max-width: 208px;
-                            }
-                            .graph-con-3d {
-                                max-width: 250px;
-                            }
-                        }
-                        @media only screen and (max-width: 991px) {
-                            .graph-con-2d {
-                                max-width: 150px;
-                            }
-                            .graph-con-3d {
-                                max-width: 180px;
-                            }
-                        }
-                        @media only screen and (max-width: 767px) {
-                            .n-variables-examples {
-                                max-width: 350px;
-                            }
-                            .horizontal-3part-group:not(:first-of-type) {
-                                border-left: none !important;
-                                border-top: 1px solid #b1dfbb;
-                                margin-top: 1em;
-                                padding-top: 1em;
-                                margin-top: 1rem;
-                                padding-top: 1rem;
-                            }
-                        }
-
-                        .horizontal-3part-group:not(:first-of-type) {
-                            border-left: 1px solid #b1dfbb;
-                        }
-
-                        .horizontal-3part-group {
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: space-between;
-                            flex-grow: 1;
-                        }
-                        .horizontal-3part-group > strong {
-                            overflow: hidden;
-                            text-overflow: ellipsis;
-                            max-width: 100%;
-                            white-space: nowrap;
-                            margin-bottom: 1rem;
-                        }
-                    </style>
 
 
 
@@ -156,15 +70,17 @@
 
 
 
-
-                <div class="alert alert-success text-center n-variables-examples" role="alert">
+                <!-- BEGIN 2D AND 3D STYLES EXAMPLE-->
+                <div class="alert alert-success text-center group-examples" role="alert">
                     <div class="container-fluid left-container">
                         <div class="row">
                             <div class="col-sm-12 col-md-4 horizontal-3part-group">
                                 <strong>Two Variables Example</strong>
                                 <div class="graph-con graph-con-2d">
-                                    <img src="/images/linear-algebra-appendix/example-2d-linear-equation.png" class="img-fluid" data-link="https://www.geogebra.org/graphing/PtP4Y9xu">
-                                    <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                                    <img src="/images/linear-algebra-appendix/example-2d-linear-equation.png" class="img-fluid">
+                                    <a href="https://www.geogebra.org/graphing/PtP4Y9xu" target="_blank" class="open-graph" title="Open Graph">
+                                        <img src="/images/graph-up.png">
+                                    </a>
                                 </div>
                                 <br>
                                 <span>
@@ -174,8 +90,11 @@
                             <div class="col-sm-12 col-md-4 horizontal-3part-group">
                                 <strong>Three Variables Example</strong>
                                 <div class="graph-con graph-con-3d">
-                                    <img src="\images\linear-algebra-appendix\example-3d-linear-equation.png" class="img-fluid" data-link="https://www.geogebra.org/3d/WbdyaUF5">
-                                    <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                                    <img src="/images/linear-algebra-appendix/example-3d-linear-equation.png" class="img-fluid">
+
+                                    <a href="https://www.geogebra.org/3d/WbdyaUF5" target="_blank" class="open-graph" title="Open Graph">
+                                        <img src="/images/graph-up.png">
+                                    </a>
                                 </div>
                                 <br>
                                 <span>
@@ -190,29 +109,25 @@
                                             \( 7x_1^\hphantom{1} =1 \)
                                         </li>
                                         <li>
-                                            \( 2x_1^\hphantom{1}+x_2^\hphantom{1}=1 \)
+                                            \( 2x_1^\hphantom{1}+x_2^\hphantom{1}=0 \)
                                         </li>
                                         <li>
-                                            \( 3x_1^\hphantom{1}-x_2^\hphantom{1}-4x_3^\hphantom{1}=1 \)
+                                            \( 3x_1^\hphantom{1}-x_2^\hphantom{1}-4x_3^\hphantom{1}=-8 \)
                                         </li>
                                         <li>
-                                            \( 6x_1^\hphantom{1}+\frac{1}{2}x_2^\hphantom{1}-x_3^\hphantom{1} + 6x_4^\hphantom{1} = 1 \)
+                                            \( 6x_1^\hphantom{1}+\frac{1}{2}x_2^\hphantom{1}-x_3^\hphantom{1} + 6x_4^\hphantom{1} = 12 \)
                                         </li>
                                         <li>
-                                            \( 
-                                                5x_1^\hphantom{1}+5x_2^\hphantom{1}+9x_3^\hphantom{1}
-                                                + \cdot \; \cdot \; \cdot \; + 
-                                                3x_{99}^\hphantom{1} = 1
-                                            \)
+                                            \( 5x_1^\hphantom{1}+5x_2^\hphantom{1}+9x_3^\hphantom{1} + \cdot \; \cdot \; \cdot \; + 3x_{99}^\hphantom{1} = 5 \)
                                         </li>
                                     </ul>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
                 </div>
+                <!-- END 2D AND 3D STYLES EXAMPLE-->
+
             </div>
         </div>
     </div>
@@ -227,69 +142,61 @@
                     <i>A solution of a system linear equations is a point that every equation in the system touches.</i>
                 </p>
                 <div class="alert alert-info" role="alert">
-                    <p>A system of linear equations can have no solutions, one solutions, or an infinite number of solutions.</p>
+                    <p>A system of linear equations can have no solutions, one solution, or an infinite number of solutions.</p>
                     <ol class="list-group">
                         <li>Systems with no solutions are called inconsistent.</li>
                         <li>Systems that have a solution are called consistent.</li>
                     </ol>
                 </div>
                 <br>
-                <div class="alert alert-success text-center" role="alert">
+                <div class="alert alert-success text-center group-examples" role="alert">
                     <strong class="text-left">Two Variables Example</strong>
-
-                    <style>
-                        .container.left-container {
-                            margin-left: 0;
-                            max-width: 100%;
-                        }
-                    </style>
-
-                    <div class="container left-container">
+                    <div class="container-fluid left-container">
                         <div class="row">
-                            <div class="col-sm-6 col-md-6 col-lg-4">
+                            <div class="col-sm-12 col-md-4 horizontal-3part-group">
+
+                                <div class="graph-con graph-con-2d">
+                                    <img src="/images/linear-algebra-appendix/no-solutions-2d.png" class="img-fluid">
 
 
-                                <div class="graph-con">
-                                    <img src="\images\linear-algebra-appendix\no-solutions-2d.png" class="img-fluid bound-200" data-link="https://www.geogebra.org/graphing/JsvmRYJu">
-                                    <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                                    <a href="https://www.geogebra.org/graphing/JsvmRYJu" target="_blank" class="open-graph" title="Open Graph">
+                                        <img src="/images/graph-up.png">
+                                    </a>
+                                    
                                 </div>
                                 <div class="text-center">
                                     No Solutions
                                     <br> \begin{align} x-y=1 \\ -x+y=1 \end{align}
                                 </div>
+
                             </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4">
+                            <div class="col-sm-12 col-md-4 horizontal-3part-group">
+                                <div class="graph-con graph-con-2d">
+                                    <img src="/images/linear-algebra-appendix/one-solution-2d.png" class="img-fluid">
 
 
 
-                                <div class="graph-con">
-                                    <img src="\images\linear-algebra-appendix\one-solution-2d.png" class="img-fluid bound-200" data-link="https://www.geogebra.org/graphing/wpt46e8P">
-                                    <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                                    <a href="https://www.geogebra.org/graphing/wpt46e8P" target="_blank" class="open-graph" title="Open Graph">
+                                        <img src="/images/graph-up.png">
+                                    </a>
+
                                 </div>
-
-
-
-
                                 <div class="text-center">
                                     One Solution
-                                    <br> \begin{align} \hphantom{2}x-\hphantom{2}y &= 1 \\ 2x-2y &= 2 \end{align}
-
+                                    <br> \begin{align} 
+                                            \hphantom{2}x+\hphantom{2}y &= 2 \\ 
+                                            -2x+3y &= 2 
+                                        \end{align}
                                 </div>
                             </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4">
-
-
-
-
-                                <div class="graph-con">
-                                    <img src="\images\linear-algebra-appendix\infinite-solutions-2d.png" class="img-fluid bound-200" data-link="https://www.geogebra.org/graphing/pk4s7AE6">
-                                    <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                            <div class="col-sm-12 col-md-4 horizontal-3part-group">
+                                <div class="graph-con graph-con-2d">
+                                    <img src="/images/linear-algebra-appendix/infinite-solutions-2d.png" class="img-fluid">
+                                    
+                                    <a href="https://www.geogebra.org/graphing/pk4s7AE6" target="_blank" class="open-graph" title="Open Graph">
+                                        <img src="/images/graph-up.png">
+                                    </a>
                                 </div>
-
-
-
-
-
                                 <div class="text-center">
                                     Infinite Solutions
                                     <br> \begin{align} \hphantom{2}x-\hphantom{2}y &= 1 \\ 2x-2y &= 2 \end{align}
@@ -300,131 +207,187 @@
 
                     <hr>
                     <strong class="text-left">Three Variables Example</strong>
-                    <div class="container left-container">
+
+                    <div class="container-fluid left-container">
                         <div class="row">
-                            <div class="col-md-12 col-lg-4">
+                            <div class="col-sm-12 col-md-4 horizontal-3part-group">
 
+                                <div class="graph-con graph-con-3d">
+                                    <img src="/images/linear-algebra-appendix/no-solutions-3d.png" class="img-fluid">
 
-                                <div class="graph-con">
-                                    <img src="\images\linear-algebra-appendix\no-solutions-3d.png" class="img-fluid bound-200" data-link="https://www.geogebra.org/3d/X3QpGghW">
-                                    <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                                    <a href="https://www.geogebra.org/3d/X3QpGghW" target="_blank" class="open-graph" title="Open Graph">
+                                        <img src="/images/graph-up.png">
+                                    </a>
                                 </div>
-
-
-
-
-
                                 <div class="text-center">
                                     No Solutions
                                     <br> \begin{align*} x+y+z &= 0 \\ x+y+z &= 2.5 \\ x+y+z &= 5 \end{align*}
                                 </div>
+
                             </div>
-                            <div class="col-md-12 col-lg-4">
-                                <div class="graph-con">
-                                    <img src="\images\linear-algebra-appendix\one-solution-3d.png" class="img-fluid bound-200" data-link="https://www.geogebra.org/3d/gvBZPARm">
-                                    <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                            <div class="col-sm-12 col-md-4 horizontal-3part-group">
+                                <div class="graph-con graph-con-3d">
+                                    <img src="/images/linear-algebra-appendix/one-solution-3d.png" class="img-fluid">
+
+                                    <a href="https://www.geogebra.org/3d/gvBZPARm" target="_blank" class="open-graph" title="Open Graph">
+                                        <img src="/images/graph-up.png">
+                                    </a>
                                 </div>
-
-
                                 <div class="text-center">
                                     One Solution
                                     <br> \begin{align} x+y+z &= 1 \\ x+y-z &= 1 \\ -\,x+y &= 1 \end{align}
                                 </div>
                             </div>
-                            <div class="col-md-12 col-lg-4">
-                                <div class="graph-con">
-                                    <img src="\images\linear-algebra-appendix\infinite-solutions-3d.png" class="img-fluid bound-200" data-link="https://www.geogebra.org/3d/uMgPftYT">
-                                    <img src="/images/graph-up.png" class="graph open-graph" title="Open Graph">
+                            <div class="col-sm-12 col-md-4 horizontal-3part-group">
+                                <div class="graph-con graph-con-3d">
+                                    <img src="/images/linear-algebra-appendix/infinite-solutions-3d.png" class="img-fluid" data-link="https://www.geogebra.org/3d/uMgPftYT">
+                                    <a href="https://www.geogebra.org/3d/uMgPftYT" target="_blank" class="open-graph" title="Open Graph">
+                                        <img src="/images/graph-up.png">
+                                    </a>
                                 </div>
-
-
-
-
                                 <div class="text-center">
                                     Infinite Solutions \begin{align} x+y+z=1 \\ -x-y+z=1 \\ z=1 \end{align}
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-
 
                     <hr>
                     <strong class="text-left">n Variables Example</strong>
-                    <div class="container left-container">
+
+                    <div class="container-fluid left-container">
                         <div class="row">
-                            <div class="col-sm-6 col-md-6 col-lg-4">
-                                <div class="text-center">
-                                    No Solutions
-                                    <br> \begin{align*} x_1^\phantom{1}-x_2^\phantom{1}+x_3^\phantom{1}-x_4^\phantom{1} &=
-                                    1\\ \phantom{x_1^1-x_2^1+}x_3^\phantom{1}+x_4^\phantom{1} &= 4\\ \phantom{x_1^1-x_2^1+}x_3^\phantom{1}\phantom{-x_4^1}\phantom{p}
-                                    &= 2\\ \phantom{x_1^1-x_2^1+x_3^1+}x_4^\phantom{1} &= 1\\ \end{align*}
-                                    <br>
-                                    <p class="text-left">If \(x_4^\phantom{1}=1\) and \(x_3^\phantom{1}=2\) there is no way \(x_3^\phantom{1}+x_4^\phantom{1}\)
-                                        can equal \(4\), so the system is inconsistent.</p>
-                                    <!-- \phantom{p} is just extra space that i couldn't get according to how i thought latex is supposed to work-->
-                                </div>
+                            <div class="col-sm-12 col-md-4 horizontal-3part-group">
+
+                                    <div class="text-center">
+                                        No Solutions
+                                        <br> \begin{align*} x_1^\phantom{1}-x_2^\phantom{1}+x_3^\phantom{1}-x_4^\phantom{1} &=
+                                        1\\ \phantom{x_1^1-x_2^1+}x_3^\phantom{1}+x_4^\phantom{1} &= 4\\ \phantom{x_1^1-x_2^1+}x_3^\phantom{1}\phantom{-x_4^1}\phantom{p}
+                                        &= 2\\ \phantom{x_1^1-x_2^1+x_3^1+}x_4^\phantom{1} &= 1 \\
+                                        \phantom{x_1^1}
+                                        \end{align*}
+                                        <p class="text-left">If \(x_4^\phantom{1}=1\) and \(x_3^\phantom{1}=2\) there is no way \(x_3^\phantom{1}+x_4^\phantom{1}\)
+                                            can equal \(4\), so the system is inconsistent.</p>
+                                        <!-- \phantom{p} is just extra space that i couldn't get according to how i thought latex is supposed to work-->
+                                    </div>
+
                             </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4">
-                                <div class="text-center">
-                                    One Solution
-                                    <br> \begin{align} x+y+z &= 1 \\ x+y-z &= 1 \\ -\,x+y &= 1 \end{align}
-                                </div>
+                            <div class="col-sm-12 col-md-4 horizontal-3part-group">
+                                    <div class="text-center">
+                                        One Solution
+                                        <br> 
+                                        \begin{align*}
+                                            x_1^\phantom{1} + x_2^\phantom{1} + x_3^\phantom{1} + x_4^\phantom{1} + x_5^\phantom{1} & = 1 \\ 
+                                            \phantom{x_1^1+}x_2^\phantom{1} + x_3^\phantom{1} + x_4^\phantom{1} + x_5^\phantom{1} &= 2 \\ 
+                                            \phantom{x_1^1+x_2^1}x_3^\phantom{1} + x_4^\phantom{1} + x_5^\phantom{1} &= 8 \\ 
+                                            \phantom{x_1^1-x_2^1+x_3^1}x_4^\phantom{1} + x_5^\phantom{1} &= 4 \\ 
+                                            \phantom{x_1^1-x_2^1+x_3^1+x_4^1}x_5^\phantom{1} &= 2 \\
+                                        \end{align*}
+                                        <p class="text-left">If \(x_5^\phantom{1}=2\) then \(x_4^\phantom{1}=2\), \(x_3^\phantom{1}=4\), \(x_2^\phantom{1}=-6\), and \(x_1^\phantom{1}=-1\) so the system has only one solution.
+                                    </div>
                             </div>
-                            <div class="col-sm-6 col-md-6 col-lg-4">
-                                <div class="text-center">
-                                    Infinite Solutions \begin{align} x+y+z=1 \\ -x-y+z=1 \\ z=1 \end{align}
-                                </div>
+                            <div class="col-sm-12 col-md-4 horizontal-3part-group">
+                                    <div class="text-center">
+                                            Infinite Solutions
+                                            <br> 
+                                            \begin{align*}
+                                                x_1^\phantom{1} + x_2^\phantom{1} + x_3^\phantom{1} + x_4^\phantom{1} + x_5^\phantom{1} & = 1 \\ 
+                                                \phantom{x_1^1+}x_2^\phantom{1} + x_3^\phantom{1} + x_4^\phantom{1} + x_5^\phantom{1} &= 2 \\ 
+                                                \phantom{x_1^1+x_2^1}x_3^\phantom{1} + x_4^\phantom{1} + x_5^\phantom{1} &= 8 \\ 
+                                                \phantom{x_1^1-x_2^1+x_3^1}x_4^\phantom{1} + x_5^\phantom{1} &= 4 \\ 
+                                                \phantom{x_1^1-x_2^1+x_3^1+x_4^1}x_5^\phantom{1} &= t \\
+                                            \end{align*}
+                                            <p class="text-left">In this case \(x_5^\phantom{1}\) equals the variable \(t\). Since the values of the other variables change as \(x_5^\phantom{1}\) changes this system has an infinite number of solutions.
+                                    </div>
                             </div>
                         </div>
                     </div>
-
-
-
-
-
-
-
-                    </div>
                 </div>
             </div>
         </div>
-
-        <!-- TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC -->
-        <br>
-
-        <div class="container-fluid">
-            <div class="card text-center">
-                <div id="back-substitution" class="card-body text-left">
-                    <h4>Back-Substitution</h4>
-                    <p>
-                        <i>Once you've found a variable in one equation you can use it in the other equations.</i>
-                    </p>
-                    <div class="alert alert-success" role="alert">
-                        <strong>Back-Substitution Example</strong>
-                        <span>
-                            <br> \(x+y+z=5\)
-                            <br> \(y+z=4\)
-                            <br> \(z=7\)
-                            <br>
-                            <br> \(y+(7)=4\)
-                            <br> \(y=-3\)
-                            <br>
-                            <br> \(x+(-3)+(7)=5\)
-                            <br> \(x=1\)
-                        </span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
     </div>
 
+    <!-- TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC -->
+    <br>
+
+    <div class="container-fluid">
+        <div class="card text-center">
+            <div id="back-substitution" class="card-body text-left">
+                <h4>Back-Substitution</h4>
+                <p>
+                    <i>Once you've found a variable in one equation you can use it in the other equations.</i>
+                </p>
+                <div class="alert alert-success" role="alert">
+                    <strong>Back-Substitution Example</strong>
+                    <span>
+                        <br>
+                        <i>We are given \(z=7\).</i>
+                        \begin{align*}
+                                      x+y+z &= 5 \\
+                            \phantom{x+}y+z &= 4 \\
+                            \phantom{x+y+}z &= 7
+                        \end{align*}
+                        <hr>
+                        <i>Solve to get \(y=-3\).</i>
+                        \begin{align*}
+                            x+y+ {\bf 7} &= 5 \\
+                            \phantom{x+}y+ {\bf 7} &= 4 \\
+                            \phantom{x+y+}z &= 7
+                        \end{align*}
+                        <hr>
+                        <i>Solve to get \(x=1\).</i>
+                        \begin{align*}
+                            x {\bf -3} + {\bf 7} &= \;5 \\
+                            \phantom{x-}y\;\;\phantom{+{\bf 7}} &= \text{-}3 \\
+                            \phantom{x+y+}z &= \;7
+                        \end{align*}
+                        <hr>
+                        <i>Result:</i>
+                        \begin{align*}
+                            x &= \phantom{-}1 \\
+                            y &= -3 \\
+                            z &= \phantom{-}7
+                        \end{align*}
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+
+
+
+
+
+
+
+
+
+<style>
+    .graph-con {
+        position: relative;
+        display: inline-block;
+    }
+
+    .graph-con .open-graph {
+        display: inline-block;
+        position: absolute;
+        top: 0;
+        right: 0;
+        opacity: .2;
+        transition: .5s;
+        transform: translateZ(0);
+    }
+    .graph-con .open-graph img {
+        height: 24px;
+        width: 24px;
+    }
+    .graph-con .open-graph:hover {
+        opacity: .4;
+    }
+
+    
 
 
 
@@ -436,108 +399,118 @@
 
 
 
-    <script>
-        document.addEventListener("click", function (e) {
-            if (/\bopen-graph\b/.test(e.target.className)) {
-                var src = e.target.closest(".graph-con").querySelector("[data-link]").getAttribute("data-link");
-                displayFullScreenIframe(src);
-            }
-            if (/\bclose-graph\b/.test(e.target.className)) {
-                closeFullScreenIframe(src);
-            }
-        });
-    </script>
-    <style>
+
+
+
+
+
+
+
+
+    /* 2D AND 3D STYLES */
+
+    .graph-con {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .graph-con-no-image {
+        flex-grow: 1;
+    }
+
+    .graph-con-no-image>ul {
+        display: inline-block;
+        margin-left: 0;
+        padding-left: 0;
+        text-align: left;
+    }
+
+    .graph-con-no-image>ul>li {
+        list-style-position: inside;
+    }
+
+    .graph-con {
+        max-height: 208px;
+    }
+    .graph-con-2d {
+        max-width: 208px;
+    }
+    .graph-con-3d {
+        max-width: 250px;
+    }
+    /*.graph-con-2d {
+        max-width: 275px;
+    }
+    .graph-con-3d {
+        max-width: 330px;
+    }*/
+
+    .graph-con-2d img {
+        width: 100%;
+    }
+
+    .graph-con-3d img {
+        width: 100%;
+    }
+
+    .group-examples {
+        width: 100%;
+    }
+    .group-examples > strong {
+        margin-bottom: 1rem;
+    }
+    @media only screen and (min-width: 991px) {
+        .group-examples {
+            max-width: 1200px;
+        }
+    }
+
+    @media only screen and (max-width: 991px) {
         .graph-con {
-            position: relative;
-            display: inline-block;
+            max-height: 150px;
         }
-
-        .graph-con .open-graph {
-            height: 24px;
-            width: 24px;
-            position: absolute;
-            top: 0;
-            right: 0;
-            opacity: .2;
-            transition: .5s;
-            transform: translateZ(0);
+        .graph-con-2d {
+            max-width: 150px;
         }
-
-        .graph-con .open-graph:hover {
-            opacity: .4;
+        .graph-con-3d {
+            max-width: 180px;
         }
+    }
 
-        .full-screen-iframe {
-            position: absolute;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
+    @media only screen and (max-width: 767px) {
+        .graph-con {
             width: 100%;
-            z-index: 3;
         }
-
-        .layover {
-            position: absolute;
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            z-index: 2;
-            background-color: rgba(255, 255, 255, .5);
+        .group-examples {
+            max-width: 350px;
         }
-
-        .blur>*:not(iframe):not(.close-graph) {
-            filter: blur(2px);
+        .horizontal-3part-group:not(:first-of-type) {
+            border-left: none !important;
+            border-top: 1px solid #b1dfbb;
+            margin-top: 1em;
+            padding-top: 1em;
+            margin-top: 1rem;
+            padding-top: 1rem;
         }
+    }
 
-        .close-graph {
-            position: absolute;
-            position: fixed;
-            top: 5px;
-            left: 100px;
-            left: calc(50% - 12px);
-            width: 100%;
-            z-index: 4;
-            height: 24px;
-            width: 24px;
-            opacity: .4;
-            transition: .5s;
-            transform-origin: center;
-            animation-name: close-iframe-animation;
-            animation-duration: 10s;
-        }
+    .horizontal-3part-group:not(:first-of-type) {
+        border-left: 1px solid #b1dfbb;
+    }
 
-        .close-graph:hover {
-            opacity: .6;
-            transform: translateZ(0);
-        }
+    .horizontal-3part-group {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+    }
 
-        @keyframes close-iframe-animation {
-            0% {
-                transform: translateZ(0) scale(1);
-            }
-            25% {
-                transform: translateZ(0) scale(1.5);
-            }
-            50% {
-                transform: translateZ(0) scale(1);
-            }
-            75% {
-                transform: translateZ(0) scale(1.5);
-            }
-            100% {
-                transform: translateZ(0) scale(1);
-            }
-        }
-
-
-        /**** BOUND-200 IS A DIFFERENT THING ****/
-        @media only screen and (max-width: 992px) {
-            
-        }
-        
-    </style>
+    .horizontal-3part-group > strong {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 100%;
+        white-space: nowrap;
+        margin-bottom: 1rem;
+    }
+</style>
 </div>

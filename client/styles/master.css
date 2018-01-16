@@ -219,6 +219,11 @@
     }
 }
 
+#appendix .card-body > .alert:last-of-type {
+    margin-bottom: 0;
+    /* this is because the alerts have a margin bottom that extra extra space at the end of each section */
+}
+
 
 /******* NO FLEXBOX SHIM *******/
 .no-flexbox > body {
