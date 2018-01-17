@@ -2,25 +2,93 @@
 <div id="work">4</div>
 <div id="problems">
         <ol class="list-group">
-            <li>
-            This is POST 2 lalgebro
-            </li>
-            <li>
-            When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are.
-            </li>
-            <li>
-            When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are.
-            <ol type="A">
-                <li>first</li>
-                <li>second</li>
-                <li>third</li>
-            </ol>
-            </li>
-            <li>
-            When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are.
-            </li>
-            <li>
-            When \(a \ne 0\), there are two solutions to \(ax^2 + bx + c = 0\) and they are.
+            <li class="problem">
+                <div class="question">How many solutions does each system of equations have?</div>
+                <br>
+                <div class="inline-image-question">
+                    <div class="function-group-carrier">
+                        <div class="function-group">
+                            <div>
+                                <span class="space-hack">1.</span>
+                                <span class="function-group-count">a.&nbsp;</span>
+                                <span class="question-system-of-equations">
+                                        \begin{align} 
+                                            x+y &= \;1 \\
+                                            x\phantom{+y}\; &= \text{-}1 \\ 
+                                            \phantom{x+}y &= \;1
+                                        \end{align}
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="function-group-carrier">
+                        <div class="function-group">
+                            <div>
+                                <span class="space-hack">1.</span>
+                                <span class="function-group-count">b.&nbsp;</span>
+                                <span class="question-system-of-equations">
+                                    <div class="graph-con graph-con-2d">
+                                        <img src="/images/1/linear-algebra/wk1-q1-b.png" class="img-fluid">
+                                        <a href="https://www.geogebra.org/graphing/EMEE9xcP" target="_blank" class="open-graph" title="Open Graph">
+                                            <img src="/images/graph-up.png">
+                                        </a>
+                                    </div>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="function-group-carrier">
+                            <div class="function-group">
+                                <div>
+                                    <span class="space-hack">1.</span>
+                                    <span class="function-group-count">c.&nbsp;</span>
+                                    <span class="question-system-of-equations">
+                                        <div class="graph-con graph-con-3d">
+                                            <img src="/images/1/linear-algebra/wk1-q1-c.png" class="img-fluid">
+                                            <a href="https://www.geogebra.org/3d/FtFkuQ23" target="_blank" class="open-graph" title="Open Graph">
+                                                <img src="/images/graph-up.png">
+                                            </a>
+                                        </div>
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                </div>
             </li>
         </ol>
     </div>
+
+
+
+
+
+
+
+
+
+    <style>
+
+
+@media only screen and (max-width: 767px) {
+    .inline-image-question > * {
+        display: block;
+    }
+}
+
+.question-system-of-equations {
+    display: inline-block;
+}
+.question-system-of-equations > .mjx-chtml {
+    margin-top:4px;
+    display:inline-block;
+    vertical-align:top;
+}
+
+.function-group > * {
+    position:relative;
+}
+.function-group > * .function-group-count {
+    position:absolute;
+    top:0;
+}
+</style>

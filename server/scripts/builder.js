@@ -511,7 +511,8 @@ const build = () => {
     console.log("please look at spacing around the problem class. make sure it is applied consistently. maybe it sohuldnt be named problem or that functionality can be abstracted");
     //console.log("add section about mistakes in about. please send me a message if you encounter a mistake so that ");
     console.log("add linksin svg");
-
+    console.log("HUGE ISSUE - Can't right click on appendix or glossary dropdown. Right click triggers click");
+    console.log("remove left container");
     createOrCleanBuildDirectory();
 
     integrateSiteJavaScript();
