@@ -234,7 +234,7 @@ const buildPost = (postNumber, subject) => {
     outFile = outFile.replace("[CONTENT]", buildPostTemplate());
     outFile = outFile.replace("[POST SUBJECT NAVIGATION]", buildPostSubjectNavigation(postNumber, subject));
     outFile = outFile.replace("[POST HTML]", buildPostHTML(htmlPath, postNumber, subject));
-    outFile = outFile.replace("[TITLE]", `Week ${postNumber} - ${capatalizeFirstLetterOfEveryWord(subject.replace(/-/g, " "))}`); // note - if you change this title change the title for the index page in master.js
+    outFile = outFile.replace("[TITLE]", `Week ${postNumber} - ${capatalizeFirstLetterOfEveryWord(subject.replace(/-/g, " ").replace(/_/g, " "))}`); // note - if you change this title change the title for the index page in master.js
     outFile = buildPostComments(outFile, postNumber, subject);
     outFile = buildPostConfiguration(jsonPath, outFile, subject);
     outFile = setPostMetaTags(outFile, jsonPath, subject);
@@ -513,6 +513,8 @@ const build = () => {
     console.log("add linksin svg");
     console.log("HUGE ISSUE - Can't right click on appendix or glossary dropdown. Right click triggers click");
     console.log("remove left container");
+    console.log("ACTUALLY USE LAZY IMAGE LOADING CODE THAT YOU ADDED");
+
     createOrCleanBuildDirectory();
 
     integrateSiteJavaScript();

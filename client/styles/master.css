@@ -120,10 +120,15 @@
     padding-right: 30px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
 }
 
-
-
-
-
+/******* FUNCTION GROUP AND SPACING STUFF WITH NO GOOD PLACE TO GO *******/
+.inline-questions .mjx-chtml,
+.inline-questions .graph-con {
+    display: inline-block;
+    text-align: center;
+    margin-top: 2.5px;
+    margin-bottom: 0;
+    vertical-align: top;
+}
 
 /******* GLOSSARY *********/
 /*https://stackoverflow.com/questions/10405945/html-ordered-list-1-1-1-2-nested-counters-and-scope-not-working*/
@@ -304,6 +309,15 @@
     .graph-con-3d {
         max-width: 250px;
     }
+    
+
+    #post .graph-con-2d {
+        max-width: 150px !important;
+    }
+    #post .graph-con-3d {
+        max-width: 180px !important;
+    }
+
     /*.graph-con-2d {
         max-width: 275px;
     }
@@ -385,3 +399,43 @@
             display: block;
         }
     }
+
+/* LAYOVER */
+body.blur > *:not(.layover) {
+    filter:blur(1px);
+}
+    
+.layover {
+    z-index:1;
+    background: rgba(0,0,00,.3);
+    position:absolute;
+    position:fixed;
+    top:0;
+    left:0;
+    height: 100%;
+    width:100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.layover.hidden-layover {
+    display: none;
+}
+.layover img {
+    height:auto;
+    width:auto;
+    max-height: 100%;
+    max-width: 100%;
+    background:white;
+    border:2px solid black;
+}
+img {
+    cursor: -moz-zoom-in; 
+    cursor: -webkit-zoom-in; 
+    cursor: zoom-in;
+}
+.open-graph img,
+.layover img {
+    cursor: default;
+}
