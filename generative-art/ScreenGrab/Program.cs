@@ -21,7 +21,7 @@ namespace ScreenGrab
          IJavaScriptExecutor js = (IJavaScriptExecutor)driver;
          driver.Navigate().GoToUrl("http://192.168.200.199:9966/");
 
-         for (var i = 0;i < 1000; i++)
+         for (var i = 999;i < 1001; i++)
          {
             System.Threading.Thread.Sleep(15000);
             js.ExecuteScript("document.body.removeChild(document.querySelector('.seed-container'));");

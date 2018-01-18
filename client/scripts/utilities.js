@@ -97,32 +97,3 @@ function removeElements(selector) {
         elms[i].parentNode.removeChild(elms[i]);
     }
 }
-
-function displayFullScreenIframe(src) {
-    removeElements("iframe");
-
-    var img = document.createElement("img");
-    img.className = "close-graph";
-    img.src = "/images/graph-down.png";
-    img.title = "Close Graph";;
-    document.body.appendChild(img);
-
-    var layover = document.createElement("div");
-    layover.className = "layover";
-    document.body.appendChild(layover);
-
-    var iframe = document.createElement("iframe");
-    iframe.className = "full-screen-iframe";
-    iframe.setAttribute("scrolling", "no");
-    iframe.src = src;
-    document.body.appendChild(iframe);
-
-    document.body.className += " blur";
-}
-
-function closeFullScreenIframe() {
-    removeElements("iframe");
-    removeElements(".close-graph");
-    removeElements(".layover");
-    document.body.className = document.body.className.replace(/\bblur\b/g, "");
-}

@@ -208,3 +208,22 @@ MathJax.Hub.Config({
     MathJax.Hub.Reprocess(document.body); 
 }*/
 //window.addEventListener('resize', debounce(resetMathJax, 1));
+
+// IMAGE BIGGERER
+window.addEventListener("click", function(e) {
+    if(e.target.nodeName.toLowerCase() === "img") {
+        var img = e.target;
+        if(img.id !== "bigImage" && img.closest(".open-graph") === null) {
+            var bigImage = document.getElementById("bigImage");
+            var layover = document.querySelector(".layover");
+
+            bigImage.src = img.src;
+            layover.className = layover.className.replace(/\bhidden-layover\b/g, "");
+            document.body.className += " blur";
+            one(function() {
+                layover.className += " hidden-layover";
+                document.body.className = document.body.className.replace(/\bblur\b/g, "");
+            });
+        }
+    }
+});
