@@ -516,8 +516,8 @@ const build = () => {
     console.log("ACTUALLY USE LAZY IMAGE LOADING CODE THAT YOU ADDED");
     console.log("make sure geogebra files match the question they apply to");
     console.log("SPACING --- linear algebra problems wk1 - #2 doesnt have the same margin on the right for some reason");
-    createOrCleanBuildDirectory();
-
+    console.log("right click on images");
+console.log("in appendix a bunch of text-center immediately by text-left");
     integrateSiteJavaScript();
     minimizeSiteJavaScript();
 
