@@ -517,7 +517,10 @@ const build = () => {
     console.log("make sure geogebra files match the question they apply to");
     console.log("SPACING --- linear algebra problems wk1 - #2 doesnt have the same margin on the right for some reason");
     console.log("right click on images");
-console.log("in appendix a bunch of text-center immediately by text-left");
+    console.log("in appendix a bunch of text-center immediately by text-left");
+    console.log("you still have to fix the spacing problem at 767 pixels in vector calculus appendix.");
+    console.log("i think algebra appendix should be extended so its definition of real numbers has the 0 and 1 identities... so that it matches vector space identites");
+    console.log("IMPORTANT STYLE RULE. STANDALONE NEGATIVES GET A TEXT -. NOT A MATH MODE NEGATIVE. IT'S TOO LONG. GO THROUGH AND FIX");
     integrateSiteJavaScript();
     minimizeSiteJavaScript();
 
