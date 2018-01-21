@@ -448,3 +448,22 @@ img {
 .layover img {
     cursor: default;
 }
+
+/********* LINE ON THE SIDE OF R *********/
+.wider-line:before,
+.wider-line:after {
+    content: '';
+    display: inline-block;
+    height: 1px;
+    width: 100%;
+    max-width: 80px;
+    border-top: 1px solid #b1dfbb;
+    position:relative;
+    top:-5px;
+}
+.wider-line:before {
+    margin-right: 10px;
+}
+.wider-line:after {
+    margin-left: 10px;
+}

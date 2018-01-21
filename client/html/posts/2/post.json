@@ -7,6 +7,6 @@
     "calculus": ["Limit Theorems"],
     "linear-algebra": ["Linear Equations in n Variables", "The Number of Solutions to a System of Linear Equations", "Back-Substitution"],
     "statistics": ["Variables", "Levels of Measurement"],
-    "vector-calculus": ["Vector Addition and Scalar Multiplication", "Properties of Vector Addition and Scalar Multiplication"]
+    "vector-calculus": ["Vector Spaces", "Vector Addition and Scalar Multiplication", "Properties of Vector Addition and Scalar Multiplication"]
   }
 }

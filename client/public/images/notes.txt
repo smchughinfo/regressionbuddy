@@ -1,0 +1,2 @@
+a 450x450 image at 22px font
+look about the same as a 19px font at 450px
