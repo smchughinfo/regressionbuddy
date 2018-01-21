@@ -99,6 +99,10 @@
 .question {
     padding-bottom: 2px;
 }
+.vertical-subquestion {
+    display:inline-block;
+    vertical-align:top;
+}
 .problem li:not(:last-child) {
     padding-bottom:5px;
 }
