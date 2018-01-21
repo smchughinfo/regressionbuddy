@@ -311,11 +311,6 @@
         max-width: 250px;
     }
     #post .graph-con-2d {
-        max-width: 150px !important;
-    }
-    #post .graph-con-3d {
-        max-width: 180px !important;
-    }
     .horizontal-group-4 .graph-con-2d {
         max-width: 150px;
     }
