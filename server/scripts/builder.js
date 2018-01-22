@@ -504,7 +504,7 @@ const build = () => {
     console.log("linear algebra, at least, title is messed up in browser");
     console.log("building...");
     console.warn("cheerio adds a body tag if it encounters a text node. e.g. [REPLACE THIS]");
-    console.log("reminder: subscribe to disqus for api calls");
+    console.log("reminder: subscribe to disqus for api calls");    
     console.log("check browserstack for bottom of appendix. does <br> work?");
     console.log("udpate lambda to redirect if given https://regressionbuddy.com/2/algebra/");
     console.log("still need styles for last/bottom function in function group. can handle not being wrapped and being wrapped");
@@ -514,7 +514,6 @@ const build = () => {
     console.log("HUGE ISSUE - Can't right click on appendix or glossary dropdown. Right click triggers click");
     console.log("remove left container");
     console.log("ACTUALLY USE LAZY IMAGE LOADING CODE THAT YOU ADDED");
-<<<<<<< HEAD
     console.log("make sure geogebra files match the question they apply to");
     console.log("SPACING --- linear algebra problems wk1 - #2 doesnt have the same margin on the right for some reason");
     console.log("right click on images");
@@ -522,11 +521,6 @@ const build = () => {
     console.log("you still have to fix the spacing problem at 767 pixels in vector calculus appendix.");
     console.log("i think algebra appendix should be extended so its definition of real numbers has the 0 and 1 identities... so that it matches vector space identites");
     console.log("IMPORTANT STYLE RULE. STANDALONE NEGATIVES GET A TEXT -. NOT A MATH MODE NEGATIVE. IT'S TOO LONG. GO THROUGH AND FIX");
-=======
-
-    createOrCleanBuildDirectory();
-
->>>>>>> master
     integrateSiteJavaScript();
     minimizeSiteJavaScript();
 
