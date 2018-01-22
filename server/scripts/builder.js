@@ -49,6 +49,7 @@ const minimizeSiteJavaScript = () => {
 const integrateSiteCSS = () => {
     let css = [
         `${process.env.clientDir}/styles/master.css`,
+        `${process.env.clientDir}/styles/spacing.css`,
         `${process.env.clientDir}/styles/badge_outline.css`
     ].map(path => readFileSync(path)).join("\r\n");
     writeFileSync(siteCSSPath, css);
