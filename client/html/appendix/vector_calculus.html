@@ -1,24 +1,273 @@
 <h4 class="text-center date">Vector Calculus Appendix</h4>
 <br>
-<div id="appendix" class="container-fluid">
-    <div class="card text-center">
-        <div id="addition-property-of-equality" class="card-body text-left">
-            <h4>Addition Property of Equality</h4>
-            <p><i>"Adding a number to both sides of the equation doesn't change the solution."</i></p>
+<div id="appendix">
+    <div class="container-fluid">
+        <div class="card text-center">
+            <div id="vector-spaces" class="card-body text-left">
+                <h4>Vector Spaces</h4>
+                <!--<p><i>"Adding things in a different order gives the same result."</i></p>-->
+                <!--<p>The following properties apply for any real numbers \(a\), \(b\), and \(c\): </p>-->
+                <style>
+                    @media only screen and (min-width: 576px) and (max-width: 767px)  {
+                        .horizontal-group-4-break {
+                            padding-left:10px;
+                            padding-right:10px;
+                        }
+                        .horizontal-group-4-break .horizontal-group {
+                            margin-top:0;
+                            margin-bottom:0;
+                        }
+                        .horizontal-group-4-break .horizontal-group:nth-child(1),
+                        .horizontal-group-4-break .horizontal-group:nth-child(2) {
+                            padding-top:0;
+                            padding-bottom: 1rem;
+                            border-top: none;
+                        }
+                        .horizontal-group-4-break .horizontal-group:nth-child(1),
+                        .horizontal-group-4-break .horizontal-group:nth-child(3) {
+                            padding-left:10px;
+                        }
+                        .horizontal-group-4-break .horizontal-group:nth-child(2),
+                        .horizontal-group-4-break .horizontal-group:nth-child(4) {
+                            padding-right:10px;
+                            border-left: 1px solid #abdde5 !important;
+                        }
+                        .horizontal-group-4-break .horizontal-group:nth-child(3),
+                        .horizontal-group-4-break .horizontal-group:nth-child(4) {
+                            padding-top: 1rem;
+                        }
+                    }
 
-            <p>If <i>A</i>, <i>B</i> and <i>C</i> are real numbers then</p>
-            <div class="alert alert-info" role="alert">
-                \(\textbf{A = B}\) and \(\textbf{A + C = B + C}\)
+                    @media only screen and (max-width: 575.5px) {
+                        .x-small-width-300{
+                            max-width: 300px;
+                        }
+                    }
+                </style>
+                <div class="alert alert-info text-center horizontal-group-4-break x-small-width-300" role="alert">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-12 col-sm-6 col-md-3 horizontal-group horizontal-group-4 default-justify">
+                                <strong>\(\mathbb{R}^1\)</strong>
+                                <div class="graph-con graph-con-2d">
+                                    <img src="/images/1/vector-calculus/r1.png" class="img-fluid">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-3 horizontal-group horizontal-group-4 default-justify">
+                                <strong>\(\mathbb{R}^2\)</strong>
+                                <div class="graph-con graph-con-2d">
+                                    <img src="/images/1/vector-calculus/r2.png" class="img-fluid">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-3 horizontal-group horizontal-group-4 default-justify">
+                                <strong>\(\mathbb{R}^3\)</strong>
+                                <div class="graph-con graph-con-3d">
+                                    <img src="/images/1/vector-calculus/r3.png" class="img-fluid">
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6 col-md-3 horizontal-group horizontal-group-4">
+                                <strong>\(\mathbb{R}^n\)</strong>
+                                <div class="graph-con-no-image text-left">
+                                    \(\mathbb{R}^1\), \(\mathbb{R}^2\), \(\mathbb{R}^3\), \(\mathbb{R}^4\), etc. are generally written as \(\mathbb{R}^n\). That is, \(\mathbb{R}^n\) may refer to \(\mathbb{R}^1\), \(\mathbb{R}^2\), \(\mathbb{R}^3\), \(\mathbb{R}^4\), etc.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <p>are equivelant.</p>
-            <div class="alert alert-success" role="alert">
-                \(X - 5 = 11\)
-                <br>
-                \(X - 5\textbf{ + 5} = 11\textbf{ + 5}\)
-                <br>
-                \(X = 16\)
-            </div>
-            <hr>
         </div>
     </div>
+    
+     <!-- TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC -->
+     <br>
+     
+    <div class="container-fluid">
+            <div class="card text-center">
+                <div id="vector-addition-and-scalar-multiplication" class="card-body text-left">
+                    <h4>Vector Addition and Scalar Multiplication</h4>
+                    <!--<p><i>"Adding things in a different order gives the same result."</i></p>-->
+                    <!--<p>The following properties apply for any real numbers \(a\), \(b\), and \(c\): </p>-->
+                    <div class="alert alert-info" role="alert">
+                        <strong>Vector Addition</strong>
+                        <span>
+                            \( 
+                                \left (
+                                    a_1^\phantom{1},\,a_2^\phantom{1},\,a_3^\phantom{1}
+                                \right)
+                                +
+                                \left (
+                                    b_1^\phantom{1},\,b_2^\phantom{1},\,b_3^\phantom{1}
+                                \right)
+                                =
+                                \left(
+                                    a_1^\phantom{1} + b_1^\phantom{1}  ,\,   
+                                    a_2^\phantom{1} + b_2^\phantom{1}  ,\,   
+                                    a_3^\phantom{1} + b_3^\phantom{1}
+                                \right)
+                            \)
+                        </span>
+                        <hr>
+                        <strong>Scalar Multiplication</strong>
+                        <span>
+                            \(
+                                k
+                                \left (
+                                    a_1^\phantom{1},\,a_2^\phantom{1},\,a_3^\phantom{1}
+                                \right)
+                                =
+                                \left (
+                                    ka_1^\phantom{1},\,ka_2^\phantom{1},\,ka_3^\phantom{1}
+                                \right)
+                            \)
+                        </span>
+                        
+                    </div>
+                    <br>
+                    <div class="alert alert-success text-center small-width-350" role="alert">
+                        <strong class="text-left">Vector Addition Example</strong>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 horizontal-group horizontal-group-3">
+                                    <strong class="wider-line">\(\mathbb{R}^2\)</strong>
+                                    <div class="graph-con graph-con-2d">
+                                        <img src="/images/vector-calculus-appendix/vector-addition-2d.png" class="img-fluid">
+    
+    
+                                        <a href="https://www.geogebra.org/graphing/atP5PEhv" target="_blank" class="open-graph" title="Open Graph">
+                                            <img src="/images/graph-up.png">
+                                        </a>
+                                        
+                                    </div>
+                                    <div class="text-center">
+                                        <br> 
+                                        \begin{align*}
+                                            \boldsymbol{u}   &= (-3,3) \\
+                                            \boldsymbol{v}   &= (4,1) \\
+                                            \boldsymbol{u}+\boldsymbol{v} &= (1,4)
+                                        \end{align*}
+                                    </div>
+    
+                                </div>
+                                <div class="col-sm-12 col-md-4 horizontal-group horizontal-group-3">
+                                    <strong class="wider-line">\(\mathbb{R}^3\)</strong>
+                                    <div class="graph-con graph-con-2d">
+                                        <img src="/images/vector-calculus-appendix/vector-addition-3d.png" class="img-fluid">
+    
+    
+    
+                                        <a href="https://www.geogebra.org/3d/QuQrdTNF" target="_blank" class="open-graph" title="Open Graph">
+                                            <img src="/images/graph-up.png">
+                                        </a>
+    
+                                    </div>
+                                    <div class="text-center">
+                                        <br>
+                                        \begin{align*}
+                                            \boldsymbol{u}   &= (-1,-1,2) \\
+                                            \boldsymbol{v}   &= (3,0,1) \\
+                                            \boldsymbol{u}+\boldsymbol{v} &= (2,-1,3)
+                                        \end{align*}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 horizontal-group horizontal-group-3">
+                                    <div class="text-center">
+                                            <strong class="wider-line">\(\mathbb{R}^n\)</strong>
+                                            <div class="graph-con-no-image">
+                                            <ul>
+                                                <li>
+                                                    \( (7) + (-3) =4 \)
+                                                </li>
+                                                <li>
+                                                    \( (3, 8) - (9, 2) = (6, 6) \)
+                                                </li>
+                                                <li>
+                                                    \( (5, 12, 0) + (-15, -11, 4) = (-10, 1, 4) \)
+                                                </li>
+                                                <li>
+                                                    \( (3, 10, 1, 6) - (2, -6, 8, 0) = (1,16,-7,6) \)
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <hr>
+                        <strong class="text-left">Scalar Multiplication Example</strong>
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-sm-12 col-md-4 horizontal-group horizontal-group-3">
+                                    <strong class="wider-line">\(\mathbb{R}^2\)</strong>
+                                    <div class="graph-con graph-con-2d">
+                                        <img src="/images/vector-calculus-appendix/vector-multiplication-2d.png" class="img-fluid">
+    
+    
+                                        <a href="https://www.geogebra.org/graphing/vzTEwmys" target="_blank" class="open-graph" title="Open Graph">
+                                            <img src="/images/graph-up.png">
+                                        </a>
+                                        
+                                    </div>
+                                    <div class="text-center">
+                                        \begin{align*}
+                                            k &= \text{-}\frac{1}{2} \\
+                                            \boldsymbol{u} &= (4,4)
+                                        \end{align*}
+                                    </div>
+    
+                                </div>
+                                <div class="col-sm-12 col-md-4 horizontal-group horizontal-group-3">
+                                    <strong class="wider-line">\(\mathbb{R}^3\)</strong>
+                                    <div class="graph-con graph-con-2d">
+                                        <img src="/images/vector-calculus-appendix/vector-multiplication-3d.png" class="img-fluid">
+    
+    
+    
+                                        <a href="https://www.geogebra.org/3d/QuQrdTNF" target="_blank" class="open-graph" title="Open Graph">
+                                            <img src="/images/graph-up.png">
+                                        </a>
+    
+                                    </div>
+                                    <div class="text-center">
+                                        <br>
+                                        \begin{align*}
+                                        k &= 2 \\
+                                        \boldsymbol{u} &= (1,1,1)
+                                    \end{align*}
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-4 horizontal-group horizontal-group-3">
+                                    <div class="text-center">
+                                            <strong class="wider-line">\(\mathbb{R}^n\)</strong>
+                                            <div class="graph-con-no-image">
+                                            <ul>
+                                                <li>
+                                                    \( 6(6) =36 \)
+                                                </li>
+                                                <li>
+                                                    \( \frac{1}{2}(4, 2) = (2, 1) \)
+                                                </li>
+                                                <li>
+                                                    \( 0(2, 11, 3) = (0, 0, 0) \)
+                                                </li>
+                                                <li>
+                                                    \( 3(\frac{1}{3}, \frac{1}{3}, 1, 3) = (1, 1, 3, 9) \)
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC -->
+
+        <br>     
 </div>

@@ -99,6 +99,10 @@
 .question {
     padding-bottom: 2px;
 }
+.vertical-subquestion {
+    display:inline-block;
+    vertical-align:top;
+}
 .problem li:not(:last-child) {
     padding-bottom:5px;
 }
@@ -300,22 +304,23 @@
         list-style-position: inside;
     }
 
-    .graph-con {
-        max-height: 208px;
-    }
     .graph-con-2d {
         max-width: 208px;
     }
     .graph-con-3d {
         max-width: 250px;
     }
-    
-
     #post .graph-con-2d {
         max-width: 150px !important;
     }
     #post .graph-con-3d {
         max-width: 180px !important;
+    }
+    .horizontal-group-4 .graph-con-2d {
+        max-width: 150px;
+    }
+    .horizontal-group-4 .graph-con-3d {
+        max-width: 180px;
     }
 
     /*.graph-con-2d {
@@ -325,67 +330,75 @@
         max-width: 330px;
     }*/
 
-    .graph-con-2d img {
+    .small-width-350 {
         width: 100%;
     }
-
-    .graph-con-3d img {
-        width: 100%;
-    }
-
-    .group-examples {
-        width: 100%;
-    }
-    .group-examples > strong {
+    .small-width-350 > strong {
         margin-bottom: 1rem;
     }
+    
     @media only screen and (min-width: 991px) {
-        .group-examples {
+        .small-width-350 {
             max-width: 1200px;
         }
     }
 
     @media only screen and (max-width: 991px) {
-        .graph-con {
-            max-height: 150px;
-        }
-        .graph-con-2d {
+        .horizontal-group-3 .graph-con-2d {
             max-width: 150px;
         }
-        .graph-con-3d {
+        .horizontal-group-3 .graph-con-3d {
             max-width: 180px;
+        }
+        .horizontal-group-4 .graph-con-2d {
+            max-width: 108px;
+        }
+        .horizontal-group-4 .graph-con-3d {
+            max-width: 130px;
         }
     }
 
     @media only screen and (max-width: 767px) {
-        .graph-con {
-            width: 100%;
-        }
-        .group-examples {
+        .small-width-350 {
             max-width: 350px;
         }
-        .horizontal-3part-group:not(:first-of-type) {
+        .small-width-225 {
+            max-width: 225px;
+        }
+        .horizontal-group:not(:first-of-type) {
             border-left: none !important;
-            border-top: 1px solid #b1dfbb;
             margin-top: 1em;
             padding-top: 1em;
             margin-top: 1rem;
             padding-top: 1rem;
         }
+        .alert-success .horizontal-group:not(:first-of-type) {
+            border-top: 1px solid #b1dfbb;
+        }
+        .alert-info .horizontal-group:not(:first-of-type) {
+            border-top: 1px solid #abdde5;
+        }
     }
 
-    .horizontal-3part-group:not(:first-of-type) {
+    .alert-info .horizontal-group:not(:first-of-type) {
+        border-left: 1px solid #abdde5;
+    }
+
+    .alert-success .horizontal-group:not(:first-of-type) {
         border-left: 1px solid #b1dfbb;
     }
 
-    .horizontal-3part-group {
+    .horizontal-group {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         flex-grow: 1;
     }
-
-    .horizontal-3part-group > strong {
+    .default-justify,
+    .horizontal-group.default-justify {
+        justify-content: flex-start;
+    }
+    .horizontal-group > strong {
         overflow: hidden;
         text-overflow: ellipsis;
         max-width: 100%;
@@ -395,7 +408,7 @@
 
     /***** INLINE PICTURES IN A PROBLEM *****/
     @media only screen and (max-width: 767px) {
-        .graph-con {
+        #post .graph-con {
             display: block;
         }
     }
@@ -438,4 +451,23 @@ img {
 .open-graph img,
 .layover img {
     cursor: default;
+}
+
+/********* LINE ON THE SIDE OF R *********/
+.wider-line:before,
+.wider-line:after {
+    content: '';
+    display: inline-block;
+    height: 1px;
+    width: 100%;
+    max-width: 80px;
+    border-top: 1px solid #b1dfbb;
+    position:relative;
+    top:-5px;
+}
+.wider-line:before {
+    margin-right: 10px;
+}
+.wider-line:after {
+    margin-left: 10px;
 }
