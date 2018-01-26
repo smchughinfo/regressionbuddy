@@ -63,6 +63,7 @@
 }
 [data-subject="algebra"] #work img { max-width: 180px; }
 [data-subject="calculus"] #work img { max-width: 400px; }
+#work img { max-width: 400px; }
 #post ol ol li {
     list-style-type: lower-alpha;
 }
