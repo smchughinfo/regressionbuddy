@@ -467,3 +467,21 @@ img {
 .wider-line:after {
     margin-left: 10px;
 }
+
+
+/******** LEFT-RIGHT *********/
+.left-right {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.no-flexbox .right {
+    float:right;
+}
+
+/******** REVIEW CONTAINER ********/
+.review-container {
+    max-width: 600px;
+    margin-left: 0;
+    margin-right: 0;
+}

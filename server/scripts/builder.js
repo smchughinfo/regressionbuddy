@@ -1,7 +1,7 @@
 const { readFileSync, writeFileSync, watchFile, unwatchFile, mkdirSync } = require("fs");
 const { normalize, sep} = require("path");
 const compressor = require("node-minify");
-const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord } = require("./utilities.js");
+const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig } = require("./utilities.js");
 const zlib = require('zlib');
 const { minify } = require("html-minifier");
 const cheerio = require('cheerio');
@@ -151,8 +151,8 @@ const buildPostHTML = (htmlPath, postNumber, subject) => {
     return postTemplate;
 }
 
-const buildPostConfiguration = (jsonPath, outFile, subject) => {
-    let config = JSON.parse(readFileSync(jsonPath));
+const buildPostConfiguration = (postNumber, outFile, subject) => {
+    let config = getPostConfig(postNumber)
 
     subject = subject.replace(/_/g, "-");
     let links = config.topics[subject].map(topic => {
@@ -172,10 +172,12 @@ const setPostNavigationLinks = (outFile, postNumber, subject) => {
     outFile = outFile.replace(/\[PAGINATION\]/g, readFileSync(`${process.env.postTemplatesDir}/pagination.html`).toString());
     $ = cheerio.load(outFile);
     let last = getLargestPostNumber();
+    let inReview = getPostConfig(postNumber).inReview === true;
     subject = subject.replace(/_/g, "-").toLowerCase();
 
+
     // first and prev
-    if(postNumber === 1) {
+    if(postNumber === 1 || inReview) {
         $('[data-link-to="first"]').parent().addClass("disabled");
         $('[data-link-to="previous"]').parent().addClass("disabled");
     }
@@ -186,7 +188,7 @@ const setPostNavigationLinks = (outFile, postNumber, subject) => {
     }
 
     // random
-    if(last === 1) {
+    if(last === 1 || inReview) {
         $('[data-link-to="random"]').parent().addClass("disabled");
     }
     else {
@@ -195,7 +197,7 @@ const setPostNavigationLinks = (outFile, postNumber, subject) => {
     }
 
     // next and last
-    if(postNumber === last) {
+    if(postNumber === last || inReview) {
         $('[data-link-to="next"]').parent().addClass("disabled");   
         $('[data-link-to="last"]').parent().addClass("disabled");           
     }
@@ -208,8 +210,8 @@ const setPostNavigationLinks = (outFile, postNumber, subject) => {
     return $.root().html();
 };
 
-const setPostMetaTags = (outFile, jsonPath, subject) => {
-    let postJson = JSON.parse(readFileSync(jsonPath));
+const setPostMetaTags = (outFile, postNumber, subject) => {
+    let postJson = getPostConfig(postNumber);
     let topics = postJson.topics[subject.replace(/_/g, "-")].join(", ");
     let subjectHumanFormat = capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, " "));
     let description = `${subjectHumanFormat} problems for ${topics}.`;
@@ -230,15 +232,14 @@ const buildPost = (postNumber, subject) => {
     let outFilePath = `${process.env.buildDir}/${postNumber}.${subject}.html`;
     let generalPath = `${process.env.postsDir}/${postNumber}`;
     let htmlPath = `${generalPath}/subjects`;
-    let jsonPath = `${generalPath}/post.json`;    
     
     outFile = outFile.replace("[CONTENT]", buildPostTemplate());
     outFile = outFile.replace("[POST SUBJECT NAVIGATION]", buildPostSubjectNavigation(postNumber, subject));
     outFile = outFile.replace("[POST HTML]", buildPostHTML(htmlPath, postNumber, subject));
     outFile = outFile.replace("[TITLE]", `Week ${postNumber} - ${capatalizeFirstLetterOfEveryWord(subject.replace(/-/g, " ").replace(/_/g, " "))}`); // note - if you change this title change the title for the index page in master.js
     outFile = buildPostComments(outFile, postNumber, subject);
-    outFile = buildPostConfiguration(jsonPath, outFile, subject);
-    outFile = setPostMetaTags(outFile, jsonPath, subject);
+    outFile = buildPostConfiguration(postNumber, outFile, subject);
+    outFile = setPostMetaTags(outFile, postNumber, subject);
     outFile = setPostNavigationLinks(outFile, postNumber, subject);
     outFile = replacePlaceholderWithHTMLFile(outFile);
 
@@ -252,6 +253,14 @@ const buildPost = (postNumber, subject) => {
 
     writeFileSync(outFilePath, outFile);
     addGraphic(outFilePath);
+
+    // this part is for the review file:
+    let reviewFilePath = `${process.env.buildDir}/${postNumber}.${subject}.review.html`;
+    let $ = cheerio.load(outFile);
+    let nav = $.root().find("nav");
+    nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
+    writeFileSync(reviewFilePath, outFile);
+    addGraphic(reviewFilePath);
 };
 
 const buildGlossary = subject => {
@@ -262,10 +271,10 @@ const buildGlossary = subject => {
 };
 
 const buildAppendix = subject => {
-    let subjectGlossary = readFileSync(`${process.env.clientDir}/html/appendix/${subject}.html`).toString();
+    let subjectAppendix = readFileSync(`${process.env.clientDir}/html/appendix/${subject}.html`).toString();
     let outFilePath = `${process.env.buildDir}/appendix.${subject}.html`;
     let title = `${capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, " "))} Appendix`;
-    buildStaticContentPage(subjectGlossary, title, title, outFilePath);
+    buildStaticContentPage(subjectAppendix, title, title, outFilePath);
 };
 
 const buildAboutPage = () => {
@@ -305,7 +314,7 @@ const buildStaticContentPage = (staticContent, title, description, outFilePath) 
 };
 
 const buildPages = () => {
-    getPostNumbers().forEach(postNumber => {
+    getPostNumbers(true).forEach(postNumber => {
         let subjects = getPostSubjects(postNumber);
         subjects.forEach(subject => {
             buildPost(postNumber, subject);
@@ -332,6 +341,101 @@ const buildIndex = () => {
         indexContent = indexContent.replace(/<title>.*?<\/title>/, "<title>" + shortDescription + "</title>");
     }
     writeFileSync(indexFilePath, indexContent);
+}
+
+const buildReviewAppendixes = () => {
+    getPostNumbers(true).forEach(postNumber => {
+        getPostSubjects(postNumber).forEach(subject => {
+            let config = getPostConfig(postNumber);
+            let postTopics = config.topics[subject.replace(/_/g, "-")];            
+            let appendix = readFileSync(`${process.env.buildDir}/appendix.${subject}.html`);
+            let appendixTitle = `${subject} Appendix`;
+            let appendixOutFilePath = `${process.env.buildDir}/${postNumber}.appendix.${subject}.review.html`;
+        
+            let $ = cheerio.load(appendix);
+            let topics = $.root().find("#appendix > *");
+            topics.each((i, elm) => {
+                let topic = $(elm).attr("id") || "";
+                topic = capatalizeFirstLetterOfEveryWord(topic.replace(/-/g, " "));
+                if(postTopics.indexOf(topic) === -1) {
+                    $(elm).remove();
+                }
+                else {
+                    $(elm).after("<br>")
+                }
+            });
+
+            let title = $.root().find("title");
+            let h4 = $.root().find("body h4");
+            let nav = $.root().find("nav");
+            let body = $.root().find("body");
+            title.html("Review - " + title.html());
+            h4.html(h4.html() + " Review");
+            nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
+            body.append(readFileSync(`${process.env.postTemplatesDir}/comments.html`).toString());
+
+            let outFile = $.html();
+
+            if(isDev() === false) {
+                outFile = minimizePageHTML(outFile);
+            }
+
+            writeFileSync(appendixOutFilePath, outFile);
+            addGraphic(appendixOutFilePath);
+        });
+    });
+}
+
+const buildReviewPage = () => {
+    let postsInReview = getPostNumbersInReview();
+    let review = readFileSync(`${process.env.clientDir}/html/review.html`).toString();
+    let outFilePath = `${process.env.buildDir}/review.html`;
+    let title = "Review";
+
+    let template = '\
+        <div class="container-fluid">\
+            <div class="card">\
+                <div class="card-body">\
+                    <div class="left-right">\
+                        <span class="left">[TITLE]</span>\
+                        <span class="right" data-comments-for="[URL]">n Comments</span>\
+                    </div>\
+                    <div>[TOPICS]</div>\
+                    <a href="[URL]">[URL]</a>\
+                    <br>\
+                    <a href="[APPENDIX_URL]">[APPENDIX_URL]</a>\
+                </div>\
+            </div>\
+        </div>';
+
+    let reviews = "";
+    postsInReview.forEach(postNumber => {
+        let config = getPostConfig(postNumber);
+        let subjects = getPostSubjects(postNumber);
+
+        subjects.forEach(subject => {
+            let postReview = template;
+            let subjectHumanFormat = capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, " "));
+            let postReviewTitle = `Week ${postNumber} - ${subjectHumanFormat} - ${config.date}`;
+            let postTopics = config.topics[subject.replace(/_/g, "-")];  
+
+            postReview = postReview.replace(/\[TITLE\]/g, postReviewTitle);
+            postReview = postReview.replace(/\[URL\]/g, `/${postNumber}/${subject}/review`);
+            postReview = postReview.replace(/\[APPENDIX_URL\]/g, `/${postNumber}/appendix/${subject}/review`);
+            postReview = postReview.replace(/\[TOPICS\]/g, postTopics.join(", "));
+            reviews += postReview;
+            reviews += "<br>";
+
+            let appendixReview = template;
+            
+            console.log("ADD OTHER STUFF HERE...");
+
+        });
+    });
+
+    review = review.replace("[REVIEWS]", reviews);
+
+    buildStaticContentPage(review, title, "Regression Buddy Review", outFilePath);
 }
 
 const rebuildOnChange = () => {
@@ -384,6 +488,12 @@ const generateSiteMap = () => {
         },
         { 
             loc: "https://www.regressionbuddy.com/rss.xml",
+            mod: mostRecentPostDate,
+            freq: "weekly",
+            priority: ".8"
+        },
+        { 
+            loc: "https://www.regressionbuddy.com/review",
             mod: mostRecentPostDate,
             freq: "weekly",
             priority: ".8"
@@ -519,6 +629,9 @@ const build = () => {
 
     generateSiteMap();
     generateSiteRSS();
+
+    buildReviewPage();
+    buildReviewAppendixes();
 
     if(isDev()) {
         rebuildOnChange();

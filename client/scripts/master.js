@@ -67,11 +67,12 @@ document.getElementById("appendixDropdown").addEventListener("click", showButton
         // TOOO: maybe - google "regression buddy" and site title is "Algebra: Week 2" except for the "index" page it should be more general
         // serve it with a general title and then change it here. hope that works.
 
-        var postNumber = getPostNumber();
-        var subject = getSubject();
-        var redirectUrl = window.location.href + postNumber + "/" + subject;
-        document.title = "Week " + postNumber + " - " + subject
         try {
+            var postNumber = getPostNumber();
+            var subject = getSubject();
+            var redirectUrl = window.location.href + postNumber + "/" + subject;
+            document.title = "Week " + postNumber + " - " + capatalizeFirstLetterOfEveryWord(subject);
+
             console.log("this needs to run before getting disqus comment count");
             history.replaceState(null, document.title, redirectUrl);            
         }

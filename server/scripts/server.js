@@ -83,6 +83,14 @@ const handleFileRequest = (req, res) => {
     ) {
         filePath = `${process.env.publicDir}/build${urn}`
     }
+    else if (urn === "/review") {
+        filePath = "build/review.html"
+    }
+    else if(
+        /\/[0-9]+\/appendix\/(algebra|trigonometry|calculus|vector-calculus|statistics|linear-algebra)\/review$/.test(urn)
+    ) {
+        filePath = `${process.env.publicDir}/build/${urn.replace("/", "").replace(/\//g, ".")}.html`;
+    }
 
     console.log(filePath);
     serveFile(filePath, req, res);

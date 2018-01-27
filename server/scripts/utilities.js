@@ -1,3 +1,5 @@
+const { readFileSync } = require("fs");
+
 const { statSync, readdirSync, unlinkSync } = require("fs");
 const { join, sep } = require("path");
 
@@ -34,12 +36,31 @@ const deleteFilesFromDirectory = path => {
     });
 };
 
-const getPostNumbers = () => {    
+const getPostConfig = postNumber => {
+    var configPath = `${process.env.postsDir}/${postNumber}/post.json`;
+    return JSON.parse(readFileSync(configPath).toString());
+}
+
+const getPostNumbers = includeReviewPosts => {    
     var postDirs = getDirectories(process.env.postsDir);
-    return postDirs.map(dir => parseInt(dir.split(sep).pop(),10));
+    var posts = postDirs.map(dir => parseInt(dir.split(sep).pop(),10));
+    return posts.filter(post => {
+        if(includeReviewPosts) {
+            return getPostConfig(post);    
+        }
+        return getPostConfig(post).inReview === false;
+    });  
 };
 
-const getLargestPostNumber = () => parseInt(getPostNumbers().sort().pop(), 10);
+const getPostNumbersInReview = getPostsInReview => {    
+    return getPostNumbers(true).filter(post => {
+        return getPostConfig(post).inReview === true;
+    });
+};
+
+const getLargestPostNumber = () => {
+    return parseInt(getPostNumbers().sort().pop(), 10);
+}
 
 const isDev = () => process.env.name === "dev";
 
@@ -85,6 +106,7 @@ module.exports = {
     getDirectories: getDirectories,
     deleteFilesFromDirectory: deleteFilesFromDirectory,
     getPostNumbers: getPostNumbers,
+    getPostNumbersInReview: getPostNumbersInReview,
     getLargestPostNumber: getLargestPostNumber,
     getFiles: getFiles,
     getFilesRecursively: getFilesRecursively,
@@ -93,5 +115,6 @@ module.exports = {
     getGlossarySubjects: getGlossarySubjects,
     getAppendixSubjects: getAppendixSubjects,
     getRandomInt: getRandomInt,
-    capatalizeFirstLetterOfEveryWord: capatalizeFirstLetterOfEveryWord
+    capatalizeFirstLetterOfEveryWord: capatalizeFirstLetterOfEveryWord,
+    getPostConfig: getPostConfig
 };
