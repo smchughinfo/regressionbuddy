@@ -101,3 +101,53 @@ function removeElements(selector) {
 function capatalizeFirstLetterOfEveryWord(word) {
     return word.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 };
+
+function get(url, successCallback, errorCallback) {
+    var xhttp = new XMLHttpRequest();
+    xhttp.onreadystatechange = function() {
+        if (this.readyState == 4) {
+            if(this.status === 200) {
+                successCallback(this.responseText);
+            }
+            else {
+                errorCallback(this.status)
+            }
+        }
+    };
+    xhttp.open("GET", url, true);
+    xhttp.send();
+}
+
+function reportErrorToUser(msg) {
+    removeElements("#reportedError");
+
+    var nav = document.querySelector("body nav");
+
+    var errorDiv = document.createElement("div");
+    errorDiv.id = "reportedError";
+    errorDiv.className = "alert alert-danger";
+    errorDiv.innerHTML = msg;
+
+    insertAfter(errorDiv, nav);
+}
+
+function insertAfter(newNode, referenceNode) {
+    referenceNode.parentNode.insertBefore(newNode, referenceNode.nextSibling);
+}
+
+function aFor(arr, func, itr) {
+    var todo = arr.length;
+    var done = 0;
+
+    function iterate() {
+        func(arr[done], function(data) { // call the async function
+            itr(arr[done], data, (done + 1 === todo)); // call the itr callback so caller can do per-element processing
+
+            done++;
+            if(done < todo) {
+                iterate();
+            }
+        });
+    }
+    iterate();
+}

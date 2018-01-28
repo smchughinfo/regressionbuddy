@@ -30,7 +30,8 @@ const integrateSiteJavaScript = () => {
     let js = [
         `${process.env.clientDir}/scripts/modernizer.js`,
         `${process.env.clientDir}/scripts/utilities.js`,
-        `${process.env.clientDir}/scripts/master.js`
+        `${process.env.clientDir}/scripts/master.js`,
+        `${process.env.clientDir}/scripts/comments.js`
     ].map(path => readFileSync(path)).join("\r\n");
     writeFileSync(siteJavaScriptPath, js);
 };
@@ -257,9 +258,28 @@ const buildPost = (postNumber, subject) => {
     // this part is for the review file:
     let reviewFilePath = `${process.env.buildDir}/${postNumber}.${subject}.review.html`;
     let $ = cheerio.load(outFile);
-    let nav = $.root().find("nav");
+    let title = $.root().find("title");
+    let meta = $.root().find("meta[name='description']");
+    let nav = $.root().find("body > nav:first-of-type");
+    let subjectNavs = $.root().find(".subject-options a");
+    let topicLinks = $.root().find("#topicLinks a");
+    title.html(`Review - ${title.html()}`);
+    meta.attr("content", `Page Under Review: ${meta.attr("content")}`);
     nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
-    writeFileSync(reviewFilePath, outFile);
+    subjectNavs.each((i, elm) => { 
+        let a = $(elm);
+        let href = a.attr("href");
+        a.attr("href", `${href}/review`);
+    });
+    topicLinks.each((i, elm) => { 
+        let a = $(elm);
+        let href = a.attr("href");
+        let parts = href.split("#");
+        parts[0] = parts[0].replace("/", "");
+        a.attr("href", `/${postNumber}/${parts[0]}/review#${parts[1]}`);
+    });
+    let reviewOutFile = $.html();
+    writeFileSync(reviewFilePath, reviewOutFile);
     addGraphic(reviewFilePath);
 };
 
@@ -348,15 +368,18 @@ const buildReviewAppendixes = () => {
         getPostSubjects(postNumber).forEach(subject => {
             let config = getPostConfig(postNumber);
             let postTopics = config.topics[subject.replace(/_/g, "-")];            
-            let appendix = readFileSync(`${process.env.buildDir}/appendix.${subject}.html`);
+            let appendix = readFileSync(`${process.env.buildDir}/appendix.${subject}.html`).toString();
             let appendixTitle = `${subject} Appendix`;
             let appendixOutFilePath = `${process.env.buildDir}/${postNumber}.appendix.${subject}.review.html`;
         
+            postTopics = postTopics.map(topic => {
+                return topic.toLowerCase().replace(/ /g, "-");
+            });
+
             let $ = cheerio.load(appendix);
             let topics = $.root().find("#appendix > *");
             topics.each((i, elm) => {
                 let topic = $(elm).attr("id") || "";
-                topic = capatalizeFirstLetterOfEveryWord(topic.replace(/-/g, " "));
                 if(postTopics.indexOf(topic) === -1) {
                     $(elm).remove();
                 }
@@ -366,14 +389,20 @@ const buildReviewAppendixes = () => {
             });
 
             let title = $.root().find("title");
-            let h4 = $.root().find("body h4");
-            let nav = $.root().find("nav");
             let body = $.root().find("body");
-            title.html("Review - " + title.html());
-            h4.html(h4.html() + " Review");
+            let h4 = $.root().find("body > h4");
+            let nav = $.root().find("nav");
+            let appendixElm = $.root().find("#appendix");
+            let meta = $.root().find("meta[name='description']");
+            title.html(`Review - ${title.html()}`);
+            meta.attr("content", `Page Under Review: ${meta.attr("content")}`);
+            h4.html(`Week ${postNumber} - ${h4.html()} Review`);
             nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
-            body.append(readFileSync(`${process.env.postTemplatesDir}/comments.html`).toString());
-
+            //appendixElm.find("br:last-of-type").remove(); // this is pretty bad.
+            appendixElm.append('<div class="container-fluid">' + readFileSync(`${process.env.postTemplatesDir}/show_comments_link.html`).toString() + '</div><br>');
+            appendixElm.after(readFileSync(`${process.env.postTemplatesDir}/comments.html`).toString());
+            body.find("#comments > br:first-of-type").remove(); // this is pretty bad.
+            body.append("<br><br>"); // make it easier to see comments
             let outFile = $.html();
 
             if(isDev() === false) {
@@ -398,12 +427,14 @@ const buildReviewPage = () => {
                 <div class="card-body">\
                     <div class="left-right">\
                         <span class="left">[TITLE]</span>\
-                        <span class="right" data-comments-for="[URL]">n Comments</span>\
+                        <span class="right" data-comments-for="[URL]"></span>\
                     </div>\
-                    <div>[TOPICS]</div>\
-                    <a href="[URL]">[URL]</a>\
+                    <span class="right" data-comments-for="[URL]">[TOPICS]</span><br>\
+                    <a data-link-with-comments="true" href="[URL]">Post Review</a>\
+                    <span data-comment-count-for="[URL]">&nbsp;&nbsp;<img src="/images/loading.png" class="inline-loader" /></span>\
                     <br>\
-                    <a href="[APPENDIX_URL]">[APPENDIX_URL]</a>\
+                    <a data-link-with-comments="true" href="[APPENDIX_URL]">Appendix Review</a>\
+                    <span data-comment-count-for="[APPENDIX_URL]">&nbsp;&nbsp;<img src="/images/loading.png" class="inline-loader" /></span>\
                 </div>\
             </div>\
         </div>';
@@ -420,8 +451,8 @@ const buildReviewPage = () => {
             let postTopics = config.topics[subject.replace(/_/g, "-")];  
 
             postReview = postReview.replace(/\[TITLE\]/g, postReviewTitle);
-            postReview = postReview.replace(/\[URL\]/g, `/${postNumber}/${subject}/review`);
-            postReview = postReview.replace(/\[APPENDIX_URL\]/g, `/${postNumber}/appendix/${subject}/review`);
+            postReview = postReview.replace(/\[URL\]/g, `/${postNumber}/${subject.replace(/_/g, "-")}/review`);
+            postReview = postReview.replace(/\[APPENDIX_URL\]/g, `/${postNumber}/appendix/${subject.replace(/_/g, "-")}/review`);
             postReview = postReview.replace(/\[TOPICS\]/g, postTopics.join(", "));
             reviews += postReview;
             reviews += "<br>";
@@ -429,7 +460,6 @@ const buildReviewPage = () => {
             let appendixReview = template;
             
             console.log("ADD OTHER STUFF HERE...");
-
         });
     });
 

@@ -87,9 +87,10 @@ const handleFileRequest = (req, res) => {
         filePath = "build/review.html"
     }
     else if(
+        /\/[0-9]+\/(algebra|trigonometry|calculus|vector-calculus|statistics|linear-algebra)\/review$/.test(urn) ||
         /\/[0-9]+\/appendix\/(algebra|trigonometry|calculus|vector-calculus|statistics|linear-algebra)\/review$/.test(urn)
     ) {
-        filePath = `${process.env.publicDir}/build/${urn.replace("/", "").replace(/\//g, ".")}.html`;
+        filePath = `${process.env.publicDir}/build/${urn.replace("/", "").replace(/\//g, ".").replace(/-/g, "_")}.html`;
     }
 
     console.log(filePath);
