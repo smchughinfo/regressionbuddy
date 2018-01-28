@@ -1,139 +1,81 @@
 <h4 class="text-center date">Calculus Appendix</h4>
 <br>
-<div id="appendix" class="container-fluid">
-    <div class="card text-center">
-        <div id="limit-theorems" class="card-body text-left">
-            <h4>Limit Theorems</h4>
-            <!--<p><i>"Adding a number to both sides of the equation doesn't change the solution."</i></p>
+<div id="appendix">
+    <div id="limit-theorems" class="container-fluid">
+        <div class="card text-center">
+            <div class="card-body text-left">
+                <h4>Limit Theorems</h4>
+                <!--<p><i>"Adding a number to both sides of the equation doesn't change the solution."</i></p>
 
             <p>If <i>A</i>, <i>B</i> and <i>C</i> are real numbers then</p>-->
-            <div class="alert alert-info" role="alert">
-                
-                
-                        <ol class="list-group">
-                            <li>
-                                \( \lim\limits_{x\to a} c\cdot f(x) = c\cdot \lim\limits_{x\to a} f(x) \)
-                                <br>
-                                <span class="function-note">
-                                    *\(c\) is a constant.
-                                </span>
-                            </li>
-                            <li>
-                                \( \lim\limits_{x\to a} \left[f(x)\right]^{r} = \left[\lim\limits_{x\to a} f(x)\right]^{r} \)
-                                <br>
-                                <span class="function-note">
-                                    *\(r\) is a positive constant.
-                                </span>
-                                
-                            </li>
-                            <li>
-                                \( \lim\limits_{x\to a} \left[f(x)+g(x)\right] = \lim\limits_{x\to a} f(x) + \lim\limits_{x\to a} g(x) \)
-                            </li>
-                            <li>
-                                \( \lim\limits_{x\to a} \left[f(x)-g(x)\right] = \lim\limits_{x\to a} f(x) - \lim\limits_{x\to a} g(x) \)
-                            </li>
-                            <li>
-                                \( \lim\limits_{x\to a} \left[f(x) \cdot g(x)\right] = \lim\limits_{x\to a} f(x) \cdot \lim\limits_{x\to a} g(x) \)
-                            </li>
-                            <li>
-                                \( \lim\limits_{x\to a} \frac{f(x)}{g(x)} = \frac{\lim\limits_{x\to a} f(x)}{\lim\limits_{x\to a} g(x)} \).
-                                <br>
-                                <span class="function-note">
+                <div class="alert alert-info" role="alert">
+
+
+                    <ol class="list-group">
+                        <li>
+                            \( \lim\limits_{x\to a} c\cdot f(x) = c\cdot \lim\limits_{x\to a} f(x) \)
+                            <br>
+                            <span class="function-note">
+                                *\(c\) is a constant.
+                            </span>
+                        </li>
+                        <li>
+                            \( \lim\limits_{x\to a} \left[f(x)\right]^{r} = \left[\lim\limits_{x\to a} f(x)\right]^{r} \)
+                            <br>
+                            <span class="function-note">
+                                *\(r\) is a positive constant.
+                            </span>
+
+                        </li>
+                        <li>
+                            \( \lim\limits_{x\to a} \left[f(x)+g(x)\right] = \lim\limits_{x\to a} f(x) + \lim\limits_{x\to a} g(x) \)
+                        </li>
+                        <li>
+                            \( \lim\limits_{x\to a} \left[f(x)-g(x)\right] = \lim\limits_{x\to a} f(x) - \lim\limits_{x\to a} g(x) \)
+                        </li>
+                        <li>
+                            \( \lim\limits_{x\to a} \left[f(x) \cdot g(x)\right] = \lim\limits_{x\to a} f(x) \cdot \lim\limits_{x\to a} g(x) \)
+                        </li>
+                        <li>
+                            \( \lim\limits_{x\to a} \frac{f(x)}{g(x)} = \frac{\lim\limits_{x\to a} f(x)}{\lim\limits_{x\to a} g(x)} \).
+                            <br>
+                            <span class="function-note">
                                 *\(g(x)\neq 0\)
-                                </span>
-                            </li>
-                        </ol>
+                            </span>
+                        </li>
+                    </ol>
+                </div>
+                <br>
+                <div class="alert alert-success" role="alert">
+                    <strong>Direct Substitution Example</strong>
+                    <span>
+                        \( \lim\limits_{x\to\ 8} \frac{x}{2} = \frac{(8)}{2} = 4 \)
+                    </span>
+                    <hr>
+                    <strong>Factoring Example</strong>
+                    <span>
+                        \( \lim\limits_{x\to\ 3} \frac{x^2-9}{x-3} = \lim\limits_{x\to\ 3} \frac{(x+3)(x-3)}{x-3} = \lim\limits_{x\to\ 3} x+3 = (3)
+                        + 3 = 6 \)
+                    </span>
+                    <hr>
+                    <strong>Conjugate Example</strong>
+                    <span>
+                        \( \lim\limits_{x\to\ 25} \frac{5-\sqrt{x}}{25-x} = \lim\limits_{x\to\ 25} \frac{5-\sqrt{x}}{25-x}\frac{5+\sqrt{x}}{5+\sqrt{x}}
+                        = \lim\limits_{x\to\ 25} \frac{25-x}{(25-x)(5+\sqrt{x})} = \lim\limits_{x\to\ 25} \frac{1}{5+\sqrt{x}}
+                        = \frac{1}{5+\sqrt{25}} = \frac{1}{5+5} = \frac{1}{10} \)
+                    </span>
+                    <hr>
+                    <strong>Divide by Highest Power Example</strong>
+                    <span>
+                        \( \lim\limits_{x\to\ \infty} \sqrt{\frac{5x^2}{x^2+2}} = \lim\limits_{x\to\ \infty} \frac{\sqrt{5x^2}}{\sqrt{x^2+2}} = \lim\limits_{x\to\
+                        \infty} \frac {\frac {\sqrt{5x^2}} {x} } {\frac {\sqrt{x^2+2}} {x} } = \lim\limits_{x\to\ \infty}
+                        \frac { \sqrt{\frac{5x^2}{x^2}} } { \sqrt{\frac{x^2+2}{x^2}} } = \lim\limits_{x\to\ \infty} \frac
+                        { \sqrt{\frac{5x^2}{x^2}} } { \sqrt{\frac{x^2}{x^2} + \frac{2}{x^2}} } = \lim\limits_{x\to\ \infty}
+                        \frac { \sqrt{5} } { \sqrt{1 + \frac{2}{x^2}} } = \frac { \sqrt{5} } { \sqrt{1 + \frac{2}{\infty}}
+                        } = \frac { \sqrt{5} } { \sqrt{1 + 0} } = \frac { \sqrt{5} } { \sqrt{1} } = \sqrt{5} \)
+                    </span>
+                </div>
             </div>
-            <br>
-            <div class="alert alert-success" role="alert">
-                <strong>Direct Substitution Example</strong>
-                <span>
-                    \( \lim\limits_{x\to\ 8} \frac{x}{2} = \frac{(8)}{2} = 4 \)
-                </span>
-                <hr>
-                <strong>Factoring Example</strong>
-                <span>
-                    \( \lim\limits_{x\to\ 3} \frac{x^2-9}{x-3} = \lim\limits_{x\to\ 3} \frac{(x+3)(x-3)}{x-3} = \lim\limits_{x\to\ 3} x+3 = (3) + 3 = 6 \)
-                </span>
-                <hr>
-                <strong>Conjugate Example</strong>
-                <span>
-                    \( 
-                      \lim\limits_{x\to\ 25} \frac{5-\sqrt{x}}{25-x} 
-                    = \lim\limits_{x\to\ 25} \frac{5-\sqrt{x}}{25-x}\frac{5+\sqrt{x}}{5+\sqrt{x}} 
-                    = \lim\limits_{x\to\ 25} \frac{25-x}{(25-x)(5+\sqrt{x})}
-                    = \lim\limits_{x\to\ 25} \frac{1}{5+\sqrt{x}}
-                    = \frac{1}{5+\sqrt{25}}
-                    = \frac{1}{5+5}
-                    = \frac{1}{10}
-                    \)
-                </span>
-                <hr>
-                <strong>Divide by Highest Power Example</strong>
-                <span>
-                    \(
-                            \lim\limits_{x\to\ \infty} \sqrt{\frac{5x^2}{x^2+2}}
-                          = \lim\limits_{x\to\ \infty} \frac{\sqrt{5x^2}}{\sqrt{x^2+2}}
-                          = \lim\limits_{x\to\ \infty} 
-                            \frac
-                                {\frac
-                                    {\sqrt{5x^2}}
-                                    {x}
-                                }
-                                {\frac
-                                    {\sqrt{x^2+2}}
-                                    {x}
-                                }
-                            = \lim\limits_{x\to\ \infty} 
-                                \frac
-                                    {
-                                        \sqrt{\frac{5x^2}{x^2}}
-                                    }
-                                    {
-                                        \sqrt{\frac{x^2+2}{x^2}}
-                                    }
-                            = \lim\limits_{x\to\ \infty} 
-                                \frac
-                                    {
-                                        \sqrt{\frac{5x^2}{x^2}}
-                                    }
-                                    {
-                                        \sqrt{\frac{x^2}{x^2} + \frac{2}{x^2}}
-                                    }
-                            = \lim\limits_{x\to\ \infty} 
-                                \frac
-                                    {
-                                        \sqrt{5}
-                                    }
-                                    {
-                                        \sqrt{1 + \frac{2}{x^2}}
-                                    }
-                            =   \frac
-                                    {
-                                        \sqrt{5}
-                                    }
-                                    {
-                                        \sqrt{1 + \frac{2}{\infty}}
-                                    }
-                            =   \frac
-                                    {
-                                        \sqrt{5}
-                                    }
-                                    {
-                                        \sqrt{1 + 0}
-                                    }
-                            =   \frac
-                                    {
-                                        \sqrt{5}
-                                    }
-                                    {
-                                        \sqrt{1}
-                                    }
-                            =   \sqrt{5}
-                    \)
-                </span>
-            </div>
-        </div>
             <style>
                 .function-note {
                     font-weight: normal !important;
