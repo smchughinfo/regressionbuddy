@@ -148,8 +148,11 @@ window.addEventListener("click", function(e) {
         }
     }
     else {
-        forEachElement(".cheat-container", function(cheatContainer) {
-            cheatContainer.className = cheatContainer.className.replace(/\bon\b/g, "");
-        });
+        var messingWithText = /\bcheat-text\b/.test(e.target.className);
+        if(!messingWithText) {
+            forEachElement(".cheat-container", function(cheatContainer) {
+                cheatContainer.className = cheatContainer.className.replace(/\bon\b/g, "");
+            });   
+        }
     }
 });

@@ -513,8 +513,8 @@ img {
     background:white;
     transition: .4s;
 }
-.cheat-container > .cheat-text::selection { background:white; }
-.cheat-container > .cheat-text::-moz-selection { background:white; }
+.cheat-container:not(.on) > .cheat-text::selection { background:white; }
+.cheat-container:not(.on) > .cheat-text::-moz-selection { background:white; }
 
 
 .cheat-container.on > .cheat-light {
