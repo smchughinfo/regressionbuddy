@@ -80,7 +80,7 @@ document.getElementById("appendixDropdown").addEventListener("click", showButton
             window.location.href = redirectUrl;
         }
     }
-})();
+})//();
 
 // lazy load images
 window.addEventListener("load", function () {
