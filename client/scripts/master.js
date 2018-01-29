@@ -130,3 +130,36 @@ window.addEventListener("click", function (e) {
         }
     }
 });
+
+/****** CHEAT CODE ******/
+window.addEventListener("click", function(e) {
+    var toggleCheat = /\bcheat-light\b/.test(e.target.className);
+    if(toggleCheat) {
+        var cheatLight = e.target;
+        var cheatContainer = e.target.closest(".cheat-container")
+        var cheatText= cheatContainer.querySelector("cheat-text");
+        
+        var on = /\bon\b/.test(cheatContainer.className);
+        if(on) {
+            cheatContainer.className = cheatContainer.className.replace(/\bon\b/g, "");
+        }
+        else {
+            cheatContainer.className += " on";
+        }
+    }
+    else {
+        var messingWithText = /\bcheat-text\b/.test(e.target.className);
+        if(!messingWithText) {
+            forEachElement(".cheat-container", function(cheatContainer) {
+                cheatContainer.className = cheatContainer.className.replace(/\bon\b/g, "");
+            });   
+        }
+    }
+});
+
+/****** MATCH HASH ******/
+var isSolutions = window.location.hash === "#solutions";
+var isWork = window.location.hash === "#work";
+if(isSolutions || isWork) {
+    document.querySelector("[href='" + window.location.hash + "']").click();
+}

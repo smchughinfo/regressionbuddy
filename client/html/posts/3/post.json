@@ -5,7 +5,7 @@
   "topics": {
     "algebra": ["Not A Real Thing"],
     "trigonometry": ["The Trigonometric Ratios"],
-    "calculus": ["Limit Theorems"],
+    "calculus": ["Limit Theorems", "Evaluating Complicted Limits"],
     "linear-algebra": ["Linear Equations in n Variables", "The Number of Solutions to a System of Linear Equations", "Back-Substitution"],
     "statistics": ["Variables", "Levels of Measurement"],
     "vector-calculus": ["Vector Spaces", "Vector Addition and Scalar Multiplication"]
