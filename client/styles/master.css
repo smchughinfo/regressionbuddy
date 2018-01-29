@@ -500,3 +500,28 @@ img {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
+
+/******** CHEAT CODE ********/
+.cheat-container > .cheat-light {
+    filter:grayscale(100%);
+    vertical-align: top;
+    cursor: pointer;
+    transition: .4s;
+}
+.cheat-container > .cheat-text {
+    color:white;
+    background:white;
+    outline: 1px dashed rgb(200, 200, 200);
+    transition: .4s;
+}
+.cheat-container > .cheat-text::selection { background:white; }
+.cheat-container > .cheat-text::-moz-selection { background:white; }
+
+
+.cheat-container.on > .cheat-light {
+    filter:grayscale(0%);
+}
+.cheat-container.on > .cheat-text {
+    color:rgb(220,53,69);
+    outline: 1px dashed white;
+}
