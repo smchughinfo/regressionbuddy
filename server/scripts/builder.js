@@ -354,12 +354,12 @@ const buildIndex = () => {
     let indexFilePath = `${process.env.publicDir}/index.html`;
 
     let indexContent = readFileSync(indexFileContentPath).toString();
-    if(/<title>.*?<\/title>/.test(indexContent) === false) {
-        throw "couldn't find title;"
-    }
-    else {
-        indexContent = indexContent.replace(/<title>.*?<\/title>/, "<title>" + shortDescription + "</title>");
-    }
+
+    let $ = cheerio.load(indexContent);
+    $.root().find("title").html(shortDescription);
+    $.root().find("meta[name='description']").attr("content", description);
+    indexContent = $.html();
+
     writeFileSync(indexFilePath, indexContent);
 }
 
@@ -509,24 +509,6 @@ const generateSiteMap = () => {
             mod: mostRecentPostDate,
             freq: "weekly",
             priority: "1.0"
-        },
-        { 
-            loc: "https://www.regressionbuddy.com/about",
-            mod: mostRecentPostDate,
-            freq: "weekly",
-            priority: ".9"
-        },
-        { 
-            loc: "https://www.regressionbuddy.com/rss.xml",
-            mod: mostRecentPostDate,
-            freq: "weekly",
-            priority: ".8"
-        },
-        { 
-            loc: "https://www.regressionbuddy.com/review",
-            mod: mostRecentPostDate,
-            freq: "weekly",
-            priority: ".8"
         }
     ];
 
@@ -536,10 +518,30 @@ const generateSiteMap = () => {
             loc: `https://www.regressionbuddy.com/appendix/${subject}`,
             mod: mostRecentPostDate,
             freq: "weekly",
-            priority: ".7"
+            priority: ".9"
         };
         pages.push(appendix);
     });
+
+    pages.push({ 
+        loc: "https://www.regressionbuddy.com/about",
+        mod: mostRecentPostDate,
+        freq: "weekly",
+        priority: ".8"
+    });
+    pages.push({ 
+        loc: "https://www.regressionbuddy.com/review",
+        mod: mostRecentPostDate,
+        freq: "weekly",
+        priority: ".7"
+    });
+    pages.push({ 
+        loc: "https://www.regressionbuddy.com/rss.xml",
+        mod: mostRecentPostDate,
+        freq: "weekly",
+        priority: ".6"
+    });
+    
     getPostSubjects(1).forEach(subject => {
         let glossary = {
             loc: `https://www.regressionbuddy.com/glossary/${subject}`,
