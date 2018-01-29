@@ -1,2 +1,2 @@
-a 450x450 image at 22px font
-look about the same as a 19px font at 450px
+450x450 - 24px font (was using 22 but lost connection with other ratios)
+318x318 - 18px font

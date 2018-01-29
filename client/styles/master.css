@@ -81,6 +81,13 @@
 #componentsContainer li {
     list-style-position: inside;
 }
+#componentsContainer #work li {
+    list-style-position: outside;
+    margin-left: 20px;
+}
+.hide-list-item {
+    list-style-type: none;
+}
 .problem {
     white-space: nowrap;
 }
