@@ -176,9 +176,10 @@ const setPostNavigationLinks = (outFile, postNumber, subject) => {
     let inReview = getPostConfig(postNumber).inReview === true;
     subject = subject.replace(/_/g, "-").toLowerCase();
 
+    console.log("UNSET HARDCODE TO TRUE");
 
     // first and prev
-    if(postNumber === 1 || inReview) {
+    if(true || postNumber === 1 || inReview) {
         $('[data-link-to="first"]').parent().addClass("disabled");
         $('[data-link-to="previous"]').parent().addClass("disabled");
     }
@@ -189,7 +190,7 @@ const setPostNavigationLinks = (outFile, postNumber, subject) => {
     }
 
     // random
-    if(last === 1 || inReview) {
+    if(true || last === 1 || inReview) {
         $('[data-link-to="random"]').parent().addClass("disabled");
     }
     else {
@@ -198,7 +199,7 @@ const setPostNavigationLinks = (outFile, postNumber, subject) => {
     }
 
     // next and last
-    if(postNumber === last || inReview) {
+    if(true || postNumber === last || inReview) {
         $('[data-link-to="next"]').parent().addClass("disabled");   
         $('[data-link-to="last"]').parent().addClass("disabled");           
     }
@@ -252,8 +253,10 @@ const buildPost = (postNumber, subject) => {
         outFile = minimizePageHTML(outFile);
     }
 
-    writeFileSync(outFilePath, outFile);
-    addGraphic(outFilePath);
+    if(!getPostConfig(postNumber).inReview) {
+        writeFileSync(outFilePath, outFile);
+        addGraphic(outFilePath);
+    }
 
     // this part is for the review file:
     let reviewFilePath = `${process.env.buildDir}/${postNumber}.${subject}.review.html`;
@@ -294,7 +297,15 @@ const buildAppendix = subject => {
     let subjectAppendix = readFileSync(`${process.env.clientDir}/html/appendix/${subject}.html`).toString();
     let outFilePath = `${process.env.buildDir}/appendix.${subject}.html`;
     let title = `${capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, " "))} Appendix`;
+
     buildStaticContentPage(subjectAppendix, title, title, outFilePath);
+
+    console.log("UNSET THIS");
+    let $ = cheerio.load(readFileSync(outFilePath));
+    let nav = $.root().find("nav");
+    nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
+    subjectAppendix = $.html();
+    writeFileSync(outFilePath, subjectAppendix);
 };
 
 const buildAboutPage = () => {
@@ -348,6 +359,15 @@ const buildPages = () => {
 };
 
 const buildIndex = () => {
+    console.log("allow index to build once first post is out of review");
+    var index = `<div class="jumbotron">\
+    <h1 class="display-3">Regression Buddy is in Review</h1>\
+    <p class="lead">Welcome to regressionbuddy.com, the cool new math website all the kids are talking about. The current go live date is 2/11/18. In the meantime you can help improve the quality of this site by participating in its <a href="/review">first review</a>.</p>\
+    </p>\
+  </div>`;
+    buildStaticContentPage(index, shortDescription, description, `${process.env.publicDir}/index.html`);
+    return;
+
     let lastPost = getLargestPostNumber();
     let defaultSubject = process.env.defaultSubject;
     let indexFileContentPath = `${process.env.buildDir}/${lastPost}.${defaultSubject}.html`;
@@ -502,7 +522,9 @@ const generateSiteMap = () => {
         return postJson;
     });
 
-    let mostRecentPostDate = postJsons[postJsons.length - 1].date;
+    console.log("UNSET THIS!!!");
+    console.log("UNSET MASTER.JS // redirect to normalized url --- ON THE CLIENT SIDE //() -> ()");
+    let mostRecentPostDate = "2/11/2018";//postJsons[postJsons.length - 1].date;
     let pages = [
         { 
             loc: "https://www.regressionbuddy.com",

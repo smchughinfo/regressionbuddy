@@ -1,13 +1,13 @@
 {
-  "inReview": false,
-  "date": "11/2/2017",
-  "phrase": "on this day in 1858 somebody invented something - I got problems ◔ ⌣ ◔",
+  "inReview": true,
+  "date": "2/11/2018",
+  "phrase": "This weeks problems are brought to you by &lt;joke&gt;.",
   "topics": {
-    "algebra": ["Addition Property of Equality"],
-    "trigonometry": ["Flibbidy Flobedy Blob Blobbity"],
-    "calculus": ["CO CAULULOSULUOUSSSSSS"],
-    "linear-algebra": ["LAHHHHHHHHHHHHHH"],
-    "statistics": ["STa"],
-    "vector-calculus": ["V!!!!!!!!!!!!!!"]
+    "algebra": ["Properties of Real Numbers", "Fractions", "Like Terms"],
+    "trigonometry": ["The Trigonometric Ratios"],
+    "calculus": ["Limit Theorems", "Evaluating Complicted Limits"],
+    "linear-algebra": ["Linear Equations in n Variables", "The Number of Solutions to a System of Linear Equations", "Back-Substitution"],
+    "statistics": ["Variables", "Levels of Measurement"],
+    "vector-calculus": ["Vector Spaces", "Vector Addition and Scalar Multiplication"]
   }
 }
