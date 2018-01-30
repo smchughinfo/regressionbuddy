@@ -417,8 +417,8 @@ const buildReviewAppendixes = () => {
             title.html(`Review - ${title.html()}`);
             meta.attr("content", `Page Under Review: ${meta.attr("content")}`);
             h4.html(`Week ${postNumber} - ${h4.html()} Review`);
-            nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
-            //appendixElm.find("br:last-of-type").remove(); // this is pretty bad.
+            console.log("UNSET -- UNCOMMENT THIS NEXT LINE!!!! WHEN FIRST POST GOES OUT OF REVIEW");
+            //nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
             appendixElm.append('<div class="container-fluid">' + readFileSync(`${process.env.postTemplatesDir}/show_comments_link.html`).toString() + '</div><br>');
             appendixElm.after(readFileSync(`${process.env.postTemplatesDir}/comments.html`).toString());
             body.find("#comments > br:first-of-type").remove(); // this is pretty bad.
