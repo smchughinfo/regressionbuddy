@@ -40,7 +40,8 @@ function setRandomLink() {
     });
 }
 if (document.querySelector(".post-nav")) {
-    setRandomLink();
+    console.log("TODO: UNSET: UNCOMMENT THIS WHEN FIRST POST IS OUT OF REVIEW.");
+    //setRandomLink();
 }
 
 function showButtonDropdown(e) {
@@ -80,7 +81,8 @@ document.getElementById("appendixDropdown").addEventListener("click", showButton
             window.location.href = redirectUrl;
         }
     }
-})//();
+})();
+
 
 // lazy load images
 window.addEventListener("load", function () {

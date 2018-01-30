@@ -299,13 +299,6 @@ const buildAppendix = subject => {
     let title = `${capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, " "))} Appendix`;
 
     buildStaticContentPage(subjectAppendix, title, title, outFilePath);
-
-    console.log("UNSET THIS");
-    let $ = cheerio.load(readFileSync(outFilePath));
-    let nav = $.root().find("nav");
-    nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
-    subjectAppendix = $.html();
-    writeFileSync(outFilePath, subjectAppendix);
 };
 
 const buildAboutPage = () => {
@@ -359,15 +352,6 @@ const buildPages = () => {
 };
 
 const buildIndex = () => {
-    console.log("allow index to build once first post is out of review");
-    var index = `<div class="jumbotron">\
-    <h1 class="display-3">Regression Buddy is in Review</h1>\
-    <p class="lead">Welcome to regressionbuddy.com, the cool new math website all the kids are talking about. The current go live date is 2/11/18. In the meantime you can help improve the quality of this site by participating in its <a href="/review">first review</a>.</p>\
-    </p>\
-  </div>`;
-    buildStaticContentPage(index, shortDescription, description, `${process.env.publicDir}/index.html`);
-    return;
-
     let lastPost = getLargestPostNumber();
     let defaultSubject = process.env.defaultSubject;
     let indexFileContentPath = `${process.env.buildDir}/${lastPost}.${defaultSubject}.html`;
@@ -417,8 +401,7 @@ const buildReviewAppendixes = () => {
             title.html(`Review - ${title.html()}`);
             meta.attr("content", `Page Under Review: ${meta.attr("content")}`);
             h4.html(`Week ${postNumber} - ${h4.html()} Review`);
-            console.log("UNSET -- UNCOMMENT THIS NEXT LINE!!!! WHEN FIRST POST GOES OUT OF REVIEW");
-            //nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
+            nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
             appendixElm.append('<div class="container-fluid">' + readFileSync(`${process.env.postTemplatesDir}/show_comments_link.html`).toString() + '</div><br>');
             appendixElm.after(readFileSync(`${process.env.postTemplatesDir}/comments.html`).toString());
             body.find("#comments > br:first-of-type").remove(); // this is pretty bad.
@@ -524,7 +507,7 @@ const generateSiteMap = () => {
 
     console.log("UNSET THIS!!!");
     console.log("UNSET MASTER.JS // redirect to normalized url --- ON THE CLIENT SIDE //() -> ()");
-    let mostRecentPostDate = "2/11/2018";//postJsons[postJsons.length - 1].date;
+    let mostRecentPostDate = postJsons[postJsons.length - 1].date;
     let pages = [
         { 
             loc: "https://www.regressionbuddy.com",
