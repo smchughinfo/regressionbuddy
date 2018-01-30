@@ -3,7 +3,7 @@ const { getLargestPostNumber } = require("./utilities.js");
 
 module.exports = {
     initialize: () => {
-        process.env.name = "prod";
+        process.env.name = "dev";
 
         process.env.defaultSubject = "algebra";
         process.env.hostName = process.env.name === "dev" ? "http://localhost:8080" : "https://www.regressionbuddy.com" 
