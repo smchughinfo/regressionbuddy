@@ -11,7 +11,8 @@ module.exports = {
         process.env.publicDir = join(process.env.clientDir, "/public"); 
         process.env.buildDir = join(process.env.publicDir, "/build");
         process.env.postsDir = join(process.env.clientDir, "/posts");
-        process.env.postTemplatesDir = join(process.env.clientDir, "/html/post_html")
+        process.env.postTemplatesDir = join(process.env.clientDir, "/html/post_html"),
+        process.env.templatesDir = join(process.env.clientDir, "/html/templates")
 
         process.env.buildDirURL = "build";
 

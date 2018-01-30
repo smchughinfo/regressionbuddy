@@ -2,6 +2,7 @@ const { readFileSync, writeFileSync, watchFile, unwatchFile, mkdirSync } = requi
 const { normalize, sep} = require("path");
 const compressor = require("node-minify");
 const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig } = require("./utilities.js");
+const { applyTemplates } = require("./templates.js");
 const zlib = require('zlib');
 const { minify } = require("html-minifier");
 const cheerio = require('cheerio');
@@ -248,6 +249,8 @@ const buildPost = (postNumber, subject) => {
     outFile = outFile.replace('data-subject=""', `data-subject='${subject}'`);    
     outFile = outFile.replace('data-post-number=""', `data-post-number='${postNumber}'`);    
     outFile = outFile.replace('data-last-post-number=""', `data-last-post-number='${getLargestPostNumber()}'`);    
+
+    outFile = applyTemplates(outFile);
 
     if(process.env.name !== "dev") {
         outFile = minimizePageHTML(outFile);
