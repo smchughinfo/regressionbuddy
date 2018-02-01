@@ -1,4 +1,5 @@
 // cheerio can't find elements inside of a <template> tag. so <template> is called <placeholder>
+// each template is completely responsible for validating its child elements.
 
 const { readFileSync } = require("fs");
 const cheerio = require('cheerio');
@@ -6,43 +7,86 @@ const cheerio = require('cheerio');
 const applyTemplates = html => {
     $ = cheerio.load(html);
 
-    $.root().find("li-with-sublist").each(apply_li_with_sublist);
-    $.root().find("li-text").each(apply_li_text);
+    let _templates = ["primary-list", "nested-list", "li-text"]; // in order of how they are applied
+
+    _templates.forEach(template => {
+        $.root().find(template).each((i, elm) => {
+            template = template.replace(/-/g, "_");
+            templates[template](elm);
+        });
+    });
 
     return $.html();
 };
 
-const apply_li_with_sublist = (i, elm) => {
-    let $placeholder = $(elm);
-    let templatePath = `${process.env.templatesDir}/li_with_sublist.html`;
-    let $template = $(readFileSync(templatePath).toString());
+let templates = {
+    primary_list: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/primary_list.html`;
+        let $template = $(readFileSync(templatePath).toString());
         
-    let $items = $placeholder.find("item");
-    let $repeater = $template.find("[repeater]");
-    let $repeatContainer = $repeater.parent();
+        let childTypes = ["nested-list", "li-text"];
+        let childTypesSelector = childTypes.join(",");
+        let items = $placeholder.find(childTypesSelector);
 
-    $repeater.remove();
-    $repeater.removeAttr("repeater");
+        // validate child element types
+        if(items.length === 0) {
+            throw "Could not find a valid child type for template 'primary_list'.";
+        }
     
-    $items.each((i, elm) => {
-        let $repeaterClone = $repeater.clone();
-        $repeaterClone.html($(elm).html());
-        $repeatContainer.append($repeaterClone);
-    });
-    
-    $placeholder.replaceWith($template);
-};
-
-const apply_li_text = (i, elm) => {
-    let $placeholder = $(elm);
-    let templatePath = `${process.env.templatesDir}/li_text.html`;
-    let $template = $(readFileSync(templatePath).toString());
+        let $repeater = $template.find("[repeater]");
+        let $repeatContainer = $repeater.parent();
+        $repeater.remove();
+        $repeater.removeAttr("repeater");
         
-    let text = $placeholder.html();
-    $template.find("span").html(text);
+        items.each((i, elm) => {
+            let $repeaterClone = $repeater.clone();
+            $repeaterClone.append(elm);
+
+            let tagName = elm.tagName;
+            let funcName = tagName.replace(/-/g, "_");
+            templates[funcName](elm);
+
+            console.log("APPENDING REPEATER");
+            $repeatContainer.append($repeaterClone);
+        });
     
-    $placeholder.replaceWith($template);
-};
+        // make the parent element switch
+        let innerHTML = $placeholder.html();
+        $placeholder.replaceWith($template);
+        $placeholder.html(innerHTML);
+    },
+    nested_list: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/nested_list.html`;
+        let $template = $(readFileSync(templatePath).toString());
+            
+        let $items = $placeholder.find("item");
+        let $repeater = $template.find("[repeater]");
+        let $repeatContainer = $repeater.parent();
+    
+        $repeater.remove();
+        $repeater.removeAttr("repeater");
+        
+        $items.each((i, elm) => {
+            let $repeaterClone = $repeater.clone();
+            $repeaterClone.html($(elm).html());
+            $repeatContainer.append($repeaterClone);
+        });
+        
+        $placeholder.replaceWith($template);
+    },
+    li_text: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/li_text.html`;
+        let $template = $(readFileSync(templatePath).toString());
+            
+        let text = $placeholder.html();
+        $template.html(text);
+        
+        $placeholder.replaceWith($template);
+    }
+}
 
 module.exports = {
     applyTemplates: applyTemplates
