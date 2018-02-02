@@ -1,14 +1,13 @@
 // cheerio can't find elements inside of a <template> tag. so <template> is called <placeholder>
 // each template is completely responsible for validating its child elements.
 
-const { readFileSync } = require("fs");
+const { readFileSync, writeFileSync } = require("fs");
 const cheerio = require('cheerio');
 
 const applyTemplates = html => {
     $ = cheerio.load(html);
 
-    let _templates = ["primary-list", "nested-list", "li-text"]; // in order of how they are applied
-
+    let _templates = ["primary-list", "nested-list", "li-text", "top-text"]; // in order of how they are applied
     _templates.forEach(template => {
         $.root().find(template).each((i, elm) => {
             template = template.replace(/-/g, "_");
@@ -27,10 +26,10 @@ let templates = {
         
         let childTypes = ["nested-list", "li-text"];
         let childTypesSelector = childTypes.join(",");
-        let items = $placeholder.find(childTypesSelector);
+        let $items = $placeholder.find(childTypesSelector);
 
         // validate child element types
-        if(items.length === 0) {
+        if($items.length === 0) {
             throw "Could not find a valid child type for template 'primary_list'.";
         }
     
@@ -39,15 +38,14 @@ let templates = {
         $repeater.remove();
         $repeater.removeAttr("repeater");
         
-        items.each((i, elm) => {
+        $items.each((i, elm) => {
             let $repeaterClone = $repeater.clone();
-            $repeaterClone.append(elm);
+            $repeaterClone.find("div").append(elm);
 
             let tagName = elm.tagName;
             let funcName = tagName.replace(/-/g, "_");
             templates[funcName](elm);
 
-            console.log("APPENDING REPEATER");
             $repeatContainer.append($repeaterClone);
         });
     
@@ -60,14 +58,24 @@ let templates = {
         let $placeholder = $(elm);
         let templatePath = `${process.env.templatesDir}/nested_list.html`;
         let $template = $(readFileSync(templatePath).toString());
-            
-        let $items = $placeholder.find("item");
+    
+        // <top-text>
+        let $topText = $placeholder.find("top-text");
+        if($topText.length === 0) {
+            $template.find("top-text").remove();
+        }
+        else {
+            $template.find("top-text").replaceWith($topText);
+            templates.top_text($template.find("top-text")[0]);
+        }
+
+        // <item>
         let $repeater = $template.find("[repeater]");
         let $repeatContainer = $repeater.parent();
-    
         $repeater.remove();
         $repeater.removeAttr("repeater");
         
+        let $items = $placeholder.find("item");
         $items.each((i, elm) => {
             let $repeaterClone = $repeater.clone();
             $repeaterClone.html($(elm).html());
@@ -79,12 +87,36 @@ let templates = {
     li_text: elm => {
         let $placeholder = $(elm);
         let templatePath = `${process.env.templatesDir}/li_text.html`;
-        let $template = $(readFileSync(templatePath).toString());
-            
-        let text = $placeholder.html();
-        $template.html(text);
+        let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
+
+        // <top-text>
+        let $topText = $placeholder.find("top-text");
+        if($topText.length === 0) {
+            $template.find("top-text").remove();
+        }
+        else {
+            $template.find("top-text").replaceWith($topText);
+            templates.top_text($template.find("top-text")[0]);
+        }
+
+        // <span> - the actual text
+        let text = $placeholder.find("text").html();
+        $template.find("span").html(text);
         
-        $placeholder.replaceWith($template);
+        $placeholder.after($template.html());
+        $placeholder.remove();
+    },
+    top_text: elm => {
+        let $placeholder = $(elm);
+
+        let templatePath = `${process.env.templatesDir}/top_text.html`;
+        let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
+
+        let text = $placeholder.html();
+        let $div = $template.find("div");
+        $div.html(text);
+        
+        $placeholder.replaceWith($div);
     }
 }
 
