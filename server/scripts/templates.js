@@ -7,7 +7,8 @@ const cheerio = require('cheerio');
 const applyTemplates = html => {
     $ = cheerio.load(html);
 
-    let _templates = ["primary-list", "nested-list", "li-text", "top-text"]; // in order of how they are applied
+    // should only top level templates be listed?
+    let _templates = ["primary-list", "nested-list", "li-text", "top-text", "group-carrier", "group", "group-item"]; // in order of how they are applied
     _templates.forEach(template => {
         $.root().find(template).each((i, elm) => {
             template = template.replace(/-/g, "_");
@@ -24,7 +25,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/primary_list.html`;
         let $template = $(readFileSync(templatePath).toString());
         
-        let childTypes = ["nested-list", "li-text"];
+        let childTypes = ["nested-list", "group-carrier", "li-text"];
         let childTypesSelector = childTypes.join(",");
         let $items = $placeholder.find(childTypesSelector);
 
@@ -40,8 +41,8 @@ let templates = {
         
         $items.each((i, elm) => {
             let $repeaterClone = $repeater.clone();
-            $repeaterClone.find("div").append(elm);
-
+            $repeaterClone.find("[content]").removeAttr("content").append(elm);
+            console.log("CHECK THAT ITS ACTUALLY REMOVING [CONTENT]");
             let tagName = elm.tagName;
             let funcName = tagName.replace(/-/g, "_");
             templates[funcName](elm);
@@ -117,7 +118,53 @@ let templates = {
         $div.html(text);
         
         $placeholder.replaceWith($div);
-    }
+    },
+    group_carrier: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/group_carrier.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        let childTypes = ["group"];
+        let childTypesSelector = childTypes.join(",");
+        let $items = $placeholder.find(childTypesSelector);
+
+        // validate child element types
+        if($items.length === 0) {
+            throw "Could not find a valid child type for template 'group_carrier'.";
+        }
+
+        $items.each(templates.group);
+        $template.html($placeholder.html());
+        $placeholder.replaceWith($template);
+    },
+    group: (i, elm) => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/group.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        let childTypes = ["item"];
+        let childTypesSelector = childTypes.join(",");
+        let $items = $placeholder.find(childTypesSelector);
+
+        // validate child element types
+        if($items.length === 0) {
+            throw "Could not find a valid child type for template 'group'.";
+        }
+
+        $items.each(templates.group_item);
+        $template.html($placeholder.html());
+        $placeholder.replaceWith($template);
+    },
+    group_item: (i, elm) => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/group_item.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        console.log("make sure its actually removing [content]");
+        $template.find("[content]").removeAttr("content").html($placeholder.html());
+        
+        $placeholder.replaceWith($template);
+    },
 }
 
 module.exports = {
