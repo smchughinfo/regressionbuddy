@@ -7,8 +7,11 @@ const cheerio = require('cheerio');
 const applyTemplates = html => {
     $ = cheerio.load(html);
 
-    // should only top level templates be listed?
-    let _templates = ["primary-list", "nested-list", "li-text", "top-text", "group-carrier", "group", "group-item", "cheat", "graph-container"]; // in order of how they are applied
+     // list templates in the order they are applied.
+     // if  on occassion a template1 is inside template2
+     // and on occassion b template2 is inside template1
+     // ...then idk.
+    let _templates = ["primary-list", "nested-list", "graph-with-caption", "li-text", "top-text", "group-carrier", "group", "group-item", "cheat", "graph-container"];
     _templates.forEach(template => {
         $.root().find(template).each((i, elm) => {
             template = template.replace(/-/g, "_");
@@ -98,12 +101,20 @@ let templates = {
             let $repeaterClone = $repeater.clone();
             let $content = $repeaterClone.find("[content]").removeAttr("content");
 
-            let isGraphContainer = $item.find("graph-container").length > 0;
+            let isGraphContainer = $item.children("graph-container").length > 0;
+            let isGraphWithCaption = $item.children("graph-with-caption").length > 0;
             if(isGraphContainer) {
                 // <graph-container>
                 let $graphContainer = $item.find("graph-container");
                 $content.append($graphContainer);
                 templates.graph_container($graphContainer[0]);
+            }
+            else if(isGraphWithCaption) {
+                // <graph-with-caption>
+                let $graphWithCaption = $item.find("graph-with-caption");
+                $content.append($graphWithCaption);
+                console.log("CALLING IT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!_ >");
+                templates.graph_with_caption($graphWithCaption[0]);
             }
             else {
                 // text nodes
@@ -286,6 +297,30 @@ let templates = {
         $template.find("[push-graph-launcher-right]").removeAttr("push-graph-launcher-right");
 
         $placeholder.replaceWith($template.html());
+    },
+    graph_with_caption: elm => {
+        console.log("GRAPH WITH CAPTION!!!!!!!!!!!!!!!!!!!!");
+
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/graph_with_caption.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        let childTypes = ["graph-container", "text-caption"];
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "graph_with_caption");
+
+        // <graph-container>
+        let $graphContainer = $placeholder.find("graph-container");
+        $template.find("graph-container").replaceWith($graphContainer);
+        templates.graph_container($graphContainer[0]);
+
+        // <text-caption>
+        let caption = $placeholder.find("text-caption").html();
+        console.log($placeholder.length + " | " + $placeholder[0].tagName + " ||| " + $placeholder.find("text-caption").length);
+        $template.find("span").html(caption);
+
+        $placeholder.replaceWith($template);
     }
 }
 
