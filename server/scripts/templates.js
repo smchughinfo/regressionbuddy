@@ -113,7 +113,6 @@ let templates = {
                 // <graph-with-caption>
                 let $graphWithCaption = $item.find("graph-with-caption");
                 $content.append($graphWithCaption);
-                console.log("CALLING IT!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!_ >");
                 templates.graph_with_caption($graphWithCaption[0]);
             }
             else {
@@ -299,8 +298,6 @@ let templates = {
         $placeholder.replaceWith($template.html());
     },
     graph_with_caption: elm => {
-        console.log("GRAPH WITH CAPTION!!!!!!!!!!!!!!!!!!!!");
-
         let $placeholder = $(elm);
         let templatePath = `${process.env.templatesDir}/graph_with_caption.html`;
         let $template = $(readFileSync(templatePath).toString());
@@ -317,7 +314,6 @@ let templates = {
 
         // <text-caption>
         let caption = $placeholder.find("text-caption").html();
-        console.log($placeholder.length + " | " + $placeholder[0].tagName + " ||| " + $placeholder.find("text-caption").length);
         $template.find("span").html(caption);
 
         $placeholder.replaceWith($template);
