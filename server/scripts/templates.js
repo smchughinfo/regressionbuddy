@@ -21,9 +21,9 @@ const applyTemplates = html => {
 
 const validateChildTypes = (childTypes, $placeholder, templateName) => {
     let childTypesSelector = childTypes.join(",");
-    let $children = $placeholder.find(childTypesSelector);
+    let $children = $placeholder.children(childTypesSelector);
 
-    console.log(templateName + " " + $children.length + " " + $placeholder.html() + "\r\n\r\n\r\n-----------------\r\n");
+    //console.log(templateName + " " + $children.length + " " + $placeholder.html() + "\r\n\r\n\r\n-----------------\r\n");
     // doesnt account for text nodes.
     if($children.length === 0) {
         throw `Could not find a valid child type for template ${templateName}.`;
@@ -41,7 +41,7 @@ let templates = {
         
         let childTypes = ["nested-list", "group-carrier", "li-text", "graph-container"];
         let childTypesSelector = childTypes.join(",");
-        let $items = $placeholder.find(childTypesSelector);
+        let $items = $placeholder.children(childTypesSelector);
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "primary_list");  
@@ -91,11 +91,22 @@ let templates = {
         let $repeatContainer = $repeater.parent();
         $repeater.remove();
         $repeater.removeAttr("repeater");
-        
         let $items = $placeholder.find("item");
         $items.each((i, elm) => {
+            let $item = $(elm);
             let $repeaterClone = $repeater.clone();
-            $repeaterClone.html($(elm).html());
+
+            let isGraphContainer = $item.find("graph-container").length > 0;
+            if(isGraphContainer) {
+                // <graph-container>
+                let $graphContainer = $item.find("graph-container");
+                $repeaterClone.append($graphContainer);
+                templates.graph_container($graphContainer[0]);
+            }
+            else {
+                // text nodes
+                $repeaterClone.html($item.html());
+            }
             $repeatContainer.append($repeaterClone);
         });
         
@@ -163,7 +174,7 @@ let templates = {
 
         let childTypes = ["group", "top-text"];
         let childTypesSelector = childTypes.join(",");
-        let $items = $placeholder.find(childTypesSelector);
+        let $items = $placeholder.children(childTypesSelector);
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "group_carrier");
@@ -195,7 +206,7 @@ let templates = {
 
         let childTypes = ["item"];
         let childTypesSelector = childTypes.join(",");
-        let $items = $placeholder.find(childTypesSelector);
+        let $items = $placeholder.children(childTypesSelector);
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "group");
@@ -240,7 +251,7 @@ let templates = {
 
         let childTypes = ["top-text", "image-url", "graph-url"];
         let childTypesSelector = childTypes.join(",");
-        let $items = $placeholder.find(childTypesSelector);
+        let $items = $placeholder.children(childTypesSelector);
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "graph_container");
