@@ -535,3 +535,8 @@ img {
         max-width: 100% !important;
     }
 }
+
+.nested-list-content {
+    display:inline-block;
+    vertical-align: top;
+}

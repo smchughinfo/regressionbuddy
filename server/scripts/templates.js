@@ -69,7 +69,7 @@ let templates = {
     nested_list: elm => {
         let $placeholder = $(elm);
         let templatePath = `${process.env.templatesDir}/nested_list.html`;
-        let $template = $(readFileSync(templatePath).toString());
+        let $template = $("<template-container>" + readFileSync(templatePath).toString() + "<template-container>");
     
         let childTypes = ["top-text", "item"];
 
@@ -91,26 +91,28 @@ let templates = {
         let $repeatContainer = $repeater.parent();
         $repeater.remove();
         $repeater.removeAttr("repeater");
+        
         let $items = $placeholder.find("item");
         $items.each((i, elm) => {
             let $item = $(elm);
             let $repeaterClone = $repeater.clone();
+            let $content = $repeaterClone.find("[content]").removeAttr("content");
 
             let isGraphContainer = $item.find("graph-container").length > 0;
             if(isGraphContainer) {
                 // <graph-container>
                 let $graphContainer = $item.find("graph-container");
-                $repeaterClone.append($graphContainer);
+                $content.append($graphContainer);
                 templates.graph_container($graphContainer[0]);
             }
             else {
                 // text nodes
-                $repeaterClone.html($item.html());
+                $content.html($item.html());
             }
             $repeatContainer.append($repeaterClone);
         });
         
-        $placeholder.replaceWith($template);
+        $placeholder.replaceWith($template.html());
     },
     li_text: elm => {
         let $placeholder = $(elm);
