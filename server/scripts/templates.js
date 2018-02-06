@@ -302,7 +302,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/graph_with_caption.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["graph-container", "text-caption"];
+        let childTypes = ["graph-container", "text-caption", "text-subcaption"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "graph_with_caption");
@@ -314,10 +314,17 @@ let templates = {
 
         // <text-caption>
         let caption = $placeholder.find("text-caption").html();
-        $template.find("span").html(caption);
+        $template.find("[caption-content]").removeAttr("caption-content").html(caption);
+
+        // <text-subcaption>
+        let subcaption = $placeholder.find("text-subcaption").html();
+        $template.find("[subcaption-content]").removeAttr("subcaption-content").html(caption);
 
         $placeholder.replaceWith($template);
     }
+    /*
+    vector calculus appendix second part should really be in a four section like it is in the first part. it looks much nicer on the kindle. ...even if the bottom right panel would be empty.
+    */
 }
 
 module.exports = {

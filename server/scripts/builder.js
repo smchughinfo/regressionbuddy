@@ -301,6 +301,7 @@ const buildAppendix = subject => {
     let outFilePath = `${process.env.buildDir}/appendix.${subject}.html`;
     let title = `${capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, " "))} Appendix`;
 
+    subjectAppendix = applyTemplates(subjectAppendix);
     buildStaticContentPage(subjectAppendix, title, title, outFilePath);
 };
 
