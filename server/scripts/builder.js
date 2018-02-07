@@ -408,6 +408,7 @@ const buildReviewAppendixes = () => {
             nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
             appendixElm.append('<div class="container-fluid">' + readFileSync(`${process.env.postTemplatesDir}/show_comments_link.html`).toString() + '</div><br>');
             appendixElm.after(readFileSync(`${process.env.postTemplatesDir}/comments.html`).toString());
+            console.log("HAS THIS BECOME AN ISSUE?");
             body.find("#comments > br:first-of-type").remove(); // this is pretty bad.
             body.append("<br><br>"); // make it easier to see comments
             let outFile = $.html();

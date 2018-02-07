@@ -11,7 +11,7 @@ const applyTemplates = html => {
      // if  on occassion a template1 is inside template2
      // and on occassion b template2 is inside template1
      // ...then idk.
-    let _templates = ["primary-list", "nested-list", "graph-with-caption", "li-text", "top-text", "group-carrier", "group", "group-item", "cheat", "graph-container"];
+    let _templates = ["primary-list", "nested-list", "topic", "topic-definition", "topic-example", "horizontal-group-3", "topic-instance", "graph-with-caption", "empty-graph-with-caption", "li-text", "top-text", "group-carrier", "group", "group-item", "cheat", "graph-container"];
     _templates.forEach(template => {
         $.root().find(template).each((i, elm) => {
             template = template.replace(/-/g, "_");
@@ -29,10 +29,10 @@ const validateChildTypes = (childTypes, $placeholder, templateName) => {
     //console.log(templateName + " " + $children.length + " " + $placeholder.html() + "\r\n\r\n\r\n-----------------\r\n");
     // doesnt account for text nodes.
     if($children.length === 0) {
-        throw `Could not find a valid child type for template ${templateName}.`;
+        throw `Could not find a valid child type for template ${templateName}. Using selector ${childTypesSelector}. PlaceholderHTML ${$("<div>").append($placeholder).html()}.`;
     }
     if($children.length != $placeholder.children().length) {
-        throw `Invalid child types found for template ${templateName}.`;
+        throw `Invalid child types found for template ${templateName}. Using selector ${childTypesSelector}. PlaceholderHTML ${$("<div>").append($placeholder).html()}.`;
     }
 };
 
@@ -300,12 +300,21 @@ let templates = {
     graph_with_caption: elm => {
         let $placeholder = $(elm);
         let templatePath = `${process.env.templatesDir}/graph_with_caption.html`;
-        let $template = $(readFileSync(templatePath).toString());
+        let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
 
-        let childTypes = ["graph-container", "text-caption", "text-subcaption"];
+        let childTypes = ["graph-container", "text-header", "text-caption", "text-subcaption"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "graph_with_caption");
+
+        // <text-header>
+        if($placeholder.find("text-header").length > 0) {
+            let header = $placeholder.find("text-header").html();
+            $template.find("[header-content]").removeAttr("header-content").html(header);
+        }
+        else {
+            $template.find("[header-content]").remove();
+        }
 
         // <graph-container>
         let $graphContainer = $placeholder.find("graph-container");
@@ -313,18 +322,168 @@ let templates = {
         templates.graph_container($graphContainer[0]);
 
         // <text-caption>
-        let caption = $placeholder.find("text-caption").html();
-        $template.find("[caption-content]").removeAttr("caption-content").html(caption);
+        if($placeholder.find("text-caption").length > 0) {
+            let caption = $placeholder.find("text-caption").html();
+            $template.find("[caption-content]").removeAttr("caption-content").html(caption);
+        }
+        else {
+            $template.find("[caption-content]").remove();
+        }
 
         // <text-subcaption>
-        let subcaption = $placeholder.find("text-subcaption").html();
-        $template.find("[subcaption-content]").removeAttr("subcaption-content").html(caption);
+        if($placeholder.find("text-subcaption").length > 0) {
+            let subcaption = $placeholder.find("text-subcaption").html();
+            $template.find("[subcaption-content]").removeAttr("subcaption-content").html(subcaption);
+        }
+        else {
+            $template.find("[subcaption-content]").remove();
+        }
+
+        $placeholder.replaceWith($template.html());
+    },
+    empty_graph_with_caption: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/empty_graph_with_caption.html`;
+        let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
+
+        let childTypes = ["text-header", "caption-html"];
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "empty_graph_with_caption");
+
+        // <text-header>
+        if($placeholder.find("text-header").length > 0) {
+            let header = $placeholder.find("text-header").html();
+            $template.find("[header-content]").removeAttr("header-content").html(header);
+        }
+        else {
+            $template.find("[header-content]").remove();
+        }
+
+        // <caption-html>
+        if($placeholder.find("caption-html").length > 0) {
+            let html = $placeholder.find("caption-html").html();
+            $template.find("[content]").removeAttr("content").html(html);
+        }
+        else {
+            $template.find("[content]").remove();
+        }
+
+       
+        $placeholder.replaceWith($template.html());
+    },
+    topic_instance: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/topic_instance.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        let childTypes = ["topic-instance-name", "topic-html"];
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "topic_instance");
+
+        // <topic-instance-name>
+        let topicName = $placeholder.find("topic-instance-name").html();
+        $template.find("[topic-instance-name]").removeAttr("topic-instance-name").html(topicName);
+
+        // <topic-html>
+        let topicHTML = $placeholder.find("topic-html").html();
+        $template.find("[topic-html]").removeAttr("topic-html").html(topicHTML);
+
+        $placeholder.replaceWith($template);
+    },
+    topic_definition: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/topic_definition.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        let childTypes = ["topic-instance"];
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "topic_definition");
+
+        // <topic-instance>
+        let $repeater = $template.find("[repeater]");
+        let $repeatContainer = $repeater.parent();
+        $repeater.remove();
+        let $topicInstances = $placeholder.find("topic-instance");
+        $topicInstances.each((i, elm) => {
+            let $topicInstance = $(elm);
+            $repeatContainer.append($topicInstance);
+            templates.topic_instance($topicInstance[0]);
+        });
+
+        $placeholder.replaceWith($template);
+    },
+    topic: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/topic.html`;
+        let $template = $(readFileSync(templatePath).toString()); // if you wrap this make sure to update the id being set in the <topic-name> section
+
+        let childTypes = ["topic-name", "topic-definition", "topic-example"];
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "topic");
+
+        // <topic-name>
+        let name = $placeholder.find("topic-name").html();
+        $template.find("[topic-name]").removeAttr("topic-name").html(name);
+        $template.attr("id", name.toLowerCase().replace(/ /g, "-"))
+
+        // <topic-definition>
+        let $definition = $placeholder.find("topic-definition");
+        if($definition.length > 0) {
+            $template.find("[topic-definition]").replaceWith($definition);
+            templates.topic_definition($definition[0]);
+        }
+        else {
+            $template.find("[topic-definition]").remove();
+        }
+
+        // <topic-example>
+        let $example = $placeholder.find("topic-example");
+        if($example.length > 0) {
+            $template.find("[topic-example]").replaceWith($example);
+            templates.topic_definition($example[0]);
+        }
+        else {
+            $template.find("[topic-example]").remove();
+        }
+
+        $placeholder.replaceWith($template);
+    },
+    horizontal_group_3: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/horizontal-group-3.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        let childTypes = ["graph-with-caption", "empty-graph-with-caption"];
+        let childTypesSelector = childTypes.join(",");
+        let $items = $placeholder.children(childTypesSelector);
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "horizontal-group-3");
+        if($items.length !== 3) {
+            throw `horizontal-group-3 must have three children but has ${$items.length} children.`;
+        }
+        
+        let $repeater = $template.find("[repeater]");
+        let $repeatContainer = $repeater.parent();
+        $repeater.removeAttr("repeater").remove();
+        $items.each((i, elm) => {
+            let $item = $(elm);
+            let $repeaterClone = $repeater.clone();
+            
+            $repeaterClone.append($item);
+            $repeatContainer.append($repeaterClone);
+        });
+
+        $template.children(childTypesSelector).each((i, elm) => {
+            templates[e.tagName.replace(/-/g, "_")](elm);
+        });
 
         $placeholder.replaceWith($template);
     }
-    /*
-    vector calculus appendix second part should really be in a four section like it is in the first part. it looks much nicer on the kindle. ...even if the bottom right panel would be empty.
-    */
 }
 
 module.exports = {
