@@ -29,10 +29,10 @@ const validateChildTypes = (childTypes, $placeholder, templateName) => {
     //console.log(templateName + " " + $children.length + " " + $placeholder.html() + "\r\n\r\n\r\n-----------------\r\n");
     // doesnt account for text nodes.
     if($children.length === 0) {
-        throw `Could not find a valid child type for template ${templateName}. Using selector ${childTypesSelector}. PlaceholderHTML ${$("<div>").append($placeholder).html()}.`;
+        throw `Could not find a valid child type for template ${templateName}. Using selector ${childTypesSelector}. $placeholder.html() => ${$("<div>").append($placeholder).html()}.`;
     }
     if($children.length != $placeholder.children().length) {
-        throw `Invalid child types found for template ${templateName}. Using selector ${childTypesSelector}. PlaceholderHTML ${$("<div>").append($placeholder).html()}.`;
+        throw `Invalid child types found for template ${templateName}. Using selector ${childTypesSelector}. $placeholder.html() => ${$("<div>").append($placeholder).html()}.`;
     }
 };
 
@@ -80,7 +80,7 @@ let templates = {
         validateChildTypes(childTypes, $placeholder, "nested_list");    
 
         // <top-text>
-        let $topText = $placeholder.find("top-text");
+        let $topText = $placeholder.children("top-text");
         if($topText.length === 0) {
             $template.find("top-text").remove();
         }
@@ -95,7 +95,7 @@ let templates = {
         $repeater.remove();
         $repeater.removeAttr("repeater");
         
-        let $items = $placeholder.find("item");
+        let $items = $placeholder.children("item");
         $items.each((i, elm) => {
             let $item = $(elm);
             let $repeaterClone = $repeater.clone();
@@ -135,7 +135,7 @@ let templates = {
         validateChildTypes(childTypes, $placeholder, "li_text");        
 
         // <top-text>
-        let $topText = $placeholder.find("top-text");
+        let $topText = $placeholder.children("top-text");
         if($topText.length === 0) {
             $template.find("top-text").remove();
         }
@@ -145,7 +145,7 @@ let templates = {
         }
 
         // <text>
-        let $text = $placeholder.find("text");
+        let $text = $placeholder.children("text");
         if($text.length === 0) {
             $template.find("span").remove();
         }
@@ -192,7 +192,7 @@ let templates = {
         validateChildTypes(childTypes, $placeholder, "group_carrier");
 
         // <top-text>
-        let $topText = $placeholder.find("top-text");
+        let $topText = $placeholder.children("top-text");
         if($topText.length === 0) {
             $template.find("top-text").remove();
         }
@@ -202,7 +202,7 @@ let templates = {
         }
 
         // <group>
-        let $groups = $placeholder.find("group");
+        let $groups = $placeholder.children("group");
         $groups.each((i, groupElm) => {
             let numberOfGroups = $groups.length;
             templates.group(numberOfGroups, i, groupElm);
@@ -269,7 +269,7 @@ let templates = {
         validateChildTypes(childTypes, $placeholder, "graph_container");
 
         // <top-text>
-        let $topText = $placeholder.find("top-text");
+        let $topText = $placeholder.children("top-text");
         if($topText.length === 0) {
             $template.find("top-text").remove();
         }
@@ -279,8 +279,8 @@ let templates = {
         }
 
         // <image-url> and <graph-url>
-        let imageUrl = $placeholder.find("image-url").html();
-        let graphUrl = $placeholder.find("graph-url").html();
+        let imageUrl = $placeholder.children("image-url").html();
+        let graphUrl = $placeholder.children("graph-url").html();
         $template.find("[image-url]").removeAttr("image-url").attr("src", imageUrl);
         $template.find("a").attr("href", graphUrl);
 
@@ -308,8 +308,8 @@ let templates = {
         validateChildTypes(childTypes, $placeholder, "graph_with_caption");
 
         // <text-header>
-        if($placeholder.find("text-header").length > 0) {
-            let header = $placeholder.find("text-header").html();
+        if($placeholder.children("text-header").length > 0) {
+            let header = $placeholder.children("text-header").html();
             $template.find("[header-content]").removeAttr("header-content").html(header);
         }
         else {
@@ -317,13 +317,13 @@ let templates = {
         }
 
         // <graph-container>
-        let $graphContainer = $placeholder.find("graph-container");
+        let $graphContainer = $placeholder.children("graph-container");
         $template.find("graph-container").replaceWith($graphContainer);
         templates.graph_container($graphContainer[0]);
 
         // <text-caption>
-        if($placeholder.find("text-caption").length > 0) {
-            let caption = $placeholder.find("text-caption").html();
+        if($placeholder.children("text-caption").length > 0) {
+            let caption = $placeholder.children("text-caption").html();
             $template.find("[caption-content]").removeAttr("caption-content").html(caption);
         }
         else {
@@ -331,8 +331,8 @@ let templates = {
         }
 
         // <text-subcaption>
-        if($placeholder.find("text-subcaption").length > 0) {
-            let subcaption = $placeholder.find("text-subcaption").html();
+        if($placeholder.children("text-subcaption").length > 0) {
+            let subcaption = $placeholder.children("text-subcaption").html();
             $template.find("[subcaption-content]").removeAttr("subcaption-content").html(subcaption);
         }
         else {
@@ -352,8 +352,8 @@ let templates = {
         validateChildTypes(childTypes, $placeholder, "empty_graph_with_caption");
 
         // <text-header>
-        if($placeholder.find("text-header").length > 0) {
-            let header = $placeholder.find("text-header").html();
+        if($placeholder.children("text-header").length > 0) {
+            let header = $placeholder.children("text-header").html();
             $template.find("[header-content]").removeAttr("header-content").html(header);
         }
         else {
@@ -361,8 +361,8 @@ let templates = {
         }
 
         // <caption-html>
-        if($placeholder.find("caption-html").length > 0) {
-            let html = $placeholder.find("caption-html").html();
+        if($placeholder.children("caption-html").length > 0) {
+            let html = $placeholder.children("caption-html").html();
             $template.find("[content]").removeAttr("content").html(html);
         }
         else {
@@ -377,18 +377,49 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/topic_instance.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["topic-instance-name", "topic-html"];
+        let childTypes = ["topic-instance-name", "topic-instance-html", "horizontal-group-3"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "topic_instance");
 
         // <topic-instance-name>
-        let topicName = $placeholder.find("topic-instance-name").html();
-        $template.find("[topic-instance-name]").removeAttr("topic-instance-name").html(topicName);
+        let $topicName = $placeholder.children("topic-instance-name");
+        if($topicName.length > 0) {
+            let topicName = $topicName.html();
+            $template.find("[topic-instance-name]").removeAttr("topic-instance-name").html(topicName);
+        }
+        else {
+            $template.find("[topic-instance-name]").remove();
+        }
+        
+        // <topic-instance-html>
+        let $topicInstanceHTML = $placeholder.children("topic-instance-html");
+        if($topicInstanceHTML.length > 0) {
+            let topicInstanceHTML = $topicInstanceHTML.html();
+            $template.find("[topic-instance-html]").removeAttr("topic-instance-html").html(topicInstanceHTML);
+        }
+        else {
+            $template.find("[topic-instance-html]").remove();
+        }
 
-        // <topic-html>
-        let topicHTML = $placeholder.find("topic-html").html();
-        $template.find("[topic-html]").removeAttr("topic-html").html(topicHTML);
+        // <horizontal-group-3>
+        let $horizontalGroup3s = $placeholder.children("horizontal-group-3");
+        if($horizontalGroup3s.length > 0) {
+            let $repeater = $template.find("horizontal-group-3[repeater]");
+            let $repeaterParent = $repeater.parent();
+            $repeater.removeAttr("repeater").clone();
+
+            $horizontalGroup3s.each((i, elm) => {
+                $repeater.after(elm);
+                templates.horizontal_group_3(elm);
+            });
+
+            $repeater.remove();
+        }
+        else {
+            $template.find("horizontal-group-3[repeater]").remove();
+        }
+
 
         $placeholder.replaceWith($template);
     },
@@ -406,11 +437,47 @@ let templates = {
         let $repeater = $template.find("[repeater]");
         let $repeatContainer = $repeater.parent();
         $repeater.remove();
-        let $topicInstances = $placeholder.find("topic-instance");
+        let $topicInstances = $placeholder.children("topic-instance");
         $topicInstances.each((i, elm) => {
             let $topicInstance = $(elm);
             $repeatContainer.append($topicInstance);
             templates.topic_instance($topicInstance[0]);
+        });
+
+        $placeholder.replaceWith($template);
+    },
+    topic_example: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/topic_example.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        let childTypes = ["topic-instance", "horizontal-group-3"];
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "topic_example");
+
+        let $repeater = $template.find("[repeater]");
+        let $repeatContainer = $repeater.parent();
+        $repeater.remove();
+
+        // .size-class
+        let sizeClass = $placeholder.attr("size-class");
+        $template.removeAttr("size-class").addClass(sizeClass);
+
+        // <topic-instance>
+        let $topicInstances = $placeholder.children("topic-instance");
+        $topicInstances.each((i, elm) => {
+            let $topicInstance = $(elm);
+            $repeatContainer.append($topicInstance);
+            templates.topic_instance($topicInstance[0]);
+        });
+        
+        // <horizontal-group-3>
+        let $horizontalGroups = $placeholder.children("horizontal-group-3");
+        $horizontalGroups.each((i, elm) => {
+            let $horizontalGroup = $(elm);
+            $repeatContainer.append($horizontalGroup);
+            templates.horizontal_group_3($horizontalGroup[0]);
         });
 
         $placeholder.replaceWith($template);
@@ -420,18 +487,30 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/topic.html`;
         let $template = $(readFileSync(templatePath).toString()); // if you wrap this make sure to update the id being set in the <topic-name> section
 
-        let childTypes = ["topic-name", "topic-definition", "topic-example"];
+        let childTypes = ["topic-name", "topic-eli5", "topic-definition", "topic-example"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "topic");
 
         // <topic-name>
-        let name = $placeholder.find("topic-name").html();
+        let name = $placeholder.children("topic-name").html();
         $template.find("[topic-name]").removeAttr("topic-name").html(name);
         $template.attr("id", name.toLowerCase().replace(/ /g, "-"))
 
+        // <topic-eli5>
+        let $eli5 = $placeholder.children("topic-eli5");
+        if($eli5.length > 0) {
+            let eli5 = $eli5.html();
+            let $templateEli5 = $template.find("[topic-eli5]");
+            $templateEli5.find("[topic-eli5]").removeAttr("topic-eli5")
+            $templateEli5.find("i").html(eli5);
+        }
+        else {
+            $template.find("[topic-eli5]").remove();
+        }
+
         // <topic-definition>
-        let $definition = $placeholder.find("topic-definition");
+        let $definition = $placeholder.children("topic-definition");
         if($definition.length > 0) {
             $template.find("[topic-definition]").replaceWith($definition);
             templates.topic_definition($definition[0]);
@@ -441,10 +520,10 @@ let templates = {
         }
 
         // <topic-example>
-        let $example = $placeholder.find("topic-example");
+        let $example = $placeholder.children("topic-example");
         if($example.length > 0) {
             $template.find("[topic-example]").replaceWith($example);
-            templates.topic_definition($example[0]);
+            templates.topic_example($example[0]);
         }
         else {
             $template.find("[topic-example]").remove();
@@ -466,7 +545,7 @@ let templates = {
         if($items.length !== 3) {
             throw `horizontal-group-3 must have three children but has ${$items.length} children.`;
         }
-        
+
         let $repeater = $template.find("[repeater]");
         let $repeatContainer = $repeater.parent();
         $repeater.removeAttr("repeater").remove();

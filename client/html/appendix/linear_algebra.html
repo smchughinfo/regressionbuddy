@@ -4,130 +4,133 @@
     <topic>
         <topic-name>Linear Equations in n Variables</topic-name>
         <topic-definition>
-                <topic-instance>
-                    <topic-instance-name>Two Variables</topic-instance-name>
-                    <topic-html>
-                        \(Ax+By=C\)
-                        <br> The line crosses the x axis at \(\frac{C}{A}\) when \(A \neq 0\). The line crosses the y axis at
-                        \(\frac{C}{B}\) when \(B \neq 0\). The slope of the line is \(-\frac{A}{B}\).
-                    </topic-html>
-                </topic-instance>
-                <topic-instance>
-                    <topic-instance-name>Three Variables</topic-instance-name>
-                    <topic-html>
-                        \(Ax+By+Cz=D\)
-                        <br> The vector \((A,B,C)\) is normal (orthogonal, at a 90 degree angle) to the plane. The distance from
-                        the origin to point on the plane closest to the origin is \( \frac{\left|D\right|}{\sqrt{A^2+B^2+C^2}}
-                        \).
-                    </topic-html>
-                </topic-instance>
-                <topic-instance>
-                    <topic-instance-name>n Variables</topic-instance-name>
-                    <topic-html>
-                        The <strong>standard form</strong> of a linear equation is
-                        \(a_1^\hphantom{1} x_1^\hphantom{1} + a_2^\hphantom{1} x_2^\hphantom{1} +a_3^\hphantom{1} x_3^\hphantom{1} + \cdot \; \cdot
-                        \; \cdot \; + a_n^\hphantom{1} x_n^\hphantom{1} = b\). 
-                        The coeffecients \(a_1^\phantom{1} \), \(a_2^\phantom{1} \), \(a_3^\phantom{1} \), . . . , \(a_n^\phantom{1}\) and the constant term \(b\) are real numbers.
-                    </topic-html>
-                </topic-instance>
-            </topic-definition>
-           <!-- <topic-example>
-                
-            </topic-example>-->
+            <topic-instance>
+                <topic-instance-name>Two Variables</topic-instance-name>
+                <topic-instance-html>
+                    \(Ax+By=C\)
+                    <br> The line crosses the x axis at \(\frac{C}{A}\) when \(A \neq 0\). The line crosses the y axis at
+                    \(\frac{C}{B}\) when \(B \neq 0\). The slope of the line is \(-\frac{A}{B}\).
+                </topic-instance-html>
+            </topic-instance>
+            <topic-instance>
+                <topic-instance-name>Three Variables</topic-instance-name>
+                <topic-instance-html>
+                    \(Ax+By+Cz=D\)
+                    <br> The vector \((A,B,C)\) is normal (orthogonal, at a 90 degree angle) to the plane. The distance from
+                    the origin to point on the plane closest to the origin is \( \frac{\left|D\right|}{\sqrt{A^2+B^2+C^2}}
+                    \).
+                </topic-instance-html>
+            </topic-instance>
+            <topic-instance>
+                <topic-instance-name>n Variables</topic-instance-name>
+                <topic-instance-html>
+                    The <strong>standard form</strong> of a linear equation is
+                    \(a_1^\hphantom{1} x_1^\hphantom{1} + a_2^\hphantom{1} x_2^\hphantom{1} +a_3^\hphantom{1} x_3^\hphantom{1} + \cdot \; \cdot
+                    \; \cdot \; + a_n^\hphantom{1} x_n^\hphantom{1} = b\). 
+                    The coeffecients \(a_1^\phantom{1} \), \(a_2^\phantom{1} \), \(a_3^\phantom{1} \), . . . , \(a_n^\phantom{1}\) and the constant term \(b\) are real numbers.
+                </topic-instance-html>
+            </topic-instance>
+        </topic-definition>
+        <topic-example size-class="small-width-350">
+            <horizontal-group-3>
+                <graph-with-caption>
+                    <text-header>Two Variables Example</text-header>
+                    <graph-container image-size-class="graph-con-2d">
+                        <image-url>/images/linear-algebra-appendix/example-2d-linear-equation.png</image-url>
+                        <graph-url>https://www.geogebra.org/graphing/PtP4Y9xu</graph-url>
+                    </graph-container>
+                    <text-caption>\(4x+2y=4\)</text-caption>
+                </graph-with-caption>
+                <graph-with-caption>
+                    <text-header>Three Variables Example</text-header>
+                    <graph-container image-size-class="graph-con-3d">
+                        <image-url>/images/linear-algebra-appendix/example-3d-linear-equation.png</image-url>
+                        <graph-url>https://www.geogebra.org/3d/WbdyaUF5</graph-url>
+                    </graph-container>
+                    <text-caption>\(2x+2y+2z=4\)</text-caption>
+                </graph-with-caption>
+                <empty-graph-with-caption>
+                    <text-header>n Variables Example</text-header>
+                    <caption-html>
+                        <ul>
+                            <li>
+                                \( 7x_1^\hphantom{1} =1 \)
+                            </li>
+                            <li>
+                                \( 2x_1^\hphantom{1}+x_2^\hphantom{1}=0 \)
+                            </li>
+                            <li>
+                                \( 3x_1^\hphantom{1}-x_2^\hphantom{1}-4x_3^\hphantom{1}=-8 \)
+                            </li>
+                            <li>
+                                \( 6x_1^\hphantom{1}+\frac{1}{2}x_2^\hphantom{1}-x_3^\hphantom{1} + 6x_4^\hphantom{1} = 12 \)
+                            </li>
+                            <li>
+                                \( 5x_1^\hphantom{1}+5x_2^\hphantom{1}+9x_3^\hphantom{1} + \cdot \; \cdot \; \cdot \; + 3x_{99}^\hphantom{1} = 5 \)
+                            </li>
+                        </ul>
+                    </caption-html>
+                </empty-graph-with-caption>
+            </horizontal-group-3>
+        </topic-example>
     </topic>
-    <div id="linear-equations-in-n-variables" class="container-fluid">
-        <div class="card">
-            
+    <topic>
+        <topic-name>The Number of Solutions to a System of Linear Equations</topic-name>
+        <topic-eli5>A solution of a system linear equations is a point that every equation in the system touches.</topic-eli5>
+        <topic-definition>
+            <topic-instance>
+                <topic-instance-html>
+                    <p>A system of linear equations can have no solutions, one solution, or an infinite number of solutions.</p>
+                    <ol class="list-group">
+                        <li>Systems with no solutions are called inconsistent.</li>
+                        <li>Systems that have a solution are called consistent.</li>
+                    </ol>
+                </topic-instance-html>
+            </topic-instance>
+        </topic-definition>
+        <topic-example size-class="small-width-350">
+            <topic-instance>
+                <topic-instance-name>Two Variables</topic-instance-name>
+                <horizontal-group-3>
+                    <graph-with-caption>
+                        <graph-container image-size-class="graph-con-2d">
+                            <image-url>/images/linear-algebra-appendix/no-solutions-2d.png</image-url>
+                            <graph-url>https://www.geogebra.org/graphing/JsvmRYJu</graph-url>
+                        </graph-container>
+                        <text-caption>No Solutions</text-caption>
+                        <text-subcaption>\begin{align} x-y=1 \\ -x+y=1 \end{align}</text-subcaption>
+                    </graph-with-caption>
+                    <graph-with-caption>
+                        <graph-container image-size-class="graph-con-2d">
+                            <image-url>/images/linear-algebra-appendix/no-solutions-2d.png</image-url>
+                            <graph-url>https://www.geogebra.org/graphing/JsvmRYJu</graph-url>
+                        </graph-container>
+                        <text-caption>No Solutions</text-caption>
+                        <text-subcaption>\begin{align} x-y=1 \\ -x+y=1 \end{align}</text-subcaption>
+                    </graph-with-caption>
+                    <graph-with-caption>
+                        <graph-container image-size-class="graph-con-2d">
+                            <image-url>/images/linear-algebra-appendix/no-solutions-2d.png</image-url>
+                            <graph-url>https://www.geogebra.org/graphing/JsvmRYJu</graph-url>
+                        </graph-container>
+                        <text-caption>No Solutions</text-caption>
+                        <text-subcaption>\begin{align} x-y=1 \\ -x+y=1 \end{align}</text-subcaption>
+                    </graph-with-caption>
+                </horizontal-group-3>
+            </topic-instance>
+        </topic-example>
+    </topic>
 
-
-            
-            <div class="card-body text-left">
-                <h4>Linear Equations in n Variables</h4>
-                <div class="alert alert-info" role="alert">
-                    
-                </div>
-                <br>
-
-                <!-- BEGIN 2D AND 3D STYLES EXAMPLE-->
-                <div class="alert alert-success text-center small-width-350" role="alert">
-
-                    
-
-                    <horizontal-group-3>
-                        <graph-with-caption>
-                            <text-header>Two Variables Example</text-header>
-                            <graph-container image-size-class="graph-con-2d">
-                                <image-url>/images/linear-algebra-appendix/example-2d-linear-equation.png</image-url>
-                                <graph-url>https://www.geogebra.org/graphing/PtP4Y9xu</graph-url>
-                            </graph-container>
-                            <text-caption>\(4x+2y=4\)</text-caption>
-                        </graph-with-caption>
-                        <graph-with-caption>
-                            <text-header>Three Variables Example</text-header>
-                            <graph-container image-size-class="graph-con-3d">
-                                <image-url>/images/linear-algebra-appendix/example-3d-linear-equation.png</image-url>
-                                <graph-url>https://www.geogebra.org/3d/WbdyaUF5</graph-url>
-                            </graph-container>
-                            <text-caption>\(2x+2y+2z=4\)</text-caption>
-                        </graph-with-caption>
-                        <empty-graph-with-caption>
-                            <text-header>n Variables Example</text-header>
-                            <caption-html>
-                                <ul>
-                                    <li>
-                                        \( 7x_1^\hphantom{1} =1 \)
-                                    </li>
-                                    <li>
-                                        \( 2x_1^\hphantom{1}+x_2^\hphantom{1}=0 \)
-                                    </li>
-                                    <li>
-                                        \( 3x_1^\hphantom{1}-x_2^\hphantom{1}-4x_3^\hphantom{1}=-8 \)
-                                    </li>
-                                    <li>
-                                        \( 6x_1^\hphantom{1}+\frac{1}{2}x_2^\hphantom{1}-x_3^\hphantom{1} + 6x_4^\hphantom{1} = 12 \)
-                                    </li>
-                                    <li>
-                                        \( 5x_1^\hphantom{1}+5x_2^\hphantom{1}+9x_3^\hphantom{1} + \cdot \; \cdot \; \cdot \; + 3x_{99}^\hphantom{1} = 5 \)
-                                    </li>
-                                </ul>
-                            </caption-html>
-                        </empty-graph-with-caption>
-                    </horizontal-group-3>
-
-
-
-            </div>
-                <!-- END 2D AND 3D STYLES EXAMPLE-->
-
-            
-        </div>
-    </div>
-    </div>
-    <hr>
-    <hr>
-    <hr>    <hr>
-    <hr>
-    <hr>    <hr>
-    <hr>
-    <hr>
-    <hr>
-    <hr>
     <!-- TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC TOPIC -->
     <br>
 
     <div id="the-number-of-solutions-to-a-system-of-linear-equations" class="container-fluid">
         <div class="card">
             <div class="card-body text-left">
-                <h4>The Number of Solutions to a System of Linear Equations</h4>
-                <p>
-                    <i>A solution of a system linear equations is a point that every equation in the system touches.</i>
-                </p>
+                <h4></h4>
+                <p><i></i></p>
                 <div class="alert alert-info" role="alert">
-                    <p>A system of linear equations can have no solutions, one solution, or an infinite number of solutions.</p>
-                    <ol class="list-group">
-                        <li>Systems with no solutions are called inconsistent.</li>
-                        <li>Systems that have a solution are called consistent.</li>
-                    </ol>
+                    
                 </div>
                 <br>
                 <div class="alert alert-success text-center small-width-350" role="alert">
