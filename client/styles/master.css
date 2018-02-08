@@ -545,3 +545,7 @@ img {
     display:inline-block;
     vertical-align: top;
 }
+
+.bold {
+    font-weight: bold;
+}

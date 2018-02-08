@@ -302,7 +302,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/graph_with_caption.html`;
         let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
 
-        let childTypes = ["graph-container", "text-header", "text-caption", "text-subcaption"];
+        let childTypes = ["graph-container", "text-header", "caption-text", "caption-html"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "graph_with_caption");
@@ -310,7 +310,12 @@ let templates = {
         // <text-header>
         if($placeholder.children("text-header").length > 0) {
             let header = $placeholder.children("text-header").html();
-            $template.find("[header-content]").removeAttr("header-content").html(header);
+            let $headerContent = $template.find("[header-content]").removeAttr("header-content");
+            $headerContent.html(header);
+
+            if($placeholder.children("text-header").is("[bold]")) {
+                $headerContent.addClass("bold");
+            }
         }
         else {
             $template.find("[header-content]").remove();
@@ -321,22 +326,22 @@ let templates = {
         $template.find("graph-container").replaceWith($graphContainer);
         templates.graph_container($graphContainer[0]);
 
-        // <text-caption>
-        if($placeholder.children("text-caption").length > 0) {
-            let caption = $placeholder.children("text-caption").html();
-            $template.find("[caption-content]").removeAttr("caption-content").html(caption);
+        // <caption-text>
+        if($placeholder.children("caption-text").length > 0) {
+            let caption = $placeholder.children("caption-text").html();
+            $template.find("[caption-text]").removeAttr("caption-text").html(caption);
         }
         else {
-            $template.find("[caption-content]").remove();
+            $template.find("[caption-text]").remove();
         }
 
-        // <text-subcaption>
-        if($placeholder.children("text-subcaption").length > 0) {
-            let subcaption = $placeholder.children("text-subcaption").html();
-            $template.find("[subcaption-content]").removeAttr("subcaption-content").html(subcaption);
+        // <caption-html>
+        if($placeholder.children("caption-html").length > 0) {
+            let subcaption = $placeholder.children("caption-html").html();
+            $template.find("[caption-html]").removeAttr("caption-html").html(subcaption);
         }
         else {
-            $template.find("[subcaption-content]").remove();
+            $template.find("[caption-html]").remove();
         }
 
         $placeholder.replaceWith($template.html());
@@ -354,7 +359,12 @@ let templates = {
         // <text-header>
         if($placeholder.children("text-header").length > 0) {
             let header = $placeholder.children("text-header").html();
-            $template.find("[header-content]").removeAttr("header-content").html(header);
+            let $headerContent = $template.find("[header-content]").removeAttr("header-content")
+            $headerContent.html(header);
+
+            if($placeholder.children("text-header").is("[bold]")) {
+                $headerContent.addClass("bold");
+            }
         }
         else {
             $template.find("[header-content]").remove();
