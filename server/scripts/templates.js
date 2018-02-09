@@ -496,7 +496,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/topic.html`;
         let $template = $(readFileSync(templatePath).toString()); // if you wrap this make sure to update the id being set in the <topic-name> section
 
-        let childTypes = ["topic-name", "topic-eli5", "topic-definition", "topic-example"];
+        let childTypes = ["topic-name", "topic-primer", "topic-eli5", "topic-definition", "topic-example"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "topic");
@@ -505,6 +505,18 @@ let templates = {
         let name = $placeholder.children("topic-name").html();
         $template.find("[topic-name]").removeAttr("topic-name").html(name);
         $template.attr("id", name.toLowerCase().replace(/ /g, "-"))
+
+        // <topic-primer>
+        let $topicPrimer = $placeholder.children("topic-primer");
+        if($topicPrimer.length > 0) {
+            let topicPrimer = $topicPrimer.html();
+            let $templateTopicPrimer = $template.find("[topic-primer]");
+            $templateTopicPrimer.find("[topic-primer]").removeAttr("topic-primer")
+            $templateTopicPrimer.find("i").html(topicPrimer);
+        }
+        else {
+            $template.find("[topic-primer]").remove();
+        }
 
         // <topic-eli5>
         let $eli5 = $placeholder.children("topic-eli5");
@@ -536,6 +548,14 @@ let templates = {
         }
         else {
             $template.find("[topic-example]").remove();
+        }
+
+        // templates <br definition-example-seperator>
+        if($definition.length !== 1 || $example.length !== 1) {
+            $template.find("[definition-example-seperator]").remove();
+        }
+        else {
+            $template.find("[definition-example-seperator]").removeAttr("definition-example-seperator");
         }
 
         $placeholder.replaceWith($template);

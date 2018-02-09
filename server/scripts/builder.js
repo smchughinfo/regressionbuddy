@@ -314,7 +314,7 @@ const buildAppendix = subject => {
         return {
             index: fileIndex,
             content: fileContent
-        }
+        };
     });
     topics = sortObjectArrayByKey(topics, "index");
     topics.forEach(topic => {
