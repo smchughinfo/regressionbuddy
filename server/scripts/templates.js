@@ -512,7 +512,7 @@ let templates = {
             let topicPrimer = $topicPrimer.html();
             let $templateTopicPrimer = $template.find("[topic-primer]");
             $templateTopicPrimer.find("[topic-primer]").removeAttr("topic-primer")
-            $templateTopicPrimer.find("i").html(topicPrimer);
+            $templateTopicPrimer.html(topicPrimer);
         }
         else {
             $template.find("[topic-primer]").remove();
