@@ -183,7 +183,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/group_carrier.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["group", "top-text"];
+        let childTypes = ["group", "top-text", "graph-container"];
         let childTypesSelector = childTypes.join(",");
         let $items = $placeholder.children(childTypesSelector);
 
@@ -198,6 +198,15 @@ let templates = {
         else {
             $template.find("top-text").replaceWith($topText);
             templates.top_text($template.find("top-text")[0]);
+        }
+
+        // <graph-container>
+        let $graphContainer = $placeholder.children("graph-container");
+        if($graphContainer.length > 0) {
+            $template.find("graph-container").replaceWith($graphContainer);
+        }
+        else {
+            $template.find("graph-container").remove();
         }
 
         // <group>
@@ -277,11 +286,19 @@ let templates = {
             templates.top_text($template.find("top-text")[0]);
         }
 
-        // <image-url> and <graph-url>
+        // <image-url>
         let imageUrl = $placeholder.children("image-url").html();
-        let graphUrl = $placeholder.children("graph-url").html();
         $template.find("[image-url]").removeAttr("image-url").attr("src", imageUrl);
-        $template.find("a").attr("href", graphUrl);
+
+        // <graph-url>
+        let $graphUrl = $placeholder.children("graph-url");
+        if($graphUrl.length > 0) {
+            let graphUrl = $graphUrl.html();
+            $template.find("a").attr("href", graphUrl);
+        }
+        else {
+            $template.find("a").remove();
+        }
 
         // [image-size-class]
         let imageClass = $placeholder.attr("image-size-class");
@@ -386,7 +403,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/topic_instance.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["topic-instance-name", "topic-instance-html", "horizontal-group-3"];
+        let childTypes = ["topic-instance-name", "topic-instance-html", "horizontal-group-3", "group-carrier"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "topic_instance");
@@ -429,6 +446,16 @@ let templates = {
             $template.find("horizontal-group-3[repeater]").remove();
         }
 
+        // <group-carrier>
+        let $groupCarrier = $placeholder.children("group-carrier");
+        if($groupCarrier.length > 0) {
+            let $templateGroupCarrier = $template.find("group-carrier");
+            $templateGroupCarrier.replaceWith($groupCarrier);
+            templates.group_carrier($groupCarrier[0]);
+        }
+        else {
+            $template.find("group-carrier").remove();
+        }
 
         $placeholder.replaceWith($template);
     },
