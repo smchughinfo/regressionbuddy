@@ -546,9 +546,15 @@ img {
     vertical-align: top;
 }
 
+/* templating causalties */
 .bold {
     font-weight: bold;
 }
 .topic {
     margin-bottom: 1.5em;
+}
+.function-note {
+    font-weight: normal !important;
+    font-size: small;
+    font-style: italic;
 }

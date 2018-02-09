@@ -677,6 +677,7 @@ const addGraphic = path => {
 const build = () => {
     console.log("building...");
     //console.warn("cheerio adds a body tag if it encounters a text node. e.g. [REPLACE THIS]");
+    console.log("WHEN YOU DO SPECIAL LIMITS MAKE SURE TO INCLUDE PAGE 105.")
 
     createOrCleanBuildDirectory();
     
