@@ -302,6 +302,10 @@ const buildAppendix = subject => {
     let outFilePath = `${process.env.buildDir}/appendix.${subject}.html`;
     let title = `${capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, " "))} Appendix`;
 
+    // set title
+    $appendixTemplate.find(".major-text").html(title);
+
+    // append topics
     let topicFiles = getFiles(`${process.env.clientDir}/html/appendix/${subject}`);
     let topics = topicFiles.map(filePath => {
         let fileName= filePath.split(sep).pop();

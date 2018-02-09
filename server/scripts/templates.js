@@ -26,7 +26,6 @@ const validateChildTypes = (childTypes, $placeholder, templateName) => {
     let childTypesSelector = childTypes.join(",");
     let $children = $placeholder.children(childTypesSelector);
 
-    //console.log(templateName + " " + $children.length + " " + $placeholder.html() + "\r\n\r\n\r\n-----------------\r\n");
     // doesnt account for text nodes.
     if($children.length === 0) {
         throw `Could not find a valid child type for template ${templateName}. Using selector ${childTypesSelector}. $placeholder.html() => ${$("<div>").append($placeholder).html()}.`;
