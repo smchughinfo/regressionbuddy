@@ -76,7 +76,7 @@ const getGlossarySubjects = () => {
 
 const getAppendixSubjects = () => {
     let subjectsPath = `${process.env.clientDir}/html/appendix`;
-    return getDirectorySubjects(subjectsPath);
+    return getDirectories(subjectsPath).map(dir => dir.split(sep).pop());
 };
 
 const getDirectorySubjects = subjectsPath => {
@@ -101,6 +101,12 @@ const capatalizeFirstLetterOfEveryWord = word => {
     return word.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
 };
 
+const sortObjectArrayByKey = (objArray, key) => {
+    return objArray.sort((a,b) => {
+        return a[key] > b[key];
+    });
+};
+
 module.exports = {
     existsSync: existsSync,
     getDirectories: getDirectories,
@@ -116,5 +122,6 @@ module.exports = {
     getAppendixSubjects: getAppendixSubjects,
     getRandomInt: getRandomInt,
     capatalizeFirstLetterOfEveryWord: capatalizeFirstLetterOfEveryWord,
-    getPostConfig: getPostConfig
+    getPostConfig: getPostConfig,
+    sortObjectArrayByKey: sortObjectArrayByKey
 };

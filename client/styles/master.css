@@ -549,3 +549,6 @@ img {
 .bold {
     font-weight: bold;
 }
+.topic {
+    margin-bottom: 1.5em;
+}

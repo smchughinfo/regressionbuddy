@@ -1,7 +1,7 @@
 const { readFileSync, writeFileSync, watchFile, unwatchFile, mkdirSync } = require("fs");
 const { normalize, sep} = require("path");
 const compressor = require("node-minify");
-const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig } = require("./utilities.js");
+const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig, sortObjectArrayByKey } = require("./utilities.js");
 const { applyTemplates } = require("./templates.js");
 const zlib = require('zlib');
 const { minify } = require("html-minifier");
@@ -297,10 +297,27 @@ const buildGlossary = subject => {
 };
 
 const buildAppendix = subject => {
-    let subjectAppendix = readFileSync(`${process.env.clientDir}/html/appendix/${subject}.html`).toString();
+    let appendixTemplate = readFileSync(`${process.env.clientDir}/html/appendix/appendix.html`).toString();
+    let $appendixTemplate = $("<appendix-template-container>" + appendixTemplate + "</appendix-template-container>");
     let outFilePath = `${process.env.buildDir}/appendix.${subject}.html`;
     let title = `${capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, " "))} Appendix`;
 
+    let topicFiles = getFiles(`${process.env.clientDir}/html/appendix/${subject}`);
+    let topics = topicFiles.map(filePath => {
+        let fileName= filePath.split(sep).pop();
+        let fileIndex = parseInt(fileName.split(".")[0], 10);
+        let fileContent = readFileSync(filePath).toString();
+        return {
+            index: fileIndex,
+            content: fileContent
+        }
+    });
+    topics = sortObjectArrayByKey(topics, "index");
+    topics.forEach(topic => {
+        $appendixTemplate.find("#appendix").append(topic.content);
+    });
+
+    let subjectAppendix = $appendixTemplate.html();
     subjectAppendix = applyTemplates(subjectAppendix);
     buildStaticContentPage(subjectAppendix, title, title, outFilePath);
 };
