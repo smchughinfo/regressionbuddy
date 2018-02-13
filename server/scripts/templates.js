@@ -280,6 +280,9 @@ let templates = {
             if($placeholder.children("text-header").is("[bold]")) {
                 $headerContent.addClass("bold");
             }
+            if($placeholder.children("text-header").is("[wider-line]")) {
+                $headerContent.addClass("wider-line");
+            }
         }
         else {
             $template.find("[header-content]").remove();
@@ -348,6 +351,9 @@ let templates = {
 
             if($placeholder.children("text-header").is("[bold]")) {
                 $headerContent.addClass("bold");
+            }
+            if($placeholder.children("text-header").is("[wider-line]")) {
+                $headerContent.addClass("wider-line");
             }
         }
         else {
