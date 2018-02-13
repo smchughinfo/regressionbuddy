@@ -11,7 +11,7 @@ const applyTemplates = html => {
      // if  on occassion a template1 is inside template2
      // and on occassion b template2 is inside template1
      // ...then idk.
-    let _templates = ["primary-list", "nested-list", "topic", "topic-instance", "topic-definition", "topic-example", "horizontal-group-3", "horizontal-group-4", "graph-with-caption", "empty-graph-with-caption", "li-text", "top-text", "group-carrier", "group", "group-item", "cheat", "graph-container"];
+    let _templates = ["primary-list", "nested-list", "topic", "topic-instance", "topic-definition", "topic-example", "horizontal-group-3", "horizontal-group-4", "graph-with-caption", "empty-graph-with-caption", "li-text", "top-text", "group-carrier", "group", "group-item", "cheat"];
     _templates.forEach(template => {
         $.root().find(template).each((i, elm) => {
             template = template.replace(/-/g, "_");
@@ -45,7 +45,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/primary_list.html`;
         let $template = $(readFileSync(templatePath).toString());
         
-        let childTypes = ["nested-list", "group-carrier", "li-text", "graph-container"];
+        let childTypes = ["nested-list", "group-carrier", "li-text", "graph-with-caption"];
         let childTypesSelector = childTypes.join(",");
         let $items = $placeholder.children(childTypesSelector);
 
@@ -104,19 +104,12 @@ let templates = {
             let $repeaterClone = $repeater.clone();
             let $content = $repeaterClone.find("[content]").removeAttr("content");
 
-            let isGraphContainer = $item.children("graph-container").length > 0;
             let isGraphWithCaption = $item.children("graph-with-caption").length > 0;
-            if(isGraphContainer) {
-                // <graph-container>
-                let $graphContainer = $item.find("graph-container");
-                $content.append($graphContainer);
-                templates.graph_container($graphContainer[0]);
-            }
-            else if(isGraphWithCaption) {
+            if(isGraphWithCaption) {
                 // <graph-with-caption>
-                let $graphWithCaption = $item.find("graph-with-caption");
-                $content.append($graphWithCaption);
-                templates.graph_with_caption($graphWithCaption[0]);
+                let $graphWithCaptionContainer = $item.find("graph-with-caption");
+                $content.append($graphWithCaptionContainer);
+                templates.graph_with_caption($graphWithCaptionContainer[0]);
             }
             else {
                 // text nodes
@@ -187,7 +180,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/group_carrier.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["group", "top-text", "graph-container"];
+        let childTypes = ["group", "top-text", "graph-with-caption"];
         let childTypesSelector = childTypes.join(",");
         let $items = $placeholder.children(childTypesSelector);
 
@@ -204,13 +197,13 @@ let templates = {
             templates.top_text($template.find("top-text")[0]);
         }
 
-        // <graph-container>
-        let $graphContainer = $placeholder.children("graph-container");
+        // <graph-with-caption>
+        let $graphContainer = $placeholder.children("graph-with-caption");
         if($graphContainer.length > 0) {
-            $template.find("graph-container").replaceWith($graphContainer);
+            $template.find("graph-with-caption").replaceWith($graphContainer);
         }
         else {
-            $template.find("graph-container").remove();
+            $template.find("graph-with-caption").remove();
         }
 
         // <group>
@@ -268,26 +261,28 @@ let templates = {
         $template.find(".cheat-text").html($placeholder.html())
         $placeholder.replaceWith($template);
     },
-    graph_container: elm => {
+    graph_with_caption: elm => {
         let $placeholder = $(elm);
-        let templatePath = `${process.env.templatesDir}/graph_container.html`;
+        let templatePath = `${process.env.templatesDir}/graph_with_caption.html`;
         let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
 
-        let childTypes = ["top-text", "image-url", "graph-url"];
-        let childTypesSelector = childTypes.join(",");
-        let $items = $placeholder.children(childTypesSelector);
+        let childTypes = ["text-header", "image-url", "graph-url", "caption-text", "caption-html"];
 
         // validate template
-        validateChildTypes(childTypes, $placeholder, "graph_container");
+        validateChildTypes(childTypes, $placeholder, "graph_with_caption");
 
-        // <top-text>
-        let $topText = $placeholder.children("top-text");
-        if($topText.length === 0) {
-            $template.find("top-text").remove();
+        // <text-header>
+        if($placeholder.children("text-header").length > 0) {
+            let header = $placeholder.children("text-header").html();
+            let $headerContent = $template.find("[header-content]").removeAttr("header-content");
+            $headerContent.html(header);
+
+            if($placeholder.children("text-header").is("[bold]")) {
+                $headerContent.addClass("bold");
+            }
         }
         else {
-            $template.find("top-text").replaceWith($topText);
-            templates.top_text($template.find("top-text")[0]);
+            $template.find("[header-content]").remove();
         }
 
         // <image-url>
@@ -314,37 +309,6 @@ let templates = {
             $template.find("[push-graph-launcher-right]").addClass("push-right")
         }
         $template.find("[push-graph-launcher-right]").removeAttr("push-graph-launcher-right");
-
-        $placeholder.replaceWith($template.html());
-    },
-    graph_with_caption: elm => {
-        let $placeholder = $(elm);
-        let templatePath = `${process.env.templatesDir}/graph_with_caption.html`;
-        let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
-
-        let childTypes = ["graph-container", "text-header", "caption-text", "caption-html"];
-
-        // validate template
-        validateChildTypes(childTypes, $placeholder, "graph_with_caption");
-
-        // <text-header>
-        if($placeholder.children("text-header").length > 0) {
-            let header = $placeholder.children("text-header").html();
-            let $headerContent = $template.find("[header-content]").removeAttr("header-content");
-            $headerContent.html(header);
-
-            if($placeholder.children("text-header").is("[bold]")) {
-                $headerContent.addClass("bold");
-            }
-        }
-        else {
-            $template.find("[header-content]").remove();
-        }
-
-        // <graph-container>
-        let $graphContainer = $placeholder.children("graph-container");
-        $template.find("graph-container").replaceWith($graphContainer);
-        templates.graph_container($graphContainer[0]);
 
         // <caption-text>
         if($placeholder.children("caption-text").length > 0) {
