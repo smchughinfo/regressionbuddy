@@ -11,7 +11,7 @@ const applyTemplates = html => {
      // if  on occassion a template1 is inside template2
      // and on occassion b template2 is inside template1
      // ...then idk.
-    let _templates = ["primary-list", "nested-list", "topic", "topic-instance", "topic-definition", "topic-example", "horizontal-group-3", "horizontal-group-4", "graph-with-caption", "empty-graph", "li-text", "top-text", "group-carrier", "group", "group-item", "cheat"];
+    let _templates = ["primary-list", "nested-list", "topic", "topic-instance", "topic-definition", "topic-example", "horizontal-group-3", "horizontal-group-4", "graph", "empty-graph", "li-text", "top-text", "group-carrier", "group", "group-item", "cheat"];
     _templates.forEach(template => {
         $.root().find(template).each((i, elm) => {
             template = template.replace(/-/g, "_");
@@ -45,7 +45,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/primary_list.html`;
         let $template = $(readFileSync(templatePath).toString());
         
-        let childTypes = ["nested-list", "group-carrier", "li-text", "graph-with-caption"];
+        let childTypes = ["nested-list", "group-carrier", "li-text", "graph"];
         let childTypesSelector = childTypes.join(",");
         let $items = $placeholder.children(childTypesSelector);
 
@@ -104,12 +104,12 @@ let templates = {
             let $repeaterClone = $repeater.clone();
             let $content = $repeaterClone.find("[content]").removeAttr("content");
 
-            let isGraphWithCaption = $item.children("graph-with-caption").length > 0;
+            let isGraphWithCaption = $item.children("graph").length > 0;
             if(isGraphWithCaption) {
-                // <graph-with-caption>
-                let $graphWithCaptionContainer = $item.find("graph-with-caption");
+                // <graph>
+                let $graphWithCaptionContainer = $item.find("graph");
                 $content.append($graphWithCaptionContainer);
-                templates.graph_with_caption($graphWithCaptionContainer[0]);
+                templates.graph($graphWithCaptionContainer[0]);
             }
             else {
                 // text nodes
@@ -180,7 +180,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/group_carrier.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["group", "top-text", "graph-with-caption"];
+        let childTypes = ["group", "top-text", "graph"];
         let childTypesSelector = childTypes.join(",");
         let $items = $placeholder.children(childTypesSelector);
 
@@ -197,13 +197,13 @@ let templates = {
             templates.top_text($template.find("top-text")[0]);
         }
 
-        // <graph-with-caption>
-        let $graphContainer = $placeholder.children("graph-with-caption");
+        // <graph>
+        let $graphContainer = $placeholder.children("graph");
         if($graphContainer.length > 0) {
-            $template.find("graph-with-caption").replaceWith($graphContainer);
+            $template.find("graph").replaceWith($graphContainer);
         }
         else {
-            $template.find("graph-with-caption").remove();
+            $template.find("graph").remove();
         }
 
         // <group>
@@ -261,15 +261,15 @@ let templates = {
         $template.find(".cheat-text").html($placeholder.html())
         $placeholder.replaceWith($template);
     },
-    graph_with_caption: elm => {
+    graph: elm => {
         let $placeholder = $(elm);
-        let templatePath = `${process.env.templatesDir}/graph_with_caption.html`;
+        let templatePath = `${process.env.templatesDir}/graph.html`;
         let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
 
         let childTypes = ["text-header", "image-url", "graph-url", "caption-text", "caption-html"];
 
         // validate template
-        validateChildTypes(childTypes, $placeholder, "graph_with_caption");
+        validateChildTypes(childTypes, $placeholder, "graph");
 
         // <text-header>
         if($placeholder.children("text-header").length > 0) {
@@ -586,7 +586,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/horizontal-group-3.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["graph-with-caption", "empty-graph"];
+        let childTypes = ["graph", "empty-graph"];
         let childTypesSelector = childTypes.join(",");
         let $items = $placeholder.children(childTypesSelector);
 
@@ -621,7 +621,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/horizontal-group-4.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["graph-with-caption", "empty-graph"];
+        let childTypes = ["graph", "empty-graph"];
         let childTypesSelector = childTypes.join(",");
         let $items = $placeholder.children(childTypesSelector);
 
