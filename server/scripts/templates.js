@@ -11,7 +11,7 @@ const applyTemplates = html => {
      // if  on occassion a template1 is inside template2
      // and on occassion b template2 is inside template1
      // ...then idk.
-    let _templates = ["primary-list", "nested-list", "topic", "topic-instance", "topic-definition", "topic-example", "horizontal-group-3", "horizontal-group-4", "graph-with-caption", "empty-graph-with-caption", "li-text", "top-text", "group-carrier", "group", "group-item", "cheat"];
+    let _templates = ["primary-list", "nested-list", "topic", "topic-instance", "topic-definition", "topic-example", "horizontal-group-3", "horizontal-group-4", "graph-with-caption", "empty-graph", "li-text", "top-text", "group-carrier", "group", "group-item", "cheat"];
     _templates.forEach(template => {
         $.root().find(template).each((i, elm) => {
             template = template.replace(/-/g, "_");
@@ -330,15 +330,15 @@ let templates = {
 
         $placeholder.replaceWith($template.html());
     },
-    empty_graph_with_caption: elm => {
+    empty_graph: elm => {
         let $placeholder = $(elm);
-        let templatePath = `${process.env.templatesDir}/empty_graph_with_caption.html`;
+        let templatePath = `${process.env.templatesDir}/empty_graph.html`;
         let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
 
         let childTypes = ["text-header", "caption-html"];
 
         // validate template
-        validateChildTypes(childTypes, $placeholder, "empty_graph_with_caption");
+        validateChildTypes(childTypes, $placeholder, "empty_graph");
 
         // <text-header>
         if($placeholder.children("text-header").length > 0) {
@@ -586,7 +586,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/horizontal-group-3.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["graph-with-caption", "empty-graph-with-caption"];
+        let childTypes = ["graph-with-caption", "empty-graph"];
         let childTypesSelector = childTypes.join(",");
         let $items = $placeholder.children(childTypesSelector);
 
@@ -621,7 +621,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/horizontal-group-4.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["graph-with-caption", "empty-graph-with-caption"];
+        let childTypes = ["graph-with-caption", "empty-graph"];
         let childTypesSelector = childTypes.join(",");
         let $items = $placeholder.children(childTypesSelector);
 
