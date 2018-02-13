@@ -113,6 +113,14 @@ let templates = {
             }
             else {
                 // text nodes
+                let isNoVerticalMargin = $item.is("[no-vertical-margin]");
+                let isVerticalMargin5TopOnly = $item.is("[vertical-margin-5top-only]");
+                if(isNoVerticalMargin) {
+                    $content.addClass("no-vertical-margin");
+                }
+                else if(isVerticalMargin5TopOnly) {
+                    $content.addClass("vertical-margin-5top-only");
+                }
                 $content.html($item.html());
             }
             $repeatContainer.append($repeaterClone);

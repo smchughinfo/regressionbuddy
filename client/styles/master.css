@@ -603,9 +603,25 @@ img {
 }
 
 /***** GROUP HEIGHTS *****/
-.height-18 .group-item {
-    height:18px;
+.function-group-carrier {
+    margin-bottom: -18px;
 }
-.height-18 .function-group:not(:last-child) {
+.function-group:not(:last-child) {
     margin-bottom:15px;
+}
+
+.height-18 .group-item { height:18px; }
+.height-18 .function-group:last-child { margin-bottom:26px; }
+
+.height-32 .group-item { height:32px; }
+.height-32 .function-group:last-child { margin-bottom:20px; }
+
+/***** SPACING AGAIN *****/
+.no-vertical-margin > .MJXc-display {
+    margin-top:0 !important;
+    margin-bottom:0 !important;
+}
+.vertical-margin-5top-only > .MJXc-display {
+    margin-top:5px !important;
+    margin-bottom:0 !important;
 }
