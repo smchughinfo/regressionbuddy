@@ -592,3 +592,20 @@ img {
         max-width: 300px;
     }
 }
+/***** TRIANGLE SIZES *****/
+.triangle-1-1-sqrt2 {
+    width: 100%;
+    max-width: 150px;
+}
+.triangle-rotate-1-2-sqrt3 {
+    width: 100%;
+    max-width: 215px;
+}
+
+/***** GROUP HEIGHTS *****/
+.height-18 .group-item {
+    height:18px;
+}
+.height-18 .function-group:not(:last-child) {
+    margin-bottom:15px;
+}

@@ -187,6 +187,13 @@ let templates = {
         // validate template
         validateChildTypes(childTypes, $placeholder, "group_carrier");
 
+        // [height-class]
+        let hasHeightClass = $placeholder.is("[height-class]");
+        if(hasHeightClass) {
+            let heightClass = $placeholder.attr("height-class");
+            $template.addClass(heightClass);
+        }
+
         // <top-text>
         let $topText = $placeholder.children("top-text");
         if($topText.length === 0) {
@@ -216,7 +223,7 @@ let templates = {
         $template.append($placeholder.html());
         $placeholder.replaceWith($template);
     },
-    group: (numberOfGroups, groupNum, elm) => {
+    group: (numberOfGroups, groupNum, elm, row) => {
         let $placeholder = $(elm);
         let templatePath = `${process.env.templatesDir}/group.html`;
         let $template = $(readFileSync(templatePath).toString());
@@ -230,21 +237,23 @@ let templates = {
 
         // <item>
         $items.each((itemNum, elm) => {
-            templates.group_item(numberOfGroups, groupNum, itemNum, elm)
+            let itemsInThisGroup = $items.length;
+            templates.group_item(numberOfGroups, itemsInThisGroup, groupNum, itemNum, elm)
         });
         
         // (templates.group_item);
         $template.html($placeholder.html());
         $placeholder.replaceWith($template);
     },
-    group_item: (numberOfGroups, groupNum, itemNum, elm) => {
+    group_item: (numberOfGroups, itemsInThisGroup, groupNum, itemNum, elm) => {
         let alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
         let $placeholder = $(elm);
         let templatePath = `${process.env.templatesDir}/group_item.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let alphabetIndex = itemNum + numberOfGroups * groupNum;
+        // math is a little brittle here. if groups ever have different numbers of items then? maybe put in a blank element.
+        let alphabetIndex =  groupNum * itemsInThisGroup + itemNum;
         let letter = alphabet[alphabetIndex];
 
         $template.find(".function-group-count").html(`${letter}.`);
