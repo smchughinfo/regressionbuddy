@@ -11,7 +11,7 @@ const applyTemplates = html => {
      // if  on occassion a template1 is inside template2
      // and on occassion b template2 is inside template1
      // ...then idk.
-    let _templates = ["primary-list", "nested-list", "topic", "topic-definition", "topic-example", "horizontal-group-3", "topic-instance", "graph-with-caption", "empty-graph-with-caption", "li-text", "top-text", "group-carrier", "group", "group-item", "cheat", "graph-container"];
+    let _templates = ["primary-list", "nested-list", "topic", "topic-instance", "topic-definition", "topic-example", "horizontal-group-3", "horizontal-group-4", "graph-with-caption", "empty-graph-with-caption", "li-text", "top-text", "group-carrier", "group", "group-item", "cheat", "graph-container"];
     _templates.forEach(template => {
         $.root().find(template).each((i, elm) => {
             template = template.replace(/-/g, "_");
@@ -20,6 +20,10 @@ const applyTemplates = html => {
     });
 
     return $.html();
+};
+
+const html = elm => {
+    return $("<div></div>").append(elm).html();
 };
 
 const validateChildTypes = (childTypes, $placeholder, templateName) => {
@@ -403,7 +407,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/topic_instance.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["topic-instance-name", "topic-instance-html", "horizontal-group-3", "group-carrier"];
+        let childTypes = ["topic-instance-name", "topic-instance-html", "horizontal-group-3", "horizontal-group-4", "group-carrier"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "topic_instance");
@@ -444,6 +448,24 @@ let templates = {
         }
         else {
             $template.find("horizontal-group-3[repeater]").remove();
+        }
+
+        // <horizontal-group-4>
+        let $horizontalGroup4s = $placeholder.children("horizontal-group-4");
+        if($horizontalGroup4s.length > 0) {
+            let $repeater = $template.find("horizontal-group-4[repeater]");
+            let $repeaterParent = $repeater.parent();
+            $repeater.removeAttr("repeater").clone();
+
+            $horizontalGroup4s.each((i, elm) => {
+                $repeater.after(elm);
+                templates.horizontal_group_4(elm);
+            });
+
+            $repeater.remove();
+        }
+        else {
+            $template.find("horizontal-group-4[repeater]").remove();
         }
 
         // <group-carrier>
@@ -487,7 +509,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/topic_example.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["topic-instance", "horizontal-group-3"];
+        let childTypes = ["topic-instance", "horizontal-group-3", "horizontal-group-4"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "topic_example");
@@ -509,11 +531,19 @@ let templates = {
         });
         
         // <horizontal-group-3>
-        let $horizontalGroups = $placeholder.children("horizontal-group-3");
-        $horizontalGroups.each((i, elm) => {
+        let $horizontalGroup3s = $placeholder.children("horizontal-group-3");
+        $horizontalGroup3s.each((i, elm) => {
             let $horizontalGroup = $(elm);
             $repeatContainer.append($horizontalGroup);
             templates.horizontal_group_3($horizontalGroup[0]);
+        });
+
+        // <horizontal-group-4>
+        let $horizontalGroup4s = $placeholder.children("horizontal-group-4");
+        $horizontalGroup4s.each((i, elm) => {
+            let $horizontalGroup = $(elm);
+            $repeatContainer.append($horizontalGroup);
+            templates.horizontal_group_4($horizontalGroup[0]);
         });
 
         $placeholder.replaceWith($template);
@@ -613,8 +643,46 @@ let templates = {
             $repeatContainer.append($repeaterClone);
         });
 
-        $template.children(childTypesSelector).each((i, elm) => {
-            templates[e.tagName.replace(/-/g, "_")](elm);
+        $($template.children(".row").children()).each((i, elm) => {
+            $groupItem = $(elm);
+            $groupItem.children(childTypesSelector).each((i, elm) => {
+                templates[elm.tagName.replace(/-/g, "_")](elm);
+            });
+        });
+
+        $placeholder.replaceWith($template);
+    },
+    horizontal_group_4: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/horizontal-group-4.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        let childTypes = ["graph-with-caption", "empty-graph-with-caption"];
+        let childTypesSelector = childTypes.join(",");
+        let $items = $placeholder.children(childTypesSelector);
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "horizontal-group-4");
+        if($items.length !== 4) {
+            throw `horizontal-group-4 must have three children but has ${$items.length} children.`;
+        }
+
+        let $repeater = $template.find("[repeater]");
+        let $repeatContainer = $repeater.parent();
+        $repeater.removeAttr("repeater").remove();
+        $items.each((i, elm) => {
+            let $item = $(elm);
+            let $repeaterClone = $repeater.clone();
+            
+            $repeaterClone.append($item);
+            $repeatContainer.append($repeaterClone);
+        });
+
+        $($template.children(".row").children()).each((i, elm) => {
+            $groupItem = $(elm);
+            $groupItem.children(childTypesSelector).each((i, elm) => {
+                templates[elm.tagName.replace(/-/g, "_")](elm);
+            });
         });
 
         $placeholder.replaceWith($template);
