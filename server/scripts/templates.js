@@ -75,12 +75,18 @@ let templates = {
     nested_list: elm => {
         let $placeholder = $(elm);
         let templatePath = `${process.env.templatesDir}/nested_list.html`;
-        let $template = $("<template-container>" + readFileSync(templatePath).toString() + "<template-container>");
+        let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
     
         let childTypes = ["top-text", "item"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "nested_list");    
+
+        // [li-medium-bottom-margin]
+        let isMediumVerticalMargin = $placeholder.is("[li-medium-bottom-margin]");
+        if(isMediumVerticalMargin) {
+            $template.find(".list-group").addClass("li-medium-bottom-margin")
+        }
 
         // <top-text>
         let $topText = $placeholder.children("top-text");
@@ -114,13 +120,14 @@ let templates = {
             else {
                 // text nodes
                 let isNoVerticalMargin = $item.is("[no-vertical-margin]");
-                let isVerticalMargin5TopOnly = $item.is("[vertical-margin-5top-only]");
+                let isVerticalMarginSmallTopOnly = $item.is("[latex-vertical-margin-small-top-only]");
                 if(isNoVerticalMargin) {
                     $content.addClass("no-vertical-margin");
                 }
-                else if(isVerticalMargin5TopOnly) {
-                    $content.addClass("vertical-margin-5top-only");
+                else if(isVerticalMarginSmallTopOnly) {
+                    $content.addClass("latex-vertical-margin-small-top-only");
                 }
+
                 $content.html($item.html());
             }
             $repeatContainer.append($repeaterClone);
@@ -156,8 +163,14 @@ let templates = {
         else {
             let text = $text.html();
             $template.find("span").html(text);
+
+            // [latex-vertical-margin-small-top-only]
+            let isVerticalMarginSmallTopOnly = $text.is("[latex-vertical-margin-small-top-only]");
+            if(isVerticalMarginSmallTopOnly) {
+                $template.find("span").addClass("latex-vertical-margin-small-top-only");
+            }
         }
-        
+
         $placeholder.after($template.html());
         $placeholder.remove();
     },
@@ -333,7 +346,7 @@ let templates = {
         // <caption-text>
         if($placeholder.children("caption-text").length > 0) {
             let caption = $placeholder.children("caption-text").html();
-            $template.find("[caption-text]").removeAttr("caption-text").html(caption);
+            $template.find("[caption-text]").removeAttr("caption-text").find(".caption-text").html(caption);
         }
         else {
             $template.find("[caption-text]").remove();

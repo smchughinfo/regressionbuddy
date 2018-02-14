@@ -613,15 +613,30 @@ img {
 .height-18 .group-item { height:18px; }
 .height-18 .function-group:last-child { margin-bottom:26px; }
 
+.height-26 .group-item { height:26px; }
+.height-26 .function-group:last-child { margin-bottom:26px; }
+
 .height-32 .group-item { height:32px; }
 .height-32 .function-group:last-child { margin-bottom:20px; }
 
 /***** SPACING AGAIN *****/
-.no-vertical-margin > .MJXc-display {
+.no-vertical-margin > .MJXc-display,
+.caption-text > .MJXc-display {
     margin-top:0 !important;
     margin-bottom:0 !important;
 }
-.vertical-margin-5top-only > .MJXc-display {
-    margin-top:5px !important;
+.latex-vertical-margin-small-top-only > .MJXc-display {
+    margin-top:4px !important;
     margin-bottom:0 !important;
+}
+#solutions .problem > div {
+    margin-top: 26px;
+}
+
+.caption-text {
+    display:inline-block;
+}
+
+.li-medium-bottom-margin li:not(:last-child) {
+    margin-bottom: 1em;
 }
