@@ -344,9 +344,19 @@ let templates = {
         $template.find("[push-graph-launcher-right]").removeAttr("push-graph-launcher-right");
 
         // <caption-text>
-        if($placeholder.children("caption-text").length > 0) {
-            let caption = $placeholder.children("caption-text").html();
-            $template.find("[caption-text]").removeAttr("caption-text").find(".caption-text").html(caption);
+        let $placeholderCaptionText = $placeholder.children("caption-text");
+        if($placeholderCaptionText.length > 0) {
+            let caption = $placeholderCaptionText.html();
+            let $templateCaptionTextContainer = $template.find("[caption-text]");
+            let $templateCaptionText = $templateCaptionTextContainer.find(".caption-text");
+            
+            $templateCaptionTextContainer.removeAttr("caption-text");
+            $templateCaptionText.html(caption);
+
+            let isVerticalMarginMediumTopOnly = $placeholderCaptionText.is("[latex-vertical-margin-medium-top-only]");
+            if(isVerticalMarginMediumTopOnly) {
+                $templateCaptionText.addClass("latex-vertical-margin-medium-top-only");
+            }
         }
         else {
             $template.find("[caption-text]").remove();
