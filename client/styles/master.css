@@ -213,10 +213,10 @@
     margin-bottom:25px;
 }
 
-#appendix .triangle-basic img {
+#appendix .triangle-basic {
     max-width: 250px;
 }
-#appendix .triangle-1-sqrt3-3 img {
+#appendix .triangle-1-sqrt3-3 {
     max-width: 198.5px;    
 }
 
@@ -603,10 +603,10 @@ img {
 }
 
 /***** GROUP HEIGHTS *****/
-.function-group-carrier {
+#post .function-group-carrier {
     margin-bottom: -18px;
 }
-.function-group:not(:last-child) {
+#post .function-group:not(:last-child) {
     margin-bottom:15px;
 }
 

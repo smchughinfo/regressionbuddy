@@ -201,12 +201,15 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/group_carrier.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["group", "top-text", "graph"];
+        let childTypes = ["group", "top-text"];
         let childTypesSelector = childTypes.join(",");
         let $items = $placeholder.children(childTypesSelector);
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "group_carrier");
+
+        // [hide-index]
+        let hideIndex = $placeholder.is("[hide-index]");
 
         // [height-class]
         let hasHeightClass = $placeholder.is("[height-class]");
@@ -225,26 +228,17 @@ let templates = {
             templates.top_text($template.find("top-text")[0]);
         }
 
-        // <graph>
-        let $graphContainer = $placeholder.children("graph");
-        if($graphContainer.length > 0) {
-            $template.find("graph").replaceWith($graphContainer);
-        }
-        else {
-            $template.find("graph").remove();
-        }
-
         // <group>
         let $groups = $placeholder.children("group");
         $groups.each((i, groupElm) => {
             let numberOfGroups = $groups.length;
-            templates.group(numberOfGroups, i, groupElm);
+            templates.group(hideIndex, numberOfGroups, i, groupElm);
         });
 
         $template.append($placeholder.html());
         $placeholder.replaceWith($template);
     },
-    group: (numberOfGroups, groupNum, elm, row) => {
+    group: (hideIndex, numberOfGroups, groupNum, elm, row) => {
         let $placeholder = $(elm);
         let templatePath = `${process.env.templatesDir}/group.html`;
         let $template = $(readFileSync(templatePath).toString());
@@ -259,14 +253,14 @@ let templates = {
         // <item>
         $items.each((itemNum, elm) => {
             let itemsInThisGroup = $items.length;
-            templates.group_item(numberOfGroups, itemsInThisGroup, groupNum, itemNum, elm)
+            templates.group_item(hideIndex, numberOfGroups, itemsInThisGroup, groupNum, itemNum, elm)
         });
         
         // (templates.group_item);
         $template.html($placeholder.html());
         $placeholder.replaceWith($template);
     },
-    group_item: (numberOfGroups, itemsInThisGroup, groupNum, itemNum, elm) => {
+    group_item: (hideIndex, numberOfGroups, itemsInThisGroup, groupNum, itemNum, elm) => {
         let alphabet = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
 
         let $placeholder = $(elm);
@@ -277,7 +271,13 @@ let templates = {
         let alphabetIndex =  groupNum * itemsInThisGroup + itemNum;
         let letter = alphabet[alphabetIndex];
 
-        $template.find(".function-group-count").html(`${letter}.`);
+        if(hideIndex) {
+            $template.find(".function-group-count").remove();
+        }
+        else {
+            $template.find(".function-group-count").html(`${letter}.`);
+        }
+
         $template.find("[content]").removeAttr("content").html($placeholder.html());
         
         $placeholder.replaceWith($template);
@@ -496,20 +496,29 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/topic_definition.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["topic-instance"];
+        let childTypes = ["topic-instance", "diagram-by-example"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "topic_definition");
-
-        // <topic-instance>
+        
         let $repeater = $template.find("[repeater]");
         let $repeatContainer = $repeater.parent();
         $repeater.remove();
+
+        // <topic-instance>
         let $topicInstances = $placeholder.children("topic-instance");
         $topicInstances.each((i, elm) => {
             let $topicInstance = $(elm);
             $repeatContainer.append($topicInstance);
             templates.topic_instance($topicInstance[0]);
+        });
+
+        // <diagram-by-example>
+        let $diagramByExamples = $placeholder.children("diagram-by-example");
+        $diagramByExamples.each((i, elm) => {
+            let $diagramByExample = $(elm);
+            $repeatContainer.append($diagramByExample);
+            templates.diagram_by_example($diagramByExample[0]);
         });
 
         $placeholder.replaceWith($template);
@@ -519,7 +528,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/topic_example.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["topic-instance", "horizontal-group-3", "horizontal-group-4"];
+        let childTypes = ["topic-instance", "horizontal-group-3", "horizontal-group-4", "diagram-by-example"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "topic_example");
@@ -554,6 +563,14 @@ let templates = {
             let $horizontalGroup = $(elm);
             $repeatContainer.append($horizontalGroup);
             templates.horizontal_group_4($horizontalGroup[0]);
+        });
+
+        // <diagram-by-example>
+        let $diagramByExamples = $placeholder.children("diagram-by-example");
+        $diagramByExamples.each((i, elm) => {
+            let $diagramByExample = $(elm);
+            $repeatContainer.append($diagramByExample);
+            templates.diagram_by_example($diagramByExample[0]);
         });
 
         $placeholder.replaceWith($template);
@@ -696,6 +713,35 @@ let templates = {
         });
 
         $placeholder.replaceWith($template);
+    },
+    diagram_by_example: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/diagram_by_example.html`;
+        let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
+
+        let childTypes = ["html-header", "diagram", "group-carrier"];
+        let childTypesSelector = childTypes.join(",");
+        let $items = $placeholder.children(childTypesSelector);
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "diagram-by-example");
+
+        // <html-header>
+        let headerHTML = $placeholder.find("html-header").html();
+        $template.find("p").html(headerHTML);
+
+        // <diagram>
+        let imageUrl = $placeholder.find("diagram").html();
+        let imageSizeClass = $placeholder.find("diagram").attr("image-size-class");
+        $template.find("img").attr("src", imageUrl).addClass(imageSizeClass);
+
+        // <function-group-carroer>
+        let $placeholderGroupCarrier = $placeholder.find("group-carrier");
+        let $templateGroupCarrier = $template.find("group-carrier");
+        $templateGroupCarrier.replaceWith($placeholderGroupCarrier);
+        templates.group_carrier($placeholderGroupCarrier[0]);
+
+        $placeholder.replaceWith($template.html());
     }
 }
 
