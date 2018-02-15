@@ -315,14 +315,14 @@
         flex-grow: 1;
     }
 
-    .graph-con-no-image>ul {
+    .graph-con-no-image ul {
         display: inline-block;
         margin-left: 0;
         padding-left: 0;
         text-align: left;
     }
 
-    .graph-con-no-image>ul>li {
+    .graph-con-no-image li {
         list-style-position: inside;
     }
 
@@ -480,7 +480,6 @@ img {
 }
 .wider-line {
     position: relative;
-    min-width:30px;
 }
 .alert .wider-line > * {
     z-index:1;

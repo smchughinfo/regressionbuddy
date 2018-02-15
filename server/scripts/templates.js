@@ -19,6 +19,8 @@ const applyTemplates = html => {
         });
     });
 
+    trimSpace($); // <li trim-space> foo</li> -> <li>foo</li> 
+
     return $.html();
 };
 
@@ -37,6 +39,17 @@ const validateChildTypes = (childTypes, $placeholder, templateName) => {
     if($children.length != $placeholder.children().length) {
         throw `Invalid child types found for template ${templateName}. Using selector ${childTypesSelector}. $placeholder.html() => ${$("<div>").append($placeholder).html()}.`;
     }
+};
+
+const trimSpace = $ => {
+    function trimSpace(i, elm) {
+        let $elm = $(elm);
+        $elm.children().each(trimSpace);
+        $elm.removeAttr("trim-space")
+        // base case
+        $elm.html($elm.html().trim());
+    }
+    $.root().find("[trim-space]").each(trimSpace);
 };
 
 let templates = {
@@ -369,9 +382,16 @@ let templates = {
         }
 
         // <caption-html>
-        if($placeholder.children("caption-html").length > 0) {
+        let $placeholderCaptionHTML = $placeholder.children("caption-html");
+        if($placeholderCaptionHTML.length > 0) {
             let subcaption = $placeholder.children("caption-html").html();
-            $template.find("[caption-html]").removeAttr("caption-html").html(subcaption);
+            if($placeholderCaptionHTML.is("[place-after-template]")) {
+                $template.find("[caption-html]").remove();
+                $template.append(subcaption);
+            }
+            else {
+                $template.find("[caption-html]").removeAttr("caption-html").html(subcaption);
+            }
         }
         else {
             $template.find("[caption-html]").remove();
