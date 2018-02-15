@@ -316,6 +316,9 @@ let templates = {
             if($placeholder.children("text-header").is("[center]")) {
                 $headerContent.addClass("text-center");
             }
+            if($placeholder.children("text-header").is("[bottom-margin]")) {
+                $headerContent.addClass("text-center");
+            }
         }
         else {
             $template.find("[header-content]").remove();
@@ -397,6 +400,9 @@ let templates = {
             }
             if($placeholder.children("text-header").is("[wider-line]")) {
                 $headerContent.addClass("wider-line");
+            }
+            if($placeholder.children("text-header").is("[center]")) {
+                $headerContent.addClass("text-center");
             }
         }
         else {
