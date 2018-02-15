@@ -190,6 +190,7 @@
 }
 .function-group {
     display: inline-block;
+    vertical-align: middle;
 }
 .function-group > * {
     margin-right: 15px;
@@ -622,6 +623,8 @@ img {
 
 .height-32 .group-item { height:32px; }
 .height-32 .function-group:last-child { margin-bottom:20px; }
+
+.diagram-by-example .function-group:last-child { margin-bottom:0 !important; }
 
 /***** SPACING AGAIN *****/
 .no-vertical-margin > .MJXc-display,
