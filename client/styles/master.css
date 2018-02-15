@@ -464,24 +464,27 @@ img {
 }
 
 /********* LINE ON THE SIDE OF R *********/
-.wider-line:before,
 .wider-line:after {
-    content: '';
+    content:'';
     display: inline-block;
     height: 1px;
-    width: 100%;
-    max-width: 80px;
-    border-top: 1px solid #b1dfbb;
-    position:relative;
-    top:-5px;
+    width: 74%;
+    position:absolute;
+    top:12px;
+    left: 13%;
 }
-.wider-line:before {
-    margin-right: 10px;
+.wider-line {
+    position: relative;
 }
-.wider-line:after {
-    margin-left: 10px;
+.alert .wider-line > * {
+    z-index:1;
+    padding-left:8px;
+    padding-right:8px;
 }
-
+.alert-info .wider-line > * { background: #d1ecf1; }
+.alert-success .wider-line > * { background: #d4edda; }
+.alert-info .wider-line:after { border-top: 1px solid #abdde5; }
+.alert-success .wider-line:after { border-top: 1px solid #b1dfbb; }
 
 /******** LEFT-RIGHT *********/
 .left-right {
