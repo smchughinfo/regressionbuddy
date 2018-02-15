@@ -717,7 +717,7 @@ let templates = {
     diagram_by_example: elm => {
         let $placeholder = $(elm);
         let templatePath = `${process.env.templatesDir}/diagram_by_example.html`;
-        let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
+        let $template = $(readFileSync(templatePath).toString());
 
         let childTypes = ["html-header", "diagram", "group-carrier"];
         let childTypesSelector = childTypes.join(",");
@@ -741,7 +741,7 @@ let templates = {
         $templateGroupCarrier.replaceWith($placeholderGroupCarrier);
         templates.group_carrier($placeholderGroupCarrier[0]);
 
-        $placeholder.replaceWith($template.html());
+        $placeholder.replaceWith($template);
     }
 }
 

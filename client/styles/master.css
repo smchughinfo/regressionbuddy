@@ -161,7 +161,8 @@
 #appendix .alert {
     display: inline-block;
 }
-#appendix .alert > strong {
+#appendix .alert > strong,
+.diagram-by-example > strong {
     display: block;
 }
 #appendix .definition {
@@ -171,7 +172,10 @@
 #appendix .appendix-seperator {
     border-top:1px solid gray;
 }
-#appendix ol.list-group {
+.small-left-margin {
+    padding-left: 1em;
+}
+.large-left-margin {
     padding-left: 3em;
 }
 .topic-instance:not(:last-child) {
