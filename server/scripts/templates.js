@@ -1,4 +1,4 @@
-// cheerio can't find elements inside of a <template> tag. so <template> is called <placeholder>
+// *cheerio can't find elements inside of a <template> tag.
 // each template is completely responsible for validating its child elements.
 
 const { readFileSync, writeFileSync } = require("fs");
@@ -728,7 +728,7 @@ let templates = {
 
         // <html-header>
         let headerHTML = $placeholder.find("html-header").html();
-        $template.find("p").html(headerHTML);
+        $template.find("html-header").replaceWith(headerHTML);
 
         // <diagram>
         let imageUrl = $placeholder.find("diagram").html();
