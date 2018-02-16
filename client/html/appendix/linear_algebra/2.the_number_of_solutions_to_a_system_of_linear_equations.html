@@ -1,0 +1,170 @@
+<topic>
+        <topic-name>The Number of Solutions to a System of Linear Equations</topic-name>
+        <topic-eli5>A solution of a system linear equations is a point that every equation in the system touches.</topic-eli5>
+        <topic-definition>
+            <topic-instance>
+                <topic-instance-html>
+                    <p>A system of linear equations can have no solutions, one solution, or an infinite number of solutions.</p>
+                    <ol class="list-group large-left-margin">
+                        <li>Systems with no solutions are called inconsistent.</li>
+                        <li>Systems that have a solution are called consistent.</li>
+                    </ol>
+                </topic-instance-html>
+            </topic-instance>
+        </topic-definition>
+        <!--▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼-->
+        <topic-example size-class="small-width-350">
+            <topic-instance>
+                <topic-instance-name>Two Variables Example</topic-instance-name>
+                <horizontal-group-3>
+                    <graph image-size-class="graph-size-1">
+                        <image-url>/images/linear-algebra-appendix/no-solutions-2d.png</image-url>
+                        <graph-url>https://www.geogebra.org/graphing/JsvmRYJu</graph-url>
+                        <caption-text>No Solutions</caption-text>
+                        <caption-html>
+                            \begin{align}
+                                x-y=1 \\
+                                -x+y=1 
+                            \end{align}
+                        </caption-html>
+                    </graph>
+                    <graph image-size-class="graph-size-1">
+                        <image-url>/images/linear-algebra-appendix/one-solution-2d.png</image-url>
+                        <graph-url>https://www.geogebra.org/graphing/wpt46e8P</graph-url>
+                        <caption-text>One Solution</caption-text>
+                        <caption-html>
+                            \begin{align} 
+                                \hphantom{2}x+\hphantom{2}y &= 2 \\ 
+                                -2x+3y &= 2 
+                            \end{align}
+                        </caption-html>
+                    </graph>
+                    <graph image-size-class="graph-size-1">
+                        <image-url>/images/linear-algebra-appendix/infinite-solutions-2d.png</image-url>
+                        <graph-url>https://www.geogebra.org/graphing/pk4s7AE6</graph-url>
+                        <caption-text>Infinite Solutions</caption-text>
+                        <caption-html>
+                                \begin{align}
+                                    \hphantom{2}x   -   \hphantom{2}y   &=   1 \\ 
+                                    2x              -2   y              &=   2 
+                                \end{align}
+                        </caption-html>
+                    </graph>
+                </horizontal-group-3>
+            </topic-instance>
+            <topic-instance>
+                    <topic-instance-name>Three Variables Example</topic-instance-name>
+                    <horizontal-group-3>
+                            <graph image-size-class="graph-size-2">
+                                <image-url>/images/linear-algebra-appendix/no-solutions-3d.png</image-url>
+                                <graph-url>https://www.geogebra.org/3d/X3QpGghW</graph-url>
+                                <caption-text>No Solutions</caption-text>
+                                <caption-html>
+                                    \begin{align*} 
+                                        x+y+z &= 0 \\ 
+                                        x+y+z &= 2.5 \\ 
+                                        x+y+z &= 5 
+                                    \end{align*}
+                                </caption-html>
+                            </graph>
+                            <graph image-size-class="graph-size-2">
+                                <image-url>/images/linear-algebra-appendix/one-solution-3d.png</image-url>
+                                <graph-url>https://www.geogebra.org/3d/gvBZPARm</graph-url>
+                                <caption-text>One Solution</caption-text>
+                                <caption-html>
+                                    \begin{align} 
+                                        \phantom{-}x+y+z &= 1 \\
+                                        \phantom{-}x+y-z &= 1 \\ 
+                                        -x+y\phantom{+z}\;\, &= 1 
+                                    \end{align}
+                                </caption-html>
+                            </graph>
+                            <graph image-size-class="graph-size-2">
+                                <image-url>/images/linear-algebra-appendix/infinite-solutions-3d.png</image-url>
+                                <graph-url>https://www.geogebra.org/3d/uMgPftYT</graph-url>
+                                <caption-text>Infinite Solutions</caption-text>
+                                <caption-html>
+                                    \begin{align} 
+                                        x+y+z=1 \\ 
+                                        -x-y+z=1 \\ 
+                                        z=1 
+                                    \end{align}
+                                </caption-html>
+                            </graph>
+                        </graph>
+                    </horizontal-group-3>
+                </topic-instance>
+                <topic-instance>
+                        <topic-instance-name>n Variables Example</topic-instance-name>
+                        <horizontal-group-3>
+                            <empty-graph>
+                                <text-header>No Solutions</text-header>
+                                <caption-html>
+                                    \begin{align*} 
+                                        x_1^\phantom{1}-x_2^\phantom{1}+x_3^\phantom{1}-x_4^\phantom{1} &= 1\\ 
+                                        \phantom{x_1^1-x_2^1+}x_3^\phantom{1}+x_4^\phantom{1} &= 4\\ 
+                                        \phantom{x_1^1-x_2^1+}x_3^\phantom{1}\phantom{-x_4^1}\phantom{p} &= 2\\ 
+                                        \phantom{x_1^1-x_2^1+x_3^1+}x_4^\phantom{1} &= 1 \\
+                                        \phantom{x_1^1}
+                                    \end{align*}
+                                    <p class="text-left">
+                                        If 
+                                        \(x_4^\phantom{1}=1\) 
+                                        and 
+                                        \(x_3^\phantom{1}=2\) 
+                                        there is no way 
+                                        \(x_3^\phantom{1}+x_4^\phantom{1}\)
+                                        can equal 
+                                        \(4\), 
+                                        so the system is inconsistent.
+                                    </p>
+                                </caption-html>
+                            </empty-graph>
+                            <empty-graph>
+                                <text-header>One Solution</text-header>
+                                <caption-html>
+                                    \begin{align*}
+                                        x_1^\phantom{1} + x_2^\phantom{1} + x_3^\phantom{1} + x_4^\phantom{1} + x_5^\phantom{1} & = 1 \\ 
+                                        \phantom{x_1^1+}x_2^\phantom{1} + x_3^\phantom{1} + x_4^\phantom{1} + x_5^\phantom{1} &= 2 \\ 
+                                        \phantom{x_1^1+x_2^1}x_3^\phantom{1} + x_4^\phantom{1} + x_5^\phantom{1} &= 8 \\ 
+                                        \phantom{x_1^1-x_2^1+x_3^1}x_4^\phantom{1} + x_5^\phantom{1} &= 4 \\ 
+                                        \phantom{x_1^1-x_2^1+x_3^1+x_4^1}x_5^\phantom{1} &= 2 \\
+                                    \end{align*}
+                                    <p class="text-left">
+                                        If 
+                                        \(x_5^\phantom{1}=2\) 
+                                        then 
+                                        \(x_4^\phantom{1}=2\), 
+                                        \(x_3^\phantom{1}=4\), 
+                                        \(x_2^\phantom{1}=-6\), 
+                                        and 
+                                        \(x_1^\phantom{1}=-1\) 
+                                        so the system has only one solution.
+                                    </p>
+                                </caption-html>
+                            </empty-graph>
+                            <empty-graph>
+                                <text-header>Infinite Solutions</text-header>
+                                <caption-html>
+                                    \begin{align*}
+                                        x_1^\phantom{1} + x_2^\phantom{1} + x_3^\phantom{1} + x_4^\phantom{1} + x_5^\phantom{1} & = 1 \\ 
+                                        \phantom{x_1^1+}x_2^\phantom{1} + x_3^\phantom{1} + x_4^\phantom{1} + x_5^\phantom{1} &= 2 \\ 
+                                        \phantom{x_1^1+x_2^1}x_3^\phantom{1} + x_4^\phantom{1} + x_5^\phantom{1} &= 8 \\ 
+                                        \phantom{x_1^1-x_2^1+x_3^1}x_4^\phantom{1} + x_5^\phantom{1} &= 4 \\ 
+                                        \phantom{x_1^1-x_2^1+x_3^1+x_4^1}x_5^\phantom{1} &= t
+                                    \end{align*}
+                                    <p class="text-left">
+                                        In this case 
+                                        \(x_5^\phantom{1}\) 
+                                        equals the variable 
+                                        \(t\)
+                                        . Since the values of the other variables change as 
+                                        \(x_5^\phantom{1}\) 
+                                        changes this system has an infinite number of solutions.
+                                    </p>
+                                </caption-html>
+                            </empty-graph>
+                        </horizontal-group-3>
+                    </topic-instance>
+        </topic-example>
+    </topic>

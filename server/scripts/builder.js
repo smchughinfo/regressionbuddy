@@ -1,7 +1,8 @@
 const { readFileSync, writeFileSync, watchFile, unwatchFile, mkdirSync } = require("fs");
 const { normalize, sep} = require("path");
 const compressor = require("node-minify");
-const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig } = require("./utilities.js");
+const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig, sortObjectArrayByKey } = require("./utilities.js");
+const { applyTemplates } = require("./templates.js");
 const zlib = require('zlib');
 const { minify } = require("html-minifier");
 const cheerio = require('cheerio');
@@ -249,6 +250,8 @@ const buildPost = (postNumber, subject) => {
     outFile = outFile.replace('data-post-number=""', `data-post-number='${postNumber}'`);    
     outFile = outFile.replace('data-last-post-number=""', `data-last-post-number='${getLargestPostNumber()}'`);    
 
+    outFile = applyTemplates(outFile);
+
     if(process.env.name !== "dev") {
         outFile = minimizePageHTML(outFile);
     }
@@ -294,18 +297,33 @@ const buildGlossary = subject => {
 };
 
 const buildAppendix = subject => {
-    let subjectAppendix = readFileSync(`${process.env.clientDir}/html/appendix/${subject}.html`).toString();
+    let appendixTemplate = readFileSync(`${process.env.clientDir}/html/appendix/appendix.html`).toString();
+    let $appendixTemplate = $("<appendix-template-container>" + appendixTemplate + "</appendix-template-container>");
     let outFilePath = `${process.env.buildDir}/appendix.${subject}.html`;
     let title = `${capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, " "))} Appendix`;
 
-    buildStaticContentPage(subjectAppendix, title, title, outFilePath);
+    // set title
+    $appendixTemplate.find(".major-text").html(title);
 
-    console.log("UNSET THIS");
-    let $ = cheerio.load(readFileSync(outFilePath));
-    let nav = $.root().find("nav");
-    nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
-    subjectAppendix = $.html();
-    writeFileSync(outFilePath, subjectAppendix);
+    // append topics
+    let topicFiles = getFiles(`${process.env.clientDir}/html/appendix/${subject}`);
+    let topics = topicFiles.map(filePath => {
+        let fileName= filePath.split(sep).pop();
+        let fileIndex = parseInt(fileName.split(".")[0], 10);
+        let fileContent = readFileSync(filePath).toString();
+        return {
+            index: fileIndex,
+            content: fileContent
+        };
+    });
+    topics = sortObjectArrayByKey(topics, "index");
+    topics.forEach(topic => {
+        $appendixTemplate.find("#appendix").append(topic.content);
+    });
+
+    let subjectAppendix = $appendixTemplate.html();
+    subjectAppendix = applyTemplates(subjectAppendix);
+    buildStaticContentPage(subjectAppendix, title, title, outFilePath);
 };
 
 const buildAboutPage = () => {
@@ -417,10 +435,10 @@ const buildReviewAppendixes = () => {
             title.html(`Review - ${title.html()}`);
             meta.attr("content", `Page Under Review: ${meta.attr("content")}`);
             h4.html(`Week ${postNumber} - ${h4.html()} Review`);
-            console.log("UNSET -- UNCOMMENT THIS NEXT LINE!!!! WHEN FIRST POST GOES OUT OF REVIEW");
-            //nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
+            nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
             appendixElm.append('<div class="container-fluid">' + readFileSync(`${process.env.postTemplatesDir}/show_comments_link.html`).toString() + '</div><br>');
             appendixElm.after(readFileSync(`${process.env.postTemplatesDir}/comments.html`).toString());
+            console.log("HAS THIS BECOME AN ISSUE?");
             body.find("#comments > br:first-of-type").remove(); // this is pretty bad.
             body.append("<br><br>"); // make it easier to see comments
             let outFile = $.html();
@@ -524,7 +542,7 @@ const generateSiteMap = () => {
 
     console.log("UNSET THIS!!!");
     console.log("UNSET MASTER.JS // redirect to normalized url --- ON THE CLIENT SIDE //() -> ()");
-    let mostRecentPostDate = "2/11/2018";//postJsons[postJsons.length - 1].date;
+    let mostRecentPostDate = postJsons[postJsons.length - 1].date;
     let pages = [
         { 
             loc: "https://www.regressionbuddy.com",
@@ -668,6 +686,7 @@ const addGraphic = path => {
 const build = () => {
     console.log("building...");
     //console.warn("cheerio adds a body tag if it encounters a text node. e.g. [REPLACE THIS]");
+    console.log("WHEN YOU DO SPECIAL LIMITS MAKE SURE TO INCLUDE PAGE 105.")
 
     createOrCleanBuildDirectory();
     

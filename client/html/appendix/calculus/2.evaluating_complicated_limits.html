@@ -1,0 +1,34 @@
+<topic>
+    <topic-name>Evaluating Complicated Limits</topic-name>
+    <topic-eli5>Sometimes you have to do a little algebra before direct substitution will work.</topic-eli5>
+    <!--▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼-->
+    <topic-example>
+        <topic-instance>
+            <topic-instance-name>Factoring Example</topic-instance-name>
+            <topic-instance-html>
+                \( \lim\limits_{x\to\ 3} \frac{x^2-9}{x-3} = \lim\limits_{x\to\ 3} \frac{(x+3)(x-3)}{x-3} = \lim\limits_{x\to\ 3} x+3 = 3
+                + 3 = 6 \)
+            </topic-instance-html>
+        </topic-instance>
+        <topic-instance>
+            <topic-instance-name>Conjugate Example</topic-instance-name>
+            <topic-instance-html>
+                \( \lim\limits_{x\to\ 25} \frac{5-\sqrt{x}}{25-x} = \lim\limits_{x\to\ 25} \frac{5-\sqrt{x}}{25-x}\frac{5+\sqrt{x}}{5+\sqrt{x}}
+                = \lim\limits_{x\to\ 25} \frac{25-x}{(25-x)(5+\sqrt{x})} = \lim\limits_{x\to\ 25} \frac{1}{5+\sqrt{x}} =
+                \frac{1}{5+\sqrt{25}} = \frac{1}{5+5} = \frac{1}{10} \)
+            </topic-instance-html>
+        </topic-instance>
+        <topic-instance>
+            <topic-instance-name>Divide by Highest Power Example</topic-instance-name>
+            <topic-instance-html>
+                \( 
+                    \lim\limits_{x\to\ \infty} \sqrt{\frac{5x^2}{x^2+2}} = \lim\limits_{x\to\ \infty} \frac{\sqrt{5x^2}}{\sqrt{x^2+2}}
+                = \lim\limits_{x\to\ \infty} \frac {\frac {\sqrt{5x^2}} {x} } {\frac {\sqrt{x^2+2}} {x} } = \lim\limits_{x\to\
+                \infty} \frac { \sqrt{\frac{5x^2}{x^2}} } { \sqrt{\frac{x^2+2}{x^2}} } = \lim\limits_{x\to\ \infty} \frac
+                { \sqrt{\frac{5x^2}{x^2}} } { \sqrt{\frac{x^2}{x^2} + \frac{2}{x^2}} } = \lim\limits_{x\to\ \infty} \frac
+                { \sqrt{5} } { \sqrt{1 + \frac{2}{x^2}} } = \frac { \sqrt{5} } { \sqrt{1 + \frac{2}{\infty}} } = \frac {
+                \sqrt{5} } { \sqrt{1 + 0} } = \frac { \sqrt{5} } { \sqrt{1} } = \sqrt{5} \)
+            </topic-instance-html>
+        </topic-instance>
+    </topic-example>
+</topic>

@@ -1,4 +1,4 @@
-.date {
+.major-text {
     margin-top: 20px;
 }
 
@@ -161,7 +161,8 @@
 #appendix .alert {
     display: inline-block;
 }
-#appendix .alert > strong {
+#appendix .alert > strong,
+.diagram-by-example > strong {
     display: block;
 }
 #appendix .definition {
@@ -171,8 +172,21 @@
 #appendix .appendix-seperator {
     border-top:1px solid gray;
 }
-#appendix ol.list-group {
+.small-left-margin {
+    padding-left: 1em;
+}
+.large-left-margin {
     padding-left: 3em;
+}
+.topic-instance:not(:last-child) {
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+}
+.alert-info .topic-instance:not(:last-child) {
+    border-bottom: 1px solid #abdde5;
+}
+.alert-success .topic-instance:not(:last-child) {
+    border-bottom: 1px solid #b1dfbb; 
 }
 /******* FUNCTION GROUP *******/
 .function-group-carrier {
@@ -181,6 +195,7 @@
 }
 .function-group {
     display: inline-block;
+    vertical-align: middle;
 }
 .function-group > * {
     margin-right: 15px;
@@ -300,48 +315,48 @@
         flex-grow: 1;
     }
 
-    .graph-con-no-image>ul {
+    .graph-con-no-image ul {
         display: inline-block;
         margin-left: 0;
         padding-left: 0;
         text-align: left;
     }
 
-    .graph-con-no-image>ul>li {
+    .graph-con-no-image li {
         list-style-position: inside;
     }
 
-    .graph-con-2d {
+    .graph-size-1 {
         max-width: 208px;
     }
-    .graph-con-3d {
+    .graph-size-2 {
         max-width: 250px;
     }
-    #post .graph-con-2d {
+    #post .graph-size-1 {
         max-width: 150px !important;
     }
-    #post .graph-con-3d {
+    #post .graph-size-2 {
         max-width: 180px !important;
     }
-    .horizontal-group-4 .graph-con-2d {
+    .horizontal-group-4 .graph-size-1 {
         max-width: 150px;
     }
-    .horizontal-group-4 .graph-con-3d {
+    .horizontal-group-4 .graph-size-2 {
         max-width: 180px;
     }
 
-    /*.graph-con-2d {
+    /*.graph-size-1 {
         max-width: 275px;
     }
-    .graph-con-3d {
+    .graph-size-2 {
         max-width: 330px;
     }*/
 
     .small-width-350 {
         width: 100%;
     }
-    .small-width-350 > strong {
-        margin-bottom: 1rem;
+    .small-width-350 > .topic-instance > strong + * {
+        margin-top: 1em;
     }
     
     @media only screen and (min-width: 991px) {
@@ -351,16 +366,16 @@
     }
 
     @media only screen and (max-width: 991px) {
-        .horizontal-group-3 .graph-con-2d {
+        .horizontal-group-3 .graph-size-1 {
             max-width: 150px;
         }
-        .horizontal-group-3 .graph-con-3d {
+        .horizontal-group-3 .graph-size-2 {
             max-width: 180px;
         }
-        .horizontal-group-4 .graph-con-2d {
+        .horizontal-group-4 .graph-size-1 {
             max-width: 108px;
         }
-        .horizontal-group-4 .graph-con-3d {
+        .horizontal-group-4 .graph-size-2 {
             max-width: 130px;
         }
     }
@@ -454,24 +469,32 @@ img {
 }
 
 /********* LINE ON THE SIDE OF R *********/
-.wider-line:before,
 .wider-line:after {
-    content: '';
+    content:'';
     display: inline-block;
     height: 1px;
-    width: 100%;
-    max-width: 80px;
-    border-top: 1px solid #b1dfbb;
+    width: 60%;
+    position:absolute;
+    top: 50%;
+    left: 20%;
+}
+.wider-line {
+    position: relative;
+}
+.alert .wider-line > * {
+    z-index:1;
+    padding-left:8px;
+    padding-right:8px;
+}
+.alert-info .MathJax_Preview,
+.alert-success .MathJax_Preview {
+    z-index:1;
     position:relative;
-    top:-5px;
 }
-.wider-line:before {
-    margin-right: 10px;
-}
-.wider-line:after {
-    margin-left: 10px;
-}
-
+.alert-info .wider-line > * { background: #d1ecf1; }
+.alert-success .wider-line > * { background: #d4edda; }
+.alert-info .wider-line:after { border-top: 1px solid #abdde5; }
+.alert-success .wider-line:after { border-top: 1px solid #b1dfbb; }
 
 /******** LEFT-RIGHT *********/
 .left-right {
@@ -534,4 +557,130 @@ img {
     #work img {
         max-width: 100% !important;
     }
+}
+
+.nested-list-content {
+    display:inline-block;
+    vertical-align: top;
+}
+
+/* templating causalties */
+.bold {
+    font-weight: bold;
+}
+.topic {
+    margin-bottom: 1.5em;
+}
+.function-note {
+    font-weight: normal !important;
+    font-size: small;
+    font-style: italic;
+}
+@media only screen and (min-width: 576px) and (max-width: 767px)  {
+    .horizontal-group-4-break {
+        padding-left:10px;
+        padding-right:10px;
+    }
+    .horizontal-group-4-break .horizontal-group {
+        margin-top:0;
+        margin-bottom:0;
+    }
+    .horizontal-group-4-break .horizontal-group:nth-child(1),
+    .horizontal-group-4-break .horizontal-group:nth-child(2) {
+        padding-top:0;
+        padding-bottom: 1rem;
+        border-top: none;
+    }
+    .horizontal-group-4-break .horizontal-group:nth-child(1),
+    .horizontal-group-4-break .horizontal-group:nth-child(3) {
+        padding-left:10px;
+    }
+    .horizontal-group-4-break .horizontal-group:nth-child(2),
+    .horizontal-group-4-break .horizontal-group:nth-child(4) {
+        padding-right:10px;
+        border-left: 1px solid #abdde5 !important;
+    }
+    .horizontal-group-4-break .horizontal-group:nth-child(3),
+    .horizontal-group-4-break .horizontal-group:nth-child(4) {
+        padding-top: 1rem;
+    }
+}
+@media only screen and (max-width: 575.5px) {
+    .x-small-width-300{
+        max-width: 300px;
+    }
+}
+/***** TRIANGLE SIZES *****/
+.triangle-1-1-sqrt2 {
+    width: 100%;
+    max-width: 150px;
+}
+.triangle-rotate-1-2-sqrt3 {
+    width: 100%;
+    max-width: 215px;
+}
+
+/***** GROUP HEIGHTS *****/
+#post .function-group-carrier {
+    margin-bottom: -18px;
+}
+#post .function-group:not(:last-child) {
+    margin-bottom:15px;
+}
+
+.height-18 .group-item { height:18px; }
+.height-18 .function-group:last-child { margin-bottom:26px; }
+
+.height-26 .group-item { height:26px; }
+.height-26 .function-group:last-child { margin-bottom:26px; }
+
+.height-32 .group-item { height:32px; }
+.height-32 .function-group:last-child { margin-bottom:20px; }
+
+.diagram-by-example .function-group:last-child { margin-bottom:0 !important; }
+
+/***** SPACING AGAIN *****/
+.no-vertical-margin > .MJXc-display,
+.caption-text > .MJXc-display {
+    margin-top:0 !important;
+    margin-bottom:0 !important;
+}
+
+.latex-vertical-margin-small-top-only > .MJXc-display {
+    margin-top:4px !important;
+    margin-bottom:0 !important;
+}
+.latex-vertical-margin-medium-top-only > .MJXc-display {
+    margin-top:16px !important;
+    margin-bottom:0 !important;
+}
+#solutions .problem .function-group-carrier,
+#solutions .problem .nested-list {
+    margin-top: 26px;
+}
+
+.caption-text {
+    display:inline-block;
+    margin-top:5px;
+}
+
+.li-medium-bottom-margin li:not(:last-child) {
+    margin-bottom: 1em;
+}
+
+.graph,
+.graph-con-no-image ul {
+    margin-top: 1em;
+}
+#post .graph {
+    margin-top:0;
+}
+.caption-after-graph {
+    /* for when flexbox doesnt work https://css-tricks.com/centering-css-complete-guide/ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.height-100 {
+    height: 100px;
 }

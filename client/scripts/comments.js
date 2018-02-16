@@ -6,7 +6,7 @@ var commentsLoaded = false;
 function loadComments() {
     var d = document, s = d.createElement('script');
     s.src = 'https://regressionbuddy.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
+    s.setAttribute('data-timestamp', + new Date());
     (d.head || d.body).appendChild(s);
     commentsLoaded = true;
 }
