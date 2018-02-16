@@ -716,10 +716,20 @@ const build = () => {
     let errorNum = 1;
     let builtFiles = getFiles(process.env.buildDir);
     builtFiles.forEach(file => {
+        if(file.endsWith("html") === false) {
+            return;
+        }
+
         let unlintedHTML = readFileSync(file).toString();
-        
-        html5Lint(unlintedHTML, (err, results) => {
+        html5Lint(unlintedHTML, {
+            "img-req-src": false,
+            imgReqSrc: false
+        }, (err, results) => {
             results.messages.forEach(msg => {
+                if(msg.message === "Bad value “” for attribute “src” on element “img”: Must be non-empty.") {
+                    return;
+                }
+
                 let color = "white";
                 color = msg.type === "info" ? "cyan" : color;
                 color = msg.type === "warning" ? "yellow" : color;
