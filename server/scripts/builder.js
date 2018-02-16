@@ -542,7 +542,7 @@ const generateSiteMap = () => {
 
     console.log("UNSET THIS!!!");
     console.log("UNSET MASTER.JS // redirect to normalized url --- ON THE CLIENT SIDE //() -> ()");
-    let mostRecentPostDate = postJsons[postJsons.length - 1].date;
+    let mostRecentPostDate = "2/25/18";//postJsons[postJsons.length - 1].date;
     let pages = [
         { 
             loc: "https://www.regressionbuddy.com",
