@@ -473,10 +473,10 @@ img {
     content:'';
     display: inline-block;
     height: 1px;
-    width: 74%;
+    width: 60%;
     position:absolute;
-    top:50%;
-    left: 13%;
+    top: 50%;
+    left: 20%;
 }
 .wider-line {
     position: relative;
@@ -661,19 +661,20 @@ img {
 
 .caption-text {
     display:inline-block;
+    margin-top:5px;
 }
 
 .li-medium-bottom-margin li:not(:last-child) {
     margin-bottom: 1em;
 }
 
-.graph {
+.graph,
+.graph-con-no-image ul {
     margin-top: 1em;
 }
 #post .graph {
     margin-top:0;
 }
-
 .caption-after-graph {
     /* for when flexbox doesnt work https://css-tricks.com/centering-css-complete-guide/ */
     display: flex;
