@@ -309,7 +309,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/graph.html`;
         let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
 
-        let childTypes = ["text-header", "image-url", "graph-url", "caption-text", "caption-html"];
+        let childTypes = ["text-header", "image-url", "graph-url", "caption-text", "caption-html", "caption-html-after"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "graph");
@@ -384,17 +384,25 @@ let templates = {
         // <caption-html>
         let $placeholderCaptionHTML = $placeholder.children("caption-html");
         if($placeholderCaptionHTML.length > 0) {
-            let subcaption = $placeholder.children("caption-html").html();
-            if($placeholderCaptionHTML.is("[place-after-template]")) {
-                $template.find("[caption-html]").remove();
-                $template.append(subcaption);
-            }
-            else {
-                $template.find("[caption-html]").removeAttr("caption-html").html(subcaption);
-            }
+            let captionHTML = $placeholder.children("caption-html").html();
+            $template.find("[caption-html]").removeAttr("caption-html").html(captionHTML);
         }
         else {
             $template.find("[caption-html]").remove();
+        }
+
+        // <caption-html-after>
+        let $placeholderCaptionHTMLAfter = $placeholder.children("caption-html-after");
+        if($placeholderCaptionHTMLAfter.length > 0) {
+            let subCaptionHTML = $placeholder.children("caption-html-after").html();
+            let $templateCaptionHTMLAfter = $template.find("[caption-html-after]");
+            $templateCaptionHTMLAfter.removeAttr("caption-html-after").html(subCaptionHTML);
+            if($placeholderCaptionHTMLAfter.is("[height-100]")) {
+                $templateCaptionHTMLAfter.addClass("height-100");
+            }
+        }
+        else {
+            $template.find("[caption-html-after]").remove();
         }
 
         $placeholder.replaceWith($template.html());
