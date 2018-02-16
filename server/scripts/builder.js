@@ -7,6 +7,9 @@ const zlib = require('zlib');
 const { minify } = require("html-minifier");
 const cheerio = require('cheerio');
 const stripDebug = require('strip-debug');
+const pretty = require('pretty');
+const html5Lint = require( 'html5-lint' );
+const colors = require('colors');
 
 const jsMinifier = "uglifyjs";
 const cssMinifier = "clean-css";
@@ -252,6 +255,7 @@ const buildPost = (postNumber, subject) => {
 
     outFile = applyTemplates(outFile);
 
+    outFile = pretty(outFile);
     if(process.env.name !== "dev") {
         outFile = minimizePageHTML(outFile);
     }
@@ -353,6 +357,8 @@ const buildStaticContentPage = (staticContent, title, description, outFilePath) 
     outFile = outFile.replace(' data-subject=""', "");
     outFile = outFile.replace(' data-post-number=""', "");
     outFile = outFile.replace(' data-last-post-number=""', "");
+
+    outFile = pretty(outFile);
 
     if(isDev() === false) {
         outFile = minimizePageHTML(outFile);
@@ -705,6 +711,33 @@ const build = () => {
 
     buildReviewPage();
     buildReviewAppendixes();
+
+    // async but i guess it doesn't matter
+    let errorNum = 1;
+    let builtFiles = getFiles(process.env.buildDir);
+    builtFiles.forEach(file => {
+        let unlintedHTML = readFileSync(file).toString();
+        
+        html5Lint(unlintedHTML, (err, results) => {
+            results.messages.forEach(msg => {
+                let color = "white";
+                color = msg.type === "info" ? "cyan" : color;
+                color = msg.type === "warning" ? "yellow" : color;
+                color = msg.type === "error" ? "red" : color;
+
+                let consoleMessage = `${errorNum++}. `;
+                consoleMessage += `HTML5 Lint [${msg.type}]\n`;
+                consoleMessage += `file: ${file}\n`;
+                consoleMessage += `lastLine: ${msg.lastLine}\n`;
+                consoleMessage += `lastColumn: ${msg.lastLine}\n`;
+                consoleMessage += `${msg.type}: ${msg.message}\n`;
+                //consoleMessage += `excerpt: ${msg.extract}\n`;
+                consoleMessage += `------------------------------\n`;
+
+                console.log(consoleMessage[color]);
+            });
+        });
+    });
 
     if(isDev()) {
         rebuildOnChange();
