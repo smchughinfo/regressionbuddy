@@ -726,7 +726,10 @@ const build = () => {
             imgReqSrc: false
         }, (err, results) => {
             results.messages.forEach(msg => {
-                if(msg.message === "Bad value “” for attribute “src” on element “img”: Must be non-empty.") {
+                if(
+                    msg.message === "Bad value “” for attribute “src” on element “img”: Must be non-empty." ||
+                    msg.message === "Element “img” is missing required attribute “src”."
+                ){
                     return;
                 }
 
@@ -739,9 +742,9 @@ const build = () => {
                 consoleMessage += `HTML5 Lint [${msg.type}]\n`;
                 consoleMessage += `file: ${file}\n`;
                 consoleMessage += `lastLine: ${msg.lastLine}\n`;
-                consoleMessage += `lastColumn: ${msg.lastLine}\n`;
+                consoleMessage += `lastColumn: ${msg.lastColumn}\n`;
                 consoleMessage += `${msg.type}: ${msg.message}\n`;
-                //consoleMessage += `excerpt: ${msg.extract}\n`;
+                consoleMessage += `extract: ${msg.extract.length > 100 ? msg.extract.substring(0, 100) : msg.extract}\n`;
                 consoleMessage += `------------------------------\n`;
 
                 console.log(consoleMessage[color]);

@@ -632,7 +632,7 @@ let templates = {
         if($topicPrimer.length > 0) {
             let topicPrimer = $topicPrimer.html();
             let $templateTopicPrimer = $template.find("[topic-primer]");
-            $templateTopicPrimer.find("[topic-primer]").removeAttr("topic-primer")
+            $templateTopicPrimer.removeAttr("topic-primer")
             $templateTopicPrimer.html(topicPrimer);
         }
         else {
@@ -644,7 +644,7 @@ let templates = {
         if($eli5.length > 0) {
             let eli5 = $eli5.html();
             let $templateEli5 = $template.find("[topic-eli5]");
-            $templateEli5.find("[topic-eli5]").removeAttr("topic-eli5")
+            $templateEli5.removeAttr("topic-eli5")
             $templateEli5.find("i").html(eli5);
         }
         else {
