@@ -326,7 +326,8 @@ const buildAppendix = subject => {
     });
 
     let subjectAppendix = $appendixTemplate.html();
-    subjectAppendix = applyTemplates(subjectAppendix);
+    subjectAppendix = applyTemplates(subjectAppendix, true);
+
     buildStaticContentPage(subjectAppendix, title, title, outFilePath);
 };
 
@@ -475,10 +476,10 @@ const buildReviewPage = () => {
                     </div>\
                     <span class="right" data-comments-for="[URL]">[TOPICS]</span><br>\
                     <a data-link-with-comments="true" href="[URL]">Post Review</a>\
-                    <span data-comment-count-for="[URL]">&nbsp;&nbsp;<img src="/images/loading.png" class="inline-loader" /></span>\
+                    <span data-comment-count-for="[URL]">&nbsp;&nbsp;<img src="/images/loading.png" alt="Loading Spinner" class="inline-loader" /></span>\
                     <br>\
                     <a data-link-with-comments="true" href="[APPENDIX_URL]">Appendix Review</a>\
-                    <span data-comment-count-for="[APPENDIX_URL]">&nbsp;&nbsp;<img src="/images/loading.png" class="inline-loader" /></span>\
+                    <span data-comment-count-for="[APPENDIX_URL]">&nbsp;&nbsp;<img src="/images/loading.png" alt="Loading Spinner" class="inline-loader" /></span>\
                 </div>\
             </div>\
         </div>';
@@ -689,6 +690,56 @@ const addGraphic = path => {
     writeFileSync(path, file);
 }
 
+const lint = () => {
+    let errorNum = 1;
+    let builtFiles = getFiles(process.env.buildDir);
+    let lintedFiles = 0;
+    let anyErrors = false;
+    builtFiles.forEach(file => {
+        if(
+            file.endsWith("html") === false ||
+            file.endsWith("site.master.html")
+        ) {
+            lintedFiles++;
+            return;
+        }
+
+        let unlintedHTML = readFileSync(file).toString();
+        html5Lint(unlintedHTML, {
+            "img-req-src": false,
+            imgReqSrc: false
+        }, (err, results) => {
+            results.messages.forEach(msg => {
+                if(
+                    msg.message !== "Bad value “” for attribute “src” on element “img”: Must be non-empty." &&
+                    msg.message !== "Element “img” is missing required attribute “src”."
+                ){
+                    anyErrors = true;
+
+                    let color = "white";
+                    color = msg.type === "info" ? "cyan" : color;
+                    color = msg.type === "warning" ? "yellow" : color;
+                    color = msg.type === "error" ? "red" : color;
+    
+                    let consoleMessage = `${errorNum++}. `;
+                    consoleMessage += `HTML5 Lint [${msg.type}]\n`;
+                    consoleMessage += `file: ${file}\n`;
+                    consoleMessage += `lastLine: ${msg.lastLine}\n`;
+                    consoleMessage += `lastColumn: ${msg.lastColumn}\n`;
+                    consoleMessage += `${msg.type}: ${msg.message}\n`;
+                    consoleMessage += `extract: ${msg.extract.length > 100 ? msg.extract.substring(0, 100) : msg.extract}\n`;
+                    consoleMessage += `------------------------------\n`;   
+
+                    console.log(consoleMessage[color]);
+                }
+            });
+            if(++lintedFiles === builtFiles.length && anyErrors === false) {
+                console.log("Lint Complete".green);
+            }
+        });
+    });
+}
+
 const build = () => {
     console.log("building...");
     //console.warn("cheerio adds a body tag if it encounters a text node. e.g. [REPLACE THIS]");
@@ -713,44 +764,7 @@ const build = () => {
     buildReviewAppendixes();
 
     // async but i guess it doesn't matter
-    let errorNum = 1;
-    let builtFiles = getFiles(process.env.buildDir);
-    builtFiles.forEach(file => {
-        if(file.endsWith("html") === false) {
-            return;
-        }
-
-        let unlintedHTML = readFileSync(file).toString();
-        html5Lint(unlintedHTML, {
-            "img-req-src": false,
-            imgReqSrc: false
-        }, (err, results) => {
-            results.messages.forEach(msg => {
-                if(
-                    msg.message === "Bad value “” for attribute “src” on element “img”: Must be non-empty." ||
-                    msg.message === "Element “img” is missing required attribute “src”."
-                ){
-                    return;
-                }
-
-                let color = "white";
-                color = msg.type === "info" ? "cyan" : color;
-                color = msg.type === "warning" ? "yellow" : color;
-                color = msg.type === "error" ? "red" : color;
-
-                let consoleMessage = `${errorNum++}. `;
-                consoleMessage += `HTML5 Lint [${msg.type}]\n`;
-                consoleMessage += `file: ${file}\n`;
-                consoleMessage += `lastLine: ${msg.lastLine}\n`;
-                consoleMessage += `lastColumn: ${msg.lastColumn}\n`;
-                consoleMessage += `${msg.type}: ${msg.message}\n`;
-                consoleMessage += `extract: ${msg.extract.length > 100 ? msg.extract.substring(0, 100) : msg.extract}\n`;
-                consoleMessage += `------------------------------\n`;
-
-                console.log(consoleMessage[color]);
-            });
-        });
-    });
+    lint();
 
     if(isDev()) {
         rebuildOnChange();

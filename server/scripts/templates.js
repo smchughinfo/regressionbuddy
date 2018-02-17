@@ -4,7 +4,7 @@
 const { readFileSync, writeFileSync } = require("fs");
 const cheerio = require('cheerio');
 
-const applyTemplates = html => {
+const applyTemplates = (html, partial) => {
     $ = cheerio.load(html);
 
      // list templates in the order they are applied.
@@ -21,7 +21,12 @@ const applyTemplates = html => {
 
     trimSpace($); // <li trim-space> foo</li> -> <li>foo</li> 
 
-    return $.html();
+    if(partial) {
+        return $($.html()).find("body").html();
+    }
+    else {
+        return $.html();
+    }
 };
 
 const html = elm => {

@@ -684,3 +684,8 @@ img {
 .height-100 {
     height: 100px;
 }
+
+#placeholder404 {
+    max-width: 1000px;
+    width: 100%;
+}
