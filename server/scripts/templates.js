@@ -22,7 +22,9 @@ const applyTemplates = (html, partial) => {
     trimSpace($); // <li trim-space> foo</li> -> <li>foo</li> 
 
     if(partial) {
-        return $($.html()).find("body").html();
+        let $tmp = $("<div>" + $.html() + "</div>");
+        $tmp.remove("html");
+        return $tmp.html();
     }
     else {
         return $.html();
