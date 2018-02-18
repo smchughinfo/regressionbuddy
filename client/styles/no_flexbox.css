@@ -1,0 +1,72 @@
+/******* NO FLEXBOX SHIM *******/
+.no-flexbox > body {
+    min-width: 600px;
+}
+    .no-flexbox > body > nav > .btn-group {
+        display: inline-block;
+        float: right;
+    }
+    .no-flexbox > body .post-nav {
+        text-align: center;
+    }
+    .no-flexbox > body .post-nav > ul {
+        display: inline-block;
+    }
+    .no-flexbox > body .post-nav > ul > li {
+        display: inline-block;
+        float:left;
+    }
+    .no-flexbox > body > #post .card-header ul {
+        text-align: left;
+    }
+    .no-flexbox > body > #post .card-header li {
+        display: inline-block;
+    }
+    .no-flexbox .card {
+        display: inline-block;
+    }
+    .no-flexbox .small-width-350 {
+        width: auto;
+        max-width: none !important;
+    }
+    .no-flexbox .horizontal-group-4-break {
+        white-space: nowrap;
+        width: 815px !important;
+        max-width: none !important;
+    }
+        .no-flexbox .horizontal-group-4-break .horizontal-group-4 {
+            display: inline-block;
+            max-width: none !important;
+            width: 200px !important;
+            height: 100% !important;
+            vertical-align: top;
+            white-space: normal;
+            padding-top: 0 0 !important;;
+            border-top: none 0 !important;;
+            margin-top: 0 !important;
+            border-left: none !important;
+        }
+            .no-flexbox .horizontal-group-4-break .horizontal-group-4 .graph-size-1,
+            .no-flexbox .horizontal-group-4-break .horizontal-group-4 .graph-size-2 {
+                max-width: none !important;   
+            }
+            .no-flexbox .horizontal-group-4-break .horizontal-group-4 .graph-size-1 > img {
+                height: 150px !important;
+                width: 150px !important;
+                max-width: none !important;
+            }
+            .no-flexbox .horizontal-group-4-break .horizontal-group-4 .graph-size-2 > img {
+                height: 150px !important;
+                width: 180px !important;
+                max-width: none !important;
+            }
+            .no-flexbox .horizontal-group-4-break {
+                padding-left: 0 !important;
+                padding-right: 0 !important;
+            }
+            .no-flexbox .horizontal-group-4-break .horizontal-group {
+                padding-top: 0 !important;
+                padding-bottom: 0 !important;
+                padding-left: 5px !important;
+                padding-right: 5px !important;
+            }

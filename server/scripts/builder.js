@@ -55,7 +55,8 @@ const integrateSiteCSS = () => {
     let css = [
         `${process.env.clientDir}/styles/master.css`,
         `${process.env.clientDir}/styles/spacing.css`,
-        `${process.env.clientDir}/styles/badge_outline.css`
+        `${process.env.clientDir}/styles/badge_outline.css`,
+        `${process.env.clientDir}/styles/no_flexbox.css`
     ].map(path => readFileSync(path)).join("\r\n");
     writeFileSync(siteCSSPath, css);
 };
@@ -227,7 +228,7 @@ const setPostMetaTags = (outFile, postNumber, subject) => {
 const minimizePageHTML = outFile => {
     return minify(outFile, {
         collapseInlineTagWhitespace: false,
-        collapseWhitespace: true,
+        collapseWhitespace: false,
         html5: true,
         removeComments: true
     }).replace(/\n/g, "");

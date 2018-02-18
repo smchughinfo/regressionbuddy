@@ -252,32 +252,6 @@
     /* this is because the alerts have a margin bottom that extra extra space at the end of each section */
 }
 
-
-/******* NO FLEXBOX SHIM *******/
-.no-flexbox > body {
-    min-width: 600px;
-}
-    .no-flexbox > body > nav > .btn-group {
-        display: inline-block;
-        float: right;
-    }
-    .no-flexbox > body .post-nav {
-        text-align: center;
-    }
-    .no-flexbox > body .post-nav > ul {
-        display: inline-block;
-    }
-    .no-flexbox > body .post-nav > ul > li {
-        display: inline-block;
-        float:left;
-    }
-    .no-flexbox > body > #post .card-header ul {
-        text-align: left;
-    }
-    .no-flexbox > body > #post .card-header li {
-        display: inline-block;
-    }
-
     /******* STYLES ADDED IN LINEAR ALGEBRA APPENDIX *******/
     .graph-con {
         position: relative;
