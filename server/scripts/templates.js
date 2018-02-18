@@ -783,7 +783,7 @@ let templates = {
         let imageSizeClass = $placeholder.find("diagram").attr("image-size-class");
         $template.find("img").attr("data-src", imageUrl).addClass(imageSizeClass);
 
-        // <function-group-carroer>
+        // <function-group-carrier>
         let $placeholderGroupCarrier = $placeholder.find("group-carrier");
         let $templateGroupCarrier = $template.find("group-carrier");
         $templateGroupCarrier.replaceWith($placeholderGroupCarrier);

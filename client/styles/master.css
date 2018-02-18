@@ -719,3 +719,7 @@ img {
 .graph {
     overflow: hidden;
 }
+
+[data-src] {
+    visibility: hidden;
+}
