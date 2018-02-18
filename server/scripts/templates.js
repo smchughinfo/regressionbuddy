@@ -549,6 +549,10 @@ let templates = {
         let $repeatContainer = $repeater.parent();
         $repeater.remove();
 
+        // .size-class
+        let sizeClass = $placeholder.attr("size-class");
+        $template.removeAttr("size-class").addClass(sizeClass);
+
         // <topic-instance>
         let $topicInstances = $placeholder.children("topic-instance");
         $topicInstances.each((i, elm) => {
