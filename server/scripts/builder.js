@@ -705,10 +705,8 @@ const lint = () => {
         }
 
         let unlintedHTML = readFileSync(file).toString();
-        html5Lint(unlintedHTML, {
-            "img-req-src": false,
-            imgReqSrc: false
-        }, (err, results) => {
+        console.log("do both img src things have to be here?");
+        html5Lint(unlintedHTML, (err, results) => {
             results.messages.forEach(msg => {
                 if(
                     msg.message !== "Bad value “” for attribute “src” on element “img”: Must be non-empty." &&

@@ -689,3 +689,7 @@ img {
     max-width: 1000px;
     width: 100%;
 }
+
+.post-content {
+    overflow: hidden;
+}
