@@ -22,7 +22,7 @@
     .no-flexbox > body > #post .card-header li {
         display: inline-block;
     }
-    .no-flexbox .card {
+    .no-flexbox #appendix .card {
         display: inline-block;
     }
     .no-flexbox .small-width-350 {
@@ -71,8 +71,35 @@
                 padding-right: 5px !important;
             }
 
-    .no-flexbox .horizontal-group-3 {
-        display: inline-block !important;
-        width: 350px;
-        vertical-align: top;
+    .no-flexbox .horizontal-group-3-container {
+        white-space: nowrap !important;
+    }
+        .no-flexbox .horizontal-group-3-container .horizontal-group-3 {
+            display: inline-block !important;
+            width: 350px;
+            vertical-align: top;
+            border-left: none !important;
+            border-top: none !important;
+            padding-top: 0 !important;
+            margin-top: 0 !important;
+        }
+        .no-flexbox .horizontal-group-3-container .horizontal-group-3 .graph-con {
+            max-width: none !important;
+        }
+            .no-flexbox .horizontal-group-3-container .horizontal-group-3 .graph-con .open-graph {
+                right: 0 !important;
+            }
+            /* 
+                at the time i made this horizontal group 3 only used graph-size-1 but i added 
+                graph-size-2 so i dont use a graph-size-2 for some reason later and forget about
+                the no-flexbox styles
+            */
+            .no-flexbox .horizontal-group-3-container .horizontal-group-3 .graph-size-1 > img,
+            .no-flexbox .horizontal-group-3-container .horizontal-group-3 .graph-size-2 > img {
+                height: 208px !important;
+                width: 208px !important;
+                max-width: none !important;
+            }
+    .no-flexbox .page-link {
+        text-align: center;
     }
