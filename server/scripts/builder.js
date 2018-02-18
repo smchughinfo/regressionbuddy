@@ -705,7 +705,6 @@ const lint = () => {
         }
 
         let unlintedHTML = readFileSync(file).toString();
-        console.log("do both img src things have to be here?");
         html5Lint(unlintedHTML, (err, results) => {
             results.messages.forEach(msg => {
                 if(
