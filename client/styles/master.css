@@ -347,9 +347,6 @@
     #post .graph-size-2 {
         max-width: 180px !important;
     }
-    @media only screen and (max-width: px) {
-
-    }
 
     /* note - these two styles are mostly to fix height:auto image being scaled but still taking up the full height in ie, invisibly. */
     /*        same as .graph { overflow: hidden; } but even overflow:hidden on ALL child elements of .alert would not fix this one. */

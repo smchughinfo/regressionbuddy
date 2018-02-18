@@ -346,7 +346,7 @@ let templates = {
 
         // <image-url>
         let imageUrl = $placeholder.children("image-url").html();
-        $template.find("[image-url]").removeAttr("image-url").attr("src", imageUrl);
+        $template.find("[image-url]").removeAttr("image-url").attr("data-src", imageUrl);
 
         // <graph-url>
         let $graphUrl = $placeholder.children("graph-url");
@@ -781,7 +781,7 @@ let templates = {
         // <diagram>
         let imageUrl = $placeholder.find("diagram").html();
         let imageSizeClass = $placeholder.find("diagram").attr("image-size-class");
-        $template.find("img").attr("src", imageUrl).addClass(imageSizeClass);
+        $template.find("img").attr("data-src", imageUrl).addClass(imageSizeClass);
 
         // <function-group-carroer>
         let $placeholderGroupCarrier = $placeholder.find("group-carrier");
