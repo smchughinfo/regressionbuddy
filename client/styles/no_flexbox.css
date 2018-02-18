@@ -74,6 +74,9 @@
     .no-flexbox .horizontal-group-3-container {
         white-space: nowrap !important;
     }
+    .no-flexbox .horizontal-group-3-container p {
+        white-space: normal !important;
+    }
         .no-flexbox .horizontal-group-3-container .horizontal-group-3 {
             display: inline-block !important;
             width: 350px;
