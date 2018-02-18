@@ -327,16 +327,28 @@
     }
 
     .graph-size-1 {
-        max-width: 208px;
+        width: 208px;
     }
     .graph-size-2 {
-        max-width: 250px;
+        width: 250px;
     }
+    @media only screen and (max-width: 500px) {
+        .graph-size-1 {
+            width: 100%;
+        }
+        .graph-size-2 {
+            width: 100%;
+        }   
+    }
+
     #post .graph-size-1 {
         max-width: 150px !important;
     }
     #post .graph-size-2 {
         max-width: 180px !important;
+    }
+    @media only screen and (max-width: px) {
+
     }
 
     /* note - these two styles are mostly to fix height:auto image being scaled but still taking up the full height in ie, invisibly. */
@@ -348,7 +360,7 @@
     .horizontal-group-4 .graph-size-2 {
         width: 180px;
     }
-    /* end node */
+    /* end note */
 
     /*.graph-size-1 {
         max-width: 275px;
@@ -557,7 +569,9 @@ img {
 }
 
 /******** WORK IMAGE WIDTH ********/
-#work img { max-width: 400px; }
+#work img { 
+    max-width: 400px;
+ }
 @media only screen and (max-width: 500px) {
     #work img {
         max-width: 100% !important;
