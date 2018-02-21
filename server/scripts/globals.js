@@ -6,7 +6,7 @@ module.exports = {
         process.env.name = "dev";
 
         process.env.defaultSubject = "algebra";
-        process.env.hostName = process.env.name === "dev" ? "http://localhost:8080" : "https://www.regressionbuddy.com" 
+        process.env.hostName = process.env.name === "dev" ? "http://localhost:8080" : "https://regressionbuddy.com" 
         process.env.clientDir = join(__dirname, "/../../client");
         process.env.publicDir = join(process.env.clientDir, "/public"); 
         process.env.buildDir = join(process.env.publicDir, "/build");
