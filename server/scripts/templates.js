@@ -237,6 +237,9 @@ let templates = {
             let heightClass = $placeholder.attr("height-class");
             $template.addClass(heightClass);
         }
+        else {
+            throw "group_carrier should have a height class.";
+        }
 
         // <top-text>
         let $topText = $placeholder.children("top-text");
