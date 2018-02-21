@@ -51,10 +51,12 @@ function setVisibility(selector, visible) {
 function one(handler) {
     // there is a built in once https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
     function _handler(e) {
-        window.removeEventListener("click", _handler);
-        handler(e);
+        if(e && e.button === 0) {
+            window.removeEventListener("click", _handler);
+            handler(e);
+        }
     }
-    onClick(window, _handler);
+    window.addEventListener("click", _handler);
 }
 
 // nodelist foreach polyfill for ie
