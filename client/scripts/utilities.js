@@ -51,10 +51,10 @@ function setVisibility(selector, visible) {
 function one(handler) {
     // there is a built in once https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
     function _handler(e) {
-        document.removeEventListener("click", _handler);
+        window.removeEventListener("click", _handler);
         handler(e);
     }
-    document.addEventListener("click", _handler);
+    onClick(window, _handler);
 }
 
 // nodelist foreach polyfill for ie
@@ -161,7 +161,7 @@ function clearHash() {
     }
 }
 
-function onClick(element, handler) {
+function onClick(element, handler) { // caller should be able to call element.removeEventListener(handler
     element.addEventListener("click", function(e) {
         // https://www.w3schools.com/jsref/event_button.asp
         if(e && e.button === 0) {
