@@ -42,7 +42,7 @@ MathJax.Hub.Config({
 });
 
 /****** IMAGE BIGGERER ******/
-window.addEventListener("click", function (e) {
+onClick(window, function(e) {
     if (e.target.nodeName.toLowerCase() === "img") {
         var img = e.target;
         if (img.id !== "bigImage" && img.closest(".open-graph") === null) {
@@ -61,7 +61,7 @@ window.addEventListener("click", function (e) {
 });
 
 /****** CHEAT CODE ******/
-window.addEventListener("click", function(e) {
+onClick(window, function(e) {
     var toggleCheat = /\bcheat-light\b/.test(e.target.className);
     if(toggleCheat) {
         var cheatLight = e.target;

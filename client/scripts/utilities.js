@@ -160,3 +160,12 @@ function clearHash() {
         window.location.hash = "";
     }
 }
+
+function onClick(element, handler) {
+    element.addEventListener("click", function(e) {
+        // https://www.w3schools.com/jsref/event_button.asp
+        if(e && e.button === 0) {
+            handler(e);
+        }
+    });
+}

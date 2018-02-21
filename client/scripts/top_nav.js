@@ -10,5 +10,6 @@ function showButtonDropdown(e) {
     var openDropdownSelector = ".dropdown-menu[data-showing='true']:not([aria-labelledby='" + e.target.id + "'])";
     toggleVisibility(openDropdownSelector);
 }
-document.getElementById("glossaryDropdown").addEventListener("click", showButtonDropdown);
-document.getElementById("appendixDropdown").addEventListener("click", showButtonDropdown);
+
+onClick(document.getElementById("glossaryDropdown"), showButtonDropdown);
+onClick(document.getElementById("appendixDropdown"), showButtonDropdown);

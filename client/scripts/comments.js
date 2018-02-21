@@ -109,5 +109,5 @@ if (isReviewPage) {
 
 var commentsLink = document.querySelector("#showCommentsLink");
 if (commentsLink) {
-    commentsLink.addEventListener("click", toggleShowComments);
+    onClick(commentsLink, toggleShowComments);
 }

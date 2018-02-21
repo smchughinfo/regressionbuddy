@@ -16,5 +16,5 @@ function switchComponent(e) {
     e.preventDefault();
 }
 forEachElement("#componentLinksContainer > li > a", function (link) {
-    link.addEventListener("click", switchComponent)
+    onClick(link, switchComponent);
 });
