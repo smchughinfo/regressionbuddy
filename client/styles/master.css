@@ -428,12 +428,15 @@ body.blur > *:not(.layover) {
     position:fixed;
     top:0;
     left:0;
+    bottom: 0;
+    right: 0;
     height: 100%;
     width:100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center; /* this one is for no-flexbox. the image isn't vertically centered though. idk if thats worth the effort. ..on what old browsers doesn't position fixed work and how does it look on them? etc. just move on. */
 }
 .layover.hidden-layover {
     display: none;
