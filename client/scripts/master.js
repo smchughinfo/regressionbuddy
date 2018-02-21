@@ -1,32 +1,4 @@
-function switchComponent(e) {
-    var toCompontent = e.target.href.split("#").pop();
-
-    forEachElement("#componentLinksContainer > li > a", function (a) {
-        a.className = a.className.replace(/\bactive\b/g, "");
-    });
-    e.target.className += " active";
-
-    forEachElement("#componentsContainer > div", function (div) {
-        div.setAttribute("data-showing", "false");
-    });
-    document.querySelector("#" + toCompontent).setAttribute("data-showing", "true");
-
-    clearHash();
-    e.preventDefault();
-}
-forEachElement("#componentLinksContainer > li > a", function (link) {
-    link.addEventListener("click", switchComponent)
-});
-
-function clearHash() {
-    try {
-        history.replaceState({}, document.title, window.location.pathname); // hash would only ever get used if a user didnt have javascript. in that case it's used to show hide problems, solutions, and work'
-    }
-    catch (ex) {
-        window.location.hash = "";
-    }
-}
-
+/****** SET RANDOM LINK ******/
 function setRandomLink() {
     var last = parseInt(document.body.getAttribute("data-last-post-number"), 10);
     var postNumber = getPostNumber();
@@ -44,49 +16,7 @@ if (document.querySelector(".post-nav")) {
     //setRandomLink();
 }
 
-function showButtonDropdown(e) {
-    var thisDropdownSelector = ".dropdown-menu[aria-labelledby='" + e.target.id + "']";
-    toggleVisibility(thisDropdownSelector);
-    one(function () {
-        setVisibility(thisDropdownSelector, false);
-    });
-    e.stopPropagation();
-
-    // if another dropdown is already open make sure to close it.
-    var openDropdownSelector = ".dropdown-menu[data-showing='true']:not([aria-labelledby='" + e.target.id + "'])";
-    toggleVisibility(openDropdownSelector);
-}
-document.getElementById("glossaryDropdown").addEventListener("click", showButtonDropdown);
-document.getElementById("appendixDropdown").addEventListener("click", showButtonDropdown);
-
-// redirect to normalized url
-(function () {
-    console.warn("THIS IS GOING TO NEED TO BE UNSET");
-    return;
-    var a = document.createElement("a");
-    a.href = window.location.href;
-    if (a.pathname === "" || a.pathname === "/") {
-        console.log("Changing title here. Trying to get it to show up right on google but still make sense to users");
-        // TOOO: maybe - google "regression buddy" and site title is "Algebra: Week 2" except for the "index" page it should be more general
-        // serve it with a general title and then change it here. hope that works.
-
-        try {
-            var postNumber = getPostNumber();
-            var subject = getSubject();
-            var redirectUrl = window.location.href + postNumber + "/" + subject;
-            document.title = "Week " + postNumber + " - " + capatalizeFirstLetterOfEveryWord(subject);
-
-            console.log("this needs to run before getting disqus comment count");
-            history.replaceState(null, document.title, redirectUrl);
-        }
-        catch (ex) {
-            window.location.href = redirectUrl;
-        }
-    }
-})();
-
-
-// lazy load images
+/****** LAZY LOAD IMAGES ******/
 window.addEventListener("load", function () {
     var loaded = false;
     function loadImages() {
@@ -104,19 +34,14 @@ window.addEventListener("load", function () {
     setTimeout(loadImages, 2000);
 });
 
-// MATHJAX
+/****** MATHJAX ******/
 MathJax.Hub.Config({
     CommonHTML: {
         linebreaks: { automatic: true }
     }
 });
-// RESIZE MATHJAX -- makes the page jump too much. can produce double output.
-/*function resetMathJax() { 
-    MathJax.Hub.Reprocess(document.body); 
-}*/
-//window.addEventListener('resize', debounce(resetMathJax, 1));
 
-// IMAGE BIGGERER
+/****** IMAGE BIGGERER ******/
 window.addEventListener("click", function (e) {
     if (e.target.nodeName.toLowerCase() === "img") {
         var img = e.target;
@@ -161,9 +86,3 @@ window.addEventListener("click", function(e) {
     }
 });
 
-/****** MATCH HASH ******/
-var isSolutions = window.location.hash === "#solutions";
-var isWork = window.location.hash === "#work";
-if(isSolutions || isWork) {
-    document.querySelector("[href='" + window.location.hash + "']").click();
-}

@@ -35,6 +35,9 @@ const integrateSiteJavaScript = () => {
         `${process.env.clientDir}/scripts/modernizer.js`,
         `${process.env.clientDir}/scripts/utilities.js`,
         `${process.env.clientDir}/scripts/master.js`,
+        `${process.env.clientDir}/scripts/url_hacks.js`,
+        `${process.env.clientDir}/scripts/top_nav.js`,
+        `${process.env.clientDir}/scripts/component_nav.js`,
         `${process.env.clientDir}/scripts/comments.js`
     ].map(path => readFileSync(path)).join("\r\n");
     writeFileSync(siteJavaScriptPath, js);

@@ -151,3 +151,12 @@ function aFor(arr, func, itr) {
     }
     iterate();
 }
+
+function clearHash() {
+    try {
+        history.replaceState({}, document.title, window.location.pathname); // hash would only ever get used if a user didnt have javascript. in that case it's used to show hide problems, solutions, and work'
+    }
+    catch (ex) {
+        window.location.hash = "";
+    }
+}
