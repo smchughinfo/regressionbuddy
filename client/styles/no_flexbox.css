@@ -2,6 +2,7 @@
 .no-flexbox > body {
     /* had it set at 600px; which looks good when playing with the size of ie9 but is NOT good when you load it up on an old cell phone. it's like, why is this so wide? and then you track it down to the line that would be here.*/
     /* newer browsers resize good anyhow. so if someone goes to an old browser and sizes it small it will look good up until a reasonable point (400 ish pixels) but after that it's basically not supported. */
+
 }
     .no-flexbox > body > nav > .btn-group {
         display: inline-block;
@@ -70,6 +71,9 @@
                 padding-bottom: 0 !important;
                 padding-left: 5px !important;
                 padding-right: 5px !important;
+            }
+            .no-flexbox .horizontal-group {
+                flex: none !important;
             }
 
     .no-flexbox .horizontal-group-3-container {

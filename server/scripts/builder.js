@@ -710,30 +710,35 @@ const lint = () => {
 
         let unlintedHTML = readFileSync(file).toString();
         html5Lint(unlintedHTML, (err, results) => {
-            results.messages.forEach(msg => {
-                if(
-                    msg.message !== "Bad value “” for attribute “src” on element “img”: Must be non-empty." &&
-                    msg.message !== "Element “img” is missing required attribute “src”."
-                ){
-                    anyErrors = true;
+            if(results) {
+                results.messages.forEach(msg => {
+                    if(
+                        msg.message !== "Bad value “” for attribute “src” on element “img”: Must be non-empty." &&
+                        msg.message !== "Element “img” is missing required attribute “src”."
+                    ){
+                        anyErrors = true;
 
-                    let color = "white";
-                    color = msg.type === "info" ? "cyan" : color;
-                    color = msg.type === "warning" ? "yellow" : color;
-                    color = msg.type === "error" ? "red" : color;
-    
-                    let consoleMessage = `${errorNum++}. `;
-                    consoleMessage += `HTML5 Lint [${msg.type}]\n`;
-                    consoleMessage += `file: ${file}\n`;
-                    consoleMessage += `lastLine: ${msg.lastLine}\n`;
-                    consoleMessage += `lastColumn: ${msg.lastColumn}\n`;
-                    consoleMessage += `${msg.type}: ${msg.message}\n`;
-                    consoleMessage += `extract: ${msg.extract.length > 100 ? msg.extract.substring(0, 100) : msg.extract}\n`;
-                    consoleMessage += `------------------------------\n`;   
+                        let color = "white";
+                        color = msg.type === "info" ? "cyan" : color;
+                        color = msg.type === "warning" ? "yellow" : color;
+                        color = msg.type === "error" ? "red" : color;
+        
+                        let consoleMessage = `${errorNum++}. `;
+                        consoleMessage += `HTML5 Lint [${msg.type}]\n`;
+                        consoleMessage += `file: ${file}\n`;
+                        consoleMessage += `lastLine: ${msg.lastLine}\n`;
+                        consoleMessage += `lastColumn: ${msg.lastColumn}\n`;
+                        consoleMessage += `${msg.type}: ${msg.message}\n`;
+                        consoleMessage += `extract: ${msg.extract.length > 100 ? msg.extract.substring(0, 100) : msg.extract}\n`;
+                        consoleMessage += `------------------------------\n`;   
 
-                    console.log(consoleMessage[color]);
+                        console.log(consoleMessage[color]);
+                    }
+                });
+                if(++lintedFiles === builtFiles.length && anyErrors === false) {
+                    console.log("Lint Complete".green);
                 }
-            });
+            }
             if(++lintedFiles === builtFiles.length && anyErrors === false) {
                 console.log("Lint Complete".green);
             }
@@ -744,7 +749,7 @@ const lint = () => {
 const build = () => {
     console.log("building...");
     //console.warn("cheerio adds a body tag if it encounters a text node. e.g. [REPLACE THIS]");
-    console.log("WHEN YOU DO SPECIAL LIMITS MAKE SURE TO INCLUDE PAGE 105.")
+    console.log("WHEN YOU DO SPECIAL LIMITS MAKE SURE TO INCLUDE PAGE 105.");
 
     createOrCleanBuildDirectory();
     

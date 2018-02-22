@@ -51,8 +51,13 @@ function setVisibility(selector, visible) {
 function one(handler) {
     // there is a built in once https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
     function _handler(e) {
-        if(e && e.button === 0) {
-            window.removeEventListener("click", _handler);
+        var hasButton = e && e.button !== undefined;
+        if(hasButton) {
+            if(e.button === 0) {
+                handler(e);
+            }
+        }
+        else {
             handler(e);
         }
     }
@@ -163,10 +168,18 @@ function clearHash() {
     }
 }
 
+// https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent
+// https://coderwall.com/p/bdxjzg/tap-vs-click-death-by-ignorance
 function onClick(element, handler) { // caller should be able to call element.removeEventListener(handler
     element.addEventListener("click", function(e) {
         // https://www.w3schools.com/jsref/event_button.asp
-        if(e && e.button === 0) {
+        var hasButton = e && e.button !== undefined;
+        if(hasButton) {
+            if(e.button === 0) {
+                handler(e);
+            }
+        }
+        else {
             handler(e);
         }
     });
