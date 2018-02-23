@@ -51,6 +51,8 @@ function setVisibility(selector, visible) {
 function one(handler) {
     // there is a built in once https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
     function _handler(e) {
+        window.removeEventListener("click", _handler);
+
         var hasButton = e && e.button !== undefined;
         if(hasButton) {
             if(e.button === 0) {
