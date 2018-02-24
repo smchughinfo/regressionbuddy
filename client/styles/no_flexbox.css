@@ -112,6 +112,15 @@
         text-align: center;
     }
 
+/******** HEADER ********/ 
+html.no-flexbox > body > .navbar > .navbar-brand {
+    display: inline-block;
+}
+html.no-flexbox > body > .navbar > .btn-group {
+    position:absolute;
+    top: 8px;
+    right: 16px;
+}
 @media only screen and (max-width: 550px) {
     /* messed up header on ie9 and some old browsers on browserstack */
     html.no-flexbox > body > .navbar {
@@ -123,6 +132,7 @@
             margin-right: 0;
         }
         html.no-flexbox > body > .navbar > .btn-group {
+            position: static;
             display: inline-block;
             float: none !important;
         }
