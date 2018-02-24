@@ -127,3 +127,16 @@
             float: none !important;
         }
 }
+
+/******** PARTIAL FLEXBOX IMPLEMENTATION ********/ 
+.horizontal-group-3-container,
+.horizontal-group-4-break {
+    white-space: nowrap;
+}
+
+.horizontal-group-3,
+.horizontal-group-4 {
+    display: inline-block;
+    vertical-align: top;
+    white-space: normal;
+}

@@ -33,9 +33,21 @@
     visibility: hidden;
 }
 
+body > .navbar {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+}
 @media only screen and (max-width: 550px) {
     body > .navbar {
-        justify-content: center;
+        flex-direction: column;
+    }
+    body > .navbar > * {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
     }
 }
 
