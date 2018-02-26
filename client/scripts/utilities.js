@@ -194,7 +194,7 @@ function one(handler) {
 
 function noAnchors(e) {
     // fires 300ms before click. e.preventDefault() should stop click from running
-    // except if the thing that recieved the touchstart is an anchor tag, don't prevent default so that it can act like a browser tag
+    // except if the thing that recieved the touchstart is an anchor tag, don't prevent default so that it can act like an anchor tag
     var noAnchors = true;
     for(var i = 0; i < e.touches.length; i++) {
         var isAnchor = e.touches[i].target.tagName.toLowerCase() === "a";
