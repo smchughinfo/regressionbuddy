@@ -154,39 +154,18 @@ function clearHash() {
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent
 // https://coderwall.com/p/bdxjzg/tap-vs-click-death-by-ignorance
-function onClick(element, handler) {
-    element.addEventListener("click", function(e) {
-        // https://www.w3schools.com/jsref/event_button.asp
-        var hasButton = e && e.button !== undefined;
-        if(hasButton) {
-            if(e.button === 0) {
-                handler(e);
-            }
-        }
-        else {
-            handler(e);
-        }
-    });
-    element.addEventListener("touchstart", function(e) {
-        if(noAnchors(e)) {
-            e.preventDefault();
-        }
-        handler(e);
-    });
-}
-
-function one(handler) {
-    // there is a built in once https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
-
+// there is a built in once https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+function onClick(element, handler, once) {
     function handle(e) {
         handler(e);
-        window.removeEventListener("click", _handler);
-        window.removeEventListener("touchstart", _handler);
+        if(once) {
+            element.removeEventListener("click", _handler);
+            element.removeEventListener("touchstart", _handler);   
+        }
     }
 
     function _handler(e) {
         var hasButton = e && e.button !== undefined;
-
         if(e.type === "click") {
             if(hasButton) {
                 if(e.button === 0) {
@@ -205,16 +184,23 @@ function one(handler) {
         }
     }
     
-    window.addEventListener("click", _handler);
-    window.addEventListener("touchstart", _handler);
+    element.addEventListener("click", _handler);
+    element.addEventListener("touchstart", _handler);
 }
 
+function one(handler) {
+     onClick(window, handler, true);
+}
+
+
+var f = "";
 function noAnchors(e) {
     // fires 300ms before click. e.preventDefault() should stop click from running
     // except if the thing that recieved the touchstart is an anchor tag, don't prevent default so that it can act like a browser tag
     var noAnchors = true;
     for(var i = 0; i < e.touches.length; i++) {
         var isAnchor = e.touches[i].target.tagName.toLowerCase() === "a";
+        f += e.touches[i].target.tagName.toLowerCase() + " ";
         if(isAnchor) {
             noAnchors = false;
             break;
@@ -222,3 +208,7 @@ function noAnchors(e) {
     }
     return noAnchors;
 }
+
+setTimeout(function() {
+    alert(f);
+}, 10000)
