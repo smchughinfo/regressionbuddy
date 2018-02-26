@@ -185,22 +185,19 @@ function onClick(element, handler, once) {
     }
     
     element.addEventListener("click", _handler);
-    element.addEventListener("touchstart", _handler);
+    element.addEventListener("touchstart", _handler, { passive: false });
 }
 
 function one(handler) {
      onClick(window, handler, true);
 }
 
-
-var f = "";
 function noAnchors(e) {
     // fires 300ms before click. e.preventDefault() should stop click from running
     // except if the thing that recieved the touchstart is an anchor tag, don't prevent default so that it can act like a browser tag
     var noAnchors = true;
     for(var i = 0; i < e.touches.length; i++) {
         var isAnchor = e.touches[i].target.tagName.toLowerCase() === "a";
-        f += e.touches[i].target.tagName.toLowerCase() + " ";
         if(isAnchor) {
             noAnchors = false;
             break;
@@ -208,7 +205,3 @@ function noAnchors(e) {
     }
     return noAnchors;
 }
-
-setTimeout(function() {
-    alert(f);
-}, 10000)
