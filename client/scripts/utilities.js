@@ -48,25 +48,6 @@ function setVisibility(selector, visible) {
     elm.setAttribute("data-showing", visible ? "true" : "false");   
 }
 
-function one(handler) {
-    // there is a built in once https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
-    function _handler(e) {
-        var hasButton = e && e.button !== undefined;
-
-        if(hasButton) {
-            if(e.button === 0) {
-                handler(e);
-                window.removeEventListener("click", _handler);
-            }
-        }
-        else {
-            handler(e);
-            window.removeEventListener("click", _handler);
-        }
-    }
-    window.addEventListener("click", _handler);
-}
-
 // nodelist foreach polyfill for ie
 // https://developer.mozilla.org/en-US/docs/Web/API/NodeList/forEach#Polyfill
 if (window.NodeList && !NodeList.prototype.forEach) {
@@ -174,21 +155,70 @@ function clearHash() {
 // https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent
 // https://coderwall.com/p/bdxjzg/tap-vs-click-death-by-ignorance
 function onClick(element, handler) {
-    function proxyHandler(e) {
-        e.preventDefault();
-        handler(e)
-    }
     element.addEventListener("click", function(e) {
         // https://www.w3schools.com/jsref/event_button.asp
         var hasButton = e && e.button !== undefined;
         if(hasButton) {
             if(e.button === 0) {
-                proxyHandler(e);
+                handler(e);
             }
         }
         else {
-            proxyHandler(e);
+            handler(e);
         }
     });
-    element.addEventListener("touchstart", proxyHandler);
+    element.addEventListener("touchstart", function(e) {
+        if(noAnchors(e)) {
+            e.preventDefault();
+        }
+        handler(e);
+    });
+}
+
+function one(handler) {
+    // there is a built in once https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+
+    function handle(e) {
+        handler(e);
+        window.removeEventListener("click", _handler);
+        window.removeEventListener("touchstart", _handler);
+    }
+
+    function _handler(e) {
+        var hasButton = e && e.button !== undefined;
+
+        if(e.type === "click") {
+            if(hasButton) {
+                if(e.button === 0) {
+                    handle(e);
+                }
+            }
+            else {
+                handle(e);
+            }
+        }
+        else {
+            if(noAnchors(e)) {
+                e.preventDefault();
+            }
+            handle(e);
+        }
+    }
+    
+    window.addEventListener("click", _handler);
+    window.addEventListener("touchstart", _handler);
+}
+
+function noAnchors(e) {
+    // fires 300ms before click. e.preventDefault() should stop click from running
+    // except if the thing that recieved the touchstart is an anchor tag, don't prevent default so that it can act like a browser tag
+    var noAnchors = true;
+    for(var i = 0; i < e.touches.length; i++) {
+        var isAnchor = e.touches[i].target.tagName.toLowerCase() === "a";
+        if(isAnchor) {
+            noAnchors = false;
+            break;
+        }
+    }
+    return noAnchors;
 }
