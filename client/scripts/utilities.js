@@ -173,17 +173,23 @@ function clearHash() {
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent
 // https://coderwall.com/p/bdxjzg/tap-vs-click-death-by-ignorance
-function onClick(element, handler) { // caller should be able to call element.removeEventListener(handler
+// https://jaketrent.com/post/handling-touch-click-browser/
+function onClick(element, handler) {
+    function proxyHandler(e) {
+        e.preventDefault();
+        handler(e)
+    }
     element.addEventListener("click", function(e) {
         // https://www.w3schools.com/jsref/event_button.asp
         var hasButton = e && e.button !== undefined;
         if(hasButton) {
             if(e.button === 0) {
-                handler(e);
+                proxyHandler(e);
             }
         }
         else {
-            handler(e);
+            proxyHandler(e);
         }
     });
+    element.addEventListener("touchstart", proxyHandler);
 }
