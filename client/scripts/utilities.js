@@ -173,7 +173,6 @@ function clearHash() {
 
 // https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent
 // https://coderwall.com/p/bdxjzg/tap-vs-click-death-by-ignorance
-// https://jaketrent.com/post/handling-touch-click-browser/
 function onClick(element, handler) {
     function proxyHandler(e) {
         e.preventDefault();
