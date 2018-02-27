@@ -156,6 +156,12 @@ function clearHash() {
 // https://coderwall.com/p/bdxjzg/tap-vs-click-death-by-ignorance
 // there is a built in once https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
 function onClick(element, handler, once) {
+    //if(element === window) {
+        // throw "dont listen for click on window";
+        // it stopped scrolling from working on android on browserstack
+        // instead of worrying about using the passive option right in
+        // each situation just listen on the elements themselves
+    //}
     function handle(e) {
         handler(e);
         if(once) {
@@ -183,13 +189,13 @@ function onClick(element, handler, once) {
             handle(e);
         }
     }
-    
+
     element.addEventListener("click", _handler);
-    element.addEventListener("touchstart", _handler, { passive: false });
+    element.addEventListener("touchstart", _handler, { passive: false }); 
 }
 
 function one(handler) {
-     onClick(window, handler, true);
+    onClick(window, handler, true);
 }
 
 function noAnchors(e) {

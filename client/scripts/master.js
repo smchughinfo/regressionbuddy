@@ -42,26 +42,29 @@ MathJax.Hub.Config({
 });
 
 /****** IMAGE BIGGERER ******/
-onClick(window, function(e) {
-    if (e.target.nodeName.toLowerCase() === "img") {
-        var img = e.target;
-        if (img.id !== "bigImage" && img.closest(".open-graph") === null) {
-            var bigImage = document.getElementById("bigImage");
-            var layover = document.querySelector(".layover");
+function HandleImageResize(e) {
+    var img = e.target;
+    if (img.id !== "bigImage" && img.closest(".open-graph") === null) {
+        var bigImage = document.getElementById("bigImage");
+        var layover = document.querySelector(".layover");
 
-            bigImage.src = img.src;
-            layover.className = layover.className.replace(/\bhidden-layover\b/g, "");
-            document.body.className += " blur";
-            one(function () {
-                layover.className += " hidden-layover";
-                document.body.className = document.body.className.replace(/\bblur\b/g, "");
-            });
-        }
+        bigImage.src = img.src;
+        layover.className = layover.className.replace(/\bhidden-layover\b/g, "");
+        document.body.className += " blur";
+
+        e.stopImmediatePropagation();
+        one(function () {
+            layover.className += " hidden-layover";
+            document.body.className = document.body.className.replace(/\bblur\b/g, "");
+        });
     }
+}
+forEachElement("img", function(elm) {
+    onClick(elm, HandleImageResize);
 });
 
 /****** CHEAT CODE ******/
-onClick(window, function(e) {
+function cheat(e) {
     var toggleCheat = /\bcheat-light\b/.test(e.target.className);
     if(toggleCheat) {
         var cheatLight = e.target;
@@ -84,4 +87,7 @@ onClick(window, function(e) {
             });   
         }
     }
+}
+forEachElement(".cheat-light", function(elm) {
+    onClick(elm, cheat);
 });

@@ -219,7 +219,7 @@ body > .navbar {
 .function-group > * {
     margin-right: 15px;
 }
-.function-group > :not(:last-child) {
+.function-group > .group-item {
     margin-bottom: 15px;    
 }
 .function-group *  {
@@ -640,20 +640,20 @@ img {
 
 /***** GROUP HEIGHTS *****/
 #post .function-group-carrier {
-    margin-bottom: -18px;
+    /*margin-bottom: -18px;*/
 }
 /*#post .function-group:not(:last-child) {
     margin-bottom:15px;
 }*/
 
 .height-18 .group-item { height:18px; }
-.height-18 .function-group { margin-bottom:26px; }
+/*.height-18 .function-group { margin-bottom:26px; }*/
 
 .height-26 .group-item { height:26px; }
-.height-26 .function-group { margin-bottom:26px; }
+/*.height-26 .function-group { margin-bottom:26px; }*/
 
 .height-32 .group-item { height:32px; }
-.height-32 .function-group { margin-bottom:20px; }
+/*.height-32 .function-group { margin-bottom:20px; }*/
 
 .diagram-by-example .function-group { margin-bottom:0 !important; }
 
@@ -722,6 +722,13 @@ img {
 
 /* https://developers.google.com/web/updates/2017/01/scrolling-intervention */
 .cheat-container,
-.cheat-light {
+.cheat-light,
+#glossaryDropdown,
+#appendixDropdown {
     touch-action: none;
+}
+html,
+body,
+#post {
+    touch-action: manipulation;
 }
