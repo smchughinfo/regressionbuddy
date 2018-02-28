@@ -100,7 +100,7 @@ function get(url, successCallback, errorCallback) {
             if(this.status === 200) {
                 successCallback(this.responseText);
             }
-            else {
+            else if(errorCallback) {
                 errorCallback(this.status)
             }
         }
@@ -162,11 +162,13 @@ function onClick(element, handler, once) {
         // instead of worrying about using the passive option right in
         // each situation just listen on the elements themselves
     //}
+    var clickOptions = { once: once === true ? true : false };
+    var touchOptions = { passive: false, once: once === true ? true : false };
     function handle(e) {
         handler(e);
         if(once) {
-            element.removeEventListener("click", _handler);
-            element.removeEventListener("touchstart", _handler);   
+            element.removeEventListener("click", _handler, clickOptions);
+            element.removeEventListener("touchstart", _handler, touchOptions);   
         }
     }
 
@@ -190,8 +192,8 @@ function onClick(element, handler, once) {
         }
     }
 
-    element.addEventListener("click", _handler);
-    element.addEventListener("touchstart", _handler, { passive: false }); 
+    element.addEventListener("click", _handler, clickOptions);
+    element.addEventListener("touchstart", _handler, touchOptions); 
 }
 
 function one(handler) {

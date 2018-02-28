@@ -219,8 +219,16 @@ body > .navbar {
 .function-group > * {
     margin-right: 15px;
 }
+.function-group {
+    padding-top:15px;
+    margin-bottom: -15px;
+}
 .function-group > .group-item {
     margin-bottom: 15px;    
+}
+.function-group > .group-item > .function-group-count {
+    display: inline-block;
+    min-width: 1em;
 }
 .function-group *  {
     white-space: nowrap;

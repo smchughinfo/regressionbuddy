@@ -64,30 +64,42 @@ forEachElement("img", function(elm) {
 });
 
 /****** CHEAT CODE ******/
-function cheat(e) {
-    var toggleCheat = /\bcheat-light\b/.test(e.target.className);
-    if(toggleCheat) {
-        var cheatLight = e.target;
-        var cheatContainer = e.target.closest(".cheat-container")
-        var cheatText= cheatContainer.querySelector("cheat-text");
-        
-        var on = /\bon\b/.test(cheatContainer.className);
-        if(on) {
-            cheatContainer.className = cheatContainer.className.replace(/\bon\b/g, "");
-        }
-        else {
-            cheatContainer.className += " on";
-        }
+function showCheat(e) {
+    var cheatLight = e.target;
+    var cheatContainer = e.target.closest(".cheat-container")
+    var cheatText= cheatContainer.querySelector("cheat-text");
+    
+    var on = /\bon\b/.test(cheatContainer.className);
+    if(on) {
+        cheatContainer.className = cheatContainer.className.replace(/\bon\b/g, "");
     }
     else {
-        var messingWithText = /\bcheat-text\b/.test(e.target.className);
-        if(!messingWithText) {
-            forEachElement(".cheat-container", function(cheatContainer) {
-                cheatContainer.className = cheatContainer.className.replace(/\bon\b/g, "");
-            });   
-        }
+        cheatContainer.className += " on";
+    }
+
+    e.preventDefault();
+    e.stopImmediatePropagation();
+    one(function() {
+        toggleCheat();
+    });
+}
+function hideCheat(e) {
+    var messingWithText = e && e.target && e.target.className && /\bcheat-text\b/.test(e.target.className);
+    if(!messingWithText) {
+        forEachElement(".cheat-container", function(cheatContainer) {
+            cheatContainer.className = cheatContainer.className.replace(/\bon\b/g, "");
+        });   
+    }
+}
+function toggleCheat(e) {
+    var toggleCheat =  e && e.target && e.target.className && /\bcheat-light\b/.test(e.target.className);
+    if(toggleCheat) {
+        showCheat(e);
+    }
+    else {
+        hideCheat(e);
     }
 }
 forEachElement(".cheat-light", function(elm) {
-    onClick(elm, cheat);
+    onClick(elm, toggleCheat);
 });
