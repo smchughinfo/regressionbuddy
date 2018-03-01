@@ -87,3 +87,24 @@
     position:relative;
     top:-15px; /* this matches the 15px with the other function group styles */
 }
+
+
+
+
+
+
+
+
+
+
+/******* APPENDIX DIAGRAM BY EXAMPLE *******/
+#appendix .diagram-by-example {
+    display: inline-block;
+}
+#appendix .diagram-by-example > img {
+    display: inline-block;
+    width: 100%;
+}
+.diagram-by-example > strong {
+    display: block;
+}
