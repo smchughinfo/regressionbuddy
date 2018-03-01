@@ -82,33 +82,32 @@ if(comments) {
         e.preventDefault();
     }
 
-
-    var isReviewPage = document.getElementById("review") !== null;
-    if (isReviewPage) {
-        var links = [];
-        forEachElement("[data-link-with-comments='true']", function (a) {
-            links.push(a.href);
-        });
-
-        var counts = [];
-        aFor(links, getCommentCountForUrl, function(link, count, done) {
-            var relLink = link.split(window.location.host)[1];
-            var commentCountElm = document.querySelector("[data-comment-count-for='" + relLink + "']");
-            counts.push({
-                elm: commentCountElm,
-                count: count
-            });
-
-            if(done) {
-                counts.forEach(function(countObj) {
-                    countObj.elm.innerHTML = " - " + countObj.count + " Comments";
-                });
-            }
-        });
-    }
-
     var commentsLink = document.querySelector("#showCommentsLink");
     if (commentsLink) {
         onClick(commentsLink, toggleShowComments);
     }
+}
+
+var isReviewPage = document.getElementById("review") !== null;
+if (isReviewPage) {
+    var links = [];
+    forEachElement("[data-link-with-comments='true']", function (a) {
+        links.push(a.href);
+    });
+
+    var counts = [];
+    aFor(links, getCommentCountForUrl, function(link, count, done) {
+        var relLink = link.split(window.location.host)[1];
+        var commentCountElm = document.querySelector("[data-comment-count-for='" + relLink + "']");
+        counts.push({
+            elm: commentCountElm,
+            count: count
+        });
+
+        if(done) {
+            counts.forEach(function(countObj) {
+                countObj.elm.innerHTML = " - " + countObj.count + " Comments";
+            });
+        }
+    });
 }
