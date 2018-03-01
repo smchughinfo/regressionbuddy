@@ -1,6 +1,7 @@
 // https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent
 // https://coderwall.com/p/bdxjzg/tap-vs-click-death-by-ignorance
 // there is a built in once https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
+
 /*
     started with just click. ios needed touch events for the cheat light so tried just using touchstart.
     touchstart doesn't let you scroll if you touch an image.
@@ -10,6 +11,12 @@
     elements as opposed to window but this would fix one thing and break another. plus it made it way more
     complicated because i didn't know which event i was getting in the handler or if preventdefault or 
     stopImmediatePropogation was even working.
+
+    the built in once has spotty support. older browsers expect a boolean argument for passive.
+    newer browsers take an option, in which you can specify once. so that's extra complexity i didn't want.
+    additionally, had trouble removing the event handle in ios. you have to include the exact same parameters,
+    even options, in removeEventListener. ...it was just unreliable and didn't work with the rest of what's
+   going on here anyways.
 */
 function onClick(element, handler, once) {
     var lastHandled = 0;
