@@ -16,7 +16,7 @@
     newer browsers take an option, in which you can specify once. so that's extra complexity i didn't want.
     additionally, had trouble removing the event handle in ios. you have to include the exact same parameters,
     even options, in removeEventListener. ...it was just unreliable and didn't work with the rest of what's
-   going on here anyways.
+    going on here anyways.
 */
 function onClick(element, handler, once) {
     var lastHandled = 0;
