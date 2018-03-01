@@ -22,7 +22,9 @@ function toggleButtonDropdown(e) {
         showButtonDropdown(e.target);
     }
     else {
-        hideButtonDropdown();
+        if(e.target.tagName.toLowerCase() !== "a") {
+            hideButtonDropdown();
+        }
     }
 }
 onClick(window, toggleButtonDropdown);
