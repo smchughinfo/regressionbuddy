@@ -67,8 +67,7 @@ body > .navbar {
     }
 }
 /******* EASY POST STYLES *********/
-#post ol,
-#post .function-group-count {
+#post ol {
     font-weight:bold;
 }
 #post li > * {
@@ -207,39 +206,7 @@ body > .navbar {
 .alert-success .topic-instance:not(:last-child) {
     border-bottom: 1px solid #b1dfbb; 
 }
-/******* FUNCTION GROUP *******/
-.function-group-carrier {
-    display: inline-block;
-    vertical-align: middle;
-}
-#post .function-group-carrier {
-    margin-bottom: 3px;
-}
-.function-group {
-    display: inline-block;
-    vertical-align: middle;
-}
-.function-group > * {
-    margin-right: 15px;
-}
-.function-group {
-    padding-top:15px;
-    margin-bottom: -15px;
-}
-.function-group > .group-item {
-    margin-bottom: 15px;    
-}
-.function-group > .group-item > .function-group-count {
-    display: inline-block;
-    min-width: 1em;
-}
-.function-group *  {
-    white-space: nowrap;
-}
-.space-hack {
-    font-weight: bold;
-    visibility: hidden;
-}
+
 /******* APPENDIX DIAGRAM BY EXAMPLE *******/
 #appendix .diagram-by-example {
     display: inline-block;
@@ -248,33 +215,12 @@ body > .navbar {
     display: inline-block;
     width: 100%;
 }
-#appendix .function-group > * {
-    margin-left: 1em;
-    margin-bottom:25px;
-}
 
 #appendix .triangle-basic {
     max-width: 250px;
 }
 #appendix .triangle-1-sqrt3-3 {
     max-width: 198.5px;    
-}
-
-@media only screen and (max-width: 800px) {
-    #appendix .function-group-carrier {
-        display: block;
-    }
-    #appendix .diagram-by-example {
-        text-align: center;
-    }
-    #appendix .diagram-by-example > img {
-        margin-bottom: 25px;
-    }
-    #appendix .function-group > * {
-        margin-left: 7.5px;
-        margin-right: 7.5px;
-        text-align: left;
-    }
 }
 
 #appendix .card-body > .alert:last-of-type {
@@ -649,25 +595,6 @@ img {
     max-width: 215px;
 }
 
-/***** GROUP HEIGHTS *****/
-#post .function-group-carrier {
-    /*margin-bottom: -18px;*/
-}
-/*#post .function-group:not(:last-child) {
-    margin-bottom:15px;
-}*/
-
-.height-18 .group-item { height:18px; }
-/*.height-18 .function-group { margin-bottom:26px; }*/
-
-.height-26 .group-item { height:26px; }
-/*.height-26 .function-group { margin-bottom:26px; }*/
-
-.height-32 .group-item { height:32px; }
-/*.height-32 .function-group { margin-bottom:20px; }*/
-
-.diagram-by-example .function-group { margin-bottom:0 !important; }
-
 /***** SPACING AGAIN *****/
 .no-vertical-margin > .MJXc-display,
 .caption-text > .MJXc-display {
@@ -683,7 +610,7 @@ img {
     margin-top:16px !important;
     margin-bottom:0 !important;
 }
-#solutions .problem .function-group-carrier,
+
 #solutions .problem .nested-list {
     margin-top: 26px;
 }
@@ -731,6 +658,8 @@ img {
     visibility: hidden;
 }
 
+
+
 /* https://developers.google.com/web/updates/2017/01/scrolling-intervention */
 /*.cheat-container,
 .cheat-light,
@@ -743,3 +672,15 @@ body,
 #post {
     touch-action: manipulation;
 }*/
+
+/****** MISC. FIXES FOUND ON BROWSERSTACK ******/
+.topic-instance > strong + * {
+    margin-top: 5px;
+}
+
+.nested-list > li {
+    white-space: nowrap;
+}
+.nested-list > li > * {
+    white-space: normal;
+}

@@ -1,0 +1,89 @@
+#post .function-group-count {
+    font-weight:bold;
+}
+
+/******* FUNCTION GROUP *******/
+.function-group-carrier {
+    display: inline-block;
+    vertical-align: middle;
+}
+#post .function-group-carrier {
+    margin-bottom: 3px;
+}
+.function-group {
+    display: inline-block;
+    vertical-align: middle;
+}
+.function-group > * {
+    margin-right: 15px;
+}
+.function-group {
+    padding-top:15px;
+    margin-bottom: -15px;
+}
+.function-group > .group-item {
+    margin-bottom: 15px;    
+}
+.function-group > .group-item > .function-group-count {
+    display: inline-block;
+    min-width: 1em;
+}
+.function-group *  {
+    white-space: nowrap;
+}
+.space-hack {
+    font-weight: bold;
+    visibility: hidden;
+}
+
+#appendix .function-group > * {
+    margin-left: 1em;
+    margin-bottom:25px;
+}
+
+@media only screen and (max-width: 800px) {
+    #appendix .function-group-carrier {
+        display: block;
+    }
+    #appendix .diagram-by-example {
+        text-align: center;
+    }
+    #appendix .diagram-by-example > img {
+        margin-bottom: 25px;
+    }
+    #appendix .function-group > * {
+        margin-left: 7.5px;
+        margin-right: 7.5px;
+        text-align: left;
+    }
+}
+
+/***** GROUP HEIGHTS *****/
+#post .function-group-carrier {
+    /*margin-bottom: -18px;*/
+}
+/*#post .function-group:not(:last-child) {
+    margin-bottom:15px;
+}*/
+
+.height-18 .group-item { height:18px; }
+/*.height-18 .function-group { margin-bottom:26px; }*/
+
+.height-26 .group-item { height:26px; }
+/*.height-26 .function-group { margin-bottom:26px; }*/
+
+.height-32 .group-item { height:32px; }
+/*.height-32 .function-group { margin-bottom:20px; }*/
+
+#solutions .problem .function-group-carrier {
+    margin-top: 26px;
+}
+
+.function-group-carrier {
+    position:relative;
+    margin-bottom: -15px;
+}
+.function-group-carrier > .function-group {
+    position:relative;
+    top:-15px; /* this matches the 15px with the other function group styles */
+}

@@ -60,6 +60,7 @@ const minimizeSiteJavaScript = () => {
 const integrateSiteCSS = () => {
     let css = [
         `${process.env.clientDir}/styles/master.css`,
+        `${process.env.clientDir}/styles/function_group.css`,
         `${process.env.clientDir}/styles/spacing.css`,
         `${process.env.clientDir}/styles/badge_outline.css`,
         `${process.env.clientDir}/styles/no_flexbox.css`
