@@ -212,6 +212,9 @@ body > .navbar {
     display: inline-block;
     vertical-align: middle;
 }
+#post .function-group-carrier {
+    margin-bottom: 3px;
+}
 .function-group {
     display: inline-block;
     vertical-align: middle;
@@ -729,7 +732,7 @@ img {
 }
 
 /* https://developers.google.com/web/updates/2017/01/scrolling-intervention */
-.cheat-container,
+/*.cheat-container,
 .cheat-light,
 #glossaryDropdown,
 #appendixDropdown {
@@ -739,4 +742,4 @@ html,
 body,
 #post {
     touch-action: manipulation;
-}
+}*/

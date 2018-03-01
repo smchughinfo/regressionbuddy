@@ -43,8 +43,14 @@ function toggleVisibility(selector) {
     }
 }
 
-function setVisibility(selector, visible) {
-    var elm = document.querySelector(selector);
+function setVisibility(elmOrSelector, visible) {
+    var elm = null;
+    if(elmOrSelector.setAttribute !== undefined) {
+        elm = elmOrSelector
+    }
+    else {
+        elm = document.querySelector(elmOrSelector);
+    }
     elm.setAttribute("data-showing", visible ? "true" : "false");   
 }
 
@@ -150,66 +156,4 @@ function clearHash() {
     catch (ex) {
         window.location.hash = "";
     }
-}
-
-// https://developer.mozilla.org/en-US/docs/Web/API/Touch_events/Supporting_both_TouchEvent_and_MouseEvent
-// https://coderwall.com/p/bdxjzg/tap-vs-click-death-by-ignorance
-// there is a built in once https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
-function onClick(element, handler, once) {
-    //if(element === window) {
-        // throw "dont listen for click on window";
-        // it stopped scrolling from working on android on browserstack
-        // instead of worrying about using the passive option right in
-        // each situation just listen on the elements themselves
-    //}
-    var clickOptions = { once: once === true ? true : false };
-    var touchOptions = { passive: false, once: once === true ? true : false };
-    function handle(e) {
-        handler(e);
-        if(once) {
-            element.removeEventListener("click", _handler, clickOptions);
-            element.removeEventListener("touchstart", _handler, touchOptions);   
-        }
-    }
-
-    function _handler(e) {
-        var hasButton = e && e.button !== undefined;
-        if(e.type === "click") {
-            if(hasButton) {
-                if(e.button === 0) {
-                    handle(e);
-                }
-            }
-            else {
-                handle(e);
-            }
-        }
-        else {
-            if(noAnchors(e)) {
-                e.preventDefault();
-            }
-            handle(e);
-        }
-    }
-
-    element.addEventListener("click", _handler, clickOptions);
-    element.addEventListener("touchstart", _handler, touchOptions); 
-}
-
-function one(handler) {
-    onClick(window, handler, true);
-}
-
-function noAnchors(e) {
-    // fires 300ms before click. e.preventDefault() should stop click from running
-    // except if the thing that recieved the touchstart is an anchor tag, don't prevent default so that it can act like an anchor tag
-    var noAnchors = true;
-    for(var i = 0; i < e.touches.length; i++) {
-        var isAnchor = e.touches[i].target.tagName.toLowerCase() === "a";
-        if(isAnchor) {
-            noAnchors = false;
-            break;
-        }
-    }
-    return noAnchors;
 }

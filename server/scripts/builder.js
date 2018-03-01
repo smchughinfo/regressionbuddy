@@ -8,7 +8,7 @@ const { minify } = require("html-minifier");
 const cheerio = require('cheerio');
 const stripDebug = require('strip-debug');
 const pretty = require('pretty');
-const html5Lint = require( 'html5-lint' );
+const html5Lint = require('html5-lint');
 const colors = require('colors');
 
 const jsMinifier = "uglifyjs";
@@ -33,8 +33,11 @@ const createOrCleanBuildDirectory = () => {
 const integrateSiteJavaScript = () => {
     let js = [
         `${process.env.clientDir}/scripts/modernizer.js`,
-        `${process.env.clientDir}/scripts/utilities.js`,
+        `${process.env.clientDir}/scripts/utilities/utilities.js`,
+        `${process.env.clientDir}/scripts/utilities/click_handler.js`,
         `${process.env.clientDir}/scripts/master.js`,
+        `${process.env.clientDir}/scripts/image_maximizer.js`,
+        `${process.env.clientDir}/scripts/cheat_code.js`,
         `${process.env.clientDir}/scripts/url_hacks.js`,
         `${process.env.clientDir}/scripts/top_nav.js`,
         `${process.env.clientDir}/scripts/component_nav.js`,
