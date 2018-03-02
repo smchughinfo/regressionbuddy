@@ -14,7 +14,7 @@
     margin: 16px;
 }
 
-/******* NAV *********/
+
 #solutions,
 #work {
     display: none;
@@ -31,31 +31,6 @@
 }
 .hidden {
     visibility: hidden;
-}
-
-body > .navbar {
-    display: -webkit-flex;
-    display: flex;
-    -webkit-justify-content: space-between;
-    justify-content: space-between;
-    -webkit-flex-direction: row;
-    flex-direction: row;
-}
-@media only screen and (max-width: 550px) {
-    body > .navbar {
-        flex-direction: column;
-        -webkit-flex-direction: column;
-
-        -webkit-align-items: center;
-        align-items: center;
-
-    }
-    body > .navbar > * {
-        margin-left: 0;
-        margin-right: 0;
-        padding-left: 0;
-        padding-right: 0;
-    }
 }
 
 @media only screen and (max-width: 350px) {
@@ -144,16 +119,6 @@ body > .navbar {
 }
 #post ol ol ol > * {
     padding-right: 30px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
-}
-
-/******* FUNCTION GROUP AND SPACING STUFF WITH NO GOOD PLACE TO GO *******/
-.inline-questions .mjx-chtml,
-.inline-questions .graph-con {
-    display: inline-block;
-    text-align: center;
-    margin-top: 2.5px;
-    margin-bottom: 0;
-    vertical-align: top;
 }
 
 /******* GLOSSARY *********/
@@ -647,21 +612,6 @@ img {
 [data-src] {
     visibility: hidden;
 }
-
-
-
-/* https://developers.google.com/web/updates/2017/01/scrolling-intervention */
-/*.cheat-container,
-.cheat-light,
-#glossaryDropdown,
-#appendixDropdown {
-    touch-action: none;
-}
-html,
-body,
-#post {
-    touch-action: manipulation;
-}*/
 
 /****** MISC. FIXES FOUND ON BROWSERSTACK ******/
 .topic-instance > strong + * {

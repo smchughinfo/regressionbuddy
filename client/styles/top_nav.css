@@ -1,0 +1,24 @@
+body > .navbar {
+    display: -webkit-flex;
+    display: flex;
+    -webkit-justify-content: space-between;
+    justify-content: space-between;
+    -webkit-flex-direction: row;
+    flex-direction: row;
+}
+@media only screen and (max-width: 550px) {
+    body > .navbar {
+        flex-direction: column;
+        -webkit-flex-direction: column;
+
+        -webkit-align-items: center;
+        align-items: center;
+
+    }
+    body > .navbar > * {
+        margin-left: 0;
+        margin-right: 0;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}

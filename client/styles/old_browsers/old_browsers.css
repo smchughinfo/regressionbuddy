@@ -4,10 +4,6 @@
     /* newer browsers resize good anyhow. so if someone goes to an old browser and sizes it small it will look good up until a reasonable point (400 ish pixels) but after that it's basically not supported. */
 
 }
-    .no-flexbox > body > nav > .btn-group {
-        display: inline-block;
-        float: right;
-    }
     .no-flexbox > body .post-nav {
         text-align: center;
     }
@@ -111,32 +107,6 @@
     .no-flexbox .page-link {
         text-align: center;
     }
-
-/******** HEADER ********/ 
-html.no-flexbox > body > .navbar > .navbar-brand {
-    display: inline-block;
-}
-html.no-flexbox > body > .navbar > .btn-group {
-    position:absolute;
-    top: 8px;
-    right: 16px;
-}
-@media only screen and (max-width: 550px) {
-    /* messed up header on ie9 and some old browsers on browserstack */
-    html.no-flexbox > body > .navbar {
-        display: block;
-        text-align: center;
-    }
-        html.no-flexbox > body > .navbar > .navbar-brand {
-            display: block;
-            margin-right: 0;
-        }
-        html.no-flexbox > body > .navbar > .btn-group {
-            position: static;
-            display: inline-block;
-            float: none !important;
-        }
-}
 
 /******** PARTIAL FLEXBOX IMPLEMENTATION ********/ 
 .horizontal-group-3-container,

@@ -1,0 +1,37 @@
+/******** HEADER ********/ 
+
+.navbar {
+}
+
+html.no-flexbox > body > .navbar > .navbar-brand {
+    display: inline-block;
+}
+
+html.no-flexbox > body > .navbar > .btn-group {
+    position:absolute;
+    top: 8px;
+    right: 16px;
+    float: right;
+}
+
+/*didn't use no-flexbox here on purpose. ipad mini 2 has small gaps between buttons but it doesnt have .no-flexbox */
+body > .navbar > .btn-group > .btn-group {
+   float:left;
+}
+
+@media only screen and (max-width: 550px) {
+    /* messed up header on ie9 and some old browsers on browserstack */
+    html.no-flexbox > body > .navbar {
+        display: block;
+        text-align: center;
+    }
+        html.no-flexbox > body > .navbar > .navbar-brand {
+            display: block;
+            margin-right: 0;
+        }
+        html.no-flexbox > body > .navbar > .btn-group {
+            position: static;
+            display: inline-block;
+            float: none !important;
+        }
+}

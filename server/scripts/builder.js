@@ -60,10 +60,12 @@ const minimizeSiteJavaScript = () => {
 const integrateSiteCSS = () => {
     let css = [
         `${process.env.clientDir}/styles/master.css`,
+        `${process.env.clientDir}/styles/top_nav.css`,
         `${process.env.clientDir}/styles/function_group.css`,
         `${process.env.clientDir}/styles/spacing.css`,
         `${process.env.clientDir}/styles/badge_outline.css`,
-        `${process.env.clientDir}/styles/no_flexbox.css`
+        `${process.env.clientDir}/styles/old_browsers/old_browsers.css`,
+        `${process.env.clientDir}/styles/old_browsers/top_nav.css`
     ].map(path => readFileSync(path)).join("\r\n");
     writeFileSync(siteCSSPath, css);
 };
