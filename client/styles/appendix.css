@@ -1,0 +1,48 @@
+#appendix .alert {
+    display: inline-block;
+}
+
+#appendix .alert > strong  {
+    display: block;
+}
+
+#appendix .definition {
+    vertical-align: top;
+    padding-left:50px;
+}
+
+#appendix .appendix-seperator {
+    border-top:1px solid gray;
+}
+
+.topic-instance:not(:last-child) {
+    padding-bottom: 1em;
+    margin-bottom: 1em;
+}
+
+.alert-info .topic-instance:not(:last-child) {
+    border-bottom: 1px solid #abdde5;
+}
+
+.alert-success .topic-instance:not(:last-child) {
+    border-bottom: 1px solid #b1dfbb; 
+}
+
+#appendix .card-body > .alert:last-of-type {
+    margin-bottom: 0;
+    /* this is because the alerts have a margin bottom that extra extra space at the end of each section */
+}
+
+.topic {
+    margin-bottom: 1.5em;
+}
+
+.function-note {
+    font-weight: normal !important;
+    font-size: small;
+    font-style: italic;
+}
+
+.topic-instance > strong + * {
+    margin-top: 5px;
+}

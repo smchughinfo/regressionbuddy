@@ -1,0 +1,100 @@
+.subject-options {
+    margin-bottom: 4px;
+}
+
+    .subject-options > .badge {
+        margin-left: 4px;
+    }
+
+.post-nav > ul {
+    margin: 16px;
+}
+
+#post ol {
+    font-weight:bold;
+}
+
+#post li > * {
+    font-weight: normal;
+}
+
+#post .mjx-math {
+    background-color: white;
+}
+
+#post ol ol li {
+    list-style-type: lower-alpha;
+}
+
+#post ol ol ol li {
+    font-weight: bold;
+    list-style-type: lower-roman;
+}
+
+.problem {
+    white-space: nowrap;
+}
+
+.problem > * {
+    white-space: normal;
+}
+
+.problem > *,
+#work img {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.problem:not(:last-child) {
+    padding-bottom: 12px;
+}
+
+.question {
+    padding-bottom: 2px;
+}
+
+.problem li:not(:last-child) {
+    padding-bottom:5px;
+}
+
+#post .mjx-chtml {
+    font-size: 100% !important;
+}
+
+#post .list-group {
+    display: inline-block !important; /* discovered IE wasn't wrapping in a flex box. regression tested on ff/chrome and it seems to be fine. lists have been a trouble area anyway */
+}
+
+#post ol > * {
+    padding-right: 10px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
+}
+
+#post ol ol > * {
+    padding-right: 20px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
+}
+
+#post ol ol ol > * {
+    padding-right: 30px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
+}
+
+#work img { 
+    max-width: 400px;
+ }
+
+@media only screen and (max-width: 500px) {
+    #work img {
+        max-width: 100% !important;
+    }
+}
+
+#solutions .problem .nested-list {
+    margin-top: 26px;
+}
+
+#post .graph {
+    margin-top:0;
+}
+
+.post-content {
+    overflow: hidden;
+}

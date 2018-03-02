@@ -16,13 +16,6 @@
             margin-bottom: 15px;    
         }
 
-
-/*#solutions .problem .function-group-carrier {
-    margin-top: 26px;
-}*/
-#post .function-group-carrier {
-    /*margin-bottom: 3px;*/
-}
 .height-18 .group-item { height:18px; }
 .height-26 .group-item { height:26px; }
 .height-32 .group-item { height:32px; }
@@ -30,18 +23,10 @@
     margin-bottom:25px;
 }
 
-
-
-
-
-
-/******* NON-VERTICAL-SPACING STYLES*******/
-
 #post .function-group-count {
     font-weight:bold;
 }
 
-/******* FUNCTION GROUP *******/
 .function-group-carrier {
     display: inline-block;
     vertical-align: middle;
@@ -88,20 +73,51 @@
     }
 }
 
+.horizontal-group-4-break {
+    width: 100%;
+    max-width: 1220px;
+}
 
+@media only screen and (min-width: 576px) and (max-width: 767px)  {
+    .horizontal-group-4-break {
+        padding-left:10px;
+        padding-right:10px;
+    }
+    .horizontal-group-4-break .horizontal-group {
+        margin-top:0;
+        margin-bottom:0;
+    }
+    .horizontal-group-4-break .horizontal-group:nth-child(1),
+    .horizontal-group-4-break .horizontal-group:nth-child(2) {
+        padding-top:0;
+        padding-bottom: 1rem;
+        border-top: none;
+    }
+    .horizontal-group-4-break .horizontal-group:nth-child(1),
+    .horizontal-group-4-break .horizontal-group:nth-child(3) {
+        padding-left:10px;
+    }
+    .horizontal-group-4-break .horizontal-group:nth-child(2),
+    .horizontal-group-4-break .horizontal-group:nth-child(4) {
+        padding-right:10px;
+        border-left: 1px solid #abdde5 !important;
+    }
+    .horizontal-group-4-break .horizontal-group:nth-child(3),
+    .horizontal-group-4-break .horizontal-group:nth-child(4) {
+        padding-top: 1rem;
+    }
+}
 
+@media only screen and (max-width: 575.5px) {
+    .x-small-width-300{
+        max-width: 300px;
+    }
+}
 
-
-
-
-
-
-
-/******* APPENDIX DIAGRAM BY EXAMPLE *******/
-#appendix .diagram-by-example {
+.diagram-by-example {
     display: inline-block;
 }
-#appendix .diagram-by-example > img {
+.diagram-by-example > img {
     display: inline-block;
     width: 100%;
 }

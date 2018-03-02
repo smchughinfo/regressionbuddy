@@ -59,11 +59,28 @@ const minimizeSiteJavaScript = () => {
 
 const integrateSiteCSS = () => {
     let css = [
+        // global
         `${process.env.clientDir}/styles/master.css`,
-        `${process.env.clientDir}/styles/top_nav.css`,
-        `${process.env.clientDir}/styles/function_group.css`,
-        `${process.env.clientDir}/styles/spacing.css`,
-        `${process.env.clientDir}/styles/badge_outline.css`,
+            `${process.env.clientDir}/styles/top_nav.css`,
+            `${process.env.clientDir}/styles/graph.css`,
+            `${process.env.clientDir}/styles/mathjax.css`,
+            `${process.env.clientDir}/styles/function_group.css`,
+            `${process.env.clientDir}/styles/horizontal_group.css`,
+            `${process.env.clientDir}/styles/hard_coded_dimensions.css`,
+            `${process.env.clientDir}/styles/image_maximizer.css`,
+
+        // individual pages
+        `${process.env.clientDir}/styles/post.css`,
+            `${process.env.clientDir}/styles/components.css`,
+            `${process.env.clientDir}/styles/badge_outline.css`,
+            `${process.env.clientDir}/styles/cheat_code.css`,
+        `${process.env.clientDir}/styles/appendix.css`,
+            `${process.env.clientDir}/styles/wider_line.css`,
+        `${process.env.clientDir}/styles/glossary.css`,
+        `${process.env.clientDir}/styles/review.css`,
+        `${process.env.clientDir}/styles/404.css`,
+
+        // old browsers
         `${process.env.clientDir}/styles/old_browsers/old_browsers.css`,
         `${process.env.clientDir}/styles/old_browsers/top_nav.css`
     ].map(path => readFileSync(path)).join("\r\n");
@@ -317,7 +334,7 @@ const buildAppendix = subject => {
     let title = `${capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, " "))} Appendix`;
 
     // set title
-    $appendixTemplate.find(".major-text").html(title);
+    $appendixTemplate.find(".header-text").html(title);
 
     // append topics
     let topicFiles = getFiles(`${process.env.clientDir}/html/appendix/${subject}`);
@@ -754,7 +771,6 @@ const lint = () => {
 
 const build = () => {
     console.log("building...");
-    //console.warn("cheerio adds a body tag if it encounters a text node. e.g. [REPLACE THIS]");
     console.log("WHEN YOU DO SPECIAL LIMITS MAKE SURE TO INCLUDE PAGE 105.");
 
     createOrCleanBuildDirectory();

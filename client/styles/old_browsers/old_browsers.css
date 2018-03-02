@@ -23,7 +23,7 @@
     .no-flexbox #appendix .card {
         display: inline-block;
     }
-    .no-flexbox .small-width-350 {
+    .no-flexbox .horizontal-group-3-topic-container {
         width: auto;
         max-width: none !important;
     }

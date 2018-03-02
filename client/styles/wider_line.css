@@ -1,0 +1,30 @@
+.wider-line:after {
+    content:'';
+    display: inline-block;
+    height: 1px;
+    width: 60%;
+    position:absolute;
+    top: 50%;
+    left: 20%;
+}
+
+.wider-line {
+    position: relative;
+}
+
+.alert .wider-line > * {
+    z-index:1;
+    padding-left:8px;
+    padding-right:8px;
+}
+
+.alert-info .MathJax_Preview,
+.alert-success .MathJax_Preview {
+    z-index:1;
+    position:relative;
+}
+
+.alert-info .wider-line > * { background: #d1ecf1; }
+.alert-success .wider-line > * { background: #d4edda; }
+.alert-info .wider-line:after { border-top: 1px solid #abdde5; }
+.alert-success .wider-line:after { border-top: 1px solid #b1dfbb; }

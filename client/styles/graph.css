@@ -1,0 +1,115 @@
+.graph-con {
+    position: relative;
+    display: inline-block;
+}
+
+.graph-con .open-graph {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: .2;
+    transition: .5s;
+    transform: translateZ(0);
+}
+
+.graph-con .open-graph.push-right {
+    right: -20px;
+}
+
+.graph-con .open-graph img {
+    height: 24px;
+    width: 24px;
+}
+
+.graph-con .open-graph:hover {
+    opacity: .4;
+}
+
+.graph-header,
+.empty-graph-header {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.graph-con {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.graph-con-no-image {
+    flex-grow: 1;
+}
+
+.graph-con-no-image ul {
+    display: inline-block;
+    margin-left: 0;
+    padding-left: 0;
+    text-align: left;
+}
+
+.graph-con-no-image li {
+    list-style-position: inside;
+}
+
+.graph-size-1 {
+    width: 208px;
+}
+
+.graph-size-2 {
+    width: 250px;
+}
+
+@media only screen and (max-width: 500px) {
+    .graph-size-1 {
+        width: 100%;
+    }
+    .graph-size-2 {
+        width: 100%;
+    }   
+}
+
+#post .graph-size-1 {
+    max-width: 150px !important;
+}
+
+#post .graph-size-2 {
+    max-width: 180px !important;
+}
+
+/* note - these two styles are mostly to fix height:auto image being scaled but still taking up the full height in ie, invisibly. */
+/*        same as .graph { overflow: hidden; } but even overflow:hidden on ALL child elements of .alert would not fix this one. */
+/*        gave up trying to get browser to be reasonable and started messing with width/height directly on the image.  */
+.horizontal-group-4 .graph-size-1 {
+    width: 150px;
+}
+.horizontal-group-4 .graph-size-2 {
+    width: 180px;
+}
+/* end note */
+
+.caption-text {
+    display:inline-block;
+    margin-top:5px;
+}
+
+.graph,
+.graph-con-no-image ul {
+    margin-top: 1em;
+}
+
+.caption-after-graph {
+    /* for when flexbox doesnt work https://css-tricks.com/centering-css-complete-guide/ */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.height-100 {
+    height: 100px;
+}
+
+.graph {
+    overflow: hidden;
+}

@@ -1,0 +1,19 @@
+.alert-success .mjx-math {
+    background-color: #d3edd9;
+}
+
+.no-vertical-margin > .MJXc-display,
+.caption-text > .MJXc-display {
+    margin-top:0 !important;
+    margin-bottom:0 !important;
+}
+
+.latex-vertical-margin-small-top-only > .MJXc-display {
+    margin-top:4px !important;
+    margin-bottom:0 !important;
+}
+
+.latex-vertical-margin-medium-top-only > .MJXc-display {
+    margin-top:16px !important;
+    margin-bottom:0 !important;
+}
