@@ -56,6 +56,13 @@ const handleFileRequest = (req, res) => {
     if(urn === "/") {
         filePath = `${process.env.publicDir}/index.html`;
     }
+    else if(urn.endsWith("/")){
+        res.writeHead(302, {
+            "Location": urn.replace(/\/$/, "")
+        });
+        res.end();
+        return;
+    }
     else if(/^\/[0-9]+$/.test(urn)) {
         res.writeHead(302, {
             "Location": `${urn}/${defaultSubject}`

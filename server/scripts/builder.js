@@ -8,7 +8,7 @@ const { minify } = require("html-minifier");
 const cheerio = require('cheerio');
 const stripDebug = require('strip-debug');
 const pretty = require('pretty');
-const html5Lint = require( 'html5-lint' );
+const html5Lint = require('html5-lint');
 const colors = require('colors');
 
 const jsMinifier = "uglifyjs";
@@ -33,8 +33,14 @@ const createOrCleanBuildDirectory = () => {
 const integrateSiteJavaScript = () => {
     let js = [
         `${process.env.clientDir}/scripts/modernizer.js`,
-        `${process.env.clientDir}/scripts/utilities.js`,
+        `${process.env.clientDir}/scripts/utilities/utilities.js`,
+        `${process.env.clientDir}/scripts/utilities/click_handler.js`,
         `${process.env.clientDir}/scripts/master.js`,
+        `${process.env.clientDir}/scripts/image_maximizer.js`,
+        `${process.env.clientDir}/scripts/cheat_code.js`,
+        `${process.env.clientDir}/scripts/url_hacks.js`,
+        `${process.env.clientDir}/scripts/top_nav.js`,
+        `${process.env.clientDir}/scripts/component_nav.js`,
         `${process.env.clientDir}/scripts/comments.js`
     ].map(path => readFileSync(path)).join("\r\n");
     writeFileSync(siteJavaScriptPath, js);
@@ -54,9 +60,12 @@ const minimizeSiteJavaScript = () => {
 const integrateSiteCSS = () => {
     let css = [
         `${process.env.clientDir}/styles/master.css`,
+        `${process.env.clientDir}/styles/top_nav.css`,
+        `${process.env.clientDir}/styles/function_group.css`,
         `${process.env.clientDir}/styles/spacing.css`,
         `${process.env.clientDir}/styles/badge_outline.css`,
-        `${process.env.clientDir}/styles/no_flexbox.css`
+        `${process.env.clientDir}/styles/old_browsers/old_browsers.css`,
+        `${process.env.clientDir}/styles/old_browsers/top_nav.css`
     ].map(path => readFileSync(path)).join("\r\n");
     writeFileSync(siteCSSPath, css);
 };
@@ -388,7 +397,7 @@ const buildIndex = () => {
     console.log("allow index to build once first post is out of review");
     var index = `<div class="jumbotron">\
     <h1 class="display-3">Regression Buddy is in Review</h1>\
-    <p class="lead">Welcome to regressionbuddy.com, the cool new math website all the kids are talking about. The current go live date is 2/25/18. In the meantime you can help improve the quality of this site by participating in its <a href="/review">first review</a>.</p>\
+    <p class="lead">Welcome to regressionbuddy.com, the cool new math website all the kids are talking about. The current go live date is 3/11/18. In the meantime you can help improve the quality of this site by participating in its <a href="/review">first review</a>.</p>\
     </p>\
   </div>`;
     buildStaticContentPage(index, shortDescription, description, `${process.env.publicDir}/index.html`);
@@ -707,30 +716,35 @@ const lint = () => {
 
         let unlintedHTML = readFileSync(file).toString();
         html5Lint(unlintedHTML, (err, results) => {
-            results.messages.forEach(msg => {
-                if(
-                    msg.message !== "Bad value “” for attribute “src” on element “img”: Must be non-empty." &&
-                    msg.message !== "Element “img” is missing required attribute “src”."
-                ){
-                    anyErrors = true;
+            if(results) {
+                results.messages.forEach(msg => {
+                    if(
+                        msg.message !== "Bad value “” for attribute “src” on element “img”: Must be non-empty." &&
+                        msg.message !== "Element “img” is missing required attribute “src”."
+                    ){
+                        anyErrors = true;
 
-                    let color = "white";
-                    color = msg.type === "info" ? "cyan" : color;
-                    color = msg.type === "warning" ? "yellow" : color;
-                    color = msg.type === "error" ? "red" : color;
-    
-                    let consoleMessage = `${errorNum++}. `;
-                    consoleMessage += `HTML5 Lint [${msg.type}]\n`;
-                    consoleMessage += `file: ${file}\n`;
-                    consoleMessage += `lastLine: ${msg.lastLine}\n`;
-                    consoleMessage += `lastColumn: ${msg.lastColumn}\n`;
-                    consoleMessage += `${msg.type}: ${msg.message}\n`;
-                    consoleMessage += `extract: ${msg.extract.length > 100 ? msg.extract.substring(0, 100) : msg.extract}\n`;
-                    consoleMessage += `------------------------------\n`;   
+                        let color = "white";
+                        color = msg.type === "info" ? "cyan" : color;
+                        color = msg.type === "warning" ? "yellow" : color;
+                        color = msg.type === "error" ? "red" : color;
+        
+                        let consoleMessage = `${errorNum++}. `;
+                        consoleMessage += `HTML5 Lint [${msg.type}]\n`;
+                        consoleMessage += `file: ${file}\n`;
+                        consoleMessage += `lastLine: ${msg.lastLine}\n`;
+                        consoleMessage += `lastColumn: ${msg.lastColumn}\n`;
+                        consoleMessage += `${msg.type}: ${msg.message}\n`;
+                        consoleMessage += `extract: ${msg.extract.length > 100 ? msg.extract.substring(0, 100) : msg.extract}\n`;
+                        consoleMessage += `------------------------------\n`;   
 
-                    console.log(consoleMessage[color]);
+                        console.log(consoleMessage[color]);
+                    }
+                });
+                if(++lintedFiles === builtFiles.length && anyErrors === false) {
+                    console.log("Lint Complete".green);
                 }
-            });
+            }
             if(++lintedFiles === builtFiles.length && anyErrors === false) {
                 console.log("Lint Complete".green);
             }
@@ -741,7 +755,7 @@ const lint = () => {
 const build = () => {
     console.log("building...");
     //console.warn("cheerio adds a body tag if it encounters a text node. e.g. [REPLACE THIS]");
-    console.log("WHEN YOU DO SPECIAL LIMITS MAKE SURE TO INCLUDE PAGE 105.")
+    console.log("WHEN YOU DO SPECIAL LIMITS MAKE SURE TO INCLUDE PAGE 105.");
 
     createOrCleanBuildDirectory();
     

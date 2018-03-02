@@ -1,0 +1,110 @@
+#post #solutions .function-group-carrier {
+    margin-top:26px; /* this is so they aren't on the same line as the problem number. 26 is the computed height of the question line. */
+}
+.function-group-carrier {
+    position:relative;
+    margin-bottom: -15px;
+}
+
+    .function-group-carrier > .function-group {
+        position:relative;
+        top:-15px;
+        padding-top:15px;
+        margin-bottom: -15px;
+    }
+        .function-group-carrier > .function-group > .group-item {
+            margin-bottom: 15px;    
+        }
+
+
+/*#solutions .problem .function-group-carrier {
+    margin-top: 26px;
+}*/
+#post .function-group-carrier {
+    /*margin-bottom: 3px;*/
+}
+.height-18 .group-item { height:18px; }
+.height-26 .group-item { height:26px; }
+.height-32 .group-item { height:32px; }
+#appendix .function-group > * {
+    margin-bottom:25px;
+}
+
+
+
+
+
+
+/******* NON-VERTICAL-SPACING STYLES*******/
+
+#post .function-group-count {
+    font-weight:bold;
+}
+
+/******* FUNCTION GROUP *******/
+.function-group-carrier {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.function-group {
+    display: inline-block;
+    vertical-align: middle;
+}
+.function-group > * {
+    margin-right: 15px;
+}
+
+.function-group > .group-item > .function-group-count {
+    display: inline-block;
+    min-width: 1em;
+}
+.function-group *  {
+    white-space: nowrap;
+}
+.space-hack {
+    font-weight: bold;
+    visibility: hidden;
+}
+
+#appendix .function-group > * {
+    margin-left: 1em;
+}
+
+@media only screen and (max-width: 800px) {
+    #appendix .function-group-carrier {
+        display: block;
+    }
+    #appendix .diagram-by-example {
+        text-align: center;
+    }
+    #appendix .diagram-by-example > img {
+        margin-bottom: 25px;
+    }
+    #appendix .function-group > * {
+        margin-left: 7.5px;
+        margin-right: 7.5px;
+        text-align: left;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+/******* APPENDIX DIAGRAM BY EXAMPLE *******/
+#appendix .diagram-by-example {
+    display: inline-block;
+}
+#appendix .diagram-by-example > img {
+    display: inline-block;
+    width: 100%;
+}
+.diagram-by-example > strong {
+    display: block;
+}

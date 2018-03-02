@@ -14,7 +14,7 @@
     margin: 16px;
 }
 
-/******* NAV *********/
+
 #solutions,
 #work {
     display: none;
@@ -33,12 +33,6 @@
     visibility: hidden;
 }
 
-@media only screen and (max-width: 500px) {
-    body > .navbar {
-        justify-content: center;
-    }
-}
-
 @media only screen and (max-width: 350px) {
     .post-nav > ul {
         display: block;
@@ -48,8 +42,7 @@
     }
 }
 /******* EASY POST STYLES *********/
-#post ol,
-#post .function-group-count {
+#post ol {
     font-weight:bold;
 }
 #post li > * {
@@ -128,16 +121,6 @@
     padding-right: 30px; /* totally eyeballing this. it flows outside the box i guess because it starts so far off to the left. so put some right on to try and guide it back in.*/        
 }
 
-/******* FUNCTION GROUP AND SPACING STUFF WITH NO GOOD PLACE TO GO *******/
-.inline-questions .mjx-chtml,
-.inline-questions .graph-con {
-    display: inline-block;
-    text-align: center;
-    margin-top: 2.5px;
-    margin-bottom: 0;
-    vertical-align: top;
-}
-
 /******* GLOSSARY *********/
 /*https://stackoverflow.com/questions/10405945/html-ordered-list-1-1-1-2-nested-counters-and-scope-not-working*/
 #glossary ol {
@@ -161,8 +144,7 @@
 #appendix .alert {
     display: inline-block;
 }
-#appendix .alert > strong,
-.diagram-by-example > strong {
+#appendix .alert > strong  {
     display: block;
 }
 #appendix .definition {
@@ -188,63 +170,12 @@
 .alert-success .topic-instance:not(:last-child) {
     border-bottom: 1px solid #b1dfbb; 
 }
-/******* FUNCTION GROUP *******/
-.function-group-carrier {
-    display: inline-block;
-    vertical-align: middle;
-}
-.function-group {
-    display: inline-block;
-    vertical-align: middle;
-}
-.function-group > * {
-    margin-right: 15px;
-}
-.function-group > :not(:last-child) {
-    margin-bottom: 15px;    
-}
-.function-group *  {
-    white-space: nowrap;
-}
-.space-hack {
-    font-weight: bold;
-    visibility: hidden;
-}
-/******* APPENDIX DIAGRAM BY EXAMPLE *******/
-#appendix .diagram-by-example {
-    display: inline-block;
-}
-#appendix .diagram-by-example > img {
-    display: inline-block;
-    width: 100%;
-}
-#appendix .function-group > * {
-    margin-left: 1em;
-    margin-bottom:25px;
-}
 
 #appendix .triangle-basic {
     max-width: 250px;
 }
 #appendix .triangle-1-sqrt3-3 {
     max-width: 198.5px;    
-}
-
-@media only screen and (max-width: 800px) {
-    #appendix .function-group-carrier {
-        display: block;
-    }
-    #appendix .diagram-by-example {
-        text-align: center;
-    }
-    #appendix .diagram-by-example > img {
-        margin-bottom: 25px;
-    }
-    #appendix .function-group > * {
-        margin-left: 7.5px;
-        margin-right: 7.5px;
-        text-align: left;
-    }
 }
 
 #appendix .card-body > .alert:last-of-type {
@@ -278,6 +209,12 @@
         opacity: .4;
     }
 
+    .graph-header,
+    .empty-graph-header {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
     /* 2D AND 3D STYLES */
 
     .graph-con {
@@ -409,6 +346,7 @@
         justify-content: flex-start;
     }
     .horizontal-group > strong {
+        /* double check this style. it might not be used anywhere. */
         overflow: hidden;
         text-overflow: ellipsis;
         max-width: 100%;
@@ -428,12 +366,15 @@ body.blur > *:not(.layover) {
     position:fixed;
     top:0;
     left:0;
+    bottom: 0;
+    right: 0;
     height: 100%;
     width:100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center; /* this one is for no-flexbox. the image isn't vertically centered though. idk if thats worth the effort. ..on what old browsers doesn't position fixed work and how does it look on them? etc. just move on. */
 }
 .layover.hidden-layover {
     display: none;
@@ -616,25 +557,6 @@ img {
     max-width: 215px;
 }
 
-/***** GROUP HEIGHTS *****/
-#post .function-group-carrier {
-    margin-bottom: -18px;
-}
-/*#post .function-group:not(:last-child) {
-    margin-bottom:15px;
-}*/
-
-.height-18 .group-item { height:18px; }
-.height-18 .function-group { margin-bottom:26px; }
-
-.height-26 .group-item { height:26px; }
-.height-26 .function-group { margin-bottom:26px; }
-
-.height-32 .group-item { height:32px; }
-.height-32 .function-group { margin-bottom:20px; }
-
-.diagram-by-example .function-group { margin-bottom:0 !important; }
-
 /***** SPACING AGAIN *****/
 .no-vertical-margin > .MJXc-display,
 .caption-text > .MJXc-display {
@@ -650,7 +572,7 @@ img {
     margin-top:16px !important;
     margin-bottom:0 !important;
 }
-#solutions .problem .function-group-carrier,
+
 #solutions .problem .nested-list {
     margin-top: 26px;
 }
@@ -696,4 +618,16 @@ img {
 
 [data-src] {
     visibility: hidden;
+}
+
+/****** MISC. FIXES FOUND ON BROWSERSTACK ******/
+.topic-instance > strong + * {
+    margin-top: 5px;
+}
+
+.nested-list > li {
+    white-space: nowrap;
+}
+.nested-list > li > * {
+    white-space: normal;
 }

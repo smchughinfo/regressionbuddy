@@ -43,18 +43,15 @@ function toggleVisibility(selector) {
     }
 }
 
-function setVisibility(selector, visible) {
-    var elm = document.querySelector(selector);
-    elm.setAttribute("data-showing", visible ? "true" : "false");   
-}
-
-function one(handler) {
-    // there is a built in once https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener
-    function _handler(e) {
-        document.removeEventListener("click", _handler);
-        handler(e);
+function setVisibility(elmOrSelector, visible) {
+    var elm = null;
+    if(elmOrSelector.setAttribute !== undefined) {
+        elm = elmOrSelector
     }
-    document.addEventListener("click", _handler);
+    else {
+        elm = document.querySelector(elmOrSelector);
+    }
+    elm.setAttribute("data-showing", visible ? "true" : "false");   
 }
 
 // nodelist foreach polyfill for ie
@@ -109,7 +106,7 @@ function get(url, successCallback, errorCallback) {
             if(this.status === 200) {
                 successCallback(this.responseText);
             }
-            else {
+            else if(errorCallback) {
                 errorCallback(this.status)
             }
         }
@@ -150,4 +147,13 @@ function aFor(arr, func, itr) {
         });
     }
     iterate();
+}
+
+function clearHash() {
+    try {
+        history.replaceState({}, document.title, window.location.pathname); // hash would only ever get used if a user didnt have javascript. in that case it's used to show hide problems, solutions, and work'
+    }
+    catch (ex) {
+        window.location.hash = "";
+    }
 }
