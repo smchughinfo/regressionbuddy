@@ -209,6 +209,12 @@
         opacity: .4;
     }
 
+    .graph-header,
+    .empty-graph-header {
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
     /* 2D AND 3D STYLES */
 
     .graph-con {
@@ -340,6 +346,7 @@
         justify-content: flex-start;
     }
     .horizontal-group > strong {
+        /* double check this style. it might not be used anywhere. */
         overflow: hidden;
         text-overflow: ellipsis;
         max-width: 100%;
