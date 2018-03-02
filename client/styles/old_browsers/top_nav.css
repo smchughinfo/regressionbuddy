@@ -1,8 +1,3 @@
-/******** HEADER ********/ 
-
-.navbar {
-}
-
 html.no-flexbox > body > .navbar > .navbar-brand {
     display: inline-block;
 }
