@@ -1,0 +1,12 @@
+#solutions,
+#work {
+    display: none;
+}
+#componentsContainer li {
+    list-style-position: inside;
+}
+
+#componentsContainer #work li {
+    list-style-position: outside;
+    margin-left: 20px;
+}

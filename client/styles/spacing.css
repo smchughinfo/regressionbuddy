@@ -1,7 +1,0 @@
-    /***** INLINE PICTURES IN A PROBLEM *****/
-    @media only screen and (max-width: 767px) {
-        /* SPACING */
-        [data-subject="linear_algebra"] .inline-image-question > * > *{
-            display: block;
-        }
-    }

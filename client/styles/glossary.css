@@ -1,0 +1,17 @@
+/*https://stackoverflow.com/questions/10405945/html-ordered-list-1-1-1-2-nested-counters-and-scope-not-working*/
+#glossary ol {
+    counter-reset: item;
+    padding-left: 16px;
+}
+
+#glossary ol > li {
+    counter-increment: item;
+}
+
+#glossary .topic-list > li {
+    display: block;
+}
+
+#glossary .topic-list > li:before {
+    content: counters(item, ".") " ";
+}

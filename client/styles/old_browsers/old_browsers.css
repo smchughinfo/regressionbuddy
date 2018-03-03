@@ -1,112 +1,106 @@
-/******* NO FLEXBOX SHIM *******/
-.no-flexbox > body {
-    /* had it set at 600px; which looks good when playing with the size of ie9 but is NOT good when you load it up on an old cell phone. it's like, why is this so wide? and then you track it down to the line that would be here.*/
-    /* newer browsers resize good anyhow. so if someone goes to an old browser and sizes it small it will look good up until a reasonable point (400 ish pixels) but after that it's basically not supported. */
-
+.no-flexbox > body .post-nav {
+    text-align: center;
 }
-    .no-flexbox > body .post-nav {
-        text-align: center;
-    }
-    .no-flexbox > body .post-nav > ul {
+.no-flexbox > body .post-nav > ul {
+    display: inline-block;
+}
+.no-flexbox > body .post-nav > ul > li {
+    display: inline-block;
+    float:left;
+}
+.no-flexbox > body > #post .card-header ul {
+    text-align: left;
+}
+.no-flexbox > body > #post .card-header li {
+    display: inline-block;
+}
+.no-flexbox #appendix .card {
+    display: inline-block;
+}
+.no-flexbox .horizontal-group-3-topic-container {
+    width: auto;
+    max-width: none !important;
+}
+.no-flexbox .horizontal-group-4-break {
+    white-space: nowrap;
+    width: 815px !important;
+    max-width: none !important;
+}
+    .no-flexbox .horizontal-group-4-break .horizontal-group-4 {
         display: inline-block;
-    }
-    .no-flexbox > body .post-nav > ul > li {
-        display: inline-block;
-        float:left;
-    }
-    .no-flexbox > body > #post .card-header ul {
-        text-align: left;
-    }
-    .no-flexbox > body > #post .card-header li {
-        display: inline-block;
-    }
-    .no-flexbox #appendix .card {
-        display: inline-block;
-    }
-    .no-flexbox .small-width-350 {
-        width: auto;
         max-width: none !important;
+        width: 200px !important;
+        height: 100% !important;
+        vertical-align: top;
+        white-space: normal;
+        padding-top: 0 0 !important;;
+        border-top: none 0 !important;;
+        margin-top: 0 !important;
+        border-left: none !important;
     }
-    .no-flexbox .horizontal-group-4-break {
-        white-space: nowrap;
-        width: 815px !important;
-        max-width: none !important;
-    }
-        .no-flexbox .horizontal-group-4-break .horizontal-group-4 {
-            display: inline-block;
-            max-width: none !important;
-            width: 200px !important;
-            height: 100% !important;
-            vertical-align: top;
-            white-space: normal;
-            padding-top: 0 0 !important;;
-            border-top: none 0 !important;;
-            margin-top: 0 !important;
-            border-left: none !important;
+        .no-flexbox .horizontal-group-4-break .horizontal-group-4 .graph-size-1,
+        .no-flexbox .horizontal-group-4-break .horizontal-group-4 .graph-size-2 {
+            max-width: none !important;   
         }
-            .no-flexbox .horizontal-group-4-break .horizontal-group-4 .graph-size-1,
-            .no-flexbox .horizontal-group-4-break .horizontal-group-4 .graph-size-2 {
-                max-width: none !important;   
-            }
-            .no-flexbox .horizontal-group-4-break .horizontal-group-4 .graph-size-1 > img {
-                height: 150px !important;
-                width: 150px !important;
-                max-width: none !important;
-            }
-            .no-flexbox .horizontal-group-4-break .horizontal-group-4 .graph-size-2 > img {
-                height: 150px !important;
-                width: 180px !important;
-                max-width: none !important;
-            }
-            .no-flexbox .horizontal-group-4-break {
-                padding-left: 0 !important;
-                padding-right: 0 !important;
-            }
-            .no-flexbox .horizontal-group-4-break .horizontal-group {
-                padding-top: 0 !important;
-                padding-bottom: 0 !important;
-                padding-left: 5px !important;
-                padding-right: 5px !important;
-            }
-            .no-flexbox .horizontal-group {
-                flex: none !important;
-            }
-
-    .no-flexbox .horizontal-group-3-container {
-        white-space: nowrap !important;
-    }
-    .no-flexbox .horizontal-group-3-container p {
-        white-space: normal !important;
-    }
-        .no-flexbox .horizontal-group-3-container .horizontal-group-3 {
-            display: inline-block !important;
-            width: 350px;
-            vertical-align: top;
-            border-left: none !important;
-            border-top: none !important;
+        .no-flexbox .horizontal-group-4-break .horizontal-group-4 .graph-size-1 > img {
+            height: 150px !important;
+            width: 150px !important;
+            max-width: none !important;
+        }
+        .no-flexbox .horizontal-group-4-break .horizontal-group-4 .graph-size-2 > img {
+            height: 150px !important;
+            width: 180px !important;
+            max-width: none !important;
+        }
+        .no-flexbox .horizontal-group-4-break {
+            padding-left: 0 !important;
+            padding-right: 0 !important;
+        }
+        .no-flexbox .horizontal-group-4-break .horizontal-group {
             padding-top: 0 !important;
-            margin-top: 0 !important;
+            padding-bottom: 0 !important;
+            padding-left: 5px !important;
+            padding-right: 5px !important;
         }
-        .no-flexbox .horizontal-group-3-container .horizontal-group-3 .graph-con {
+        .no-flexbox .horizontal-group {
+            flex: none !important;
+        }
+
+.no-flexbox .horizontal-group-3-container {
+    white-space: nowrap !important;
+}
+.no-flexbox .horizontal-group-3-container p {
+    white-space: normal !important;
+}
+    .no-flexbox .horizontal-group-3-container .horizontal-group-3 {
+        display: inline-block !important;
+        width: 350px;
+        vertical-align: top;
+        border-left: none !important;
+        border-top: none !important;
+        padding-top: 0 !important;
+        margin-top: 0 !important;
+    }
+    .no-flexbox .horizontal-group-3-container .horizontal-group-3 .graph-con {
+        max-width: none !important;
+    }
+        .no-flexbox .horizontal-group-3-container .horizontal-group-3 .graph-con .open-graph {
+            right: 0 !important;
+        }
+        /* 
+            at the time i made this horizontal group 3 only used graph-size-1 but i added 
+            graph-size-2 so i dont use a graph-size-2 for some reason later and forget about
+            the no-flexbox styles
+        */
+        .no-flexbox .horizontal-group-3-container .horizontal-group-3 .graph-size-1 > img,
+        .no-flexbox .horizontal-group-3-container .horizontal-group-3 .graph-size-2 > img {
+            height: 208px !important;
+            width: 208px !important;
             max-width: none !important;
         }
-            .no-flexbox .horizontal-group-3-container .horizontal-group-3 .graph-con .open-graph {
-                right: 0 !important;
-            }
-            /* 
-                at the time i made this horizontal group 3 only used graph-size-1 but i added 
-                graph-size-2 so i dont use a graph-size-2 for some reason later and forget about
-                the no-flexbox styles
-            */
-            .no-flexbox .horizontal-group-3-container .horizontal-group-3 .graph-size-1 > img,
-            .no-flexbox .horizontal-group-3-container .horizontal-group-3 .graph-size-2 > img {
-                height: 208px !important;
-                width: 208px !important;
-                max-width: none !important;
-            }
-    .no-flexbox .page-link {
-        text-align: center;
-    }
+.no-flexbox .page-link {
+    text-align: center;
+}
 
 /******** PARTIAL FLEXBOX IMPLEMENTATION ********/ 
 .horizontal-group-3-container,

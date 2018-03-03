@@ -6,6 +6,7 @@ body > .navbar {
     -webkit-flex-direction: row;
     flex-direction: row;
 }
+
 @media only screen and (max-width: 550px) {
     body > .navbar {
         flex-direction: column;
