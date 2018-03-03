@@ -69,6 +69,21 @@ const getPostSubjects = (postNumber) => {
     return getDirectorySubjects(subjectsPath);
 };
 
+const orderSubjects = subjects => {
+    var subjectOrders = {
+        "algebra": 1,
+        "trigonometry": 2,
+        "calculus": 3,
+        "vector_calculus": 4,
+        "statistics": 5,
+        "linear_algebra": 6
+    };
+
+    return subjects.sort((a,b) => {
+        return subjectOrders[a] > subjectOrders[b];
+    });
+};
+
 const getGlossarySubjects = () => {
     let subjectsPath = `${process.env.clientDir}/html/glossary`;
     return getDirectorySubjects(subjectsPath);
@@ -123,5 +138,6 @@ module.exports = {
     getRandomInt: getRandomInt,
     capatalizeFirstLetterOfEveryWord: capatalizeFirstLetterOfEveryWord,
     getPostConfig: getPostConfig,
-    sortObjectArrayByKey: sortObjectArrayByKey
+    sortObjectArrayByKey: sortObjectArrayByKey,
+    orderSubjects: orderSubjects
 };

@@ -1,7 +1,7 @@
 const { readFileSync, writeFileSync, watchFile, unwatchFile, mkdirSync } = require("fs");
 const { normalize, sep} = require("path");
 const compressor = require("node-minify");
-const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig, sortObjectArrayByKey } = require("./utilities.js");
+const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig, sortObjectArrayByKey, orderSubjects } = require("./utilities.js");
 const { applyTemplates } = require("./templates.js");
 const zlib = require('zlib');
 const { minify } = require("html-minifier");
@@ -515,7 +515,8 @@ const buildReviewPage = () => {
     postsInReview.forEach(postNumber => {
         let config = getPostConfig(postNumber);
         let subjects = getPostSubjects(postNumber);
-
+        
+        subjects = orderSubjects(subjects);
         subjects.forEach(subject => {
             let postReview = template;
             let subjectHumanFormat = capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, " "));
