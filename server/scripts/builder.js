@@ -71,7 +71,7 @@ const integrateSiteCSS = () => {
 
         // individual pages
         `${process.env.clientDir}/styles/post.css`,
-            `${process.env.clientDir}/styles/components.css`,
+            `${process.env.clientDir}/styles/component_nav.css`,
             `${process.env.clientDir}/styles/badge_outline.css`,
             `${process.env.clientDir}/styles/cheat_code.css`,
         `${process.env.clientDir}/styles/appendix.css`,
