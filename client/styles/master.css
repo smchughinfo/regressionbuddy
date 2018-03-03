@@ -66,6 +66,7 @@
     font-weight: bold;
 }
 
-img {
-    outline: 1px solid red;
+#work li img {
+    position:Relative;
+    top: -5px;
 }
