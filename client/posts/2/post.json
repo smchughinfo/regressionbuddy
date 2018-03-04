@@ -3,7 +3,7 @@
   "date": "3/18/2018",
   "phrase": "Post 2 phrase.",
   "topics": {
-    "algebra": ["Properties of Real Numbers", "Fractions", "Like Terms"],
+    "algebra": ["The Addition Property of Equality"],
     "trigonometry": ["The Trigonometric Ratios"],
     "calculus": ["Limit Theorems", "Evaluating Complicated Limits"],
     "linear-algebra": ["Linear Equations in n Variables", "The Number of Solutions to a System of Linear Equations", "Back-Substitution"],

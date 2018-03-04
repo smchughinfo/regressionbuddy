@@ -1,7 +1,5 @@
 /****** REDIRECT TO NORMALIZED URL ******/
 (function () {
-    console.warn("THIS IS GOING TO NEED TO BE UNSET");
-    return;
     var a = document.createElement("a");
     a.href = window.location.href;
     if (a.pathname === "" || a.pathname === "/") {

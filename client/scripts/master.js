@@ -12,7 +12,7 @@ function setRandomLink() {
     });
 }
 if (document.querySelector(".post-nav")) {
-    console.log("TODO: UNSET: UNCOMMENT THIS WHEN FIRST POST IS OUT OF REVIEW.");
+    console.log("TODO: UNSET: UNCOMMENT THIS WHEN SECOND POST IS OUT OF REVIEW.");
     //setRandomLink();
 }
 
