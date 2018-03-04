@@ -98,3 +98,14 @@
 .post-content {
     overflow: hidden;
 }
+
+#work li img {
+    position:relative;
+    top: -5px;
+}
+
+@media only screen and (max-width: 450px) {
+    #work li img {
+        top: 0;
+    }
+}
