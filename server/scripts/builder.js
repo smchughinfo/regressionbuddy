@@ -1,7 +1,7 @@
 const { readFileSync, writeFileSync, watchFile, unwatchFile, mkdirSync } = require("fs");
 const { normalize, sep} = require("path");
 const compressor = require("node-minify");
-const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig, sortObjectArrayByKey, orderSubjects } = require("./utilities.js");
+const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig, sortObjectArrayByKey, orderSubjects, getAppendixFiles } = require("./utilities.js");
 const { applyTemplates } = require("./templates.js");
 const zlib = require('zlib');
 const { minify } = require("html-minifier");
@@ -327,7 +327,7 @@ const buildGlossary = subject => {
     buildStaticContentPage(subjectGlossary, title, title, outFilePath);
 };
 
-const buildAppendix = subject => {
+const buildAppendix = (subject, includeReview) => {
     let appendixTemplate = readFileSync(`${process.env.clientDir}/html/appendix/appendix.html`).toString();
     let $appendixTemplate = $("<appendix-template-container>" + appendixTemplate + "</appendix-template-container>");
     let outFilePath = `${process.env.buildDir}/appendix.${subject}.html`;
@@ -337,7 +337,7 @@ const buildAppendix = subject => {
     $appendixTemplate.find(".header-text").html(title);
 
     // append topics
-    let topicFiles = getFiles(`${process.env.clientDir}/html/appendix/${subject}`);
+    let topicFiles = getAppendixFiles(subject, includeReview);
     let topics = topicFiles.map(filePath => {
         let fileName= filePath.split(sep).pop();
         let fileIndex = parseInt(fileName.split(".")[0], 10);
@@ -404,10 +404,13 @@ const buildPages = () => {
         });
     });
 
+    buildReviewAppendixes(); // must run before buildAppendix.
+
     getGlossarySubjects().forEach(buildGlossary);
     getAppendixSubjects().forEach(buildAppendix);
     buildAboutPage();
     build404Page();
+    buildReviewPage();
 };
 
 const buildIndex = () => {
@@ -429,6 +432,16 @@ const buildIndex = () => {
 const buildReviewAppendixes = () => {
     getPostNumbers(true).forEach(postNumber => {
         getPostSubjects(postNumber).forEach(subject => {
+            /*
+                the appendixes are getting built twice. once with the review topics in them and once without.
+                i had this all refactored pretty good but then found out cheerio was stripping everything inside
+                <head> and the doctype and god knows what else. so reverted that and made this bad code even worse.
+                this function expects the appendix to be saved in the build directory with all topics in it.
+                this code strips out the non-review topics and then saves the review appendix. then the appendix
+                gets built again later on. this definitely needs a refactor now.
+            */
+            buildAppendix(subject, true);
+
             let config = getPostConfig(postNumber);
             let postTopics = config.topics[subject.replace(/_/g, "-")];            
             let appendix = readFileSync(`${process.env.buildDir}/appendix.${subject}.html`).toString();
@@ -773,9 +786,6 @@ const build = () => {
 
     generateSiteMap();
     generateSiteRSS();
-
-    buildReviewPage();
-    buildReviewAppendixes();
 
     // async but i guess it doesn't matter
     lint();

@@ -136,7 +136,7 @@ const getTopicFiles = (subject, topics) => {
 };
 
 const getAppendixFiles = (subject, inReview)  => {
-    var postNumbers = getPostNumbers(false);
+    var postNumbers = getPostNumbers(inReview);
     var configs = postNumbers.map(n => {
         return getPostConfig(n);
     });
