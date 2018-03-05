@@ -56,7 +56,3 @@
     /* subtract the margin from the style above */
     margin-top: -.5rem; 
 }
-
-.topic > .card > .card-body > p { 
-    margin-bottom: .5rem;
-}
