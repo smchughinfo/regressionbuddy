@@ -4,7 +4,7 @@
   "phrase": "Post 2 phrase.",
   "topics": {
     "algebra": ["The Addition Property of Equality"],
-    "trigonometry": ["The Trigonometric Ratios"],
+    "trigonometry": ["Recriprocals of the Trigonometric Functions"],
     "calculus": ["Limit Theorems", "Evaluating Complicated Limits"],
     "linear-algebra": ["Linear Equations in n Variables", "The Number of Solutions to a System of Linear Equations", "Back-Substitution"],
     "statistics": ["Variables", "Levels of Measurement"],

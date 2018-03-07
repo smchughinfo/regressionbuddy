@@ -66,6 +66,7 @@ const integrateSiteCSS = () => {
             `${process.env.clientDir}/styles/mathjax.css`,
             `${process.env.clientDir}/styles/function_group.css`,
             `${process.env.clientDir}/styles/horizontal_group.css`,
+            `${process.env.clientDir}/styles/three_group.css`,
             `${process.env.clientDir}/styles/hard_coded_dimensions.css`,
             `${process.env.clientDir}/styles/image_maximizer.css`,
 
@@ -407,7 +408,9 @@ const buildPages = () => {
     buildReviewAppendixes(); // must run before buildAppendix.
 
     getGlossarySubjects().forEach(buildGlossary);
-    getAppendixSubjects().forEach(buildAppendix);
+    getAppendixSubjects().forEach((subject) => {
+        buildAppendix(subject, false);
+    });
     buildAboutPage();
     build404Page();
     buildReviewPage();

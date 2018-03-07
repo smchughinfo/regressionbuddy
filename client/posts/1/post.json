@@ -4,7 +4,7 @@
   "phrase": "This week's problems are brought to you by &lt;joke&gt;.",
   "topics": {
     "algebra": ["Properties of Real Numbers", "Fractions", "Like Terms"],
-    "trigonometry": ["The Trigonometric Ratios"],
+    "trigonometry": ["The Trigonometric Functions"],
     "calculus": ["Limit Theorems", "Evaluating Complicated Limits"],
     "linear-algebra": ["Linear Equations in n Variables", "The Number of Solutions to a System of Linear Equations", "Back-Substitution"],
     "statistics": ["Variables", "Levels of Measurement"],

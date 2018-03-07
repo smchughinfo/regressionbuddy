@@ -464,7 +464,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/topic_instance.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["topic-instance-name", "topic-instance-html", "horizontal-group-3", "horizontal-group-4", "group-carrier"];
+        let childTypes = ["topic-instance-name", "topic-instance-html", "horizontal-group-3", "horizontal-group-4", "group-carrier", "three-group"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "topic_instance");
@@ -534,6 +534,17 @@ let templates = {
         }
         else {
             $template.find("group-carrier").remove();
+        }
+
+        // <three-group>
+        let $threeGroup = $placeholder.children("three-group");
+        if($threeGroup.length > 0) {
+            let $templateThreeGroup = $template.find("three-group");
+            $templateThreeGroup.replaceWith($threeGroup);
+            templates.three_group($threeGroup[0]);
+        }
+        else {
+            $template.find("three-group").remove();
         }
 
         $placeholder.replaceWith($template);
@@ -793,7 +804,40 @@ let templates = {
         templates.group_carrier($placeholderGroupCarrier[0]);
 
         $placeholder.replaceWith($template);
-    }
+    },
+    three_group: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/three_group.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        let childTypes = ["three-group-html", "item"];
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "three-group");
+
+        // <three-group-html>
+        let threeGroupHtml = $placeholder.find("three-group-html").html();
+        $template.find(".three-group-html").html(threeGroupHtml);
+        
+        // <item>
+        let $items = $placeholder.find("item"); 
+        let $repeater = $template.find("[repeater]");
+        $repeater.removeAttr("repeater").remove();
+        if($items.length === 3) {
+            $items.each((i, elm) => {
+                let $item = $(elm);
+                let $repeaterClone = $repeater.clone();
+
+                $repeaterClone.html($item.html());
+                $template.append($repeaterClone);
+            });
+        }
+        else {
+            throw "three_group must have three items."
+        }
+
+        $placeholder.replaceWith($template);
+    },
 }
 
 module.exports = {
