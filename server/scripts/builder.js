@@ -270,7 +270,7 @@ const buildPost = (postNumber, subject) => {
     outFile = outFile.replace("[CONTENT]", buildPostTemplate());
     outFile = outFile.replace("[POST SUBJECT NAVIGATION]", buildPostSubjectNavigation(postNumber, subject));
     outFile = outFile.replace("[POST HTML]", buildPostHTML(htmlPath, postNumber, subject));
-    outFile = outFile.replace("[TITLE]", `Week ${postNumber} - ${capatalizeFirstLetterOfEveryWord(subject.replace(/-/g, " ").replace(/_/g, " "))}`); // note - if you change this title change the title for the index page in master.js
+    outFile = outFile.replace("[TITLE]", `Post ${postNumber} - ${capatalizeFirstLetterOfEveryWord(subject.replace(/-/g, " ").replace(/_/g, " "))}`); // note - if you change this title change the title for the index page in master.js
     outFile = buildPostComments(outFile, postNumber, subject);
     outFile = buildPostConfiguration(postNumber, outFile, subject);
     outFile = setPostMetaTags(outFile, postNumber, subject);
@@ -475,7 +475,7 @@ const buildReviewAppendixes = () => {
             let meta = $.root().find("meta[name='description']");
             title.html(`Review - ${title.html()}`);
             meta.attr("content", `Page Under Review: ${meta.attr("content")}`);
-            h4.html(`Week ${postNumber} - ${h4.html()} Review`);
+            h4.html(`Post ${postNumber} - ${h4.html()} Review`);
             nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
             appendixElm.append('<div class="container-fluid">' + readFileSync(`${process.env.postTemplatesDir}/show_comments_link.html`).toString() + '</div><br>');
             appendixElm.after(readFileSync(`${process.env.postTemplatesDir}/comments.html`).toString());
@@ -527,7 +527,7 @@ const buildReviewPage = () => {
         subjects.forEach(subject => {
             let postReview = template;
             let subjectHumanFormat = capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, " "));
-            let postReviewTitle = `Week ${postNumber} - ${subjectHumanFormat} - ${config.date}`;
+            let postReviewTitle = `Post ${postNumber} - ${subjectHumanFormat} - ${config.date}`;
             let postTopics = config.topics[subject.replace(/_/g, "-")];  
 
             postReview = postReview.replace(/\[TITLE\]/g, postReviewTitle);
