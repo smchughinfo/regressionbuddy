@@ -351,6 +351,11 @@ let templates = {
         let imageUrl = $placeholder.children("image-url").html();
         $template.find("[image-url]").removeAttr("image-url").attr("data-src", imageUrl);
 
+        // <open_graph_button> 
+        let $openGraphButton = $template.find("open-graph-button");
+        let pushLauncherRight = $placeholder.attr("push-graph-launcher-right") === "true";
+        templates.open_graph_button($openGraphButton[0], pushLauncherRight);
+
         // <graph-url>
         let $graphUrl = $placeholder.children("graph-url");
         if($graphUrl.length > 0) {
@@ -364,13 +369,6 @@ let templates = {
         // [image-size-class]
         let imageClass = $placeholder.attr("image-size-class");
         $template.find("[image-size-class]").removeAttr("image-size-class").addClass(imageClass);
-
-        // [push-graph-launcher-right]
-        let pushLauncherRight = $placeholder.attr("push-graph-launcher-right") === "true";
-        if(pushLauncherRight) {
-            $template.find("[push-graph-launcher-right]").addClass("push-right")
-        }
-        $template.find("[push-graph-launcher-right]").removeAttr("push-graph-launcher-right");
 
         // <caption-text>
         let $placeholderCaptionText = $placeholder.children("caption-text");
@@ -781,7 +779,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/diagram_by_example.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["html-header", "diagram", "group-carrier"];
+        let childTypes = ["html-header", "diagram", "diagram-url", "group-carrier"];
         let childTypesSelector = childTypes.join(",");
         let $items = $placeholder.children(childTypesSelector);
 
@@ -795,7 +793,22 @@ let templates = {
         // <diagram>
         let imageUrl = $placeholder.find("diagram").html();
         let imageSizeClass = $placeholder.find("diagram").attr("image-size-class");
-        $template.find("img").attr("data-src", imageUrl).addClass(imageSizeClass);
+        let $diagram = $template.find("[image-url]")
+        $diagram.removeAttr("image-url").attr("data-src", imageUrl).addClass(imageSizeClass);
+
+        // <open_graph_button> 
+        let $openGraphButton = $template.find("open-graph-button");
+        templates.open_graph_button($openGraphButton[0]);
+
+        // <diagram-url>
+        let $diagramUrl = $placeholder.children("diagram-url");
+        if($diagramUrl.length > 0) {
+            let diagramUrl = $diagramUrl.html();
+            $template.find("a").attr("href", diagramUrl);
+        }
+        else {
+            $template.find("a").remove();
+        }
 
         // <function-group-carrier>
         let $placeholderGroupCarrier = $placeholder.find("group-carrier");
@@ -838,6 +851,18 @@ let templates = {
 
         $placeholder.replaceWith($template);
     },
+    open_graph_button: (elm, pushRight) => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/open_graph_button.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        if(pushRight) {
+            $template.addClass("push-right")
+        }
+        $template.removeAttr("push-graph-launcher-right"); 
+
+        $placeholder.replaceWith($template);
+    }
 }
 
 module.exports = {

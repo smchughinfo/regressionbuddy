@@ -1,10 +1,10 @@
 {
-  "inReview": true,
+  "inReview": false,
   "date": "3/18/2018",
   "phrase": "Post 2 phrase.",
   "topics": {
     "algebra": ["The Addition Property of Equality"],
-    "trigonometry": ["Recriprocals of the Trigonometric Functions"],
+    "trigonometry": ["Recriprocals of the Trigonometric Functions", "Similiar Triangles"],
     "calculus": ["Limit Theorems", "Evaluating Complicated Limits"],
     "linear-algebra": ["Linear Equations in n Variables", "The Number of Solutions to a System of Linear Equations", "Back-Substitution"],
     "statistics": ["Variables", "Levels of Measurement"],

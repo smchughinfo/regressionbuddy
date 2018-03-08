@@ -117,10 +117,7 @@
 .diagram-by-example {
     display: inline-block;
 }
-.diagram-by-example > img {
-    display: inline-block;
-    width: 100%;
-}
+
 .diagram-by-example > strong {
     display: block;
 }

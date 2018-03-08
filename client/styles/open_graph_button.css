@@ -1,0 +1,32 @@
+.graph-con,
+.diagram-con {
+    position: relative;
+    display: inline-block;
+}
+
+.graph-con .open-graph,
+.diagram-con .open-graph {
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    opacity: .2;
+    transition: .5s;
+    transform: translateZ(0);
+}
+
+.graph-con .open-graph.push-right,
+.diagram-con .open-graph.push-right {
+    right: -20px;
+}
+
+.graph-con .open-graph img,
+.diagram-con .open-graph img {
+    height: 24px;
+    width: 24px;
+}
+
+.graph-con .open-graph:hover,
+.diagram-con .open-graph:hover {
+    opacity: .4;
+}
