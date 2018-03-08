@@ -5,6 +5,7 @@
 .three-group-item {
     display: inline-block;
     margin-right: 50px;
+    text-align: center;
 }
 
 @media only screen and (max-width: 675px) {
