@@ -114,6 +114,12 @@
     }
 }
 
+@media only screen and (max-width: 800px) {
+    .diagram-by-example > .diagram-con {
+        margin-bottom: 25px;
+    }
+}
+
 .diagram-by-example {
     display: inline-block;
 }
