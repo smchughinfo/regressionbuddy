@@ -351,19 +351,17 @@ let templates = {
         let imageUrl = $placeholder.children("image-url").html();
         $template.find("[image-url]").removeAttr("image-url").attr("data-src", imageUrl);
 
-        // <open_graph_button> 
-        let $openGraphButton = $template.find("open-graph-button");
-        let pushLauncherRight = $placeholder.attr("push-graph-launcher-right") === "true";
-        templates.open_graph_button($openGraphButton[0], pushLauncherRight);
-
         // <graph-url>
         let $graphUrl = $placeholder.children("graph-url");
         if($graphUrl.length > 0) {
+             // <open_graph_button> 
+            let $openGraphButton = $template.find("open-graph-button");
+            let pushLauncherRight = $placeholder.attr("push-graph-launcher-right") === "true";
             let graphUrl = $graphUrl.html();
-            $template.find("a").attr("href", graphUrl);
+            templates.open_graph_button($openGraphButton[0], graphUrl, pushLauncherRight);
         }
         else {
-            $template.find("a").remove();
+            $template.find("open-graph-button").remove();
         }
 
         // [image-size-class]
@@ -806,18 +804,16 @@ let templates = {
         let $diagram = $template.find("[image-url]")
         $diagram.removeAttr("image-url").attr("data-src", imageUrl).addClass(imageSizeClass);
 
-        // <open_graph_button> 
-        let $openGraphButton = $template.find("open-graph-button");
-        templates.open_graph_button($openGraphButton[0]);
-
         // <diagram-url>
         let $diagramUrl = $placeholder.children("diagram-url");
         if($diagramUrl.length > 0) {
+             // <open_graph_button> 
+            let $openGraphButton = $template.find("open-graph-button");
             let diagramUrl = $diagramUrl.html();
-            $template.find("a").attr("href", diagramUrl);
+            templates.open_graph_button($openGraphButton[0], diagramUrl);
         }
         else {
-            $template.find("a").remove();
+            $template.find("open-graph-button").remove();
         }
 
         // <function-group-carrier>
@@ -861,16 +857,18 @@ let templates = {
 
         $placeholder.replaceWith($template);
     },
-    open_graph_button: (elm, pushRight) => {
+    open_graph_button: (elm, url, pushRight) => {
         let $placeholder = $(elm);
         let templatePath = `${process.env.templatesDir}/open_graph_button.html`;
         let $template = $(readFileSync(templatePath).toString());
+
+        $template.attr("href", url);
 
         if(pushRight) {
             $template.addClass("push-right")
         }
         $template.removeAttr("push-graph-launcher-right"); 
-
+        
         $placeholder.replaceWith($template);
     },
     little_pseudo_table: elm => {
