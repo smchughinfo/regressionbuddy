@@ -31,7 +31,7 @@ window.addEventListener("load", function () {
         loaded = true;
     }
     MathJax.Hub.Queue(loadImages);
-    setTimeout(loadImages, 2000);
+    setTimeout(loadImages, 500);
 });
 
 /****** MATHJAX ******/
