@@ -1,0 +1,23 @@
+        <little-pseudo-table break-point-class="breakpoint-525">
+            <top-text>
+                Which of the following triangles are similiar?
+            </top-text>
+            <column>
+                <header>Triangle 1</header>
+                <cell>
+                    \(csc(\theta)=5\)
+                </cell>
+            </column>
+            <column>
+                <header>Triangle 2</header>
+                <cell>
+                    \(cot(\theta)=6\)
+                </cell>
+            </column>
+            <column>
+                <header>Triangle 3</header>
+                <cell>
+                    \(sin(\theta)=\frac{5}{2}\)
+                </cell>
+            </column>
+        </little-pseudo-table>
