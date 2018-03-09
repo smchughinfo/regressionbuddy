@@ -65,7 +65,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/primary_list.html`;
         let $template = $(readFileSync(templatePath).toString());
         
-        let childTypes = ["nested-list", "group-carrier", "li-text", "graph"];
+        let childTypes = ["nested-list", "group-carrier", "li-text", "graph", "little-pseudo-table"];
         let childTypesSelector = childTypes.join(",");
         let $items = $placeholder.children(childTypesSelector);
 
@@ -786,6 +786,16 @@ let templates = {
         // validate template
         validateChildTypes(childTypes, $placeholder, "diagram-by-example");
 
+        // [break-point-class]
+        let hasBreakPointClass = $placeholder.is("[break-point-class]");
+        if(hasBreakPointClass) {
+            let breakPointClass = $placeholder.attr("break-point-class");
+            $template.addClass(breakPointClass);
+        }
+        else {
+            throw "diagram_by_example should have a break point class.";
+        }
+
         // <html-header>
         let headerHTML = $placeholder.find("html-header").html();
         $template.find("html-header").replaceWith(headerHTML);
@@ -862,6 +872,53 @@ let templates = {
         $template.removeAttr("push-graph-launcher-right"); 
 
         $placeholder.replaceWith($template);
+    },
+    little_pseudo_table: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/little_pseudo_table.html`;
+        let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
+
+        let childTypes = ["top-text", "column"];
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "little-pseudo-table");
+
+        // [break-point-class]
+        let hasBreakPointClass = $placeholder.is("[break-point-class]");
+        if(hasBreakPointClass) {
+            let breakPointClass = $placeholder.attr("break-point-class");
+            $template.find("[break-point-class]").addClass(breakPointClass).removeAttr("break-point-class");
+        }
+        else {
+            throw "little_pseudo_table should have a break point class.";
+        }
+
+        // <top-text>
+        let $topText = $placeholder.children("top-text");
+        if($topText.length === 0) {
+            $template.find("top-text").remove();
+        }
+        else {
+            $template.find("top-text").replaceWith($topText);
+
+            templates.top_text($template.find("top-text")[0]);
+        }
+
+        // <column>
+        let $columns = $placeholder.children("column");
+        let $repeater = $template.find("[repeater]").removeAttr("repeater").remove();
+        $columns.each((i, elm) => {
+            let header = $(elm).find("header").html();
+            let cell = $(elm).find("cell").html();
+            let $repeaterClone = $repeater.clone();
+            
+            $repeaterClone.find("[header]").removeAttr("header").html(header);
+            $repeaterClone.find("[cell]").removeAttr("cell").html(cell);
+
+            $template.find(".little-pseudo-table").append($repeaterClone);
+        });
+
+        $placeholder.replaceWith($template.html());
     }
 }
 

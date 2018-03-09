@@ -57,16 +57,33 @@
 }
 
 @media only screen and (max-width: 800px) {
-    #appendix .function-group-carrier {
+    #appendix .diagram-by-example.breakpoint-800 .function-group-carrier {
         display: block;
     }
-    #appendix .diagram-by-example {
+    #appendix .diagram-by-example.breakpoint-800 {
         text-align: center;
     }
-    #appendix .diagram-by-example > img {
+    #appendix .diagram-by-example.breakpoint-800 > img {
         margin-bottom: 25px;
     }
-    #appendix .diagram-by-example .function-group > * {
+    #appendix .diagram-by-example.breakpoint-800 .function-group > * {
+        margin-left: 7.5px;
+        margin-right: 7.5px;
+        text-align: left;
+    }
+}
+
+@media only screen and (max-width: 675px) {
+    #appendix .diagram-by-example.breakpoint-675 .function-group-carrier {
+        display: block;
+    }
+    #appendix .diagram-by-example.breakpoint-675{
+        text-align: center;
+    }
+    #appendix .diagram-by-example.breakpoint-675 > img {
+        margin-bottom: 25px;
+    }
+    #appendix .diagram-by-example.breakpoint-675 .function-group > * {
         margin-left: 7.5px;
         margin-right: 7.5px;
         text-align: left;

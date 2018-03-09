@@ -70,6 +70,7 @@ const integrateSiteCSS = () => {
             `${process.env.clientDir}/styles/hard_coded_dimensions.css`,
             `${process.env.clientDir}/styles/image_maximizer.css`,
             `${process.env.clientDir}/styles/open_graph_button.css`,
+            `${process.env.clientDir}/styles/little_pseudo_table.css`,
 
         // individual pages
         `${process.env.clientDir}/styles/post.css`,
