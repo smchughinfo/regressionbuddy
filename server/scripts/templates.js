@@ -460,7 +460,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/topic_instance.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["topic-instance-name", "topic-instance-html", "horizontal-group-3", "horizontal-group-4", "group-carrier", "three-group"];
+        let childTypes = ["topic-instance-name", "topic-instance-html", "horizontal-group-3", "horizontal-group-4", "group-carrier", "three-group", "graph"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "topic_instance");
@@ -541,6 +541,17 @@ let templates = {
         }
         else {
             $template.find("three-group").remove();
+        }
+
+        // <graph>
+        let $graph = $placeholder.children("graph");
+        if($graph.length > 0) {
+            let $templateGaph = $template.find("graph");
+            $templateGaph.replaceWith($graph);
+            templates.graph($graph[0]);
+        }
+        else {
+            $template.find("graph").remove();
         }
 
         $placeholder.replaceWith($template);
