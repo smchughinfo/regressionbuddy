@@ -414,7 +414,7 @@ const buildIndex = () => {
     console.log("allow index to build once first post is out of review");
     var index = `<div class="jumbotron">\
     <h1 class="display-3">Regression Buddy is in Review</h1>\
-    <p class="lead">Welcome to regressionbuddy.com, the cool new math website all the kids are talking about. The current go live date is 3/11/18. In the meantime you can help improve the quality of this site by participating in its <a href="/review">first review</a>.</p>\
+    <p class="lead">Welcome to regressionbuddy.com, the cool new math website all the kids are talking about. The current go live date is 3/18/18. In the meantime you can help improve the quality of this site by participating in its <a href="/review">first review</a>.</p>\
     </p>\
   </div>`;
     buildStaticContentPage(index, shortDescription, description, `${process.env.publicDir}/index.html`);
