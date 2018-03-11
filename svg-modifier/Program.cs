@@ -55,7 +55,7 @@ namespace svg_modifier
 
       private static void AddViewBox()
       {
-         // originally figured out this attribute was needed because a transparency issue in ie 
+         // originally figured out this attribute was needed because of a transparency issue in ie 
          var width = doc.DocumentElement.GetAttribute("width");
          var height = doc.DocumentElement.GetAttribute("height");
          var viewBoxValue = $"0 0 {width} {height}";
@@ -72,7 +72,7 @@ namespace svg_modifier
          }
 
          var fill = rect.GetAttribute("fill");
-         fill = GetTransparentRGBAString(fill, 0);
+         fill = GetRGBAString(fill, 0);
          rect.SetAttribute("fill", fill);
       }
 
@@ -88,7 +88,7 @@ namespace svg_modifier
          }
       }
 
-      private static string GetTransparentRGBAString(string rgbString, int alpha)
+      private static string GetRGBAString(string rgbString, int alpha)
       {
          // works with an rgba string too but will nuke your a value.
 
