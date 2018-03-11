@@ -1,10 +1,4 @@
 450x450 - 24px font (was using 22 but lost connection with other ratios)
 318x318 - 18px font
 
-svg steps:
-
-1. add viewBox attribute
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="610" height="311" viewBox="0 0 610 311">
-
-2. give rect transparancy
-<rect fill="rgba(255,255,255,0)"
+run C:\regressionbuddy\svg-modifer to make modifications to svg images from geogebra

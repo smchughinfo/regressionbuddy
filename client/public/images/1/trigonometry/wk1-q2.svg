@@ -1,4 +1,32 @@
 <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="179" height="184" viewBox="0 0 179 184">
-<defs><clipPath id="ihHPqTfaUiBU"><path fill="none" stroke="none" d=" M 0 0 L 179 0 L 179 184 L 0 184 L 0 0 Z"/></clipPath></defs>
-<g transform="scale(1,1)" clip-path="url(#ihHPqTfaUiBU)"><g transform="translate(-371,-260)">
-<rect fill="rgba(255,255,255,0)" stroke="none" x="0" y="0" width="759" height="857" fill-opacity="1"/><path fill="none" stroke="rgb(0,0,0)" paint-order="fill stroke markers" d=" M 377.4999999999998 418.49999999999994 L 529.9999999999998 266.0000000000016" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/><path fill="none" stroke="rgb(0,0,0)" paint-order="fill stroke markers" d=" M 529.9999999999998 266.0000000000016 L 529.9999999999998 418.49999999999994" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/><path fill="none" stroke="rgb(0,0,0)" paint-order="fill stroke markers" d=" M 529.9999999999998 418.49999999999994 L 377.4999999999998 418.49999999999994" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/><path fill="none" stroke="rgb(0,0,0)" paint-order="fill stroke markers" d=" M 504.9999999999997 418.49999999999994 L 504.9999999999997 393.5000000000002" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/><path fill="none" stroke="rgb(0,0,0)" paint-order="fill stroke markers" d=" M 504.9999999999997 393.5000000000002 L 529.9999999999998 393.5000000000002" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5"/><g transform="scale(19,19)"><g transform="translate(21.63157894736842,21.589181842105262)"><path fill="rgb(0,0,0)" stroke="none" paint-order="stroke fill markers" d=" M 0.455 -0.5 L 0.455 -0.5 Q 0.455 -0.34700000000000003 0.377 -0.19 Q 0.307 -0.05 0.222 -0.005 Q 0.191 0.011 0.162 0.011 Q 0.08 0.011 0.052000000000000005 -0.101 Q 0.042 -0.14300000000000002 0.042 -0.194 Q 0.042 -0.35100000000000003 0.122 -0.509 Q 0.192 -0.646 0.277 -0.6900000000000001 Q 0.307 -0.705 0.335 -0.705 Q 0.422 -0.705 0.447 -0.578 Q 0.455 -0.54 0.455 -0.5 M 0.148 -0.363 L 0.148 -0.363 L 0.357 -0.363 Q 0.389 -0.495 0.389 -0.562 Q 0.389 -0.675 0.342 -0.682 Q 0.338 -0.683 0.334 -0.683 Q 0.28300000000000003 -0.683 0.225 -0.578 Q 0.187 -0.511 0.149 -0.368 Q 0.149 -0.365 0.148 -0.363 M 0.34800000000000003 -0.331 L 0.14 -0.331 Q 0.108 -0.21 0.108 -0.133 Q 0.108 -0.013000000000000001 0.162 -0.011 Q 0.218 -0.011 0.278 -0.128 Q 0.317 -0.202 0.34800000000000003 -0.331 Z"/></g></g><g transform="scale(19,19)"><g transform="translate(28.263157894736842,18.497661263157894)"><path fill="rgb(0,0,0)" stroke="none" paint-order="stroke fill markers" d=" M 0.299 -0.678 L 0.299 -0.058 L 0.424 -0.058 L 0.424 0 L 0.095 0 L 0.095 -0.058 L 0.22 -0.058 L 0.22 -0.578 Q 0.169 -0.556 0.089 -0.554 L 0.089 -0.612 Q 0.22 -0.617 0.279 -0.678 L 0.299 -0.678 Z"/></g></g><g transform="scale(19,19)"><g transform="translate(23.68421052631579,23.129240210526316)"><path fill="rgb(0,0,0)" stroke="none" paint-order="stroke fill markers" d=" M 0.299 -0.678 L 0.299 -0.058 L 0.424 -0.058 L 0.424 0 L 0.095 0 L 0.095 -0.058 L 0.22 -0.058 L 0.22 -0.578 Q 0.169 -0.556 0.089 -0.554 L 0.089 -0.612 Q 0.22 -0.617 0.279 -0.678 L 0.299 -0.678 Z"/></g></g></g></g></svg>
+  <defs>
+    <clipPath id="ihHPqTfaUiBU">
+      <path fill="none" stroke="none" d=" M 0 0 L 179 0 L 179 184 L 0 184 L 0 0 Z" />
+    </clipPath>
+  </defs>
+  <g transform="scale(1,1)" clip-path="url(#ihHPqTfaUiBU)">
+    <g transform="translate(-371,-260)">
+      <rect fill="rgba(111,255,122,0)" stroke="none" x="0" y="0" width="759" height="857" fill-opacity="1" />
+      <path fill="none" stroke="rgb(0,0,0)" paint-order="fill stroke markers" d=" M 377.4999999999998 418.49999999999994 L 529.9999999999998 266.0000000000016" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" />
+      <path fill="none" stroke="rgb(0,0,0)" paint-order="fill stroke markers" d=" M 529.9999999999998 266.0000000000016 L 529.9999999999998 418.49999999999994" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" />
+      <path fill="none" stroke="rgb(0,0,0)" paint-order="fill stroke markers" d=" M 529.9999999999998 418.49999999999994 L 377.4999999999998 418.49999999999994" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" />
+      <path fill="none" stroke="rgb(0,0,0)" paint-order="fill stroke markers" d=" M 504.9999999999997 418.49999999999994 L 504.9999999999997 393.5000000000002" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" />
+      <path fill="none" stroke="rgb(0,0,0)" paint-order="fill stroke markers" d=" M 504.9999999999997 393.5000000000002 L 529.9999999999998 393.5000000000002" stroke-opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" stroke-width="2.5" />
+      <g transform="scale(19,19)">
+        <g transform="translate(21.63157894736842,21.589181842105262)">
+          <path fill="rgb(0,0,0)" stroke="none" paint-order="stroke fill markers" d=" M 0.455 -0.5 L 0.455 -0.5 Q 0.455 -0.34700000000000003 0.377 -0.19 Q 0.307 -0.05 0.222 -0.005 Q 0.191 0.011 0.162 0.011 Q 0.08 0.011 0.052000000000000005 -0.101 Q 0.042 -0.14300000000000002 0.042 -0.194 Q 0.042 -0.35100000000000003 0.122 -0.509 Q 0.192 -0.646 0.277 -0.6900000000000001 Q 0.307 -0.705 0.335 -0.705 Q 0.422 -0.705 0.447 -0.578 Q 0.455 -0.54 0.455 -0.5 M 0.148 -0.363 L 0.148 -0.363 L 0.357 -0.363 Q 0.389 -0.495 0.389 -0.562 Q 0.389 -0.675 0.342 -0.682 Q 0.338 -0.683 0.334 -0.683 Q 0.28300000000000003 -0.683 0.225 -0.578 Q 0.187 -0.511 0.149 -0.368 Q 0.149 -0.365 0.148 -0.363 M 0.34800000000000003 -0.331 L 0.14 -0.331 Q 0.108 -0.21 0.108 -0.133 Q 0.108 -0.013000000000000001 0.162 -0.011 Q 0.218 -0.011 0.278 -0.128 Q 0.317 -0.202 0.34800000000000003 -0.331 Z" />
+        </g>
+      </g>
+      <g transform="scale(19,19)">
+        <g transform="translate(28.263157894736842,18.497661263157894)">
+          <path fill="rgb(0,0,0)" stroke="none" paint-order="stroke fill markers" d=" M 0.299 -0.678 L 0.299 -0.058 L 0.424 -0.058 L 0.424 0 L 0.095 0 L 0.095 -0.058 L 0.22 -0.058 L 0.22 -0.578 Q 0.169 -0.556 0.089 -0.554 L 0.089 -0.612 Q 0.22 -0.617 0.279 -0.678 L 0.299 -0.678 Z" />
+        </g>
+      </g>
+      <g transform="scale(19,19)">
+        <g transform="translate(23.68421052631579,23.129240210526316)">
+          <path fill="rgb(0,0,0)" stroke="none" paint-order="stroke fill markers" d=" M 0.299 -0.678 L 0.299 -0.058 L 0.424 -0.058 L 0.424 0 L 0.095 0 L 0.095 -0.058 L 0.22 -0.058 L 0.22 -0.578 Q 0.169 -0.556 0.089 -0.554 L 0.089 -0.612 Q 0.22 -0.617 0.279 -0.678 L 0.299 -0.678 Z" />
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>
