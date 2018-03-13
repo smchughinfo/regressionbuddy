@@ -21,3 +21,12 @@
 .equation-with-fraction {
     margin-bottom: 4px;
 }
+
+/******* INLINE MATHJAX *********/
+.inline-mj > * {
+    display: inline-block;
+}
+
+.piecewise-function > .MJXc-display {
+    margin-top: 0;
+}

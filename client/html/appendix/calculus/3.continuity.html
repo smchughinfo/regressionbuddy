@@ -19,7 +19,7 @@
                     <caption-html>
                         \( f(x)=sin(x)\)
                         <p class="text-left">
-                            The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+                            This graph has no breaks. It can be drawn without lifting your pencil from the paper.
                         </p>
                     </caption-html>
                 </graph>
@@ -28,10 +28,22 @@
                     <image-url>/images/calculus-appendix/discontinuity-example-1.svg</image-url>
                     <graph-url>https://www.geogebra.org/graphing/NxjJQM5R</graph-url>
                     <caption-html>
-                        f(x) = \begin{cases} x, & \text{if x
-                        < 1} \\ x+1, & \text{if x $\geq$ 1} \end{cases} <p class="text-left">
-                            The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
-                            </p>
+                        <span class="inline-mj">
+                            <span>
+                                \(
+                                    f(x) =
+                                \)
+                            </span>
+                            <span class="piecewise-function">
+                                \begin{cases}
+                                    x, & \text{if x $\leq$ 1} \\ 
+                                    x+1, & \text{if x > 1} 
+                                \end{cases}
+                            </span>
+                        </span>
+                        <p class="text-left">
+                            This graph approaches a different value for \(x=1\) if you come from the left vs. if you come from the right.
+                        </p>
                     </caption-html>
                 </graph>
                 <graph image-size-class="graph-size-1">
@@ -39,10 +51,24 @@
                     <image-url>/images/calculus-appendix/discontinuity-example-2.svg</image-url>
                     <graph-url>https://www.geogebra.org/graphing/JFMCT5Cs</graph-url>
                     <caption-html>
-                        f(n) = \begin{cases} x, & \text{if x
-                        < 1} \\ x+1, & \text{if x $\geq$ 1} \end{cases} <p class="text-left">
-                            The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
-                            </p>
+                        <span class="inline-mj">
+                            <span>
+                                \(
+                                    f(x) =
+                                \)
+                            </span>
+                            <span class="piecewise-function">
+                                \begin{cases}
+                                    -1, & \text{if x < -1} \\
+                                    x, & \text{if x < 2} \\
+                                    3, & \text{if = 2} \\
+                                    2, & \text{if > 2} \\
+                                \end{cases}
+                            </span>
+                        </span>
+                        <p class="text-left">
+                            This graph approaches \(2\) as you come from the left and right but the value at \(x=2\) is not 2. 
+                        </p>
                     </caption-html>
                 </graph>
                 <graph image-size-class="graph-size-1">
@@ -50,9 +76,11 @@
                     <image-url>/images/calculus-appendix/discontinuity-example-3.svg</image-url>
                     <graph-url>https://www.geogebra.org/graphing/hG3XCMg6</graph-url>
                     <caption-html>
-                        \( f(x)=sin(x)\)
+                        \( f(x)=\frac{1}{x}\)
                         <p class="text-left">
-                            The quick brown fox jumps over the lazy dog. The quick brown fox jumps over the lazy dog.
+                            In this graph not only is there a different value as you approach \(x=0\) 
+                            from the left and right but the values themselves are \(-\infty\) and \(\infty\),
+                            respectively. Both are conditions for an essential discontinuity.
                         </p>
                     </caption-html>
                 </graph>
