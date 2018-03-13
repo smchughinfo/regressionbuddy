@@ -87,14 +87,21 @@ namespace svg_modifier
                 {
                     throw new Exception("Couldn't find rect element.");
                 }
-                rect.RemoveAttribute("style");
-                rect.SetAttribute("fill", "rgba(0,0,0,0)");
-                return;
+                
             }
 
-            var fill = rect.GetAttribute("fill");
-            fill = GetRGBAString(fill, 0);
-            rect.SetAttribute("fill", fill);
+            var hasStyle = rect.HasAttribute("style");
+            if(hasStyle)
+            {
+                rect.RemoveAttribute("style");
+                rect.SetAttribute("fill", "rgba(0,0,0,0)");
+            }
+            else
+            {
+                var fill = rect.GetAttribute("fill");
+                fill = GetRGBAString(fill, 0);
+                rect.SetAttribute("fill", fill);
+            }
         }
 
         private static void RemoveTextBackgrounds()
