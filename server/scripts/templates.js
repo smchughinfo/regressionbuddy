@@ -97,7 +97,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/nested_list.html`;
         let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
     
-        let childTypes = ["top-text", "item"];
+        let childTypes = ["top-text", "disclaimer", "item"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "nested_list");    
@@ -116,6 +116,16 @@ let templates = {
         else {
             $template.find("top-text").replaceWith($topText);
             templates.top_text($template.find("top-text")[0]);
+        }
+
+        // <disclaimer>
+        let $disclaimer = $placeholder.children("disclaimer");
+        if( $disclaimer.length === 0) {
+            $template.find("[disclaimer]").remove();
+        }
+        else {
+            let disclaimer = $disclaimer.html();
+            $template.find("[disclaimer]").removeAttr("disclaimer").html(disclaimer);
         }
 
         // <item>
