@@ -31,7 +31,7 @@ namespace svg_modifier
             // above search pattern doesn't completely work for this purpose. for example, .svg.txt, .svg2, etc. will return just fine
             svgFiles = svgFiles.Where(F => F.EndsWith(".svg")).ToArray();
 
-            // remove svg files that don't ned to be processed and will blow up if you try processing them
+            // remove svg files that don't need to be processed and will blow up if you try processing them
             svgFiles = svgFiles.Where(f =>
             {
                 return
