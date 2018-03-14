@@ -26,8 +26,6 @@
     }
     .horizontal-group-3:not(:first-of-type) {
         border-left: none !important;
-        margin-top: 1em;
-        padding-top: 1em;
         margin-top: 1rem;
         padding-top: 1rem;
     }

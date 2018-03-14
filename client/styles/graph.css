@@ -4,13 +4,6 @@
     display: inline-block;
 }
 
-@media only screen and (max-width: 350px) {
-    .graph-con,
-    .diagram-con {
-        display: inline; /* allows centering and scaling */
-    }
-}
-
 .graph-header,
 .empty-graph-header {
     white-space: nowrap;

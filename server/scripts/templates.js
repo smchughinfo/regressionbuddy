@@ -775,8 +775,7 @@ let templates = {
 
         $items.each((i, elm) => {
             let $placeholderItem = $(elm);
-            let templateItemSelector = `[item-${i + 1}]`;
-            let $templateItem = $template.find(templateItemSelector).removeAttr(templateItemSelector);
+            let $templateItem = $template.find(`[item-${i + 1}]`).removeAttr(`item-${i}`);
             $templateItem.append($placeholderItem);
 
             if(elm.tagName === "graph") {
