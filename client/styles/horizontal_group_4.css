@@ -1,3 +1,16 @@
+.horizontal-group-4 {
+    width: 100%;
+    max-width: 1220px;
+}
+.horizontal-group-4 .graph-size-1 {
+    width: 150px;
+}
+.horizontal-group-4 .graph-size-2 {
+    width: 180px;
+}
+
+
+/*
 .horizontal-group-3-topic-container {
     width: 100%;
 }
@@ -67,10 +80,40 @@
     justify-content: flex-start;
 }
 .horizontal-group > strong {
-    /* double check this style. it might not be used anywhere. */
+    /* double check this style. it might not be used anywhere. 
     overflow: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
     white-space: nowrap;
     margin-bottom: 1rem;
-}
+}*/
+
+/*@media only screen and (min-width: 576px) and (max-width: 767px)  {
+    .horizontal-group-4-break {
+        padding-left:10px;
+        padding-right:10px;
+    }
+    .horizontal-group-4-break .horizontal-group {
+        margin-top:0;
+        margin-bottom:0;
+    }
+    .horizontal-group-4-break .horizontal-group:nth-child(1),
+    .horizontal-group-4-break .horizontal-group:nth-child(2) {
+        padding-top:0;
+        padding-bottom: 1rem;
+        border-top: none;
+    }
+    .horizontal-group-4-break .horizontal-group:nth-child(1),
+    .horizontal-group-4-break .horizontal-group:nth-child(3) {
+        padding-left:10px;
+    }
+    .horizontal-group-4-break .horizontal-group:nth-child(2),
+    .horizontal-group-4-break .horizontal-group:nth-child(4) {
+        padding-right:10px;
+        border-left: 1px solid #abdde5 !important;
+    }
+    .horizontal-group-4-break .horizontal-group:nth-child(3),
+    .horizontal-group-4-break .horizontal-group:nth-child(4) {
+        padding-top: 1rem;
+    }
+}*/

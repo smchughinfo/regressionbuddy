@@ -725,7 +725,7 @@ let templates = {
     },
     horizontal_group_3: elm => {
         let $placeholder = $(elm);
-        let templatePath = `${process.env.templatesDir}/horizontal-group-3.html`;
+        let templatePath = `${process.env.templatesDir}/horizontal_group_3.html`;
         let $template = $(readFileSync(templatePath).toString());
 
         let childTypes = ["graph", "empty-graph"];
@@ -760,7 +760,7 @@ let templates = {
     },
     horizontal_group_4: elm => {
         let $placeholder = $(elm);
-        let templatePath = `${process.env.templatesDir}/horizontal-group-4.html`;
+        let templatePath = `${process.env.templatesDir}/horizontal_group_4.html`;
         let $template = $(readFileSync(templatePath).toString());
 
         let childTypes = ["graph", "empty-graph"];
@@ -773,22 +773,18 @@ let templates = {
             throw `horizontal-group-4 must have three children but has ${$items.length} children.`;
         }
 
-        let $repeater = $template.find("[repeater]");
-        let $repeatContainer = $repeater.parent();
-        $repeater.removeAttr("repeater").remove();
         $items.each((i, elm) => {
-            let $item = $(elm);
-            let $repeaterClone = $repeater.clone();
-            
-            $repeaterClone.append($item);
-            $repeatContainer.append($repeaterClone);
-        });
+            let $placeholderItem = $(elm);
+            let templateItemSelector = `[item-${i + 1}]`;
+            let $templateItem = $template.find(templateItemSelector).removeAttr(templateItemSelector);
+            $templateItem.append($placeholderItem);
 
-        $($template.children(".row").children()).each((i, elm) => {
-            $groupItem = $(elm);
-            $groupItem.children(childTypesSelector).each((i, elm) => {
-                templates[elm.tagName.replace(/-/g, "_")](elm);
-            });
+            if(elm.tagName === "graph") {
+                templates.graph(elm);
+            }
+            else if (elm.tagName === "empty-graph") {
+                templates.empty_graph(elm);
+            }
         });
 
         $placeholder.replaceWith($template);

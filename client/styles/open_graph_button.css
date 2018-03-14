@@ -1,9 +1,3 @@
-.graph-con,
-.diagram-con {
-    position: relative;
-    display: inline-block;
-}
-
 .graph-con .open-graph,
 .diagram-con .open-graph {
     display: inline-block;
