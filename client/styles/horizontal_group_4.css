@@ -3,17 +3,18 @@
     max-width: 1220px;
 }
 
-.horizontal-group-4 .graph-size-1 {
-    width: 150px;
+.horizontal-group-4 .graph {
+    /* about 990-1070 on calculus continuity section. and also when screen is narrow. rough call but just made it visible. */
+    overflow: visible;
 }
 
-.horizontal-group-4 .graph-size-2 {
-    width: 180px;
+.horizontal-group-4 .row {
+    height: 100%;
 }
 
 @media only screen and (max-width: 350px) {
     .horizontal-group-4 .graph-con {
-        display: inline; /* allows centering and scaling */
+        display: inline-block;
     }
 }
 
@@ -51,6 +52,7 @@
         padding-bottom: 1rem;
     }
 }
+
 @media only screen and (min-width: 992px) {
     .horizontal-group-4-item.first-item,
     .horizontal-group-4-item.second-item {
@@ -63,5 +65,13 @@
     
     .horizontal-group-4-item:not(.first-item) {
         border-left: 1px solid transparent;
+    }
+
+    .horizontal-group-4 .graph-size-1 {
+        width: 150px !important;
+    }
+    
+    .horizontal-group-4 .graph-size-2 {
+        width: 180px !important;
     }
 }

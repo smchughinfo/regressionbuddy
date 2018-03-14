@@ -81,7 +81,7 @@ namespace svg_modifier
             if (rect == null)
             {
                 // assume all svg files that come from geogebra have the rect element here. this isn't perfect because maybe this won't always be the right element, even if it does exist.
-                // modified: that method doesn't work if you modify in inkscape. assuming inkscape always work this way, try this next:
+                // modified: that method doesn't work if you modified it in inkscape. assuming inkscape always works this way, try this next:
                 rect = doc.SelectSingleNode($"/s:svg/s:g/s:g/s:g/s:rect", ns) as XmlElement;
                 if(rect == null)
                 {

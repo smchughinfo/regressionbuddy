@@ -29,4 +29,21 @@
 
 .piecewise-function > .MJXc-display {
     margin-top: 0;
+    margin-bottom: 0;
+}
+
+/******* MATHJAX HEIGHTS *********/
+.mj-height-55 {
+    display: inline-block;
+    height: 55px;
+    white-space: nowrap;
+}
+
+.mj-height-55 > .mjx-chtml,
+.mj-height-55 > * > .mjx-chtml {
+    margin-top: 1em;
+}
+
+.mj-height-55 + * {
+    margin-top:1em;
 }
