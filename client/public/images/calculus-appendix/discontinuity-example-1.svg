@@ -40,7 +40,7 @@
      id="namedview243"
      showgrid="false"
      inkscape:zoom="1.3390071"
-     inkscape:cx="624.22882"
+     inkscape:cx="493.53496"
      inkscape:cy="374.85175"
      inkscape:window-x="-11"
      inkscape:window-y="-11"
@@ -48,25 +48,6 @@
      inkscape:current-layer="svg241" />
   <defs
      id="defs5">
-    <clipPath
-       id="uNnokbuiQdJw">
-      <path
-         d="M 0,0 H 837 V 705 H 0 Z"
-         id="path2"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:none" />
-    </clipPath>
-    <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath1054">
-      <rect
-         style="fill:#000000;fill-opacity:0.47290643;stroke-width:1"
-         id="rect1056"
-         width="350"
-         height="350"
-         x="206.403"
-         y="189.479" />
-    </clipPath>
     <clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath3215">
