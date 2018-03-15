@@ -2,3 +2,8 @@
 318x318 - 18px font
 
 run C:\regressionbuddy\svg-modifer to make modifications to svg images from geogebra
+
+
+note about svgs in calculus appendix post 2
+crop rectangle is 350x350
+then resize that to 518x518

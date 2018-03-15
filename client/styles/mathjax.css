@@ -33,17 +33,17 @@
 }
 
 /******* MATHJAX HEIGHTS *********/
-.mj-height-55 {
+.mj-piecewise-two {
     display: inline-block;
-    height: 55px;
+    height: 60px;
     white-space: nowrap;
 }
 
-.mj-height-55 > .mjx-chtml,
-.mj-height-55 > * > .mjx-chtml {
+.mj-piecewise-two > .mjx-chtml,
+.mj-piecewise-two > * > .mjx-chtml {
     margin-top: 1em;
 }
 
-.mj-height-55 + * {
+.mj-piecewise-two + * {
     margin-top:1em;
 }

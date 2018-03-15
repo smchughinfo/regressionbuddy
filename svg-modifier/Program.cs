@@ -75,20 +75,31 @@ namespace svg_modifier
             doc.DocumentElement.SetAttribute("viewBox", viewBoxValue);
         }
 
+        private static XmlElement GetBackgroundRect()
+        {
+            // this is definitely not safe but im finding this rect all over the place. i don't see any good identifiers.
+            var selectors = new string[] {
+                $"/s:svg/s:rect",
+                $"/s:svg/s:g/s:rect",
+                $"/s:svg/s:g/s:g/s:rect",
+                $"/s:svg/s:g/s:g/s:g/s:rect"
+            };
+
+            foreach(var selector in selectors)
+            {
+                var rect = doc.SelectSingleNode(selector, ns) as XmlElement;
+                if(rect != null)
+                {
+                    return rect;
+                }
+            }
+
+            throw new Exception("Couldn't find rect element.");
+        }
+
         private static void MakeBackgroundTransparent()
         {
-            var rect = doc.SelectSingleNode($"/s:svg/s:g/s:g/s:rect", ns) as XmlElement;
-            if (rect == null)
-            {
-                // assume all svg files that come from geogebra have the rect element here. this isn't perfect because maybe this won't always be the right element, even if it does exist.
-                // modified: that method doesn't work if you modified it in inkscape. assuming inkscape always works this way, try this next:
-                rect = doc.SelectSingleNode($"/s:svg/s:g/s:g/s:g/s:rect", ns) as XmlElement;
-                if(rect == null)
-                {
-                    throw new Exception("Couldn't find rect element.");
-                }
-                
-            }
+            var rect = GetBackgroundRect();
 
             var hasStyle = rect.HasAttribute("style");
             if(hasStyle)

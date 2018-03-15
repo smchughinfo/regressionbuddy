@@ -17,13 +17,13 @@
                     <image-url>/images/calculus-appendix/sinx.svg</image-url>
                     <graph-url>https://www.geogebra.org/graphing/b6s7Edt9</graph-url>
                     <caption-html>
-                        <span class="mj-height-55">
+                        <span class="mj-piecewise-two">
                             \( 
                                 f(x)=sin(x)
                             \)
                         </span>
                         <p class="text-left">
-                            This graph has no breaks. It can be drawn without lifting your pencil from the paper. Do these have the same spacing as linear algebra?
+                            This graph has no breaks. It can be drawn without lifting your pencil from the paper.
                         </p>
                     </caption-html>
                 </graph>
@@ -32,7 +32,7 @@
                     <image-url>/images/calculus-appendix/discontinuity-example-1.svg</image-url>
                     <graph-url>https://www.geogebra.org/graphing/NxjJQM5R</graph-url>
                     <caption-html>
-                        <span class="inline-mj mj-height-55">
+                        <span class="inline-mj mj-piecewise-two">
                             <span>
                                 \(
                                     f(x) =
@@ -55,7 +55,7 @@
                     <image-url>/images/calculus-appendix/discontinuity-example-2.svg</image-url>
                     <graph-url>https://www.geogebra.org/graphing/gC4zDVxv</graph-url>
                     <caption-html>
-                        <span class="inline-mj mj-height-55">
+                        <span class="inline-mj mj-piecewise-two">
                             <span>
                                 \(
                                     f(x) =
@@ -78,14 +78,23 @@
                     <image-url>/images/calculus-appendix/discontinuity-example-3.svg</image-url>
                     <graph-url>https://www.geogebra.org/graphing/hG3XCMg6</graph-url>
                     <caption-html>
-                        <span class="mj-height-55">
-                            \( f(x)=\frac{1}{x}\)
+                        <span class="inline-mj mj-piecewise-two">
+                            <span>
+                                \(
+                                    f(x) =
+                                \)
+                            </span>
+                            <span class="piecewise-function">
+                                \begin{cases}
+                                    sin(\frac{5}{x}), & \text{if x < 0} \\
+                                    \frac{1}{x}, & \text{if x $\geq$ 0 } \\
+                                \end{cases}
+                            </span>
                         </span>
                         <p class="text-left">
-                            In this graph not only is there a different value as you approach \(x=0\) 
-                            from the left and right but the values themselves are \(-\infty\) and \(\infty\),
-                            respectively. Both are conditions for an essential discontinuity.
-                            Something something oscilating.
+                            This graph oscillates rapidly as x approaches 0 from the left.
+                            This graph also approaches infinity as x approaches 0 from the right.
+                            Both cases are conditions for an essential discontinuity.
                         </p>
                     </caption-html>
                 </graph>
