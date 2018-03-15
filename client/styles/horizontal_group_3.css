@@ -48,7 +48,7 @@
 .horizontal-group-3 {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /*justify-content: space-between; this was messing up spacing on one sided limits. toggled it on/off on linear algebra appendix and it didn't seem to change anything */
     flex-grow: 1;
 }
 
