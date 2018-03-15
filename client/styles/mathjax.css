@@ -33,17 +33,24 @@
 }
 
 /******* MATHJAX HEIGHTS *********/
-.mj-piecewise-two {
+.mj-piecewise {
     display: inline-block;
-    height: 60px;
     white-space: nowrap;
 }
 
-.mj-piecewise-two > .mjx-chtml,
-.mj-piecewise-two > * > .mjx-chtml {
+.mj-piecewise > .mjx-chtml,
+.mj-piecewise > * > .mjx-chtml {
     margin-top: 1em;
 }
 
-.mj-piecewise-two + * {
+.mj-piecewise + * {
     margin-top:1em;
+}
+
+.mj-piecewise-two {
+    height: 60px;
+}
+
+.mj-piecewise-three {
+    height: 80px;
 }
