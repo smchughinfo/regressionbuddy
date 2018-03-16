@@ -11,7 +11,7 @@ const applyTemplates = (html, partial) => {
      // if  on occassion a template1 is inside template2
      // and on occassion b template2 is inside template1
      // ...then idk.
-    let _templates = ["primary-list", "nested-list", "topic", "topic-instance", "topic-definition", "topic-example", "horizontal-group-3", "horizontal-group-4", "graph", "empty-graph", "li-text", "top-text", "group-carrier", "group", "group-item", "cheat"];
+    let _templates = ["primary-list", "nested-list", "topic", "topic-instance", "topic-definition", "topic-example", "horizontal-group-3", "horizontal-group-4", "wrapped-graph", "graph", "empty-graph", "li-text", "top-text", "group-carrier", "group", "group-item", "cheat"];
     _templates.forEach(template => {
         $.root().find(template).each((i, elm) => {
             template = template.replace(/-/g, "_");
@@ -951,7 +951,25 @@ let templates = {
         });
 
         $placeholder.replaceWith($template.html());
-    }
+    },
+    wrapped_graph: elm => {
+        /* the normal graph has no container. this graph is wrapped in a container. */
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/wrapped_graph.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        let childTypes = ["graph"];
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "wrapped_graph");
+
+        // <graph>
+        let $graph = $placeholder.find("graph");
+        $template.find("graph").replaceWith($graph);
+        templates.graph($graph[0]);
+        
+        $placeholder.replaceWith($template);
+    },
 }
 
 module.exports = {

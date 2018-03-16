@@ -1,0 +1,8 @@
+.wrapped-graph {
+    margin-bottom: .5em;
+}
+
+    .wrapped-graph > .graph {
+        display: inline-block;
+        text-align:center;
+    }
