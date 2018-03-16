@@ -184,6 +184,7 @@ let templates = {
             $template.find("top-text").replaceWith($topText);
             templates.top_text($template.find("top-text")[0]);
         }
+    
 
         // <text>
         let $text = $placeholder.children("text");
@@ -198,6 +199,15 @@ let templates = {
             let isVerticalMarginSmallTopOnly = $text.is("[latex-vertical-margin-small-top-only]");
             if(isVerticalMarginSmallTopOnly) {
                 $template.find("span").addClass("latex-vertical-margin-small-top-only");
+            }
+
+            // [cheat="factor"]
+            let cheat = $text.attr("cheat");
+            if(cheat !== undefined) {
+                let $cheat = $("<cheat>");
+                $template.find("span").append($cheat);
+                $cheat.html(cheat);
+                templates.cheat($cheat[0]);
             }
         }
 
