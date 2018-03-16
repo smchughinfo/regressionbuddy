@@ -170,7 +170,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/li_text.html`;
         let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
 
-        let childTypes = ["top-text", "text"];
+        let childTypes = ["top-text", "text", "html-content"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "li_text");        
@@ -184,7 +184,6 @@ let templates = {
             $template.find("top-text").replaceWith($topText);
             templates.top_text($template.find("top-text")[0]);
         }
-    
 
         // <text>
         let $text = $placeholder.children("text");
@@ -209,6 +208,15 @@ let templates = {
                 $cheat.html(cheat);
                 templates.cheat($cheat[0]);
             }
+        }
+        
+        // <html-content>
+        let $htmlContent = $placeholder.children("html-content");
+        if( $htmlContent.length === 0) {
+            $template.find("html-content").remove();
+        }
+        else {
+            $template.find("html-content").replaceWith($htmlContent.html());
         }
 
         $placeholder.after($template.html());
