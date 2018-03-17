@@ -1,0 +1,85 @@
+<topic>
+    <topic-name>Matrices</topic-name>
+    <topic-definition>
+        <topic-instance>
+            <topic-instance-html>
+                <p>A system of \(m\) linear equations, each with \( n \) variables, can be represented as an \(m \times n \) matrix:</p>
+                \(
+                    \left.
+                    \underbrace{
+                    \left[
+                    
+                        
+                            \begin{matrix}
+                                a_{11}  & a_{12}  & a_{13} & \cdots & a_{1n} \\
+                                a_{21}  & a_{22}  & a_{23} & \cdots & a_{2n} \\
+                                a_{31}  & a_{32}  & a_{33} & \cdots & a_{3n} \\
+                                \vdots  & \vdots  & \vdots &        & \vdots \\
+                                a_{m1}  & a_{m2}  & a_{m3} & \cdots & a_{mn}
+                            \end{matrix}
+                    
+                    \right]    
+                    }_{\text{ n columns}}
+                    \right\} \text{m rows}
+                \)          
+                <br>
+                https://stackoverflow.com/questions/49342112/how-do-you-use-an-underbrace-with-a-right-brace
+            </topic-instance-html>
+        </topic-instance>
+    </topic-definition>
+    <!--▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼-->
+    <topic-example>
+        <topic-instance>
+            <topic-instance-name>Example</topic-instance-name>
+            <horizontal-group-3>
+                <empty-graph>
+                    <text-header center>System of Equations</text-header>
+                    <caption-html>
+                        <div class="matrix-example width-250">
+                            \(
+                                \begin{align*}
+                                    \phantom{2}x  + 3y               - 10z               &= 1 \\
+                                    2x            - 2y               + \phantom{1}5z     &= 8 \\
+                                    \phantom{2}x  \phantom{- 2y\;\;} - \phantom{1}5z     &= 3
+                                \end{align*}
+                            \)
+                        </div>
+                    </caption-html>
+                </empty-graph>    
+                    <empty-graph>
+                        <text-header center>Augmented Matrix</text-header>
+                        <caption-html>
+                            <div class="matrix-example  width-250">
+                                \(
+                                    \left[
+                                        \begin{matrix}
+                                            1 &  \phantom{-}3 &            -10 & 1 \\
+                                            2 &            -2 &  \phantom{-}5  & 8 \\
+                                            1 &  \phantom{-}0 &            -5  & 3
+                                        \end{matrix}
+                                    \right] 
+                                \)
+                            </div>
+                        </caption-html>
+                    </empty-graph>    
+
+                        <empty-graph>
+                            <text-header center>Coeffecient Matrix</text-header>
+                            <caption-html>
+                                <div class="matrix-example  width-250">
+                                    \(
+                                        \left[
+                                            \begin{matrix}
+                                                1 &  \phantom{-}3 &            -10 \\
+                                                2 &            -2 &  \phantom{-}5  \\
+                                                1 &  \phantom{-}0 &            -5
+                                            \end{matrix}
+                                        \right] 
+                                    \)
+                                </div>
+                            </caption-html>
+                        </empty-graph>    
+                    </horizontal-group-3>
+        </topic-instance>
+    </topic-example>
+</topic>

@@ -90,3 +90,9 @@
 .graph {
     overflow: hidden;
 }
+
+.horizontal-group-3 .graph-con-no-image .matrix-example {
+    margin-top: .5em;
+    text-align: center !important;
+    display: inline-block;
+}
