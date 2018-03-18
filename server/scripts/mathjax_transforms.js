@@ -29,10 +29,7 @@ let transforms = {
         let valueRegex = /{-*\d+}/;
         let getValue = text => {
             if(isColored(text)) {
-                
-                let x =  valueRegex.exec(text)[0].replace("{", "").replace("}", "");
-                console.log(x);
-                return x;
+                return valueRegex.exec(text)[0].replace("{", "").replace("}", "");
             }
             else {
                 return text;        
