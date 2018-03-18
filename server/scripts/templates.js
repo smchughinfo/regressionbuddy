@@ -3,6 +3,7 @@
 
 const { readFileSync, writeFileSync } = require("fs");
 const cheerio = require('cheerio');
+const mathjaxTransforms = require('./mathjax_transforms.js');
 
 const applyTemplates = (html, partial) => {
     $ = cheerio.load(html);
@@ -11,7 +12,7 @@ const applyTemplates = (html, partial) => {
      // if  on occassion a template1 is inside template2
      // and on occassion b template2 is inside template1
      // ...then idk.
-    let _templates = ["primary-list", "nested-list", "topic", "topic-instance", "topic-definition", "topic-example", "horizontal-group-3", "horizontal-group-4", "wrapped-graph", "graph", "empty-graph", "li-text", "top-text", "group-carrier", "group", "group-item", "cheat"];
+    let _templates = ["matrix", "primary-list", "nested-list", "topic", "topic-instance", "topic-definition", "topic-example", "horizontal-group-3", "horizontal-group-4", "wrapped-graph", "graph", "empty-graph", "li-text", "top-text", "group-carrier", "group", "group-item", "cheat"];
     _templates.forEach(template => {
         $.root().find(template).each((i, elm) => {
             template = template.replace(/-/g, "_");
@@ -60,6 +61,11 @@ const trimSpace = $ => {
 };
 
 let templates = {
+    matrix: elm => {
+        let innerHTML = $(elm).html();
+        let transformedMathjax = mathjaxTransforms.matrix(innerHTML);
+        $(elm).replaceWith(transformedMathjax);
+    },
     primary_list: elm => {
         let $placeholder = $(elm);
         let templatePath = `${process.env.templatesDir}/primary_list.html`;
