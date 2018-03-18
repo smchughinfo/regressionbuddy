@@ -6,7 +6,7 @@
     "algebra": ["The Addition Property of Equality"],
     "trigonometry": ["Recriprocals of the Trigonometric Functions", "Similiar Triangles"],
     "calculus": ["Continuity", "One-Sided and Two-Sided Limits"],
-    "linear-algebra": ["Matrices"],
+    "linear-algebra": ["Matrices", "Elementary Row Operations"],
     "statistics": ["Variables", "Levels of Measurement"],
     "vector-calculus": ["Vector Spaces", "Vector Addition and Scalar Multiplication"]
   }
