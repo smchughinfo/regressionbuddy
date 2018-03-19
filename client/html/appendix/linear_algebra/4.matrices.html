@@ -4,26 +4,27 @@
         <topic-instance>
             <topic-instance-html>
                 <p>A system of \(m\) linear equations, each with \( n \) variables, can be represented as an \(m \times n \) matrix:</p>
+                <!-- https://stackoverflow.com/questions/49342112/how-do-you-use-an-underbrace-with-a-right-brace -->
                 \(
-                    \left.
+                    \kern .4em
                     \underbrace{
+                    \kern-.4em
+                    \left.
                     \left[
-                    
-                        
-                            \begin{matrix}
-                                a_{11}  & a_{12}  & a_{13} & \cdots & a_{1n} \\
-                                a_{21}  & a_{22}  & a_{23} & \cdots & a_{2n} \\
-                                a_{31}  & a_{32}  & a_{33} & \cdots & a_{3n} \\
-                                \vdots  & \vdots  & \vdots &        & \vdots \\
-                                a_{m1}  & a_{m2}  & a_{m3} & \cdots & a_{mn}
-                            \end{matrix}
-                    
+                        \begin{matrix}
+                            a_{11}  & a_{12}  & a_{13} & \cdots & a_{1n} \\
+                            a_{21}  & a_{22}  & a_{23} & \cdots & a_{2n} \\
+                            a_{31}  & a_{32}  & a_{33} & \cdots & a_{3n} \\
+                            \vdots  & \vdots  & \vdots &        & \vdots \\
+                            a_{m1}  & a_{m2}  & a_{m3} & \cdots & a_{mn}
+                        \end{matrix}
                     \right]    
-                    }_{\text{ n columns}}
-                    \right\} \text{m rows}
-                \)          
-                <br>
-                https://stackoverflow.com/questions/49342112/how-do-you-use-an-underbrace-with-a-right-brace
+                    \right\} m\text{ rows}
+                    \Rule{0em}{0em}{3.6em}
+                    \kern -4.5em
+                    }_{\textstyle n \text{ columns}}
+                    \kern 4.5em
+                \)
             </topic-instance-html>
         </topic-instance>
     </topic-definition>

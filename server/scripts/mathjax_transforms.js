@@ -25,7 +25,7 @@ let transforms = {
         // does the text have \color{#a38f8c}{12345}?
         let isColored = text => /color/.test(text);
 
-        // getter and setter for the actual value. e.g. 1 or \color{#ffffff}{1} 
+        // getter for the actual value. e.g. 1 or \color{#ffffff}{1} 
         let valueRegex = /{-*\d+}/;
         let getValue = text => {
             if(isColored(text)) {
