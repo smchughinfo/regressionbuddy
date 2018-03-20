@@ -25,7 +25,7 @@ let transforms = {
         // does the text have \color{#a38f8c}{12345}?
         let isColored = text => /color/.test(text);
 
-        // getter for the actual value. e.g. 1 or \color{#ffffff}{1} 
+        // getter and setter for the actual value. e.g. 1 or \color{#ffffff}{1} 
         let valueRegex = /{-*\d+}/;
         let getValue = text => {
             if(isColored(text)) {
@@ -46,8 +46,8 @@ let transforms = {
                 
                 return 1; // 1 seems to look about right
             }
-            else {;
-                return text.match(/\d/g).length;
+            else {
+                return text.match(/(\d|S)/g).length;
             }
         };
 
@@ -66,6 +66,12 @@ let transforms = {
                 return row.join(" & ");
             });
             return matrix.join(" \\\\ \n");
+        };
+            
+        let startsWithNegative = text => {
+            var option1 = text.startsWith("-");
+            var option2 = text.startsWith("S-");
+            return option1 || option2;
         };
 
         // ACTUALLY START WORKING...
@@ -87,7 +93,7 @@ let transforms = {
         // Step3: normalize differences in length on a per column basis. e.g. [1;123;1234] => [1\phantom{000};123\phantom{0};1234]
         iterateMatrix(matrix, (value, r, c) => {
             let maxDigitsInColumn = digitCounts[c];
-            let digitDifference = maxDigitsInColumn - getValue(value).length;
+            let digitDifference = maxDigitsInColumn - getDigitCount(value);
             if(digitDifference > 0) {
                 let valueWithNormalizedLength = value + "\\phantom{" + getDigitString(digitDifference) + "}";
                 matrix[r][c] = valueWithNormalizedLength;
@@ -98,7 +104,7 @@ let transforms = {
         // the first column only gets a negative sign if other elements in that column have a negative sign
         let anyNegatives = false;
         iterateMatrix(matrix, (value, r, c) => {
-            let isNegative = getValue(value).startsWith('-');
+            let isNegative = startsWithNegative(getValue(value));
             anyNegatives = isNegative ? true : anyNegatives;
         });
         if(anyNegatives) {
@@ -106,21 +112,26 @@ let transforms = {
                 let isFirstColumn = c === 0;
                 let addNegativeToFirstColumn = false;
                 if(isFirstColumn) {
-                    let anyNegatives = matrix.filter(r => r[0].startsWith("-")).length > 0;
+                    let anyNegatives = matrix.filter(r => startsWithNegative(r[0])).length > 0;
+                    
                     addNegativeToFirstColumn = anyNegatives;
                 }
                 if(isFirstColumn && addNegativeToFirstColumn === false) {
                     return;
                 }
     
-                let startsWithNegative = getValue(value).startsWith("-");
-                if(startsWithNegative === false) {
+                if(startsWithNegative(getValue(value)) === false) {
                     matrix[r][c] = "\\phantom{-}" + value;
                 }
             });
         }
 
-        // STEP5: call toString and wrap it in the required syntax for a latex matrix
+        // Step5: special cases
+        iterateMatrix(matrix, (value, r, c) => {
+            matrix[r][c] = matrix[r][c].replace(/S/, "\\,\\,\\,")
+        });
+
+        // Step6: call toString and wrap it in the required syntax for a latex matrix
         let matrixWrapper = "\
             \\( \n\
                 \\left[ \n\

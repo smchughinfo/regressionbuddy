@@ -62,9 +62,15 @@ const trimSpace = $ => {
 
 let templates = {
     matrix: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/matrix.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
         let innerHTML = $(elm).html();
         let transformedMathjax = mathjaxTransforms.matrix(innerHTML);
-        $(elm).replaceWith(transformedMathjax);
+        $template.html(transformedMathjax);
+
+        $(elm).replaceWith($template);
     },
     primary_list: elm => {
         let $placeholder = $(elm);

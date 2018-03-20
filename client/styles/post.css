@@ -116,3 +116,11 @@
         top: 0;
     }
 }
+
+#post .matrix .mjx-chtml {
+    margin-top:.1em;
+}
+
+#post .question-system-of-equations {
+    display: inline-block;
+}
