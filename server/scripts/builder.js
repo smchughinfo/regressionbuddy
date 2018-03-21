@@ -347,6 +347,7 @@ const buildAppendix = (subject, includeReview) => {
         let fileName= filePath.split(sep).pop();
         let fileIndex = parseInt(fileName.split(".")[0], 10);
         let fileContent = readFileSync(filePath).toString();
+
         return {
             index: fileIndex,
             content: fileContent

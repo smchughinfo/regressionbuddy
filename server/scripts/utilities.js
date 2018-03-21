@@ -123,7 +123,7 @@ const sortObjectArrayByKey = (objArray, key) => {
 };
 
 const getTopicFiles = (subject, topics) => {
-    topics = topics.map(topic => topic.replace(/ /g, "_").replace(/-/g, "_").toLowerCase());
+    topics = topics.map(topic => topic.replace(/ /g, "_").replace(/-/g, "_").replace(/,/g, "").toLowerCase());
 
     var allFiles = getFiles(`${process.env.clientDir}/html/appendix/${subject}`);
     var topicFiles = allFiles.filter(file => {

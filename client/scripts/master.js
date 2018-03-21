@@ -38,5 +38,8 @@ window.addEventListener("load", function () {
 MathJax.Hub.Config({
     CommonHTML: {
         linebreaks: { automatic: true }
+    },
+    TeX: {
+        extensions: ["enclose.js"]
     }
 });
