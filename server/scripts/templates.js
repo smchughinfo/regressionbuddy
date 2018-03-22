@@ -500,7 +500,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/topic_instance.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["topic-instance-name", "topic-instance-html", "horizontal-group-3", "horizontal-group-4", "group-carrier", "three-group", "graph"];
+        let childTypes = ["topic-instance-name", "topic-instance-html", "horizontal-group-3", "horizontal-group-4", "group-carrier", "three-group", "graph", "wrapped-graph"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "topic_instance");
@@ -586,12 +586,23 @@ let templates = {
         // <graph>
         let $graph = $placeholder.children("graph");
         if($graph.length > 0) {
-            let $templateGaph = $template.find("graph");
-            $templateGaph.replaceWith($graph);
+            let $templateGraph = $template.find("graph");
+            $templateGraph.replaceWith($graph);
             templates.graph($graph[0]);
         }
         else {
             $template.find("graph").remove();
+        }
+
+        // <wrapped-graph>
+        let $wrappedGraph = $placeholder.children("wrapped-graph");
+        if($wrappedGraph.length > 0) {
+            let $templateWrappedGraph = $template.find("wrapped-graph");
+            $templateWrappedGraph.replaceWith($wrappedGraph);
+            templates.wrapped_graph($wrappedGraph[0]);
+        }
+        else {
+            $template.find("wrapped-graph").remove();
         }
 
         $placeholder.replaceWith($template);
@@ -601,7 +612,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/topic_definition.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["topic-instance", "diagram-by-example", "horizontal-group-3"];
+        let childTypes = ["topic-instance", "diagram-by-example", "wrapped-graph"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "topic_definition");
@@ -628,14 +639,6 @@ let templates = {
             let $diagramByExample = $(elm);
             $repeatContainer.append($diagramByExample);
             templates.diagram_by_example($diagramByExample[0]);
-        });
-
-        // <horizontal-group-3>
-        let $horizontalGroup3s = $placeholder.children("horizontal-group-3");
-        $horizontalGroup3s.each((i, elm) => {
-            let $horizontalGroup = $(elm);
-            $repeatContainer.append($horizontalGroup);
-            templates.horizontal_group_3($horizontalGroup[0]);
         });
 
         $placeholder.replaceWith($template);

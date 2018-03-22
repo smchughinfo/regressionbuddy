@@ -3,6 +3,7 @@
 
 run C:\regressionbuddy\svg-modifer to make modifications to svg images from geogebra
 
+REMINDER - set lines to 100% opacity
 
 note about svgs in calculus appendix post 2
 crop rectangle is 350x350
