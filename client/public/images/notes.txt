@@ -4,6 +4,7 @@
 run C:\regressionbuddy\svg-modifer to make modifications to svg images from geogebra
 
 REMINDER - set lines to 100% opacity
+REMINDER - on 3d use line thickness of 4 (opacity 100% should be set by default).
 
 note about svgs in calculus appendix post 2
 crop rectangle is 350x350
