@@ -601,7 +601,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/topic_definition.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["topic-instance", "diagram-by-example"];
+        let childTypes = ["topic-instance", "diagram-by-example", "horizontal-group-3"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "topic_definition");
@@ -628,6 +628,14 @@ let templates = {
             let $diagramByExample = $(elm);
             $repeatContainer.append($diagramByExample);
             templates.diagram_by_example($diagramByExample[0]);
+        });
+
+        // <horizontal-group-3>
+        let $horizontalGroup3s = $placeholder.children("horizontal-group-3");
+        $horizontalGroup3s.each((i, elm) => {
+            let $horizontalGroup = $(elm);
+            $repeatContainer.append($horizontalGroup);
+            templates.horizontal_group_3($horizontalGroup[0]);
         });
 
         $placeholder.replaceWith($template);
