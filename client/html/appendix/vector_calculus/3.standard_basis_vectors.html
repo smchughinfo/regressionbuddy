@@ -2,71 +2,76 @@
     <topic-name>Standard Basis Vectors</topic-name>
     <topic-definition>
         <topic-instance>
-            <topic-instance-html>
-                For a given vector space, the standard basis vectors are composed of one vector, of length \(1\), moving in the positive direction along each axis.
-                <!-- 
-
-                    The standard basis vectors in \(\mathbb{R}^3\) are \( \mathbf{i}=(1,0,0) \), \( \mathbf{j}=(0,1,0) \), and \( \mathbf{k}=(0,0,1) \)</li>
-
-                -->
-            </topic-instance-html>
-            <wrapped-graph>
+            <horizontal-group-3>
                 <graph image-size-class="graph-size-1">
-                    <image-url>/images/vector-calculus-appendix/standard-basis-vectors-in-space.png</image-url>
+                    <text-header wider-line center>\(\mathbb{R}^2\)</text-header>
+                    <image-url>/images/vector-calculus-appendix/standard-basis-vectors-in-the-plane.png</image-url>
                     <graph-url>https://www.geogebra.org/3d/EbubPHP4</graph-url>
                 </graph>
-            </wrapped-graph>
+                <graph image-size-class="graph-size-1">
+                    <text-header wider-line center>\(\mathbb{R}^3\)</text-header>
+                    <image-url>/images/vector-calculus-appendix/standard-basis-vectors-in-space.png</image-url>
+                    <graph-url>https://www.geogebra.org/graphing/wpt46e8P</graph-url>
+                </graph>
+                <empty-graph>
+                    <text-header wider-line center>\(\mathbb{R}^n\)</text-header>
+                    <caption-html>
+                        <p>
+                            For a given vector space, the standard basis vectors are composed of one vector, of length \(1\), moving in the positive direction along each axis.
+                        </p>
+                    </caption-html>
+                </empty-graph> 
+            </horizontal-group-3>
         </topic-instance>
         <topic-instance>
-        <topic-instance-name>Two Variables Example</topic-instance-name>
-        <horizontal-group-3>
-            <graph image-size-class="graph-size-1">
-                <image-url>/images/vector-calculus-appendix/standard-basis-vectors-in-the-plane.png</image-url>
-                <graph-url>https://www.geogebra.org/graphing/JsvmRYJu</graph-url>
-                <caption-text>No Solutions</caption-text>
-                <caption-html>
-                    \begin{align}
-                        x-y=1 \\
-                        -x+y=1 
-                    \end{align}
-                </caption-html>
-            </graph>
-            <graph image-size-class="graph-size-1">
-                <image-url>/images/vector-calculus-appendix/standard-basis-vectors-in-space.png</image-url>
-                <graph-url>https://www.geogebra.org/graphing/wpt46e8P</graph-url>
-                <caption-text>One Solution</caption-text>
-                <caption-html>
-                    \begin{align} 
-                        \hphantom{2}x+\hphantom{2}y &= 2 \\ 
-                        -2x+3y &= 2 
-                    \end{align}
-                </caption-html>
-            </graph>
-            <graph image-size-class="graph-size-1">
-                <image-url>/images/linear-algebra-appendix/infinite-solutions-2d.png</image-url>
-                <graph-url>https://www.geogebra.org/graphing/pk4s7AE6</graph-url>
-                <caption-text>Infinite Solutions</caption-text>
-                <caption-html>
-                        \begin{align}
-                            \hphantom{2}x   -   \hphantom{2}y   &=   1 \\ 
-                            2x              -2   y              &=   2 
-                        \end{align}
-                </caption-html>
-            </graph>
-        </horizontal-group-3>
-    </topic-instance>
+            <topic-instance-name>Sum of Scalar Multiples of the Standard Basis Vectors</topic-instance-name>
+            <topic-instance-html>
+                Any vector can be represented by the sum of scalar multiples of the standard basis vectors in that vector space.
+            </topic-instance-html>
+        </topic-instance>
     </topic-definition>
     <!--▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼-->
     <topic-example>
         <topic-instance>
-            <topic-instance-name>Example</topic-instance-name>
-            <topic-instance-html>
-                Express the vector \( \mathbf{v}=(9, 2, 7) \) as the sum of scalar multiples of the standard basis vectors \( \mathbf{i} \) , \(\mathbf{j}\), and \(\mathbf{k} \).
-                <br>
-                \(
-                    \mathbf{v}=9(1,0,0)+2(0,1,0)+7(0,0,1)
-                \)
-            </topic-instance-html>
+            <topic-instance-name>Examples</topic-instance-name>
+            <horizontal-group-3>
+                <empty-graph>
+                    <text-header wider-line center>\(\mathbb{R}^2\)</text-header>
+                    <caption-html>
+                        <p>
+                            Express the vector \( \mathbf{v}=\left(\tfrac{2}{3},8\right) \) as the sum of scalar multiples of the standard basis vectors \( \mathbf{i} \) and \(\mathbf{j}\).
+                        </p>
+                        <br>
+                        \(
+                            \mathbf{v}=\tfrac{2}{3}(1,0)+8(0,1)
+                        \)
+                    </caption-html>
+                </empty-graph> 
+                <empty-graph>
+                    <text-header wider-line center>\(\mathbb{R}^3\)</text-header>
+                    <caption-html>
+                        <p>
+                            Express the vector \( \mathbf{v}=(9, 2, 7) \) as the sum of scalar multiples of the standard basis vectors \( \mathbf{i} \) , \(\mathbf{j}\), and \(\mathbf{k} \).
+                        </p>
+                        <br>
+                        \(
+                            \mathbf{v}=9(1,0,0)+2(0,1,0)+7(0,0,1)
+                        \)
+                    </caption-html>
+                </empty-graph> 
+                <empty-graph>
+                    <text-header wider-line center>\(\mathbb{R}^n\)</text-header>
+                    <caption-html>
+                        <p>
+                            Express the vector \( \mathbf{v}=(5, 1, 7, 0, 1) \) as the sum of scalar multiples of the standard basis vectors of \(\mathbb{R}^5\).
+                        </p>
+                        <br>
+                        \(
+                            \mathbf{v}=5(1,0,0,0,0)+1(0,1,0,0,0)+7(0,0,1,0,0)+0(0,0,0,1,0)+1(0,0,0,0,1)
+                        \)
+                    </caption-html>
+                </empty-graph>
+            </horizontal-group-3>
         </topic-instance>
     </topic-example>
 </topic>
