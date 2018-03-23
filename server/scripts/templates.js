@@ -200,26 +200,29 @@ let templates = {
         // <text>
         let $text = $placeholder.children("text");
         if($text.length === 0) {
-            $template.find("span").remove();
+            $template.find("span[text-span]").remove();
         }
         else {
+            // this else block, and really all of top_text needs refactored. the way span and cheat are being handled is a mess.
             let text = $text.html();
-            $template.find("span").html(text);
+            $template.find("span[text-span]").html(text);
 
             // [latex-vertical-margin-small-top-only]
             let isVerticalMarginSmallTopOnly = $text.is("[latex-vertical-margin-small-top-only]");
             if(isVerticalMarginSmallTopOnly) {
-                $template.find("span").addClass("latex-vertical-margin-small-top-only");
+                $template.find("span[text-span]").addClass("latex-vertical-margin-small-top-only");
             }
 
             // [cheat="factor"]
             let cheat = $text.attr("cheat");
             if(cheat !== undefined) {
                 let $cheat = $("<cheat>");
-                $template.find("span").append($cheat);
+                $template.find("span[text-span]").append($cheat);
                 $cheat.html(cheat);
                 templates.cheat($cheat[0]);
             }
+
+            $template.find("span[text-span]").removeAttr("text-span");
         }
         
         // <html-content>
