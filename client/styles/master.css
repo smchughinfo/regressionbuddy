@@ -66,7 +66,10 @@
     font-weight: bold;
 }
 
-#work li img {
-    position:relative;
-    top: -5px;
+.matrix-example {
+    text-align: center;
+}
+
+.action-blue {
+    color: #33CCFF;
 }

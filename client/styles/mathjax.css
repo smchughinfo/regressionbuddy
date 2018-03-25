@@ -17,3 +17,40 @@
     margin-top:16px !important;
     margin-bottom:0 !important;
 }
+
+.equation-with-fraction {
+    margin-bottom: 4px;
+}
+
+/******* INLINE MATHJAX *********/
+.inline-mj > * {
+    display: inline-block;
+}
+
+.piecewise-function > .MJXc-display {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+/******* MATHJAX HEIGHTS *********/
+.mj-piecewise {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.mj-piecewise > .mjx-chtml,
+.mj-piecewise > * > .mjx-chtml {
+    margin-top: 1em;
+}
+
+.mj-piecewise + * {
+    margin-top:1em;
+}
+
+.mj-piecewise-two {
+    height: 60px;
+}
+
+.mj-piecewise-three {
+    height: 80px;
+}

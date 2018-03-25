@@ -1,0 +1,137 @@
+<topic>
+    <topic-name>One-Sided and Two-Sided Limits</topic-name>
+    <topic-definition>
+        <topic-instance>
+            <topic-instance-name>One-Sided Limits</topic-instance-name>
+            <topic-instance-html>
+                <ol class="list-group large-left-margin">
+                    <li>
+                        <strong>Left-sided limits</strong> are evaluated as \( x \rightarrow a \) from the left.
+                        <br> \( \lim\limits_{x\to\ a^{-}} f(x)=L \)
+                    </li>
+                    <li>
+                        <strong>Right-sided limits</strong> are evaluated as \( x \rightarrow a \) from the right.
+                        <br> \( \lim\limits_{x\to\ a^{+}} f(x)=L \)
+                    </li>
+                </ol>
+            </topic-instance-html>
+        </topic-instance>
+        <topic-instance>
+            <topic-instance-name>Two-sided Limits</topic-instance-name>
+            <topic-instance-html>
+                Two-sided limits are just regular limits. For a two-sided limit to exist both the left-sided and right-sided limits must
+                exist and be equal.
+            </topic-instance-html>
+        </topic-instance>
+    </topic-definition>
+    <!--▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼-->
+    <topic-example>
+        <topic-instance>
+            <horizontal-group-3>
+                <graph image-size-class="graph-size-1">
+                    <text-header bold center>Example 1</text-header>
+                    <image-url>/images/calculus-appendix/one-sided-limit-example-1.svg</image-url>
+                    <graph-url>https://www.geogebra.org/graphing/QgyQv3JX</graph-url>
+                    <caption-html>
+                        <span class="inline-mj mj-piecewise mj-piecewise-two">
+                            <span>
+                                \( f(x) = \)
+                            </span>
+                            <span class="piecewise-function">
+                                \begin{cases} 
+                                    x^{2}, & \text{if x < 1} \\ 
+                                    ln(x), & \text{if x $\geq$ 1}
+                                \end{cases} 
+                            </span>
+                        </span>
+                        <table class="table text-left">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        \( \lim\limits_{x\to\ 1^{-}} f(x)= 1 \)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        \( \lim\limits_{x\to\ 1^{+}} f(x) = 0 \)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Since \( \lim\limits_{x\to\ 1^{-}} f(x) \neq \lim\limits_{x\to\ 1^{+}} f(x) \) the two-sided limit does not exist.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </caption-html>
+                </graph>
+                <graph image-size-class="graph-size-1">
+                    <text-header bold center>Example 2</text-header>
+                    <image-url>/images/calculus-appendix/one-sided-limit-example-2.svg</image-url>
+                    <graph-url>https://www.geogebra.org/graphing/yFzXGzY2</graph-url>
+                    <caption-html>
+                        <span class="inline-mj mj-piecewise mj-piecewise-two">
+                            <span>
+                                \( f(x) = \)
+                            </span>
+                            <span class="piecewise-function">
+                                \begin{cases} cos(x), & \text{if x $\neq -\frac{\pi}{2}$} \\ \frac{3}{2}, & \text{if x = -$\frac{\pi}{2}$} \end{cases}
+                            </span>
+                        </span>
+                        <table class="table text-left">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        \( \lim\limits_{x\to\ -\frac{\pi}{2}^{-}} f(x) = 0 \)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        \( \lim\limits_{x\to\ -\frac{\pi}{2}^{+}} f(x) = 0 \)
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        \( \lim\limits_{x\to\ -\frac{\pi}{2}} f(x) = \lim\limits_{x\to\ -\frac{\pi}{2}^{-}} f(x) = \lim\limits_{x\to\ -\frac{\pi}{2}^{+}}
+                                        f(x) = 0 \)
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </caption-html>
+                </graph>
+                <graph image-size-class="graph-size-1">
+                    <text-header bold center>Example 3</text-header>
+                    <image-url>/images/calculus-appendix/one-sided-limit-example-3.svg</image-url>
+                    <graph-url>https://www.geogebra.org/graphing/yFzXGzY2</graph-url>
+                    <caption-html>
+                        <span class="inline-mj mj-piecewise mj-piecewise-two">
+                            <span>
+                                \( f(x) = \frac{1}{x} \)
+                            </span>
+                        </span>
+                        <table class="table text-left">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        \( \lim\limits_{x\to\ 0^{-}} f(x) \) does not exit.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        \( \lim\limits_{x\to\ 0^{+}} f(x) \) does not exit.
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Since one side of this limit, and in fact both sides, do not exist the two-sided limit does not exist.
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </caption-html>
+                </graph>
+            </horizontal-group-3>
+        </topic-instance>
+    </topic-example>
+</topic>

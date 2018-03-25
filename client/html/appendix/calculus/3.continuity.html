@@ -1,0 +1,105 @@
+<topic>
+    <topic-name>Continuity</topic-name>
+    <topic-primer>A function \(f(x)\) is continuous at \(x=a\) if:</topic-primer>
+    <topic-definition>
+        <topic-instance>
+            <topic-instance-html>
+                \( \lim\limits_{x\to\ a} f(x) = f(a) \)
+            </topic-instance-html>
+        </topic-instance>
+    </topic-definition>
+    <!--▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼-->
+    <topic-example size-class="horizontal-group-3-topic-container">
+        <topic-instance>
+            <horizontal-group-4>
+                <graph image-size-class="graph-size-1">
+                    <text-header bold center>Continuous Function</text-header>
+                    <image-url>/images/calculus-appendix/sinx.svg</image-url>
+                    <graph-url>https://www.geogebra.org/graphing/b6s7Edt9</graph-url>
+                    <caption-html>
+                        <span class="mj-piecewise mj-piecewise-three">
+                            \( 
+                                f(x)=sin(x)
+                            \)
+                        </span>
+                        <p class="text-left">
+                            This graph has no breaks. It can be drawn without lifting your pencil from the paper.
+                        </p>
+                    </caption-html>
+                </graph>
+                <graph image-size-class="graph-size-1">
+                    <text-header bold center>Jump Discontinuity</text-header>
+                    <image-url>/images/calculus-appendix/discontinuity-example-1.svg</image-url>
+                    <graph-url>https://www.geogebra.org/graphing/NxjJQM5R</graph-url>
+                    <caption-html>
+                        <span class="inline-mj mj-piecewise mj-piecewise-three">
+                            <span>
+                                \(
+                                    f(x) =
+                                \)
+                            </span>
+                            <span class="piecewise-function">
+                                \begin{cases}
+                                    x, & \text{if x $\leq$ 1} \\ 
+                                    x+1, & \text{if x > 1} 
+                                \end{cases}
+                            </span>
+                        </span>
+                        <p class="text-left">
+                            This graph approaches a different value for \(x=1\) if you come from the left vs. if you come from the right.
+                        </p>
+                    </caption-html>
+                </graph>
+                <graph image-size-class="graph-size-1">
+                    <text-header bold center>Removable Discontinuity</text-header>
+                    <image-url>/images/calculus-appendix/discontinuity-example-2.svg</image-url>
+                    <graph-url>https://www.geogebra.org/graphing/gC4zDVxv</graph-url>
+                    <caption-html>
+                        <span class="inline-mj mj-piecewise mj-piecewise-three">
+                            <span>
+                                \(
+                                    f(x) =
+                                \)
+                            </span>
+                            <span class="piecewise-function">
+                                \begin{cases}
+                                    x^{\frac{1}{3}}, & \text{if x $\neq$ 1} \\
+                                    2, & \text{if x = 1} \\
+                                \end{cases}
+                            </span>
+                        </span>
+                        <p class="text-left">
+                            This graph approaches \(1\) as you come from the left and right but the value at \(x=1\) is \(2\), not \(1\). 
+                        </p>
+                    </caption-html>
+                </graph>
+                <graph image-size-class="graph-size-1">
+                    <text-header bold center>Essential Discontinuity</text-header>
+                    <image-url>/images/calculus-appendix/discontinuity-example-3.svg</image-url>
+                    <graph-url>https://www.geogebra.org/graphing/hG3XCMg6</graph-url>
+                    <caption-html>
+                        <span class="inline-mj mj-piecewise mj-piecewise-three">
+                            <span>
+                                \(
+                                    f(x) =
+                                \)
+                            </span>
+                            <span class="piecewise-function">
+                                \begin{cases}
+                                    sin(\frac{5}{x}), & \text{if x < 0} \\
+                                    0, & \text{if x = 0} \\
+                                    \frac{1}{x}, & \text{if x > 0 } \\
+                                \end{cases}
+                            </span>
+                        </span>
+                        <p class="text-left">
+                            This graph oscillates rapidly as x approaches 0 from the left.
+                            This graph also approaches infinity as x approaches 0 from the right.
+                            Both cases are conditions for an essential discontinuity.
+                        </p>
+                    </caption-html>
+                </graph>
+            </horizontal-group-4>
+        </topic-instance>
+    </topic-example>
+</topic>

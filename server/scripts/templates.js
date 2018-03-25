@@ -3,6 +3,7 @@
 
 const { readFileSync, writeFileSync } = require("fs");
 const cheerio = require('cheerio');
+const mathjaxTransforms = require('./mathjax_transforms.js');
 
 const applyTemplates = (html, partial) => {
     $ = cheerio.load(html);
@@ -11,7 +12,7 @@ const applyTemplates = (html, partial) => {
      // if  on occassion a template1 is inside template2
      // and on occassion b template2 is inside template1
      // ...then idk.
-    let _templates = ["primary-list", "nested-list", "topic", "topic-instance", "topic-definition", "topic-example", "horizontal-group-3", "horizontal-group-4", "graph", "empty-graph", "li-text", "top-text", "group-carrier", "group", "group-item", "cheat"];
+    let _templates = ["matrix", "primary-list", "nested-list", "topic", "topic-instance", "topic-definition", "topic-example", "horizontal-group-3", "horizontal-group-4", "wrapped-graph", "graph", "empty-graph", "li-text", "top-text", "group-carrier", "group", "group-item", "cheat"];
     _templates.forEach(template => {
         $.root().find(template).each((i, elm) => {
             template = template.replace(/-/g, "_");
@@ -60,12 +61,23 @@ const trimSpace = $ => {
 };
 
 let templates = {
+    matrix: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/matrix.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        let innerHTML = $(elm).html();
+        let transformedMathjax = mathjaxTransforms.matrix(innerHTML);
+        $template.html(transformedMathjax);
+
+        $(elm).replaceWith($template);
+    },
     primary_list: elm => {
         let $placeholder = $(elm);
         let templatePath = `${process.env.templatesDir}/primary_list.html`;
         let $template = $(readFileSync(templatePath).toString());
         
-        let childTypes = ["nested-list", "group-carrier", "li-text", "graph"];
+        let childTypes = ["nested-list", "group-carrier", "li-text", "wrapped-graph", "graph", "little-pseudo-table"];
         let childTypesSelector = childTypes.join(",");
         let $items = $placeholder.children(childTypesSelector);
 
@@ -97,7 +109,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/nested_list.html`;
         let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
     
-        let childTypes = ["top-text", "item"];
+        let childTypes = ["top-text", "disclaimer", "item"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "nested_list");    
@@ -116,6 +128,16 @@ let templates = {
         else {
             $template.find("top-text").replaceWith($topText);
             templates.top_text($template.find("top-text")[0]);
+        }
+
+        // <disclaimer>
+        let $disclaimer = $placeholder.children("disclaimer");
+        if( $disclaimer.length === 0) {
+            $template.find("[disclaimer]").remove();
+        }
+        else {
+            let disclaimer = $disclaimer.html();
+            $template.find("[disclaimer]").removeAttr("disclaimer").html(disclaimer);
         }
 
         // <item>
@@ -160,7 +182,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/li_text.html`;
         let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
 
-        let childTypes = ["top-text", "text"];
+        let childTypes = ["top-text", "text", "html-content"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "li_text");        
@@ -178,17 +200,38 @@ let templates = {
         // <text>
         let $text = $placeholder.children("text");
         if($text.length === 0) {
-            $template.find("span").remove();
+            $template.find("span[text-span]").remove();
         }
         else {
+            // this else block, and really all of top_text needs refactored. the way span and cheat are being handled is a mess.
             let text = $text.html();
-            $template.find("span").html(text);
+            $template.find("span[text-span]").html(text);
 
             // [latex-vertical-margin-small-top-only]
             let isVerticalMarginSmallTopOnly = $text.is("[latex-vertical-margin-small-top-only]");
             if(isVerticalMarginSmallTopOnly) {
-                $template.find("span").addClass("latex-vertical-margin-small-top-only");
+                $template.find("span[text-span]").addClass("latex-vertical-margin-small-top-only");
             }
+
+            // [cheat="factor"]
+            let cheat = $text.attr("cheat");
+            if(cheat !== undefined) {
+                let $cheat = $("<cheat>");
+                $template.find("span[text-span]").append($cheat);
+                $cheat.html(cheat);
+                templates.cheat($cheat[0]);
+            }
+
+            $template.find("span[text-span]").removeAttr("text-span");
+        }
+        
+        // <html-content>
+        let $htmlContent = $placeholder.children("html-content");
+        if( $htmlContent.length === 0) {
+            $template.find("html-content").remove();
+        }
+        else {
+            $template.find("html-content").replaceWith($htmlContent.html());
         }
 
         $placeholder.after($template.html());
@@ -347,6 +390,13 @@ let templates = {
             $template.find("[header-content]").remove();
         }
 
+        // [left]1
+        let isLeft = $placeholder.is("[left]");
+        if(isLeft)
+        {
+            $template.find(".graph").removeClass("text-center").addClass("text-left");
+        }
+
         // <image-url>
         let imageUrl = $placeholder.children("image-url").html();
         $template.find("[image-url]").removeAttr("image-url").attr("data-src", imageUrl);
@@ -354,23 +404,19 @@ let templates = {
         // <graph-url>
         let $graphUrl = $placeholder.children("graph-url");
         if($graphUrl.length > 0) {
+             // <open_graph_button> 
+            let $openGraphButton = $template.find("open-graph-button");
+            let pushLauncherRight = $placeholder.attr("push-graph-launcher-right") === "true";
             let graphUrl = $graphUrl.html();
-            $template.find("a").attr("href", graphUrl);
+            templates.open_graph_button($openGraphButton[0], graphUrl, pushLauncherRight);
         }
         else {
-            $template.find("a").remove();
+            $template.find("open-graph-button").remove();
         }
 
         // [image-size-class]
         let imageClass = $placeholder.attr("image-size-class");
         $template.find("[image-size-class]").removeAttr("image-size-class").addClass(imageClass);
-
-        // [push-graph-launcher-right]
-        let pushLauncherRight = $placeholder.attr("push-graph-launcher-right") === "true";
-        if(pushLauncherRight) {
-            $template.find("[push-graph-launcher-right]").addClass("push-right")
-        }
-        $template.find("[push-graph-launcher-right]").removeAttr("push-graph-launcher-right");
 
         // <caption-text>
         let $placeholderCaptionText = $placeholder.children("caption-text");
@@ -464,7 +510,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/topic_instance.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["topic-instance-name", "topic-instance-html", "horizontal-group-3", "horizontal-group-4", "group-carrier"];
+        let childTypes = ["topic-instance-name", "topic-instance-html", "horizontal-group-3", "horizontal-group-4", "group-carrier", "three-group", "graph", "wrapped-graph"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "topic_instance");
@@ -536,6 +582,39 @@ let templates = {
             $template.find("group-carrier").remove();
         }
 
+        // <three-group>
+        let $threeGroup = $placeholder.children("three-group");
+        if($threeGroup.length > 0) {
+            let $templateThreeGroup = $template.find("three-group");
+            $templateThreeGroup.replaceWith($threeGroup);
+            templates.three_group($threeGroup[0]);
+        }
+        else {
+            $template.find("three-group").remove();
+        }
+
+        // <graph>
+        let $graph = $placeholder.children("graph");
+        if($graph.length > 0) {
+            let $templateGraph = $template.find("graph");
+            $templateGraph.replaceWith($graph);
+            templates.graph($graph[0]);
+        }
+        else {
+            $template.find("graph").remove();
+        }
+
+        // <wrapped-graph>
+        let $wrappedGraph = $placeholder.children("wrapped-graph");
+        if($wrappedGraph.length > 0) {
+            let $templateWrappedGraph = $template.find("wrapped-graph");
+            $templateWrappedGraph.replaceWith($wrappedGraph);
+            templates.wrapped_graph($wrappedGraph[0]);
+        }
+        else {
+            $template.find("wrapped-graph").remove();
+        }
+
         $placeholder.replaceWith($template);
     },
     topic_definition: elm => {
@@ -543,7 +622,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/topic_definition.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["topic-instance", "diagram-by-example"];
+        let childTypes = ["topic-instance", "diagram-by-example", "wrapped-graph"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "topic_definition");
@@ -697,7 +776,7 @@ let templates = {
     },
     horizontal_group_3: elm => {
         let $placeholder = $(elm);
-        let templatePath = `${process.env.templatesDir}/horizontal-group-3.html`;
+        let templatePath = `${process.env.templatesDir}/horizontal_group_3.html`;
         let $template = $(readFileSync(templatePath).toString());
 
         let childTypes = ["graph", "empty-graph"];
@@ -732,7 +811,7 @@ let templates = {
     },
     horizontal_group_4: elm => {
         let $placeholder = $(elm);
-        let templatePath = `${process.env.templatesDir}/horizontal-group-4.html`;
+        let templatePath = `${process.env.templatesDir}/horizontal_group_4.html`;
         let $template = $(readFileSync(templatePath).toString());
 
         let childTypes = ["graph", "empty-graph"];
@@ -745,22 +824,17 @@ let templates = {
             throw `horizontal-group-4 must have three children but has ${$items.length} children.`;
         }
 
-        let $repeater = $template.find("[repeater]");
-        let $repeatContainer = $repeater.parent();
-        $repeater.removeAttr("repeater").remove();
         $items.each((i, elm) => {
-            let $item = $(elm);
-            let $repeaterClone = $repeater.clone();
-            
-            $repeaterClone.append($item);
-            $repeatContainer.append($repeaterClone);
-        });
+            let $placeholderItem = $(elm);
+            let $templateItem = $template.find(`[item-${i+1}]`).removeAttr(`item-${i+1}`);
+            $templateItem.append($placeholderItem);
 
-        $($template.children(".row").children()).each((i, elm) => {
-            $groupItem = $(elm);
-            $groupItem.children(childTypesSelector).each((i, elm) => {
-                templates[elm.tagName.replace(/-/g, "_")](elm);
-            });
+            if(elm.tagName === "graph") {
+                templates.graph(elm);
+            }
+            else if (elm.tagName === "empty-graph") {
+                templates.empty_graph(elm);
+            }
         });
 
         $placeholder.replaceWith($template);
@@ -770,12 +844,22 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/diagram_by_example.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["html-header", "diagram", "group-carrier"];
+        let childTypes = ["html-header", "diagram", "diagram-url", "group-carrier"];
         let childTypesSelector = childTypes.join(",");
         let $items = $placeholder.children(childTypesSelector);
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "diagram-by-example");
+
+        // [break-point-class]
+        let hasBreakPointClass = $placeholder.is("[break-point-class]");
+        if(hasBreakPointClass) {
+            let breakPointClass = $placeholder.attr("break-point-class");
+            $template.addClass(breakPointClass);
+        }
+        else {
+            throw "diagram_by_example should have a break point class.";
+        }
 
         // <html-header>
         let headerHTML = $placeholder.find("html-header").html();
@@ -784,7 +868,20 @@ let templates = {
         // <diagram>
         let imageUrl = $placeholder.find("diagram").html();
         let imageSizeClass = $placeholder.find("diagram").attr("image-size-class");
-        $template.find("img").attr("data-src", imageUrl).addClass(imageSizeClass);
+        let $diagram = $template.find("[image-url]")
+        $diagram.removeAttr("image-url").attr("data-src", imageUrl).addClass(imageSizeClass);
+
+        // <diagram-url>
+        let $diagramUrl = $placeholder.children("diagram-url");
+        if($diagramUrl.length > 0) {
+             // <open_graph_button> 
+            let $openGraphButton = $template.find("open-graph-button");
+            let diagramUrl = $diagramUrl.html();
+            templates.open_graph_button($openGraphButton[0], diagramUrl);
+        }
+        else {
+            $template.find("open-graph-button").remove();
+        }
 
         // <function-group-carrier>
         let $placeholderGroupCarrier = $placeholder.find("group-carrier");
@@ -793,7 +890,119 @@ let templates = {
         templates.group_carrier($placeholderGroupCarrier[0]);
 
         $placeholder.replaceWith($template);
-    }
+    },
+    three_group: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/three_group.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        let childTypes = ["three-group-html", "item"];
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "three-group");
+
+        // <three-group-html>
+        let threeGroupHtml = $placeholder.find("three-group-html").html();
+        $template.find(".three-group-html").html(threeGroupHtml);
+        
+        // <item>
+        let $items = $placeholder.find("item"); 
+        let $repeater = $template.find("[repeater]");
+        $repeater.removeAttr("repeater").remove();
+        if($items.length === 3) {
+            $items.each((i, elm) => {
+                let $item = $(elm);
+                let $repeaterClone = $repeater.clone();
+
+                $repeaterClone.html($item.html());
+                $template.append($repeaterClone);
+            });
+        }
+        else {
+            throw "three_group must have three items."
+        }
+
+        $placeholder.replaceWith($template);
+    },
+    open_graph_button: (elm, url, pushRight) => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/open_graph_button.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        $template.attr("href", url);
+
+        if(pushRight) {
+            $template.addClass("push-right")
+        }
+        $template.removeAttr("push-graph-launcher-right"); 
+        
+        $placeholder.replaceWith($template);
+    },
+    little_pseudo_table: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/little_pseudo_table.html`;
+        let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
+
+        let childTypes = ["top-text", "column"];
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "little-pseudo-table");
+
+        // [break-point-class]
+        let hasBreakPointClass = $placeholder.is("[break-point-class]");
+        if(hasBreakPointClass) {
+            let breakPointClass = $placeholder.attr("break-point-class");
+            $template.find("[break-point-class]").addClass(breakPointClass).removeAttr("break-point-class");
+        }
+        else {
+            throw "little_pseudo_table should have a break point class.";
+        }
+
+        // <top-text>
+        let $topText = $placeholder.children("top-text");
+        if($topText.length === 0) {
+            $template.find("top-text").remove();
+        }
+        else {
+            $template.find("top-text").replaceWith($topText);
+
+            templates.top_text($template.find("top-text")[0]);
+        }
+
+        // <column>
+        let $columns = $placeholder.children("column");
+        let $repeater = $template.find("[repeater]").removeAttr("repeater").remove();
+        $columns.each((i, elm) => {
+            let header = $(elm).find("header").html();
+            let cell = $(elm).find("cell").html();
+            let $repeaterClone = $repeater.clone();
+            
+            $repeaterClone.find("[header]").removeAttr("header").html(header);
+            $repeaterClone.find("[cell]").removeAttr("cell").html(cell);
+
+            $template.find(".little-pseudo-table").append($repeaterClone);
+        });
+
+        $placeholder.replaceWith($template.html());
+    },
+    wrapped_graph: elm => {
+        /* the normal graph has no container. this graph is wrapped in a container. */
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/wrapped_graph.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        let childTypes = ["graph"];
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "wrapped_graph");
+
+        // <graph>
+        let $graph = $placeholder.find("graph");
+        $template.find("graph").replaceWith($graph);
+        templates.graph($graph[0]);
+        
+        $placeholder.replaceWith($template);
+    },
 }
 
 module.exports = {

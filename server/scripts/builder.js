@@ -1,7 +1,7 @@
 const { readFileSync, writeFileSync, watchFile, unwatchFile, mkdirSync } = require("fs");
 const { normalize, sep} = require("path");
 const compressor = require("node-minify");
-const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig, sortObjectArrayByKey, orderSubjects } = require("./utilities.js");
+const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig, sortObjectArrayByKey, orderSubjects, getAppendixFiles } = require("./utilities.js");
 const { applyTemplates } = require("./templates.js");
 const zlib = require('zlib');
 const { minify } = require("html-minifier");
@@ -65,9 +65,14 @@ const integrateSiteCSS = () => {
             `${process.env.clientDir}/styles/graph.css`,
             `${process.env.clientDir}/styles/mathjax.css`,
             `${process.env.clientDir}/styles/function_group.css`,
-            `${process.env.clientDir}/styles/horizontal_group.css`,
+            `${process.env.clientDir}/styles/horizontal_group_3.css`,
+            `${process.env.clientDir}/styles/horizontal_group_4.css`,
+            `${process.env.clientDir}/styles/three_group.css`,
             `${process.env.clientDir}/styles/hard_coded_dimensions.css`,
             `${process.env.clientDir}/styles/image_maximizer.css`,
+            `${process.env.clientDir}/styles/open_graph_button.css`,
+            `${process.env.clientDir}/styles/little_pseudo_table.css`,
+            `${process.env.clientDir}/styles/wrapped_graph.css`,
 
         // individual pages
         `${process.env.clientDir}/styles/post.css`,
@@ -269,7 +274,7 @@ const buildPost = (postNumber, subject) => {
     outFile = outFile.replace("[CONTENT]", buildPostTemplate());
     outFile = outFile.replace("[POST SUBJECT NAVIGATION]", buildPostSubjectNavigation(postNumber, subject));
     outFile = outFile.replace("[POST HTML]", buildPostHTML(htmlPath, postNumber, subject));
-    outFile = outFile.replace("[TITLE]", `Week ${postNumber} - ${capatalizeFirstLetterOfEveryWord(subject.replace(/-/g, " ").replace(/_/g, " "))}`); // note - if you change this title change the title for the index page in master.js
+    outFile = outFile.replace("[TITLE]", `Post ${postNumber} - ${capatalizeFirstLetterOfEveryWord(subject.replace(/-/g, " ").replace(/_/g, " "))}`); // note - if you change this title change the title for the index page in master.js
     outFile = buildPostComments(outFile, postNumber, subject);
     outFile = buildPostConfiguration(postNumber, outFile, subject);
     outFile = setPostMetaTags(outFile, postNumber, subject);
@@ -327,7 +332,7 @@ const buildGlossary = subject => {
     buildStaticContentPage(subjectGlossary, title, title, outFilePath);
 };
 
-const buildAppendix = subject => {
+const buildAppendix = (subject, includeReview) => {
     let appendixTemplate = readFileSync(`${process.env.clientDir}/html/appendix/appendix.html`).toString();
     let $appendixTemplate = $("<appendix-template-container>" + appendixTemplate + "</appendix-template-container>");
     let outFilePath = `${process.env.buildDir}/appendix.${subject}.html`;
@@ -337,11 +342,12 @@ const buildAppendix = subject => {
     $appendixTemplate.find(".header-text").html(title);
 
     // append topics
-    let topicFiles = getFiles(`${process.env.clientDir}/html/appendix/${subject}`);
+    let topicFiles = getAppendixFiles(subject, includeReview);
     let topics = topicFiles.map(filePath => {
         let fileName= filePath.split(sep).pop();
         let fileIndex = parseInt(fileName.split(".")[0], 10);
         let fileContent = readFileSync(filePath).toString();
+
         return {
             index: fileIndex,
             content: fileContent
@@ -404,22 +410,18 @@ const buildPages = () => {
         });
     });
 
+    buildReviewAppendixes(); // must run before buildAppendix.
+
     getGlossarySubjects().forEach(buildGlossary);
-    getAppendixSubjects().forEach(buildAppendix);
+    getAppendixSubjects().forEach((subject) => {
+        buildAppendix(subject, false);
+    });
     buildAboutPage();
     build404Page();
+    buildReviewPage();
 };
 
 const buildIndex = () => {
-    console.log("allow index to build once first post is out of review");
-    var index = `<div class="jumbotron">\
-    <h1 class="display-3">Regression Buddy is in Review</h1>\
-    <p class="lead">Welcome to regressionbuddy.com, the cool new math website all the kids are talking about. The current go live date is 3/18/18. In the meantime you can help improve the quality of this site by participating in its <a href="/review">first review</a>.</p>\
-    </p>\
-  </div>`;
-    buildStaticContentPage(index, shortDescription, description, `${process.env.publicDir}/index.html`);
-    return;
-
     let lastPost = getLargestPostNumber();
     let defaultSubject = process.env.defaultSubject;
     let indexFileContentPath = `${process.env.buildDir}/${lastPost}.${defaultSubject}.html`;
@@ -438,6 +440,16 @@ const buildIndex = () => {
 const buildReviewAppendixes = () => {
     getPostNumbers(true).forEach(postNumber => {
         getPostSubjects(postNumber).forEach(subject => {
+            /*
+                the appendixes are getting built twice. once with the review topics in them and once without.
+                i had this all refactored pretty good but then found out cheerio was stripping everything inside
+                <head> and the doctype and god knows what else. so reverted that and made this bad code even worse.
+                this function expects the appendix to be saved in the build directory with all topics in it.
+                this code strips out the non-review topics and then saves the review appendix. then the appendix
+                gets built again later on. this definitely needs a refactor now.
+            */
+            buildAppendix(subject, true);
+
             let config = getPostConfig(postNumber);
             let postTopics = config.topics[subject.replace(/_/g, "-")];            
             let appendix = readFileSync(`${process.env.buildDir}/appendix.${subject}.html`).toString();
@@ -468,7 +480,7 @@ const buildReviewAppendixes = () => {
             let meta = $.root().find("meta[name='description']");
             title.html(`Review - ${title.html()}`);
             meta.attr("content", `Page Under Review: ${meta.attr("content")}`);
-            h4.html(`Week ${postNumber} - ${h4.html()} Review`);
+            h4.html(`Post ${postNumber} - ${h4.html()} Review`);
             nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
             appendixElm.append('<div class="container-fluid">' + readFileSync(`${process.env.postTemplatesDir}/show_comments_link.html`).toString() + '</div><br>');
             appendixElm.after(readFileSync(`${process.env.postTemplatesDir}/comments.html`).toString());
@@ -520,7 +532,7 @@ const buildReviewPage = () => {
         subjects.forEach(subject => {
             let postReview = template;
             let subjectHumanFormat = capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, " "));
-            let postReviewTitle = `Week ${postNumber} - ${subjectHumanFormat} - ${config.date}`;
+            let postReviewTitle = `Post ${postNumber} - ${subjectHumanFormat} - ${config.date}`;
             let postTopics = config.topics[subject.replace(/_/g, "-")];  
 
             postReview = postReview.replace(/\[TITLE\]/g, postReviewTitle);
@@ -529,10 +541,6 @@ const buildReviewPage = () => {
             postReview = postReview.replace(/\[TOPICS\]/g, postTopics.join(", "));
             reviews += postReview;
             reviews += "<br>";
-
-            let appendixReview = template;
-            
-            console.log("ADD OTHER STUFF HERE...");
         });
     });
 
@@ -575,9 +583,7 @@ const generateSiteMap = () => {
         return postJson;
     });
 
-    console.log("UNSET THIS!!!");
-    console.log("UNSET MASTER.JS // redirect to normalized url --- ON THE CLIENT SIDE //() -> ()");
-    let mostRecentPostDate = "2/25/18";//postJsons[postJsons.length - 1].date;
+    let mostRecentPostDate = postJsons[postJsons.length - 1].date;
     let pages = [
         { 
             loc: "https://www.regressionbuddy.com",
@@ -788,9 +794,6 @@ const build = () => {
 
     generateSiteMap();
     generateSiteRSS();
-
-    buildReviewPage();
-    buildReviewAppendixes();
 
     // async but i guess it doesn't matter
     lint();

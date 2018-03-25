@@ -25,6 +25,9 @@ function toggleButtonDropdown(e) {
         if(e.target.tagName.toLowerCase() !== "a") {
             hideButtonDropdown();
         }
+        else {
+            setTimeout(hideButtonDropdown, 1000);
+        }
     }
 }
 onClick(window, toggleButtonDropdown);

@@ -46,3 +46,13 @@
 .topic-instance > strong + * {
     margin-top: 5px;
 }
+
+.topic > .card > .card-body > h4 {
+    /* the topic-primer and topic-eli5 have this same margin. by bootstrap default this margin is .5 but it looks bad if those <p>s have a bigger margin this the h4 */
+    margin-bottom: 1rem;
+}
+
+.topic > .card > .card-body > h4 + p {
+    /* subtract the margin from the style above */
+    margin-top: -.5rem; 
+}

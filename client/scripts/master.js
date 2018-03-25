@@ -12,7 +12,7 @@ function setRandomLink() {
     });
 }
 if (document.querySelector(".post-nav")) {
-    console.log("TODO: UNSET: UNCOMMENT THIS WHEN FIRST POST IS OUT OF REVIEW.");
+    console.log("TODO: UNSET: UNCOMMENT THIS WHEN SECOND POST IS OUT OF REVIEW.");
     //setRandomLink();
 }
 
@@ -31,12 +31,15 @@ window.addEventListener("load", function () {
         loaded = true;
     }
     MathJax.Hub.Queue(loadImages);
-    setTimeout(loadImages, 2000);
+    setTimeout(loadImages, 500);
 });
 
 /****** MATHJAX ******/
 MathJax.Hub.Config({
     CommonHTML: {
         linebreaks: { automatic: true }
+    },
+    TeX: {
+        extensions: ["enclose.js"]
     }
 });

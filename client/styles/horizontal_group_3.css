@@ -18,59 +18,41 @@
     .horizontal-group-3 .graph-size-2 {
         max-width: 180px;
     }
-    .horizontal-group-4 .graph-size-1 {
-        max-width: 108px;
-    }
-    .horizontal-group-4 .graph-size-2 {
-        max-width: 130px;
-    }
 }
 
 @media only screen and (max-width: 767px) {
     .horizontal-group-3-topic-container {
         max-width: 350px;
     }
-    .small-width-225 {
-        max-width: 225px;
-    }
-    .horizontal-group:not(:first-of-type) {
+    .horizontal-group-3:not(:first-of-type) {
         border-left: none !important;
-        margin-top: 1em;
-        padding-top: 1em;
         margin-top: 1rem;
         padding-top: 1rem;
     }
-    .alert-success .horizontal-group:not(:first-of-type) {
+    .alert-success .horizontal-group-3:not(:first-of-type) {
         border-top: 1px solid #b1dfbb;
     }
-    .alert-info .horizontal-group:not(:first-of-type) {
+    .alert-info .horizontal-group-3:not(:first-of-type) {
         border-top: 1px solid #abdde5;
     }
 }
 
-.alert-info .horizontal-group:not(:first-of-type) {
+.alert-info .horizontal-group-3:not(:first-of-type) {
     border-left: 1px solid #abdde5;
 }
 
-.alert-success .horizontal-group:not(:first-of-type) {
+.alert-success .horizontal-group-3:not(:first-of-type) {
     border-left: 1px solid #b1dfbb;
 }
 
-.horizontal-group {
+.horizontal-group-3 {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /*justify-content: space-between; this was messing up spacing on one sided limits. toggled it on/off on linear algebra appendix and it didn't seem to change anything */
     flex-grow: 1;
 }
+
 .default-justify,
-.horizontal-group.default-justify {
+.horizontal-group-3.default-justify {
     justify-content: flex-start;
-}
-.horizontal-group > strong {
-    /* double check this style. it might not be used anywhere. */
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-    white-space: nowrap;
-    margin-bottom: 1rem;
 }

@@ -122,6 +122,34 @@ const sortObjectArrayByKey = (objArray, key) => {
     });
 };
 
+const getTopicFiles = (subject, topics) => {
+    topics = topics.map(topic => topic.replace(/ /g, "_").replace(/-/g, "_").replace(/,/g, "").toLowerCase());
+
+    var allFiles = getFiles(`${process.env.clientDir}/html/appendix/${subject}`);
+    var topicFiles = allFiles.filter(file => {
+        file = file.replace(/^.*?\./, "");
+        file = file.replace(/\.html/, "");
+        return topics.indexOf(file) !== -1;
+    });
+    
+    return topicFiles;
+};
+
+const getAppendixFiles = (subject, inReview)  => {
+    var postNumbers = getPostNumbers(inReview);
+    var configs = postNumbers.map(n => {
+        return getPostConfig(n);
+    });
+
+    var topics = [];
+    configs.forEach(config => {
+        var postTopics = config.topics[subject.replace(/_/g, "-")]
+        topics = topics.concat(postTopics);
+    });
+
+    return getTopicFiles(subject, topics);
+};
+
 module.exports = {
     existsSync: existsSync,
     getDirectories: getDirectories,
@@ -139,5 +167,6 @@ module.exports = {
     capatalizeFirstLetterOfEveryWord: capatalizeFirstLetterOfEveryWord,
     getPostConfig: getPostConfig,
     sortObjectArrayByKey: sortObjectArrayByKey,
-    orderSubjects: orderSubjects
+    orderSubjects: orderSubjects,
+    getAppendixFiles: getAppendixFiles
 };

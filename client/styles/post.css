@@ -91,10 +91,36 @@
     margin-top: 26px;
 }
 
+.disclaimer {
+    margin-top: 6px;
+    margin-bottom: -6px;
+    font-size: small;
+    font-style: italic;
+}
+
 #post .graph {
     margin-top:0;
 }
 
 .post-content {
     overflow: hidden;
+}
+
+#work li img {
+    position:relative;
+    top: -5px;
+}
+
+@media only screen and (max-width: 450px) {
+    #work li img {
+        top: 0;
+    }
+}
+
+#post .matrix .mjx-chtml {
+    margin-top:.1em;
+}
+
+#post .question-system-of-equations {
+    display: inline-block;
 }

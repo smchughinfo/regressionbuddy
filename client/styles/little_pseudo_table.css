@@ -1,0 +1,19 @@
+.little-pseudo-table {
+    display: inline-block;
+ }
+
+ .little-pseudo-table > * {
+     display: inline-block;
+ }
+ 
+ .little-pseudo-table > *:not(:last-child) {
+     margin-right: 35px;
+ }
+ 
+ @media only screen and (max-width: 525px) {
+     .little-pseudo-table.breakpoint-525 > * {
+         display: block;
+         margin-right: 0;
+         margin-bottom: 10px;
+     }
+ }
