@@ -7,7 +7,7 @@
     "trigonometry": ["Recriprocals of the Trigonometric Functions", "Similiar Triangles"],
     "calculus": ["Continuity", "One-Sided and Two-Sided Limits"],
     "linear-algebra": ["Matrices", "Elementary Row Operations", "Row-Echelon and Reduced-Row-Echelon Form"],
-    "statistics": ["Statistics and Parameters", "Mean, Median, and Mode"],
+    "statistics": ["Statistics and Parameters", "Measures of Central Tendency"],
     "vector-calculus": ["Standard Basis Vectors", "The Vector Between Two Points"]
   }
 }
