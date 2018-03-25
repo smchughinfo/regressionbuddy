@@ -77,7 +77,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/primary_list.html`;
         let $template = $(readFileSync(templatePath).toString());
         
-        let childTypes = ["nested-list", "group-carrier", "li-text", "graph", "little-pseudo-table"];
+        let childTypes = ["nested-list", "group-carrier", "li-text", "wrapped-graph", "graph", "little-pseudo-table"];
         let childTypesSelector = childTypes.join(",");
         let $items = $placeholder.children(childTypesSelector);
 
@@ -388,6 +388,13 @@ let templates = {
         }
         else {
             $template.find("[header-content]").remove();
+        }
+
+        // [left]1
+        let isLeft = $placeholder.is("[left]");
+        if(isLeft)
+        {
+            $template.find(".graph").removeClass("text-center").addClass("text-left");
         }
 
         // <image-url>
