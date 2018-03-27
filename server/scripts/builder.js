@@ -215,7 +215,7 @@ const setPostNavigationLinks = (outFile, postNumber, subject) => {
     console.log("UNSET HARDCODE TO TRUE");
 
     // first and prev
-    if(true || postNumber === 1 || inReview) {
+    if(postNumber === 1 || inReview) {
         $('[data-link-to="first"]').parent().addClass("disabled");
         $('[data-link-to="previous"]').parent().addClass("disabled");
     }
@@ -226,7 +226,7 @@ const setPostNavigationLinks = (outFile, postNumber, subject) => {
     }
 
     // random
-    if(true || last === 1 || inReview) {
+    if(last === 1 || inReview) {
         $('[data-link-to="random"]').parent().addClass("disabled");
     }
     else {
@@ -235,7 +235,7 @@ const setPostNavigationLinks = (outFile, postNumber, subject) => {
     }
 
     // next and last
-    if(true || postNumber === last || inReview) {
+    if(postNumber === last || inReview) {
         $('[data-link-to="next"]').parent().addClass("disabled");   
         $('[data-link-to="last"]').parent().addClass("disabled");           
     }

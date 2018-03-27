@@ -12,8 +12,7 @@ function setRandomLink() {
     });
 }
 if (document.querySelector(".post-nav")) {
-    console.log("TODO: UNSET: UNCOMMENT THIS WHEN SECOND POST IS OUT OF REVIEW.");
-    //setRandomLink();
+    setRandomLink();
 }
 
 /****** LAZY LOAD IMAGES ******/

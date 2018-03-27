@@ -1,0 +1,13 @@
+{
+  "inReview": false,
+  "date": "4/22/2018",
+  "phrase": "post 3 phrase",
+  "topics": {
+    "algebra": ["The Multiplication Property of Equality"],
+    "trigonometry": [""],
+    "calculus": [""],
+    "linear-algebra": [""],
+    "statistics": [""],
+    "vector-calculus": [""]
+  }
+}
