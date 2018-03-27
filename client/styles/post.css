@@ -98,6 +98,11 @@
     font-style: italic;
 }
 
+#post empty-graph-header, 
+#post .graph-header {
+    white-space:normal;
+}
+
 #post .graph {
     margin-top:0;
 }
