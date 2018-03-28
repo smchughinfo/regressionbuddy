@@ -3,7 +3,10 @@
 
 const { readFileSync, writeFileSync } = require("fs");
 const cheerio = require('cheerio');
+const { getSimpleTopicString } = require('./utilities.js')
 const mathjaxTransforms = require('./mathjax_transforms.js');
+
+let $ = null;
 
 const applyTemplates = (html, partial) => {
     $ = cheerio.load(html);
@@ -718,7 +721,7 @@ let templates = {
         // <topic-name>
         let name = $placeholder.children("topic-name").html();
         $template.find("[topic-name]").removeAttr("topic-name").html(name);
-        $template.attr("id", name.toLowerCase().replace(/ /g, "-"))
+        $template.attr("id", getSimpleTopicString(name));
 
         // <topic-primer>
         let $topicPrimer = $placeholder.children("topic-primer");

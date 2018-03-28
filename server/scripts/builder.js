@@ -1,7 +1,7 @@
 const { readFileSync, writeFileSync, watchFile, unwatchFile, mkdirSync } = require("fs");
 const { normalize, sep} = require("path");
 const compressor = require("node-minify");
-const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig, sortObjectArrayByKey, orderSubjects, getAppendixFiles } = require("./utilities.js");
+const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig, sortObjectArrayByKey, orderSubjects, getAppendixFiles, getSimpleTopicString } = require("./utilities.js");
 const { applyTemplates } = require("./templates.js");
 const zlib = require('zlib');
 const { minify } = require("html-minifier");
@@ -193,7 +193,7 @@ const buildPostConfiguration = (postNumber, outFile, subject) => {
 
     subject = subject.replace(/_/g, "-");
     let links = config.topics[subject].map(topic => {
-        return `<a href='/appendix/${subject}#${topic.toLowerCase().replace(/ /g,"-")}'>${topic}</a>`;
+        return `<a href='/appendix/${subject}#${getSimpleTopicString(topic)}'>${topic}</a>`;
     });
     outFile = outFile.replace("[POST TOPICS]", links.join(", "));
 
