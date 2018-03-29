@@ -124,7 +124,7 @@ const sortObjectArrayByKey = (objArray, key) => {
 
 const getSimpleTopicString = topicString => {
     topicString = decodeHTML(topicString);
-    return topicString.replace(/ /g, "_").replace(/-/g, "_").replace(/,/g, "").replace(/°/g, "").toLowerCase();
+    return topicString.replace(/ /g, "-").replace(/_/g, "-").replace(/,/g, "").replace(/°/g, "").toLowerCase();
 }
 
 const getTopicFiles = (subject, topics) => {
@@ -134,6 +134,7 @@ const getTopicFiles = (subject, topics) => {
     var topicFiles = allFiles.filter(file => {
         file = file.replace(/^.*?\./, "");
         file = file.replace(/\.html/, "");
+        file = file.replace(/_/g, "-");
         return topics.indexOf(file) !== -1;
     });
     
