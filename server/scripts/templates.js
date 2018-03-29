@@ -847,7 +847,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/diagram_by_example.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["html-header", "diagram", "diagram-url", "group-carrier"];
+        let childTypes = ["html-header", "diagram", "diagram-url", "group-carrier", "html-content"];
         let childTypesSelector = childTypes.join(",");
         let $items = $placeholder.children(childTypesSelector);
 
@@ -861,7 +861,8 @@ let templates = {
             $template.addClass(breakPointClass);
         }
         else {
-            throw "diagram_by_example should have a break point class.";
+            console.log("MIGHT WANT TO PUT THIS BACK. COMMENTED OUT TO GET 30,45,60 ON THE PAGE.");
+            //throw "diagram_by_example should have a break point class.";
         }
 
         // <html-header>
@@ -888,9 +889,14 @@ let templates = {
 
         // <function-group-carrier>
         let $placeholderGroupCarrier = $placeholder.find("group-carrier");
-        let $templateGroupCarrier = $template.find("group-carrier");
-        $templateGroupCarrier.replaceWith($placeholderGroupCarrier);
-        templates.group_carrier($placeholderGroupCarrier[0]);
+        if($placeholderGroupCarrier.length > 0) {
+            let $templateGroupCarrier = $template.find("group-carrier");
+            $templateGroupCarrier.replaceWith($placeholderGroupCarrier);
+            templates.group_carrier($placeholderGroupCarrier[0]);
+        }
+        else {
+            $template.find("group-carrier").remove();
+        }
 
         $placeholder.replaceWith($template);
     },
