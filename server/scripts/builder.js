@@ -81,6 +81,7 @@ const integrateSiteCSS = () => {
             `${process.env.clientDir}/styles/cheat_code.css`,
         `${process.env.clientDir}/styles/appendix.css`,
             `${process.env.clientDir}/styles/wider_line.css`,
+        `${process.env.clientDir}/styles/trigonometry_appendix.css`,
         `${process.env.clientDir}/styles/glossary.css`,
         `${process.env.clientDir}/styles/review.css`,
         `${process.env.clientDir}/styles/404.css`,

@@ -638,20 +638,20 @@ let templates = {
         let sizeClass = $placeholder.attr("size-class");
         $template.removeAttr("size-class").addClass(sizeClass);
 
-        // <topic-instance>
-        let $topicInstances = $placeholder.children("topic-instance");
-        $topicInstances.each((i, elm) => {
-            let $topicInstance = $(elm);
-            $repeatContainer.append($topicInstance);
-            templates.topic_instance($topicInstance[0]);
-        });
-
         // <diagram-by-example>
         let $diagramByExamples = $placeholder.children("diagram-by-example");
         $diagramByExamples.each((i, elm) => {
             let $diagramByExample = $(elm);
             $repeatContainer.append($diagramByExample);
             templates.diagram_by_example($diagramByExample[0]);
+        });
+
+        // <topic-instance>
+        let $topicInstances = $placeholder.children("topic-instance");
+        $topicInstances.each((i, elm) => {
+            let $topicInstance = $(elm);
+            $repeatContainer.append($topicInstance);
+            templates.topic_instance($topicInstance[0]);
         });
 
         $placeholder.replaceWith($template);
@@ -896,6 +896,16 @@ let templates = {
         }
         else {
             $template.find("group-carrier").remove();
+        }
+
+        let $placeholderHtmlContent = $placeholder.find("html-content");
+        if($placeholderHtmlContent.length > 0) {
+            let htmlContent = $placeholderHtmlContent.html();
+            $templateHtmlContent = $template.find("html-content");
+            $templateHtmlContent.replaceWith(htmlContent);
+        }
+        else {
+            $template.find("html-content").remove();
         }
 
         $placeholder.replaceWith($template);
