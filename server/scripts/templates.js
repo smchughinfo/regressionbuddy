@@ -297,6 +297,12 @@ let templates = {
             templates.top_text($template.find("top-text")[0]);
         }
 
+        // count-horizontally
+        let isCountHorizontally = $placeholder.is("[count-horizontally]");
+        if(isCountHorizontally) {
+            console.log("--- IMPLEMENT COUNT-HORIZONTALLY ---");
+        }
+
         // <group>
         let $groups = $placeholder.children("group");
         $groups.each((i, groupElm) => {
@@ -898,6 +904,7 @@ let templates = {
             $template.find("group-carrier").remove();
         }
 
+        // <html-content>
         let $placeholderHtmlContent = $placeholder.find("html-content");
         if($placeholderHtmlContent.length > 0) {
             let htmlContent = $placeholderHtmlContent.html();
