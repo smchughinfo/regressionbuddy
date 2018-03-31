@@ -781,6 +781,18 @@ let templates = {
             $template.find("[definition-example-seperator]").removeAttr("definition-example-seperator");
         }
 
+        // [deferred]
+        let isDeferred = $placeholder.is("[deferred]");
+        if(isDeferred) {
+            $template
+                .find(".alert")
+                .removeClass("alert-info")
+                .addClass("alert-warning");
+            $template
+                .find("h4")
+                .append(" (this topic will be covered in a more appropriate context later on)");
+        }
+
         $placeholder.replaceWith($template);
     },
     horizontal_group_3: elm => {

@@ -61,3 +61,14 @@
     margin-top: 1em;
     display: inline-block;
 }
+
+#appendix .alert-warning {
+    border: 3px dashed black;
+    position:relative;
+}
+
+#appendix .alert-warning:after {
+    position:absolute;
+    top:4px;
+    right:4px;
+}
