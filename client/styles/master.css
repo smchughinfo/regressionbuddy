@@ -73,3 +73,10 @@
 .action-blue {
     color: #33CCFF;
 }
+
+.table.no-borders * {
+    border-top-color: transparent !important;
+    border-right-color: transparent !important;
+    border-bottom-color: transparent !important;
+    border-left-color: transparent !important;
+}

@@ -21,5 +21,11 @@
 }
 
 .width-350 {
-    width: 350px;
+    width: 300px;
 }
+
+
+    /* this needs some extra uumph. is 100% temporary until i can take a second look. */
+    .ideal-width-300 {
+        width: 300px;
+    }

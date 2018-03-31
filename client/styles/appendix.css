@@ -56,3 +56,8 @@
     /* subtract the margin from the style above */
     margin-top: -.5rem; 
 }
+
+#appendix .graph .equation-with-fraction {
+    margin-top: 1em;
+    display: inline-block;
+}
