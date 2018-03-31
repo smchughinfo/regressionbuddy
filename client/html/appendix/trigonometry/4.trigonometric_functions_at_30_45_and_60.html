@@ -2,165 +2,65 @@
     <topic-name>Trigonometric Functions at 30°, 45°, and 60°</topic-name>
     <topic-eli5>The trigonometric function values at 30°, 45°, and 60° are easy to derive or memorize.</topic-eli5>
     <topic-definition>
-        <diagram-by-example>
-                <html-header>
-                    <p><strong>Derive at 45°</strong></p>
-                </html-header>
-                <diagram image-size-class="graph-size-1">
-                    /images/trigonometry-appendix/triangle-45-45.svg
-                </diagram>
-                <!--<diagram-url>
-                    https://www.geogebra.org/graphing/WsMf23qV
-                </diagram-url>-->
-                <html-content>
-                    <div style="display:inline-block;">
-                        Make a triangle with legs of length 1. The length of the hypotenuse will therefore be: 
-                        <br>
-                        \(
-                            1^2+1^2=c^2
-                        \)
-                        <br>
-                        \(
-                            2=c^2   
-                        \)
-                        <br>
-                        \(
-                            c=\sqrt{2}
-                        \)
-                        <br>
-                        and the trigonometric ratios at 45° can be read off the triangle.
-                        <br>
-                        <table>
+        <topic-instance>
+            <horizontal-group-3>
+                <graph image-size-class="graph-size-1">
+                    <text-header bold center>Derive at 45°</text-header>
+                    <image-url>/images/trigonometry-appendix/triangle-45-45.svg</image-url>
+                    <caption-html>
+                        <div class="text-left">
+                            Make a triangle with legs of length 1 and use the pythagorean theorem to compute the hypotenuse (\(\sqrt{2}\)).
+                            The trigonometric ratios at 45° can then be read off the triangle.
+                        </div>
+                    </caption-html>
+                </graph>
+                <graph image-size-class="graph-size-1">
+                    <text-header bold center>Derive at 30° and 60°</text-header>
+                    <image-url>/images/trigonometry-appendix/triangle-30-60.svg</image-url>
+                    <caption-html>
+                        <div class="text-left">
+                            Make an equilateral triangle with sides of length 2 and cut it in half. 
+                            Use the pythagorean theorem to compute the length of the second leg (\(\sqrt{3}\)).
+                            The trigonometric ratios at 30° and 60° can then be read off the triangle.
+                        </div>
+                    </caption-html>
+                </graph>
+                <empty-graph>
+                    <text-header bold center>Memorize</text-header>
+                    <caption-html>
+                        <table class="table table-sm trig-30-45-60-ratios-table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">&nbsp;</th>
+                                    <th scope="col">30°</th>
+                                    <th scope="col">45°</th>
+                                    <th scope="col">60°</th>
+                                </tr>
+                            </thead>
                             <tbody>
                                 <tr>
-                                    <td style="padding-right: 30px;">
-                                        \(
-                                            sin 45°=\frac{opp}{hyp}=\frac{1}{\sqrt{2}}=\frac{\sqrt{2}}{2}
-                                        \)
-                                    </td>
-                                    <td style="padding-right: 30px;">
-                                        \(
-                                            cos 45°=\frac{adj}{hyp}=\frac{1}{\sqrt{2}}=\frac{\sqrt{2}}{2}
-                                        \)
-                                    </td>
-                                    <td>
-                                        \(
-                                            tan 45°=\frac{opp}{adj}=\frac{1}{1}=1
-                                        \)
-                                    </td>
+                                    <th scope="row">\(sin\)</th>
+                                    <td>\(\frac{1}{2}\)</td>
+                                    <td>\(\frac{\sqrt{2}}{2}\)</td>
+                                    <td>\(\frac{\sqrt{3}}{2}\)</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">\(cos\)</th>
+                                    <td>\(\frac{\sqrt{3}}{2}\)</td>
+                                    <td>\(\frac{\sqrt{2}}{2}\)</td>
+                                    <td>\(\frac{1}{2}\)</td>
+                                </tr>
+                                <tr>
+                                    <th scope="row">\(tan\)</th>
+                                    <td>\(\frac{\sqrt{3}}{3}\)</td>
+                                    <td>\(1\)</td>
+                                    <td>\(\sqrt{3}\)</td>
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
-                </html-content>
-            </diagram-by-example>
-        <diagram-by-example>
-            <html-header>
-                <p><strong>Derive at 30° and 60°</strong></p>
-            </html-header>
-            <diagram image-size-class="graph-size-1">
-                /images/trigonometry-appendix/triangle-30-60.svg
-            </diagram>
-            <!--<diagram-url>
-                https://www.geogebra.org/graphing/kbNc2ppa
-            </diagram-url>-->
-            <html-content>
-                <div style="display:inline-block;">
-                    Make an equilateral triangle with sides of length 2 and cut it in half. The length of the new leg will therefore be: 
-                    <br>
-                    \(
-                        1^2+b^2=2^2
-                    \)
-                    <br>
-                    \(
-                        1+b^2=4   
-                    \)
-                    <br>
-                    \(
-                        b^2=3
-                    \)
-                    <br>
-                    \(
-                        b=\sqrt{3}
-                    \)
-                    <br>
-                    and the trigonometric ratios at 30° and 60° can be read off the triangle.
-                    <br>
-                    <table>
-                        <tbody>
-                            <tr>
-                                <td style="padding-right: 30px;">
-                                    \(
-                                        sin 30°=\frac{opp}{hyp}=\frac{1}{2}
-                                    \)
-                                </td>
-                                <td style="padding-right: 30px;">
-                                    \(
-                                        cos 30°=\frac{adj}{hyp}=\frac{\sqrt{3}}{2}
-                                    \)
-                                </td>
-                                <td>
-                                    \(
-                                        tan 30°=\frac{opp}{adj}=\frac{1}{\sqrt{3}}=\frac{\sqrt{3}}{3}
-                                    \)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td style="padding-right: 30px;">
-                                    \(
-                                        sin 60°=\frac{opp}{hyp}=\frac{\sqrt{3}}{2}
-                                    \)
-                                </td>
-                                <td style="padding-right: 30px;">
-                                    \(
-                                        cos 60°=\frac{adj}{hyp}=\frac{1}{2}
-                                    \)
-                                </td>
-                                <td>
-                                    \(
-                                        tan 60°=\frac{opp}{adj}=\frac{\sqrt{3}}{1}=\sqrt{3}
-                                    \)
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </html-content>
-        </diagram-by-example>
-        <topic-instance>
-            <topic-instance-name>Memorize</topic-instance-name>
-            <topic-instance-html>
-                <table class="table table-sm trig-30-45-60-ratios-table">
-                    <thead>
-                        <tr>
-                            <th scope="col">&nbsp;</th>
-                            <th scope="col">30°</th>
-                            <th scope="col">45°</th>
-                            <th scope="col">60°</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th scope="row">\(sin\)</th>
-                            <td>\(\frac{1}{2}\)</td>
-                            <td>\(\frac{\sqrt{2}}{2}\)</td>
-                            <td>\(\frac{\sqrt{3}}{2}\)</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">\(cos\)</th>
-                            <td>\(\frac{\sqrt{3}}{2}\)</td>
-                            <td>\(\frac{\sqrt{2}}{2}\)</td>
-                            <td>\(\frac{1}{2}\)</td>
-                        </tr>
-                        <tr>
-                            <th scope="row">\(tan\)</th>
-                            <td>\(\frac{\sqrt{3}}{3}\)</td>
-                            <td>\(1\)</td>
-                            <td>\(\sqrt{3}\)</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </topic-instance-html>
+                    </caption-html>
+                </empty-graph>
+            </horizontal-group-3>
         </topic-instance>
     </topic-definition>
     <!--▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼-->

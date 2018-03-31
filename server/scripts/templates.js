@@ -867,8 +867,7 @@ let templates = {
             $template.addClass(breakPointClass);
         }
         else {
-            console.log("MIGHT WANT TO PUT THIS BACK. COMMENTED OUT TO GET 30,45,60 ON THE PAGE.");
-            //throw "diagram_by_example should have a break point class.";
+            throw "diagram_by_example should have a break point class.";
         }
 
         // <html-header>
