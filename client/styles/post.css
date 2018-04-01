@@ -37,6 +37,7 @@
 
 .problem > * {
     white-space: normal;
+    width: 100%;
 }
 
 .problem > *,
@@ -123,4 +124,9 @@
 
 #post .question-system-of-equations {
     display: inline-block;
+}
+
+#post .trig-30-45-60-ratios-table {
+    max-width: 300px;
+    margin-top: 0;
 }
