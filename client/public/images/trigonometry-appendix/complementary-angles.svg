@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" version="1.1" width="500" height="300" id="svg51" sodipodi:docname="complementary-angles.svg" inkscape:version="0.92.3 (2405546, 2018-03-11)" viewBox="0 0 500 300">
+  <metadata id="metadata55">
+    <rdf:RDF>
+      <cc:Work rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>
+        </dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview pagecolor="#ffffff" bordercolor="#666666" borderopacity="1" objecttolerance="10" gridtolerance="10" guidetolerance="10" inkscape:pageopacity="0" inkscape:pageshadow="2" inkscape:window-width="2160" inkscape:window-height="1360" id="namedview53" showgrid="false" inkscape:zoom="1.5577558" inkscape:cx="315.0159" inkscape:cy="106.82781" inkscape:window-x="-11" inkscape:window-y="-11" inkscape:window-maximized="1" inkscape:current-layer="svg51" />
+  <defs id="defs5">
+    <clipPath id="cUAZSzIZutKq">
+      <path d="M 0,0 H 496 V 303 H 0 Z" id="path2" inkscape:connector-curvature="0" style="fill:none;stroke:none" />
+    </clipPath>
+  </defs>
+  <rect id="rect1050" width="497.5" height="297.5" x="1.25" y="1.25" fill="rgba(0,0,0,0)" />
+  <g id="g1094">
+    <rect style="fill:#000000;fill-opacity:0" id="rect7" height="300" width="500" y="0" x="0" />
+    <path style="fill:none;stroke:#000000;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" inkscape:connector-curvature="0" id="path9" stroke-miterlimit="10" d="M 21.267775,282.44906 V 17.550943" />
+    <path style="fill:none;stroke:#000000;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" inkscape:connector-curvature="0" id="path11" stroke-miterlimit="10" d="M 21.267775,17.550943 478.73222,282.44906" />
+    <path style="fill:none;stroke:#000000;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" inkscape:connector-curvature="0" id="path13" stroke-miterlimit="10" d="M 478.73222,282.44906 H 21.267775" />
+    <path style="fill:none;stroke:#000000;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:0.69803922;paint-order:fill stroke markers" inkscape:connector-curvature="0" id="path15" stroke-miterlimit="10" d="m 21.267775,259.45277 h 22.99192" />
+    <path style="fill:none;stroke:#000000;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:0.69803922;paint-order:fill stroke markers" inkscape:connector-curvature="0" id="path17" stroke-miterlimit="10" d="m 44.259695,259.45277 v 22.99629" />
+    <g id="g31" transform="matrix(30.782226,0,0,30.788068,-287.55431,-124.0343)" style="stroke-width:0.8120802">
+      <g id="g21" transform="translate(10.349493,6.5720812)" style="stroke-width:0.8120802">
+        <path style="fill:#000000;stroke:none;stroke-width:0.8120802;paint-order:stroke fill markers" inkscape:connector-curvature="0" id="path19" d="m 0.153,-0.592 v 0.206 q 0.046,-0.041 0.107,-0.041 0.078,0 0.1335,0.0655 0.0555,0.0655 0.0555,0.1585 0,0.094 -0.0645,0.1595 Q 0.32,0.022 0.23,0.022 0.171,0.022 0.121,-0.005 0.071,-0.032 0.039,-0.076 l 0.033,-0.056 q 0.022,0.041 0.065,0.067 0.043,0.026 0.092,0.026 0.008,0 0.0175,-0.001 Q 0.256,-0.041 0.2785,-0.05 0.301,-0.059 0.317,-0.0745 0.333,-0.09 0.3465,-0.124 0.36,-0.158 0.36,-0.205 0.36,-0.288 0.33,-0.327 0.3,-0.366 0.259,-0.366 0.219,-0.366 0.19,-0.3435 0.161,-0.321 0.147,-0.287 H 0.081 v -0.369 h 0.335 v 0.064 z" />
+      </g>
+      <g id="g25" transform="translate(10.849495,6.5720812)" style="stroke-width:0.8120802">
+        <path style="fill:#000000;stroke:none;stroke-width:0.8120802;paint-order:stroke fill markers" inkscape:connector-curvature="0" id="path23" d="m 0.232,-0.585 h -0.19 v -0.071 h 0.415 v 0.065 Q 0.422,-0.552 0.3885,-0.5 0.355,-0.448 0.318,-0.3715 0.281,-0.295 0.2585,-0.195 0.236,-0.095 0.236,0.011 H 0.152 q 0,-0.336 0.237,-0.597 H 0.268 q -0.006,0 -0.018,5e-4 -0.012,5e-4 -0.018,5e-4 z" />
+      </g>
+      <g id="g29" transform="matrix(0.7,0,0,0.7,11.349497,6.1591892)" style="stroke-width:0.8120802">
+        <path style="fill:#000000;stroke:none;stroke-width:0.8120802;paint-order:stroke fill markers" inkscape:connector-curvature="0" id="path27" d="m 0.443,-0.25 v 0 q 0,0.089 -0.067,0.147 -0.055,0.047 -0.127,0.047 -0.088,0 -0.146,-0.068 -0.047,-0.055 -0.047,-0.126 0,-0.089 0.067,-0.147 0.055,-0.047 0.127,-0.047 0.088,0 0.146,0.068 0.047,0.055 0.047,0.126 M 0.25,-0.096 v 0 q 0.075,0 0.121,-0.06 0.032,-0.042 0.032,-0.094 0,-0.076 -0.06,-0.122 -0.041,-0.032 -0.093,-0.032 -0.077,0 -0.124,0.062 -0.03,0.041 -0.03,0.092 0,0.075 0.059,0.121 0.042,0.033 0.095,0.033 z" />
+      </g>
+    </g>
+    <g transform="translate(-6,-2)" id="g1006">
+      <g id="g39" transform="matrix(30.782226,0,0,30.788068,396.13846,275.40708)" style="stroke-width:0.8120802">
+        <path style="fill:#000000;stroke:none;stroke-width:0.8120802;paint-order:stroke fill markers" inkscape:connector-curvature="0" id="path37" d="M 0.092,-0.514 0.056,-0.568 Q 0.087,-0.62 0.1385,-0.649 0.19,-0.678 0.248,-0.678 q 0.075,0 0.1285,0.044 0.0535,0.044 0.0535,0.108 0,0.05 -0.028,0.0965 -0.028,0.0465 -0.083,0.0755 0.056,0.017 0.097,0.0635 0.041,0.0465 0.041,0.1105 0,0.081 -0.0605,0.1415 Q 0.336,0.022 0.247,0.022 q -0.124,0 -0.205,-0.104 l 0.011,-0.06 q 0.032,0.049 0.085,0.076 0.053,0.027 0.107,0.027 0.056,0 0.0895,-0.041 0.0335,-0.041 0.0335,-0.101 0,-0.022 -0.0055,-0.044 Q 0.357,-0.247 0.344,-0.2705 0.331,-0.294 0.3035,-0.309 0.276,-0.324 0.238,-0.324 H 0.167 V -0.385 Q 0.242,-0.391 0.246,-0.392 0.291,-0.402 0.3195,-0.4405 0.348,-0.479 0.348,-0.526 0.348,-0.571 0.3185,-0.5955 0.289,-0.62 0.247,-0.62 q -0.048,0 -0.091,0.028 -0.043,0.028 -0.064,0.078 z" />
+      </g>
+      <g id="g43" transform="matrix(21.547558,0,0,21.551648,411.52963,262.69493)" style="stroke-width:0.8120802">
+        <path style="fill:#000000;stroke:none;stroke-width:0.8120802;paint-order:stroke fill markers" inkscape:connector-curvature="0" id="path41" d="m 0.443,-0.25 v 0 q 0,0.089 -0.067,0.147 -0.055,0.047 -0.127,0.047 -0.088,0 -0.146,-0.068 -0.047,-0.055 -0.047,-0.126 0,-0.089 0.067,-0.147 0.055,-0.047 0.127,-0.047 0.088,0 0.146,0.068 0.047,0.055 0.047,0.126 M 0.25,-0.096 v 0 q 0.075,0 0.121,-0.06 0.032,-0.042 0.032,-0.094 0,-0.076 -0.06,-0.122 -0.041,-0.032 -0.093,-0.032 -0.077,0 -0.124,0.062 -0.03,0.041 -0.03,0.092 0,0.075 0.059,0.121 0.042,0.033 0.095,0.033 z" />
+      </g>
+      <g id="g39-7" transform="matrix(30.783133,0,0,30.788975,380.9935,275.40664)" style="stroke-width:0.8120563">
+        <path style="fill:#000000;stroke:none;stroke-width:0.8120563;paint-order:stroke fill markers" inkscape:connector-curvature="0" id="path37-6" d="M 0.092,-0.514 0.056,-0.568 Q 0.087,-0.62 0.1385,-0.649 0.19,-0.678 0.248,-0.678 q 0.075,0 0.1285,0.044 0.0535,0.044 0.0535,0.108 0,0.05 -0.028,0.0965 -0.028,0.0465 -0.083,0.0755 0.056,0.017 0.097,0.0635 0.041,0.0465 0.041,0.1105 0,0.081 -0.0605,0.1415 Q 0.336,0.022 0.247,0.022 q -0.124,0 -0.205,-0.104 l 0.011,-0.06 q 0.032,0.049 0.085,0.076 0.053,0.027 0.107,0.027 0.056,0 0.0895,-0.041 0.0335,-0.041 0.0335,-0.101 0,-0.022 -0.0055,-0.044 Q 0.357,-0.247 0.344,-0.2705 0.331,-0.294 0.3035,-0.309 0.276,-0.324 0.238,-0.324 H 0.167 V -0.385 Q 0.242,-0.391 0.246,-0.392 0.291,-0.402 0.3195,-0.4405 0.348,-0.479 0.348,-0.526 0.348,-0.571 0.3185,-0.5955 0.289,-0.62 0.247,-0.62 q -0.048,0 -0.091,0.028 -0.043,0.028 -0.064,0.078 z" />
+      </g>
+    </g>
+  </g>
+</svg>

@@ -1,7 +1,7 @@
 const { readFileSync, writeFileSync, watchFile, unwatchFile, mkdirSync } = require("fs");
 const { normalize, sep} = require("path");
 const compressor = require("node-minify");
-const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig, sortObjectArrayByKey, orderSubjects, getAppendixFiles } = require("./utilities.js");
+const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig, sortObjectArrayByKey, orderSubjects, getAppendixFiles, getSimpleTopicString } = require("./utilities.js");
 const { applyTemplates } = require("./templates.js");
 const zlib = require('zlib');
 const { minify } = require("html-minifier");
@@ -81,6 +81,7 @@ const integrateSiteCSS = () => {
             `${process.env.clientDir}/styles/cheat_code.css`,
         `${process.env.clientDir}/styles/appendix.css`,
             `${process.env.clientDir}/styles/wider_line.css`,
+        `${process.env.clientDir}/styles/trigonometry_appendix.css`,
         `${process.env.clientDir}/styles/glossary.css`,
         `${process.env.clientDir}/styles/review.css`,
         `${process.env.clientDir}/styles/404.css`,
@@ -193,7 +194,7 @@ const buildPostConfiguration = (postNumber, outFile, subject) => {
 
     subject = subject.replace(/_/g, "-");
     let links = config.topics[subject].map(topic => {
-        return `<a href='/appendix/${subject}#${topic.toLowerCase().replace(/ /g,"-")}'>${topic}</a>`;
+        return `<a href='/appendix/${subject}#${getSimpleTopicString(topic)}'>${topic}</a>`;
     });
     outFile = outFile.replace("[POST TOPICS]", links.join(", "));
 
@@ -215,7 +216,7 @@ const setPostNavigationLinks = (outFile, postNumber, subject) => {
     console.log("UNSET HARDCODE TO TRUE");
 
     // first and prev
-    if(true || postNumber === 1 || inReview) {
+    if(postNumber === 1 || inReview) {
         $('[data-link-to="first"]').parent().addClass("disabled");
         $('[data-link-to="previous"]').parent().addClass("disabled");
     }
@@ -226,7 +227,7 @@ const setPostNavigationLinks = (outFile, postNumber, subject) => {
     }
 
     // random
-    if(true || last === 1 || inReview) {
+    if(last === 1 || inReview) {
         $('[data-link-to="random"]').parent().addClass("disabled");
     }
     else {
@@ -235,7 +236,7 @@ const setPostNavigationLinks = (outFile, postNumber, subject) => {
     }
 
     // next and last
-    if(true || postNumber === last || inReview) {
+    if(postNumber === last || inReview) {
         $('[data-link-to="next"]').parent().addClass("disabled");   
         $('[data-link-to="last"]').parent().addClass("disabled");           
     }

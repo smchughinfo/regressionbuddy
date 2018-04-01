@@ -1,0 +1,21 @@
+/*
+    this could be the default color scheme for tables but tried it on calculus one and two sided limites,
+    which is arguably not a table, and it didn't look very good. so leaving this alone untilt here are more tables.
+*/
+.trig-30-45-60-ratios-table {
+    margin-top: 22px;
+    text-align: center;
+}
+
+.trig-30-45-60-ratios-table thead th {
+    border-top-color: rgba(0,0,0,0) !important;
+}
+.trig-30-45-60-ratios-table thead th {
+    border-bottom-color: rgba(0,0,0,.8);
+}
+
+.trig-30-45-60-ratios-table th,
+.trig-30-45-60-ratios-table td,
+.trig-30-45-60-ratios-table thead th {
+    border-top-color: rgba(0,0,0,.4);
+}

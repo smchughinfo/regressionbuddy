@@ -1,5 +1,5 @@
 const { readFileSync } = require("fs");
-
+const cheerio = require('cheerio');
 const { statSync, readdirSync, unlinkSync } = require("fs");
 const { join, sep } = require("path");
 
@@ -122,13 +122,19 @@ const sortObjectArrayByKey = (objArray, key) => {
     });
 };
 
+const getSimpleTopicString = topicString => {
+    topicString = decodeHTML(topicString);
+    return topicString.replace(/ /g, "-").replace(/_/g, "-").replace(/,/g, "").replace(/°/g, "").toLowerCase();
+}
+
 const getTopicFiles = (subject, topics) => {
-    topics = topics.map(topic => topic.replace(/ /g, "_").replace(/-/g, "_").replace(/,/g, "").toLowerCase());
+    topics = topics.map(getSimpleTopicString);
 
     var allFiles = getFiles(`${process.env.clientDir}/html/appendix/${subject}`);
     var topicFiles = allFiles.filter(file => {
         file = file.replace(/^.*?\./, "");
         file = file.replace(/\.html/, "");
+        file = file.replace(/_/g, "-");
         return topics.indexOf(file) !== -1;
     });
     
@@ -150,6 +156,11 @@ const getAppendixFiles = (subject, inReview)  => {
     return getTopicFiles(subject, topics);
 };
 
+const decodeHTML = html => {
+    let $ = cheerio.load("<textarea id='decoder'>" + html + "</textarea>");
+    return $.root().find("#decoder").text();
+};
+
 module.exports = {
     existsSync: existsSync,
     getDirectories: getDirectories,
@@ -168,5 +179,6 @@ module.exports = {
     getPostConfig: getPostConfig,
     sortObjectArrayByKey: sortObjectArrayByKey,
     orderSubjects: orderSubjects,
-    getAppendixFiles: getAppendixFiles
+    getAppendixFiles: getAppendixFiles,
+    getSimpleTopicString: getSimpleTopicString
 };

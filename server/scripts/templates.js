@@ -3,7 +3,10 @@
 
 const { readFileSync, writeFileSync } = require("fs");
 const cheerio = require('cheerio');
+const { getSimpleTopicString } = require('./utilities.js')
 const mathjaxTransforms = require('./mathjax_transforms.js');
+
+let $ = null;
 
 const applyTemplates = (html, partial) => {
     $ = cheerio.load(html);
@@ -292,6 +295,12 @@ let templates = {
         else {
             $template.find("top-text").replaceWith($topText);
             templates.top_text($template.find("top-text")[0]);
+        }
+
+        // count-horizontally
+        let isCountHorizontally = $placeholder.is("[count-horizontally]");
+        if(isCountHorizontally) {
+            console.log("--- IMPLEMENT COUNT-HORIZONTALLY ---");
         }
 
         // <group>
@@ -635,20 +644,20 @@ let templates = {
         let sizeClass = $placeholder.attr("size-class");
         $template.removeAttr("size-class").addClass(sizeClass);
 
-        // <topic-instance>
-        let $topicInstances = $placeholder.children("topic-instance");
-        $topicInstances.each((i, elm) => {
-            let $topicInstance = $(elm);
-            $repeatContainer.append($topicInstance);
-            templates.topic_instance($topicInstance[0]);
-        });
-
         // <diagram-by-example>
         let $diagramByExamples = $placeholder.children("diagram-by-example");
         $diagramByExamples.each((i, elm) => {
             let $diagramByExample = $(elm);
             $repeatContainer.append($diagramByExample);
             templates.diagram_by_example($diagramByExample[0]);
+        });
+
+        // <topic-instance>
+        let $topicInstances = $placeholder.children("topic-instance");
+        $topicInstances.each((i, elm) => {
+            let $topicInstance = $(elm);
+            $repeatContainer.append($topicInstance);
+            templates.topic_instance($topicInstance[0]);
         });
 
         $placeholder.replaceWith($template);
@@ -718,7 +727,7 @@ let templates = {
         // <topic-name>
         let name = $placeholder.children("topic-name").html();
         $template.find("[topic-name]").removeAttr("topic-name").html(name);
-        $template.attr("id", name.toLowerCase().replace(/ /g, "-"))
+        $template.attr("id", getSimpleTopicString(name));
 
         // <topic-primer>
         let $topicPrimer = $placeholder.children("topic-primer");
@@ -770,6 +779,18 @@ let templates = {
         }
         else {
             $template.find("[definition-example-seperator]").removeAttr("definition-example-seperator");
+        }
+
+        // [deferred]
+        let isDeferred = $placeholder.is("[deferred]");
+        if(isDeferred) {
+            $template
+                .find(".alert")
+                .removeClass("alert-info")
+                .addClass("alert-warning");
+            $template
+                .find("h4")
+                .append(" (this topic will be covered in a more appropriate context later on)");
         }
 
         $placeholder.replaceWith($template);
@@ -844,7 +865,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/diagram_by_example.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["html-header", "diagram", "diagram-url", "group-carrier"];
+        let childTypes = ["html-header", "diagram", "diagram-url", "group-carrier", "html-content"];
         let childTypesSelector = childTypes.join(",");
         let $items = $placeholder.children(childTypesSelector);
 
@@ -885,9 +906,25 @@ let templates = {
 
         // <function-group-carrier>
         let $placeholderGroupCarrier = $placeholder.find("group-carrier");
-        let $templateGroupCarrier = $template.find("group-carrier");
-        $templateGroupCarrier.replaceWith($placeholderGroupCarrier);
-        templates.group_carrier($placeholderGroupCarrier[0]);
+        if($placeholderGroupCarrier.length > 0) {
+            let $templateGroupCarrier = $template.find("group-carrier");
+            $templateGroupCarrier.replaceWith($placeholderGroupCarrier);
+            templates.group_carrier($placeholderGroupCarrier[0]);
+        }
+        else {
+            $template.find("group-carrier").remove();
+        }
+
+        // <html-content>
+        let $placeholderHtmlContent = $placeholder.find("html-content");
+        if($placeholderHtmlContent.length > 0) {
+            let htmlContent = $placeholderHtmlContent.html();
+            $templateHtmlContent = $template.find("html-content");
+            $templateHtmlContent.replaceWith(htmlContent);
+        }
+        else {
+            $template.find("html-content").remove();
+        }
 
         $placeholder.replaceWith($template);
     },
