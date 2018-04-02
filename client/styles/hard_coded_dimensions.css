@@ -24,6 +24,10 @@
     width: 350px;
 }
 
+.max-width-400 {
+    max-width: 400px;
+}
+
 
     /* this needs some extra uumph. is 100% temporary until i can take a second look. */
     .ideal-width-300 {
