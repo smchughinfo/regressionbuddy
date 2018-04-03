@@ -139,7 +139,7 @@ const rebuildAlphaNumeric = urn => {
 
 const rebuildPost = urn => {
     if(isPostRegex.test(urn) || isPostReviewRegex.test(urn)) {
-        let postNumber = /\d+/.exec(urn)[0];
+        let postNumber = parseInt(/\d+/.exec(urn)[0], 10);
         let subject = /[a-z]+/.exec(urn)[0];
         buildPost(postNumber, subject);
     }
@@ -148,7 +148,7 @@ const rebuildPost = urn => {
 const rebuildAppendix = urn => {
     if(isAppendixRegex.test(urn) || isAppendixReviewRegex.test(urn)) {
         let postNumber = /\d+/.exec(urn);
-        postNumber = postNumber ? postNumber[0] : null;
+        postNumber = postNumber ? parseInt(postNumber[0], 10) : null;
         let subject = /\/(appendix)*\/[a-z]+/.exec(urn)[0].replace("appendix", "").replace(/\//g, "");
         buildAppendix(postNumber, subject); 
     }

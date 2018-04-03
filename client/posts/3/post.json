@@ -1,11 +1,11 @@
 {
-  "inReview": true,
+  "inReview": false,
   "date": "4/22/2018",
   "phrase": "post 3 phrase",
   "topics": {
     "algebra": ["The Multiplication Property of Equality"],
     "trigonometry": ["Trigonometric Functions at 30°, 45°, and 60°", "Complementary Angles", "Cofunction Identities"],
-    "calculus": [""],
+    "calculus": ["The Limit of a Polynomial Function", "Common Limits"],
     "linear-algebra": [""],
     "statistics": [""],
     "vector-calculus": [""]
