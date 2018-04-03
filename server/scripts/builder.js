@@ -103,6 +103,12 @@ const minimizeSiteCSS = () => {
 };
 
 const buildMasterPage = () => {
+    integrateSiteJavaScript();
+    minimizeSiteJavaScript();
+
+    integrateSiteCSS();
+    minimizeSiteCSS();
+    
     let generalPath = normalize(`${process.env.clientDir}/html`);
     let masterPage = readFileSync(`${generalPath}/master.html`).toString();
     let cssFile = process.env.name === "dev" ? "site.css" : "site.min.css";
@@ -334,6 +340,7 @@ const buildGlossary = subject => {
 };
 
 const buildAppendix = (subject, includeReview) => {
+    console.log("-----------------------------k " + subject)
     let appendixTemplate = readFileSync(`${process.env.clientDir}/html/appendix/appendix.html`).toString();
     let $appendixTemplate = $("<appendix-template-container>" + appendixTemplate + "</appendix-template-container>");
     let outFilePath = `${process.env.buildDir}/appendix.${subject}.html`;
@@ -423,6 +430,8 @@ const buildPages = () => {
 };
 
 const buildIndex = () => {
+    buildPost(process.env.lastPost, process.env.defaultSubject); // this page gets built twice now (when building all pages). added this line so calls to buildIndex didn't have to know to build the latest post for the default subject first. 
+
     let lastPost = getLargestPostNumber();
     let defaultSubject = process.env.defaultSubject;
     let indexFileContentPath = `${process.env.buildDir}/${lastPost}.${defaultSubject}.html`;
@@ -440,65 +449,67 @@ const buildIndex = () => {
 
 const buildReviewAppendixes = () => {
     getPostNumbers(true).forEach(postNumber => {
-        getPostSubjects(postNumber).forEach(subject => {
-            /*
-                the appendixes are getting built twice. once with the review topics in them and once without.
-                i had this all refactored pretty good but then found out cheerio was stripping everything inside
-                <head> and the doctype and god knows what else. so reverted that and made this bad code even worse.
-                this function expects the appendix to be saved in the build directory with all topics in it.
-                this code strips out the non-review topics and then saves the review appendix. then the appendix
-                gets built again later on. this definitely needs a refactor now.
-            */
-            buildAppendix(subject, true);
-
-            let config = getPostConfig(postNumber);
-            let postTopics = config.topics[subject.replace(/_/g, "-")];            
-            let appendix = readFileSync(`${process.env.buildDir}/appendix.${subject}.html`).toString();
-            let appendixTitle = `${subject} Appendix`;
-            let appendixOutFilePath = `${process.env.buildDir}/${postNumber}.appendix.${subject}.review.html`;
-        
-            postTopics = postTopics.map(topic => {
-                return topic.toLowerCase().replace(/ /g, "-");
-            });
-
-            let $ = cheerio.load(appendix);
-            let topics = $.root().find("#appendix > *");
-            topics.each((i, elm) => {
-                let topic = $(elm).attr("id") || "";
-                if(postTopics.indexOf(topic) === -1) {
-                    $(elm).remove();
-                }
-                else {
-                    $(elm).after("<br>")
-                }
-            });
-
-            let title = $.root().find("title");
-            let body = $.root().find("body");
-            let h4 = $.root().find("body > h4");
-            let nav = $.root().find("nav");
-            let appendixElm = $.root().find("#appendix");
-            let meta = $.root().find("meta[name='description']");
-            title.html(`Review - ${title.html()}`);
-            meta.attr("content", `Page Under Review: ${meta.attr("content")}`);
-            h4.html(`Post ${postNumber} - ${h4.html()} Review`);
-            nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
-            appendixElm.append('<div class="container-fluid">' + readFileSync(`${process.env.postTemplatesDir}/show_comments_link.html`).toString() + '</div><br>');
-            appendixElm.after(readFileSync(`${process.env.postTemplatesDir}/comments.html`).toString());
-            console.log("HAS THIS BECOME AN ISSUE?");
-            body.find("#comments > br:first-of-type").remove(); // this is pretty bad.
-            body.append("<br><br>"); // make it easier to see comments
-            let outFile = $.html();
-
-            if(isDev() === false) {
-                outFile = minimizePageHTML(outFile);
-            }
-
-            writeFileSync(appendixOutFilePath, outFile);
-            addGraphic(appendixOutFilePath);
-        });
+        getPostSubjects(postNumber).forEach(subject => buildReviewAppendix(postNumber, subject));
     });
 }
+
+const buildReviewAppendix = (postNumber, subject) => {
+    /*
+        the appendixes are getting built twice. once with the review topics in them and once without.
+        i had this all refactored pretty good but then found out cheerio was stripping everything inside
+        <head> and the doctype and god knows what else. so reverted that and made this bad code even worse.
+        this function expects the appendix to be saved in the build directory with all topics in it.
+        this code strips out the non-review topics and then saves the review appendix. then the appendix
+        gets built again later on. this definitely needs a refactor now.
+    */
+    buildAppendix(subject, true);
+
+    let config = getPostConfig(postNumber);
+    let postTopics = config.topics[subject.replace(/_/g, "-")];            
+    let appendix = readFileSync(`${process.env.buildDir}/appendix.${subject}.html`).toString();
+    let appendixTitle = `${subject} Appendix`;
+    let appendixOutFilePath = `${process.env.buildDir}/${postNumber}.appendix.${subject}.review.html`;
+
+    postTopics = postTopics.map(topic => {
+        return  getSimpleTopicString(topic);
+    });
+
+    let $ = cheerio.load(appendix);
+    let topics = $.root().find("#appendix > *");
+    topics.each((i, elm) => {
+        let topic = $(elm).attr("id") || "";
+        if(postTopics.indexOf(topic) === -1) {
+            $(elm).remove();
+        }
+        else {
+            $(elm).after("<br>")
+        }
+    });
+
+    let title = $.root().find("title");
+    let body = $.root().find("body");
+    let h4 = $.root().find("body > h4");
+    let nav = $.root().find("nav");
+    let appendixElm = $.root().find("#appendix");
+    let meta = $.root().find("meta[name='description']");
+    title.html(`Review - ${title.html()}`);
+    meta.attr("content", `Page Under Review: ${meta.attr("content")}`);
+    h4.html(`Post ${postNumber} - ${h4.html()} Review`);
+    nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
+    appendixElm.append('<div class="container-fluid">' + readFileSync(`${process.env.postTemplatesDir}/show_comments_link.html`).toString() + '</div><br>');
+    appendixElm.after(readFileSync(`${process.env.postTemplatesDir}/comments.html`).toString());
+    console.log("HAS THIS BECOME AN ISSUE?");
+    body.find("#comments > br:first-of-type").remove(); // this is pretty bad.
+    body.append("<br><br>"); // make it easier to see comments
+    let outFile = $.html();
+
+    if(isDev() === false) {
+        outFile = minimizePageHTML(outFile);
+    }
+
+    writeFileSync(appendixOutFilePath, outFile);
+    addGraphic(appendixOutFilePath);
+};
 
 const buildReviewPage = () => {
     let postsInReview = getPostNumbersInReview();
@@ -554,7 +565,7 @@ const rebuildOnChange = () => {
     let allFiles = getFilesRecursively(process.env.clientDir);
     allFiles.forEach(file => {
         unwatchFile(file);
-        watchFile(file, build);
+        watchFile(file, buildAll);
     });
 };
 
@@ -725,7 +736,7 @@ const addGraphic = path => {
     writeFileSync(path, file);
 }
 
-const lint = () => {
+const lint = () => { // async but i guess it doesn't matter (the rest of the build process is synchronous).
     let errorNum = 1;
     let builtFiles = getFiles(process.env.buildDir);
     let lintedFiles = 0;
@@ -777,17 +788,11 @@ const lint = () => {
     });
 }
 
-const build = () => {
+const buildAll = () => {
     console.log("building...");
     console.log("WHEN YOU DO SPECIAL LIMITS MAKE SURE TO INCLUDE PAGE 105.");
 
     createOrCleanBuildDirectory();
-    
-    integrateSiteJavaScript();
-    minimizeSiteJavaScript();
-
-    integrateSiteCSS();
-    minimizeSiteCSS();
 
     buildMasterPage();
     buildPages();
@@ -796,16 +801,35 @@ const build = () => {
     generateSiteMap();
     generateSiteRSS();
 
-    // async but i guess it doesn't matter
     lint();
 
-    if(isDev()) {
+    if(isDev() && process.env.buildOnRequest === false) {
         rebuildOnChange();
     }
 
     console.log('\u0007');
 };
 
+const rebuildPage = (rebuildFunction, args) => {
+    buildMasterPage();
+    rebuildFunction.apply(this, args);
+    lint();
+};
+
+
+const rebuildAppendix = (postNumber, subject) => {
+    console.log(postNumber + " | " + subject);
+    if(postNumber) {
+        buildAppendix(subject, true);
+        buildReviewAppendix(postNumber, subject);
+    }
+    
+    buildAppendix(subject, false);
+};
+
 module.exports = {
-    build: build
+    buildAll: buildAll,
+    buildIndex: () => rebuildPage(buildIndex),
+    buildPost: (...args) => rebuildPage(buildPost, args),
+    buildAppendix: (...args) => rebuildPage(rebuildAppendix, args) // the appendix build process is a little different and in need of a refactor. that's why this function call is a little different.
 };

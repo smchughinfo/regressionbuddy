@@ -11,3 +11,8 @@ REMINDER - font size on trigonometry appendix is medium. ...still might have to 
 note about svgs in calculus appendix post 2
 crop rectangle is 350x350
 then resize that to 518x518
+
+
+alt color is:
+a38f8c
+163 143 140
