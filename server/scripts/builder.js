@@ -817,7 +817,6 @@ const rebuildPage = (rebuildFunction, args) => {
 
 
 const rebuildAppendix = (postNumber, subject) => {
-    console.log(postNumber + " | " + subject);
     if(postNumber) {
         buildAppendix(subject, true);
         buildReviewAppendix(postNumber, subject);
