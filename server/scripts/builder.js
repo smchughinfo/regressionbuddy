@@ -340,7 +340,6 @@ const buildGlossary = subject => {
 };
 
 const buildAppendix = (subject, includeReview) => {
-    console.log("-----------------------------k " + subject)
     let appendixTemplate = readFileSync(`${process.env.clientDir}/html/appendix/appendix.html`).toString();
     let $appendixTemplate = $("<appendix-template-container>" + appendixTemplate + "</appendix-template-container>");
     let outFilePath = `${process.env.buildDir}/appendix.${subject}.html`;
