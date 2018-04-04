@@ -5,7 +5,7 @@
   "topics": {
     "algebra": ["The Multiplication Property of Equality"],
     "trigonometry": ["Trigonometric Functions at 30°, 45°, and 60°", "Complementary Angles", "Cofunction Identities"],
-    "calculus": ["The Limit of a Polynomial Function", "Common Limits", "The Squeeze Theorem"],
+    "calculus": ["Common Limits", "The Squeeze Theorem"],
     "linear-algebra": [""],
     "statistics": [""],
     "vector-calculus": [""]

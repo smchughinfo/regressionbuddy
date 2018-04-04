@@ -32,31 +32,18 @@
                     <table class="table text-left">
                         <tbody>
                             <tr>
-                                <td>
-                                    \(
-                                        f(x) = x^2
-                                    \)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    \(
-                                        g(x) = x^2sin\left(\frac{1}{x}\right)
-                                    \)
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    \(
-                                        h(x) = -x^2
-                                    \)
-                                </td>
-                            </tr>
-                            <tr>
                                 <td> 
+                                    We know that 
+                                    \(
+                                        -1 \leq sin(x) \leq 1
+                                    \)
+                                    and so
+                                    \(
+                                        -x^2 \leq x^2sin(x) \leq x^2
+                                    \).
+                                    Therefore
+                                    \( f(x) \leq g(x) \leq h(x) \).
                                     Since
-                                    \( f(x) \leq g(x) \leq h(x) \)
-                                    and
                                     \(
                                         \lim\limits_{x\to 0} f(x)
                                         =
@@ -64,7 +51,7 @@
                                         =
                                         0
                                     \)
-                                    then
+                                    the
                                     \(
                                         \lim\limits_{x\to 0} g(x) = 0
                                     \).
