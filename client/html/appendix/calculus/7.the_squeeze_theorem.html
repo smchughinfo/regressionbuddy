@@ -1,0 +1,79 @@
+<topic>
+    <topic-name>The Squeeze Theorem</topic-name>
+    <topic-definition>
+        <topic-instance>
+            <topic-instance-html>
+                If on some interval 
+                \( f(x) \leq g(x) \leq h(x) \)
+                and
+                \(
+                    \lim\limits_{x\to a} f(x)
+                    =
+                    \lim\limits_{x\to a} h(x)
+                    =
+                    L
+                \)
+                then
+                \(
+                    \lim\limits_{x\to a} g(x) = L
+                \).
+            </topic-instance-html>
+        </topic-instance>
+    </topic-definition>
+    <!--▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼-->
+    <topic-example>
+        <topic-instance>
+            <graph image-size-class="max-width-400">
+                <text-header bold >Squeeze Theorem Example</text-header>
+                <image-url>/images/calculus-appendix/squeeze-theorem.svg</image-url>
+                <graph-url>https://www.geogebra.org/graphing/fbZhMDwy</graph-url>
+                <caption-html>
+
+                    <table class="table text-left">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    \(
+                                        f(x) = x^2
+                                    \)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    \(
+                                        g(x) = x^2sin\left(\frac{1}{x}\right)
+                                    \)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    \(
+                                        h(x) = -x^2
+                                    \)
+                                </td>
+                            </tr>
+                            <tr>
+                                <td> 
+                                    Since
+                                    \( f(x) \leq g(x) \leq h(x) \)
+                                    and
+                                    \(
+                                        \lim\limits_{x\to 0} f(x)
+                                        =
+                                        \lim\limits_{x\to 0} h(x)
+                                        =
+                                        0
+                                    \)
+                                    then
+                                    \(
+                                        \lim\limits_{x\to 0} g(x) = 0
+                                    \).
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </caption-html>
+            </graph>
+        </topic-instance>
+    </topic-example>
+</topic>

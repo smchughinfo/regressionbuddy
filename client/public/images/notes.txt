@@ -3,7 +3,7 @@
 
 run C:\regressionbuddy\svg-modifer to make modifications to svg images from geogebra
 
-REMINDER - set lines to 100% opacity
+REMINDER - set lines to 100% opacity on trigonometry and linear algebra. on calculus the blue color looks best at its default 80%.
 REMINDER - on 3d use line thickness of 4 (opacity 100% should be set by default).
 REMINDER - points in vector calculus are size 6
 REMINDER - font size on trigonometry appendix is medium. ...still might have to tweak it in an svg editor so it's the same apparant size as text in the other images in the appendix.

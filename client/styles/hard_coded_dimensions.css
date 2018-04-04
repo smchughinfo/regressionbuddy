@@ -24,6 +24,10 @@
     width: 350px;
 }
 
+.max-width-350 {
+    max-width: 350px;
+}
+
 .max-width-400 {
     max-width: 400px;
 }
