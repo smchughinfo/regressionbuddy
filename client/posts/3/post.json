@@ -7,7 +7,7 @@
     "trigonometry": ["Trigonometric Functions at 30°, 45°, and 60°", "Complementary Angles", "Cofunction Identities"],
     "calculus": ["Common Limits", "The Squeeze Theorem"],
     "linear-algebra": [""],
-    "statistics": [""],
+    "statistics": ["Variance and Standard Deviation"],
     "vector-calculus": [""]
   }
 }
