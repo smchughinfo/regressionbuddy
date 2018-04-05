@@ -76,9 +76,16 @@
                                     {
                                         \Sigma X^2
                                         -
-                                        \left( 
-                                            \Sigma X
-                                        \right)^2
+                                        \frac
+                                            {
+                                                \left( 
+                                                    \Sigma X
+                                                \right)^2
+                                            }
+                                            {
+                                                n
+                                            }
+                                        
                                     }
                                     {
                                         n - 1
@@ -127,22 +134,166 @@
     <!--▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼-->
     <topic-example size-class="widest-width-1100">
         <topic-instance>
-                <horizontal-group-3>
-                    <empty-graph>
-                        <text-header bold center>Population Standard Deviation Example</text-header>
+            <horizontal-group-3>
+                <empty-graph>
+                    <text-header bold center>Population Standard Deviation Example</text-header>
+                    <caption-html>
+
+                        <!-- 
+
+                            one possible way to style these is to have a .step-implementation class
+                            that horizontally centers each step implementation and maybe gives some top margin
+
+                        -->
+                        <div class="text-center">3, 6, 1, 3, 2</div>
+                        <br>
+                        <strong>Step 1:</strong> Find the mean. 
+                        <br>
+                        \( \mu=\tfrac{3+6+1+3+2}{5}={15}{5}=3 \)
+                        <br>
+                        <strong>Step 2:</strong> Subtract the mean from each value.
+                        <span class="margin-right-1-em">\(3-3=0\)</span>
+                        <span class="margin-right-1-em">\(6-3=3\)</span>
+                        <span class="margin-right-1-em">\(1-3=-2\)</span>
+                        <span class="margin-right-1-em">\(3-3=0\)</span>
+                        <span class="margin-right-1-em">\(2-3=-1\)</span>
+                        <br>
+                        <strong>Step 3:</strong> Square each result.
+                        <br>
+                        <span class="margin-right-1-em">\(0^2=0\)</span>
+                        <span class="margin-right-1-em">\(3^2=9\)</span>
+                        <span class="margin-right-1-em">\(-2^2=4\)</span>
+                        <span class="margin-right-1-em">\(0^2=0\)</span>
+                        <span class="margin-right-1-em">\(-1^2=1\)</span>
+                        <br>
+                        <strong>Step 4:</strong> Sum the squares.
+                        <br>
+                        \(0+9+4+0+1=14\)
+                        <br>
+                        <strong>Step 5:</strong> Divide by \(N\).
+                        <br>
+                        \(\ \sigma^2=\tfrac{14}{5}=2.8 \)
+                        <br>
+                        <strong>Step 6:</strong> Take the square root.
+                        <br>
+                        \( \sigma = \sqrt{2.8} \approx 1.67 \)
+                    </caption-html>
+                </empty-graph>
+                <empty-graph>
+                    <text-header bold center>Sample Standard Deviation Example</text-header>
                         <caption-html>
-                            Find the population standard deviation.
+                            <div class="text-center">8, 6, 0, 5, 1</div>
                             <br>
-                            <div class="text-center">3, 6, 1, 3, 2</div>
+                            <strong>Step 1:</strong> Find the mean. 
                             <br>
+                            \( \overline{X}=\tfrac{8+6+0+5+1}{5}={20}{5}=4 \)
+                            <br>
+                            <strong>Step 2:</strong> Subtract the mean from each value.
+                            <span class="margin-right-1-em">\(8-4=4\)</span>
+                            <span class="margin-right-1-em">\(6-4=2\)</span>
+                            <span class="margin-right-1-em">\(0-4=-4\)</span>
+                            <span class="margin-right-1-em">\(5-4=1\)</span>
+                            <span class="margin-right-1-em">\(1-4=-3\)</span>
+                            <br>
+                            <strong>Step 3:</strong> Square each result.
+                            <br>
+                            <span class="margin-right-1-em">\(4^2=16\)</span>
+                            <span class="margin-right-1-em">\(2^2=4\)</span>
+                            <span class="margin-right-1-em">\(-4^2=16\)</span>
+                            <span class="margin-right-1-em">\(1^2=1\)</span>
+                            <span class="margin-right-1-em">\(-3^2=9\)</span>
+                            <br>
+                            <strong>Step 4:</strong> Sum the squares.
+                            <br>
+                            \(16+4+16+1+9=46)
+                            <br>
+                            <strong>Step 5:</strong> Divide by \(n-1\).
+                            <br>
+                            \(\ s^2=\tfrac{46}{4}=11.5 \)
+                            <br>
+                            <strong>Step 6:</strong> Take the square root.
+                            <br>
+                            \( s = \sqrt{11.5} \approx 3.39 \)
                         </caption-html>
                     </empty-graph>
-                    <graph image-size-class="graph-size-1">
-                        <text-header bold center>Sample Standard Deviation Example</text-header>
-                    </graph>
-                    <graph image-size-class="graph-size-1">
-                        <text-header bold center>Shortcut  Example</text-header>
-                    </graph>
+                    <empty-graph>
+                        <text-header bold center>Shortcut Example</text-header>
+                        <caption-html>
+                            <div class="text-center">3, 9, 0, 4, 7</div>
+                            <br>
+                            <strong>Step 1:</strong> Find the sum of the values. 
+                            <br>
+                            \( \Sigma X = 3+9+0+4+7 = 23 \)
+                            <br>
+                            <strong>Step 2:</strong> Sum the squares of the values. 
+                            <br>
+                            \( \Sigma X^2 = 3^2+9^2+0^2+4^2+7^2 = 155 \)
+                            <br>
+                            <strong>Step 3:</strong> Plug the values into the shortcut formula. 
+                            <br>
+                            \(
+                                s^2
+                                =
+                                \frac
+                                    {
+                                        155
+                                        -
+                                        \frac
+                                            {
+                                                \left( 
+                                                    23
+                                                \right)^2
+                                            }
+                                            {
+                                                5
+                                            }
+                                    }
+                                    {
+                                        5 - 1
+                                    }
+                                =
+                                \frac
+                                    {
+                                        155
+                                        -
+                                        \frac
+                                            {
+                                                529
+                                            }
+                                            {
+                                                5
+                                            }
+                                    }
+                                    {
+                                        4
+                                    }
+                                =
+                                \frac
+                                    {
+                                        155
+                                        -
+                                        105.8
+                                    }
+                                    {
+                                        4
+                                    }
+                                =
+                                \frac
+                                    {
+                                        49.2
+                                    }
+                                    {
+                                        4
+                                    }
+                                =
+                                12.3
+                            \)
+                            <br>
+                            <strong>Step 4:</strong> Take the square root. 
+                            <br>
+                            \( s = \sqrt{12.3} \approx 3.51 \)
+                        </caption-html>
+                    </empty-graph>
                 </horizontal-group-3>
         </topic-instance>
     </topic-example>
