@@ -845,13 +845,6 @@ let templates = {
             throw `horizontal-group-4 must have three children but has ${$items.length} children.`;
         }
 
-        // [size-class]
-        let hasSizeClass = $placeholder.is("[size-class]");
-        if(hasSizeClass) {
-            let sizeClass = $placeholder.attr("size-class");
-            $template.addClass(sizeClass);
-        }
-
         $items.each((i, elm) => {
             let $placeholderItem = $(elm);
             let $templateItem = $template.find(`[item-${i+1}]`).removeAttr(`item-${i+1}`);
