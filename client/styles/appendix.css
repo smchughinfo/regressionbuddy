@@ -78,3 +78,7 @@
         width: 1100px;
     }
 }
+
+.matrix-step {
+    display: inline-block;
+}
