@@ -19,23 +19,95 @@
                 <empty-graph>
                     <text-header center bold pseudo-topic-instance-header>Gaussian Elimination</text-header>
                     <caption-html>
+                        Solve the system.
                         <div class="matrix-example width-350">
                             <matrix>
-                                2 -3  0;
-                                3  3  6;
-                                8  1 -3
+                                0  1 -1   4;
+                                2  6 -12 -4;
+                                1 -3  7   7
+                            </matrix>
+                            <br>
+                            <br>
+                            <matrix>
+                                0  1 -1 4;
+                                1 -3  6 2;
+                                1 -3  7 7
+                            </matrix>
+                            <br>
+                            <br>
+                            <matrix>
+                                1 -3  3 8;
+                                0  1 -1 4;
+                                1 -3  7 7
+                            </matrix>
+                            <br>
+                            <br>
+                            <matrix>
+                                1 -3  6 2;
+                                0  1 -1 4;
+                                0  0  1 5
                             </matrix>
                         </div>
                     </caption-html>
                 </empty-graph>
                 <empty-graph>
-                    <text-header center bold>Gauss-Jordan Elimination</text-header>
+                    <text-header center bold pseudo-topic-instance-header>Gauss-Jordan Elimination</text-header>
                     <caption-html>
+                        Solve the system.
                         <div class="matrix-example width-350">
+                            \begin{align}
+                                \phantom{2x_1+6}    x_2 -    \phantom{1\;\;}x_3 &=  \phantom{-}4 \\
+                                         2x_1    + 6x_2 -             12x_3 &=            -4 \\
+                                          x_1    - 3x_2 +   \phantom{1}7x_3 &=  \phantom{-}7
+                            \end{align}
+                            <br>
+                            <br>
                             <matrix>
-                                9  1 9;
-                                2  3 1;
-                                8 -5 0
+                                0  1 -1   4;
+                                2  6 -12 -4;
+                                1 -3  7   7
+                            </matrix>
+                            <br>
+                            <br>
+                            <matrix>
+                                0  1  -1 4;
+                                1 -3  6 2;
+                                1 -3  7 7
+                            </matrix>
+                            <br>
+                            <br>
+                            <matrix>
+                                1 -3  3 8;
+                                0  1 -1 4;
+                                1 -3  7 7
+                            </matrix>
+                            <br>
+                            <br>
+                            <matrix>
+                                1 -3  6 2;
+                                0  1 -1 4;
+                                0  0  1 5
+                            </matrix>
+                            <br>
+                            <br>
+                            <matrix>
+                                1 -3  6 2;
+                                0  1  0 9;
+                                0  0  1 5
+                            </matrix>
+                            <br>
+                            <br>
+                            <matrix>
+                                1 -3  0 -28;
+                                0  1  0  9;
+                                0  0  1  5
+                            </matrix>
+                            <br>
+                            <br>
+                            <matrix>
+                                1  0  0 -1;
+                                0  1  0  9;
+                                0  0  1  5
                             </matrix>
                         </div>
                     </caption-html>
