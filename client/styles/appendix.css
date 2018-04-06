@@ -43,6 +43,7 @@
     font-style: italic;
 }
 
+.pseudo-topic-instance-header + *,
 .topic-instance > strong + * {
     margin-top: 5px;
 }

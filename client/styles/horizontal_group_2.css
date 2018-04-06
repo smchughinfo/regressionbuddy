@@ -1,0 +1,19 @@
+.horizontal-group-2-topic-container {
+    width: 100%;
+}
+
+.alert-success .horizontal-group-2-item {
+    border-bottom-color: #b1dfbb !important;
+    border-right-color: #b1dfbb !important;
+}
+
+.horizontal-group-2-item.first-item {
+    border-bottom: 1px solid #abdde5;
+}
+
+@media only screen and (min-width: 768px) {
+    .horizontal-group-2-item.first-item {
+        border-bottom: none;
+        border-right: 1px solid #abdde5;
+    }
+}

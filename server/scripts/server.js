@@ -32,6 +32,8 @@ let isGlossaryRegex = /^\/glossary\/(algebra|trigonometry|calculus|vector-calcul
 let isPostReviewRegex = /\/[0-9]+\/(algebra|trigonometry|calculus|vector-calculus|statistics|linear-algebra)\/review$/;
 let isAppendixReviewRegex = /\/[0-9]+\/appendix\/(algebra|trigonometry|calculus|vector-calculus|statistics|linear-algebra)\/review$/;
 
+let subjectRegex = /(algebra|trigonometry|calculus|vector-calculus|statistics|linear-algebra)/;
+
 const serveFile = (filePath, req, res) => {
     stat(filePath, err => {
         if(err) {
@@ -123,8 +125,6 @@ const handleFileRequest = (req, res) => {
 }
 
 const rebuild = urn => {
-    urn = urn.replace(/-/g, "_");
-
     rebuildAlphaNumeric(urn);
     rebuildPost(urn);
     rebuildAppendix(urn);
@@ -140,7 +140,7 @@ const rebuildAlphaNumeric = urn => {
 const rebuildPost = urn => {
     if(isPostRegex.test(urn) || isPostReviewRegex.test(urn)) {
         let postNumber = parseInt(/\d+/.exec(urn)[0], 10);
-        let subject = /[a-z]+/.exec(urn)[0];
+        let subject = subjectRegex.exec(urn)[0].replace(/-/g, "_");
         buildPost(postNumber, subject);
     }
 };
@@ -149,7 +149,7 @@ const rebuildAppendix = urn => {
     if(isAppendixRegex.test(urn) || isAppendixReviewRegex.test(urn)) {
         let postNumber = /\d+/.exec(urn);
         postNumber = postNumber ? parseInt(postNumber[0], 10) : null;
-        let subject = /\/(appendix)*\/[a-z]+/.exec(urn)[0].replace("appendix", "").replace(/\//g, "");
+        let subject = subjectRegex.exec(urn)[0].replace(/-/g, "_");
         buildAppendix(postNumber, subject); 
     }
 };

@@ -65,6 +65,7 @@ const integrateSiteCSS = () => {
             `${process.env.clientDir}/styles/graph.css`,
             `${process.env.clientDir}/styles/mathjax.css`,
             `${process.env.clientDir}/styles/function_group.css`,
+            `${process.env.clientDir}/styles/horizontal_group_2.css`,
             `${process.env.clientDir}/styles/horizontal_group_3.css`,
             `${process.env.clientDir}/styles/horizontal_group_4.css`,
             `${process.env.clientDir}/styles/three_group.css`,
@@ -817,6 +818,7 @@ const rebuildPage = (rebuildFunction, args) => {
 
 
 const rebuildAppendix = (postNumber, subject) => {
+    console.log("REBUILDING " + subject);
     if(postNumber) {
         buildAppendix(subject, true);
         buildReviewAppendix(postNumber, subject);

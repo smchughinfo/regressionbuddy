@@ -91,7 +91,10 @@
     overflow: hidden;
 }
 
+.horizontal-group-2 .graph-con-no-image .matrix-example,
 .horizontal-group-3 .graph-con-no-image .matrix-example {
     margin-top: 1em;
     text-align: center !important;
+    margin-left: auto;
+    margin-right: auto;
 }
