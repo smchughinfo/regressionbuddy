@@ -1,10 +1,14 @@
 // this server has code to rebuild a page when it is requested. code from this server should not be copied to the aws lambda.
 
 const http = require("http");
+const { inspect } = require("util");
 const { extname, normalize } = require("path");
 const { stat, createReadStream } = require("fs");
 const colors = require('colors');
 const { buildIndex, buildPost, buildAppendix } = require("./builder.js");
+
+const Entities = require('html-entities').AllHtmlEntities;
+const entities = new Entities();
 
 const port = process.env.port;
 const mimeTypes = {
@@ -161,7 +165,18 @@ const rebuildGlossary = urn => {
 };
 
 const start = () => {
-    let server = http.createServer(handleFileRequest);
+    let server = http.createServer((req, res) => {
+        try {
+            handleFileRequest(req, res);
+        }
+        catch(ex) {
+            var errorMessage = `<h1>${(new Date()).toString()}</h1> <br><hr>  ${entities.encode(inspect(ex))}`;
+            errorMessage = errorMessage.replace(/\\n/g, "<br>").replace(/\\\\/g, "\\");
+            console.log(`500: Server Errror ${errorMessage}`);
+            res.writeHead(500, mimeTypes.html);
+            res.end(errorMessage);
+        }
+    });
     server.listen(port, (err) => {
         if(err) {
             throw err;
