@@ -79,6 +79,53 @@
     }
 }
 
-.matrix-step {
+#appendix .matrix-step {
     display: inline-block;
+}
+
+#appendix .matrix-example {
+    white-space: nowrap;
+}
+
+@media only screen and (min-width: 600px) {
+    #appendix .matrix-step-width-140 {
+        margin-left: 140px !important;
+    }
+    #appendix .matrix-step-width-140 .matrix-step {
+        display: inline-block;
+        width: 140px;
+    }
+}
+@media only screen and (min-width: 1199px) {
+    #appendix .matrix-step-width-140 {
+        text-align: center;
+        margin-left: auto !important;
+        display: block;
+    }
+    #appendix .matrix-step-width-140 .matrix-step {
+        width: auto !important;
+    }
+}
+
+#appendix .limit-950 {
+    width: 100%;
+    max-width: 950px;
+}
+
+#appendix .limit-1250 {
+    width: 100%;
+    max-width: 1250px;
+}
+
+@media only screen and (min-width: 1199px) {
+    #appendix .xl-limit-1250 {
+        width: 100%;
+        max-width: 1250px;
+    }
+}
+
+#appendix .table.limit-breakdown th,
+#appendix .table.limit-breakdown td {
+    border-top-color: #b1dfbb;
+    height: 66px;
 }
