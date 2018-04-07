@@ -84,3 +84,8 @@
 .line-table td:first-child {
     padding-right: 6em;
 }
+
+.inline-block-left-align {
+    display: inline-block;
+    text-align: left;
+}
