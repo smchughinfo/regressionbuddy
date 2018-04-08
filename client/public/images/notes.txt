@@ -1,3 +1,4 @@
+512x512 - vector calculus IS using 22. 
 450x450 - 24px font (was using 22 but lost connection with other ratios)
 318x318 - 18px font
 

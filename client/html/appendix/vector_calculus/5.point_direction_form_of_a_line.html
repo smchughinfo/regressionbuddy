@@ -1,32 +1,37 @@
 <topic>
     <topic-name>Point-Direction Form of a Line</topic-name>
+    <topic-eli5>To draw a line in space you need a point on the line and the direction of the line.</topic-eli5>
     <topic-definition>
         <topic-instance>
             <topic-instance-name>Equation</topic-instance-name>
             <topic-instance-html>
                 \(
-                    \mathbf{l}(t)=P+t\mathbf{v}
+                    \mathbf{l}(t)=\mathbf{a}+t\mathbf{v}
                 \)
-                <br>
-                \begin{align}
-                    P          &= \text{a point on the line} \\
-                    \mathbf{v} &= \text{the direction of the line} \\
-                    t          &= \text{takes on all real values}
-                \end{align}
             </topic-instance-html>
         </topic-instance>
         <topic-instance>
             <topic-instance-name>Coordinate Form</topic-instance-name>
             <topic-instance-html>
-                \(
-                    \mathbf{l}(t)=P+t\mathbf{v}
-                \)
-                <br>
-                \begin{align}
-                    P          &= \text{a point on the line} \\
-                    \mathbf{v} &= \text{the direction of the line} \\
-                    t          &= \text{takes on all real values}
-                \end{align}
+                <span class="inline-block-left-align no-mathjax-vertical-space">
+                    \begin{align}
+                        x &= a_1+v_1t \\
+                        y &= a_2+v_2t \\
+                        z &= a_3+v_3t
+                    \end{align}
+                </span>
+            </topic-instance-html>
+        </topic-instance>
+        <topic-instance>
+            <topic-instance-html>
+                <span class="no-mathjax-vertical-space">
+                    \begin{align}
+                        \mathbf{a} &= (a_1,a_2,a_3)   =\text{a vector whose endpoint is on the line} \\
+                        \mathbf{v} &= (v_1, v_2, v_3) =\text{the direction of the line} \\
+                        t          &= \text{takes on all real values}
+                    \end{align}
+                </span>
+                <small><i>*For lines in the plane drop the z component.</i></small>
             </topic-instance-html>
         </topic-instance>
     </topic-definition>
@@ -35,8 +40,8 @@
         <topic-instance>
             <topic-instance-name>Example</topic-instance-name>
             <graph image-size-class="graph-size-1">
-                <image-url>/images/vector-calculus-appendix/vector-between-two-points.png</image-url>
-                <graph-url>https://www.geogebra.org/graphing/twYqbXxS</graph-url>
+                <image-url>/images/vector-calculus-appendix/point-direction-form-of-a-line.png</image-url>
+                <graph-url>https://www.geogebra.org/3d/mxacQHGa</graph-url>
             </graph>
         </topic-instance>
     </topic-example>
