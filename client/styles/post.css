@@ -135,3 +135,7 @@
     max-width: 300px;
     margin-top: 0;
 }
+#post .trig-30-45-60-ratios-table th,
+#post .trig-30-45-60-ratios-table td {
+    min-height: 400px;
+}
