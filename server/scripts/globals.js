@@ -3,10 +3,12 @@ const { getLargestPostNumber } = require("./utilities.js");
 
 module.exports = {
     initialize: () => {
-        process.env.name = "dev";
+        process.env.name = "dev"; // if "dev" rebuilds all pages anytime a file in process.env.clientDir is modified.
+        process.env.buildOnRequest = true; // if true only rebuilds page when requested from server. 
 
+        process.env.port = 8080;
         process.env.defaultSubject = "algebra";
-        process.env.hostName = process.env.name === "dev" ? "http://localhost:8080" : "https://regressionbuddy.com" 
+        process.env.hostName = process.env.name === "dev" ? `http://localhost:${process.env.port}` : "https://regressionbuddy.com" 
         process.env.clientDir = join(__dirname, "/../../client");
         process.env.publicDir = join(process.env.clientDir, "/public"); 
         process.env.buildDir = join(process.env.publicDir, "/build");

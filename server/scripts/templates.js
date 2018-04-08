@@ -497,6 +497,9 @@ let templates = {
             if($placeholder.children("text-header").is("[center]")) {
                 $headerContent.addClass("text-center");
             }
+            if($placeholder.children("text-header").is("[pseudo-topic-instance-header]")) {
+                $headerContent.addClass("pseudo-topic-instance-header");
+            }
         }
         else {
             $template.find("[header-content]").remove();
@@ -519,7 +522,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/topic_instance.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["topic-instance-name", "topic-instance-html", "horizontal-group-3", "horizontal-group-4", "group-carrier", "three-group", "graph", "wrapped-graph"];
+        let childTypes = ["topic-instance-name", "topic-instance-html", "horizontal-group-2", "horizontal-group-3", "horizontal-group-4", "group-carrier", "three-group", "graph", "wrapped-graph"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "topic_instance");
@@ -542,6 +545,24 @@ let templates = {
         }
         else {
             $template.find("[topic-instance-html]").remove();
+        }
+
+        // <horizontal-group-2>
+        let $horizontalGroup2s = $placeholder.children("horizontal-group-2");
+        if($horizontalGroup2s.length > 0) {
+            let $repeater = $template.find("horizontal-group-2[repeater]");
+            let $repeaterParent = $repeater.parent();
+            $repeater.removeAttr("repeater").clone();
+
+            $horizontalGroup2s.each((i, elm) => {
+                $repeater.after(elm);
+                templates.horizontal_group_2(elm);
+            });
+
+            $repeater.remove();
+        }
+        else {
+            $template.find("horizontal-group-2[repeater]").remove();
         }
 
         // <horizontal-group-3>
@@ -795,6 +816,47 @@ let templates = {
 
         $placeholder.replaceWith($template);
     },
+    horizontal_group_2: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/horizontal_group_2.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        let childTypes = ["graph", "empty-graph"];
+        let childTypesSelector = childTypes.join(",");
+        let $items = $placeholder.children(childTypesSelector);
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "horizontal-group-3");
+        if($items.length !== 2) {
+            throw `horizontal-group-2 must have two children but has ${$items.length} children.`;
+        }
+
+        let $repeater = $template.find("[repeater]");
+        let $repeatContainer = $repeater.parent();
+        $repeater.removeAttr("repeater").remove();
+        $items.each((i, elm) => {
+            let $item = $(elm);
+            let $repeaterClone = $repeater.clone();
+            
+            $repeaterClone.append($item);
+            $repeatContainer.append($repeaterClone);
+        });
+
+        $items.each((i, elm) => {
+            let $placeholderItem = $(elm);
+            let $templateItem = $template.find(`[item-${i+1}]`).removeAttr(`item-${i+1}`);
+            $templateItem.append($placeholderItem);
+
+            if(elm.tagName === "graph") {
+                templates.graph(elm);
+            }
+            else if (elm.tagName === "empty-graph") {
+                templates.empty_graph(elm);
+            }
+        });
+
+        $placeholder.replaceWith($template);
+    },
     horizontal_group_3: elm => {
         let $placeholder = $(elm);
         let templatePath = `${process.env.templatesDir}/horizontal_group_3.html`;
@@ -808,6 +870,27 @@ let templates = {
         validateChildTypes(childTypes, $placeholder, "horizontal-group-3");
         if($items.length !== 3) {
             throw `horizontal-group-3 must have three children but has ${$items.length} children.`;
+        }
+
+        // [wide] and [extra-wide]
+        let isWide = $placeholder.is("[wide]");
+        let isExtraWide = $placeholder.is("[extra-wide]");
+        if(isWide) {
+            $template.find(".horizontal-group-3-container").addClass("wide-horizontal-group-3-container")
+            $template.find("[wide]").removeAttr("wide");
+            $template.find("[normal]").remove();
+            $template.find("[extra-wide]").remove();
+        }
+        else if(isExtraWide) {
+            $template.find(".horizontal-group-3-container").addClass("extra-wide-horizontal-group-3-container")
+            $template.find("[extra-wide]").removeAttr("extra-wide");
+            $template.find("[normal]").remove();
+            $template.find("[wide]").remove();
+        }
+        else {
+            $template.find("[normal]").removeAttr("normal");
+            $template.find("[wide]").remove();
+            $template.find("[extra-wide]").remove();
         }
 
         let $repeater = $template.find("[repeater]");
@@ -842,7 +925,7 @@ let templates = {
         // validate template
         validateChildTypes(childTypes, $placeholder, "horizontal-group-4");
         if($items.length !== 4) {
-            throw `horizontal-group-4 must have three children but has ${$items.length} children.`;
+            throw `horizontal-group-4 must have four children but has ${$items.length} children.`;
         }
 
         $items.each((i, elm) => {

@@ -592,6 +592,7 @@
       "resolved": "https://registry.npmjs.org/home-or-tmp/-/home-or-tmp-2.0.0.tgz",
       "version": "2.0.0"
     },
+    "html-entities": "^1.2.1",
     "html-minifier": "^3.5.7",
     "html5-lint": "^0.3.0",
     "inflight": {

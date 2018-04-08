@@ -37,6 +37,7 @@
 
 .problem > * {
     white-space: normal;
+    width: 100%;
 }
 
 .problem > *,
@@ -128,4 +129,18 @@
 
 #post .question-system-of-equations {
     display: inline-block;
+}
+
+#post .question-system-of-equations > .mjx-chtml {
+    margin-top: 4px;
+    margin-bottom: 0;
+}
+
+#post .trig-30-45-60-ratios-table {
+    max-width: 300px;
+    margin-top: 0;
+}
+#post .trig-30-45-60-ratios-table th,
+#post .trig-30-45-60-ratios-table td {
+    min-height: 400px;
 }

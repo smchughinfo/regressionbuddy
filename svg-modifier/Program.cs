@@ -25,7 +25,7 @@ namespace svg_modifier
 
         static void Main(string[] args)
         {
-            Console.WriteLine("Run this after editing ink inkscape.\n----------------------------\n");
+            Console.WriteLine("Run this after editing in inkscape.\n----------------------------\n");
 
             var svgFiles = Directory.GetFiles(@"C:\regressionbuddy\client\public\images", "*.svg", SearchOption.AllDirectories);
             // above search pattern doesn't completely work for this purpose. for example, .svg.txt, .svg2, etc. will return just fine

@@ -1,8 +1,16 @@
+// this server has code to rebuild a page when it is requested. code from this server should not be copied to the aws lambda.
+
 const http = require("http");
+const { inspect } = require("util");
 const { extname, normalize } = require("path");
 const { stat, createReadStream } = require("fs");
+const colors = require('colors');
+const { buildIndex, buildPost, buildAppendix } = require("./builder.js");
 
-const port = 8080;
+const Entities = require('html-entities').AllHtmlEntities;
+const entities = new Entities();
+
+const port = process.env.port;
 const mimeTypes = {
     html: "text/html",
     jpeg: "image/jpeg",
@@ -19,6 +27,16 @@ const mimeTypes = {
     ggb: "application-x/geogebra-file"
 };
 const defaultSubject = process.env.defaultSubject;
+
+let isAlphaNumericRegex  = /^\/[0-9A-Za-z]+$/; // /about, /review, /etc
+let isPostRegex = /^\/[0-9]+\/(algebra|trigonometry|calculus|vector-calculus|statistics|linear-algebra)$/;
+let isAppendixRegex = /^\/appendix\/(algebra|trigonometry|calculus|vector-calculus|statistics|linear-algebra)$/;
+let isGlossaryRegex = /^\/glossary\/(algebra|trigonometry|calculus|vector-calculus|statistics|linear-algebra)$/;
+
+let isPostReviewRegex = /\/[0-9]+\/(algebra|trigonometry|calculus|vector-calculus|statistics|linear-algebra)\/review$/;
+let isAppendixReviewRegex = /\/[0-9]+\/appendix\/(algebra|trigonometry|calculus|vector-calculus|statistics|linear-algebra)\/review$/;
+
+let subjectRegex = /(algebra|trigonometry|calculus|vector-calculus|statistics|linear-algebra)/;
 
 const serveFile = (filePath, req, res) => {
     stat(filePath, err => {
@@ -54,6 +72,7 @@ const handleFileRequest = (req, res) => {
     let filePath = `${process.env.publicDir}${normalize(urn)}`;
 
     if(urn === "/") {
+        buildIndex();
         filePath = `${process.env.publicDir}/index.html`;
     }
     else if(urn.endsWith("/")){
@@ -71,11 +90,15 @@ const handleFileRequest = (req, res) => {
         return;
     }
     else if(
-        /^\/[0-9A-Za-z]+$/.test(urn) ||
-        /^\/[0-9]+\/(algebra|trigonometry|calculus|vector-calculus|statistics|linear-algebra)$/.test(urn) ||
-        /^\/glossary\/(algebra|trigonometry|calculus|vector-calculus|statistics|linear-algebra)$/.test(urn) ||
-        /^\/appendix\/(algebra|trigonometry|calculus|vector-calculus|statistics|linear-algebra)$/.test(urn)) {
-            
+        isAlphaNumericRegex.test(urn) ||
+        isPostRegex.test(urn) ||
+        isAppendixRegex.test(urn) ||
+        isGlossaryRegex.test(urn)) {
+          
+        if(process.env.buildOnRequest) {
+            rebuild(urn);  
+        }
+        
         let subjectPath = urn.replace(/\//, "");
         subjectPath = subjectPath.replace(/\//, ".");
         subjectPath = subjectPath.replace(/-/g, "_");
@@ -90,13 +113,14 @@ const handleFileRequest = (req, res) => {
     ) {
         filePath = `${process.env.publicDir}/build${urn}`
     }
-    else if (urn === "/review") {
-        filePath = "build/review.html"
-    }
     else if(
-        /\/[0-9]+\/(algebra|trigonometry|calculus|vector-calculus|statistics|linear-algebra)\/review$/.test(urn) ||
-        /\/[0-9]+\/appendix\/(algebra|trigonometry|calculus|vector-calculus|statistics|linear-algebra)\/review$/.test(urn)
-    ) {
+        isPostReviewRegex.test(urn) || 
+        isAppendixReviewRegex.test(urn)) {
+            
+        if(process.env.buildOnRequest) {
+            rebuild(urn);  
+        }
+
         filePath = `${process.env.publicDir}/build/${urn.replace("/", "").replace(/\//g, ".").replace(/-/g, "_")}.html`;
     }
 
@@ -104,8 +128,55 @@ const handleFileRequest = (req, res) => {
     serveFile(filePath, req, res);
 }
 
+const rebuild = urn => {
+    rebuildAlphaNumeric(urn);
+    rebuildPost(urn);
+    rebuildAppendix(urn);
+    rebuildGlossary(urn);
+};
+
+const rebuildAlphaNumeric = urn => {
+    if(isAlphaNumericRegex.test(urn)) {
+        console.log(`${urn} does not rebuild.`.yellow);
+    }
+};
+
+const rebuildPost = urn => {
+    if(isPostRegex.test(urn) || isPostReviewRegex.test(urn)) {
+        let postNumber = parseInt(/\d+/.exec(urn)[0], 10);
+        let subject = subjectRegex.exec(urn)[0].replace(/-/g, "_");
+        buildPost(postNumber, subject);
+    }
+};
+
+const rebuildAppendix = urn => {
+    if(isAppendixRegex.test(urn) || isAppendixReviewRegex.test(urn)) {
+        let postNumber = /\d+/.exec(urn);
+        postNumber = postNumber ? parseInt(postNumber[0], 10) : null;
+        let subject = subjectRegex.exec(urn)[0].replace(/-/g, "_");
+        buildAppendix(postNumber, subject); 
+    }
+};
+
+const rebuildGlossary = urn => {
+    if(isGlossaryRegex.test(urn)) {
+        console.log(`${urn} does not rebuild.`.yellow);
+    }
+};
+
 const start = () => {
-    let server = http.createServer(handleFileRequest);
+    let server = http.createServer((req, res) => {
+        try {
+            handleFileRequest(req, res);
+        }
+        catch(ex) {
+            var errorMessage = `<h1>${(new Date()).toString()}</h1> <br><hr>  ${entities.encode(inspect(ex))}`;
+            errorMessage = errorMessage.replace(/\\n/g, "<br>").replace(/\\\\/g, "\\");
+            console.log(`500: Server Errror ${errorMessage}`);
+            res.writeHead(500, mimeTypes.html);
+            res.end(errorMessage);
+        }
+    });
     server.listen(port, (err) => {
         if(err) {
             throw err;

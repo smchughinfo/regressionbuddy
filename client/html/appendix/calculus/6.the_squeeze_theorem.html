@@ -1,0 +1,65 @@
+<topic>
+    <topic-name>The Squeeze Theorem</topic-name>
+    <topic-definition>
+        <topic-instance>
+            <topic-instance-html>
+                If on some interval 
+                \( f(x) \leq g(x) \leq h(x) \)
+                and
+                \(
+                    \lim\limits_{x\to a} f(x)
+                    =
+                    \lim\limits_{x\to a} h(x)
+                    =
+                    L
+                \)
+                then
+                \(
+                    \lim\limits_{x\to a} g(x) = L
+                \).
+            </topic-instance-html>
+        </topic-instance>
+    </topic-definition>
+    <!--▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼-->
+    <topic-example>
+        <topic-instance>
+            <graph left image-size-class="max-width-400">
+                <text-header bold >Squeeze Theorem Example</text-header>
+                <image-url>/images/calculus-appendix/squeeze-theorem.svg</image-url>
+                <graph-url>https://www.geogebra.org/graphing/fbZhMDwy</graph-url>
+                <caption-html>
+                    <!-- TODO: modify this image. make text bolder. label f(x), g(x), h(x) -->
+                    <p class="text-center margin-top-1-em">
+                        We know that 
+                        <br>
+                        \(
+                            -1 \leq sin\left(\frac{1}{x}\right) \leq 1
+                        \)
+                        <br>
+                        and so
+                        <br>
+                        \(
+                            -x^2 \leq x^2sin\left(\frac{1}{x}\right) \leq x^2
+                        \).
+                        <br>
+                        Since
+                        <br>
+                        \(
+                            \lim\limits_{x\to 0} f(x)
+                            =
+                            \lim\limits_{x\to 0} h(x)
+                            =
+                            0
+                        \)
+                        <br>
+                        the
+                        <br>
+                        \(
+                            \lim\limits_{x\to 0} g(x) = 0
+                        \).
+                    </p>
+                </caption-html>
+            </graph>
+        </topic-instance>
+    </topic-example>
+</topic>

@@ -1,13 +1,13 @@
 {
-  "inReview": false,
+  "inReview": true,
   "date": "4/22/2018",
-  "phrase": "post 3 phrase",
+  "phrase": "Now with more 3's.",
   "topics": {
     "algebra": ["The Multiplication Property of Equality"],
     "trigonometry": ["Trigonometric Functions at 30°, 45°, and 60°", "Complementary Angles", "Cofunction Identities"],
-    "calculus": [""],
-    "linear-algebra": [""],
-    "statistics": [""],
-    "vector-calculus": [""]
+    "calculus": ["Common Limits", "The Squeeze Theorem"],
+    "linear-algebra": ["Gaussian and Gauss-Jordan Elimination", "Homogeneous Systems of Linear Equations"],
+    "statistics": ["Variance and Standard Deviation"],
+    "vector-calculus": ["Point-Direction Form of a Line", "The Line Through Two Points"]
   }
 }

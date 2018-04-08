@@ -2,6 +2,7 @@
     background-color: #d3edd9;
 }
 
+.no-mathjax-vertical-space > .MJXc-display,
 .no-vertical-margin > .MJXc-display,
 .caption-text > .MJXc-display {
     margin-top:0 !important;

@@ -1,0 +1,82 @@
+<topic>
+    <topic-name>Homogeneous Systems of Linear Equations</topic-name>
+    <topic-definition>
+        <topic-instance>
+            <topic-instance-html>
+                <p>A system of linear equations is called <strong>homogeneous</strong> if all of the constant terms are zero.</p>
+                <span class="inline-block-left-align">
+                    \begin{align}
+                        a_{11}x_1\;  + a_{12}x_2\;  + a_{13}x_3\; + \cdots + a_{1n}x_n\; &= 0 \\
+                        a_{21}x_1\;  + a_{22}x_2\;  + a_{23}x_3\; + \cdots + a_{2n}x_n\; &= 0 \\
+                        a_{31}x_1\;  + a_{32}x_2\;  + a_{33}x_3\; + \cdots + a_{3n}x_n\; &= 0 \\
+                        &\;\; \vdots \\
+                        a_{m1}x_1    + a_{m2}x_2    + a_{m3}x_3   + \cdots + a_{mn}x_n   &= 0
+                    \end{align}
+                </span>
+            </topic-instance-html>
+        </topic-instance>
+        <topic-instance>
+            <topic-instance-name>Properties of Homogeneous Systems</topic-instance-name>
+            <topic-instance-html>
+                <ol class="list-group large-left-margin">
+                    <li>
+                        All homogeneous systems are consistent.
+                    </li>
+                    <li>
+                        If a homogeneous system has less equations than variables it has an infinite number of solutions.
+                    </li>
+                </ol>
+            </topic-instance-html>
+        </topic-instance>
+    </topic-definition>
+    <!--▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼-->
+    <topic-example size-class="limit-1250">
+        <topic-instance>
+            <topic-instance-name>Examples</topic-instance-name>
+            <horizontal-group-3>
+                <empty-graph>
+                    <text-header center>Homogeneous System</text-header>
+                    <caption-html>
+                        <div class="matrix-example">
+                            \(
+                                \begin{align}
+                                                -5x_1   +  \phantom{7}x_2 + 8x_3 &= 0 \\
+                                     \phantom{-} 3x_1   +            7x_2 - 2x_3 &= 0 \\
+                                     \phantom{-5x_1+\;}              9x_2 - 2x_3 &= 0 
+                                \end{align}
+                            \)
+                        </div>
+                    </caption-html>
+                </empty-graph>    
+                    <empty-graph>
+                        <text-header center>Augmented Matrix</text-header>
+                        <caption-html>
+                            <div class="matrix-example">
+                                <matrix>
+                                    -5 1 8 0;
+                                    3 7 -2 0;
+                                    0 9 -2 0
+                                </matrix>
+                            </div>
+                        </caption-html>
+                    </empty-graph>    
+
+                    <empty-graph>
+                        <text-header center>Homogeneous System with Infinite Solutions</text-header>
+                        <caption-html>
+                            <div class="matrix-example">
+                                \(
+                                    \begin{align}
+                                        1x_1 - 3x_2 + 7x_3 &= 0 \\
+                                        \phantom{0x_2 +\;} x_2 - \phantom{7}x_3 &= 0
+                                    \end{align}
+                                \)
+                            </div>
+                            <br>
+                            Since \(x_2\) and \(x_1\) vary as \(x_3\) varies this system has an infinite number of solutions.
+                        </caption-html>
+                    </empty-graph>    
+                </horizontal-group-3>
+        </topic-instance>
+    </topic-example>
+</topic>

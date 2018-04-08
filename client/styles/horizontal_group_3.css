@@ -1,3 +1,8 @@
+/*
+    these media queries are the opposite of mobile first 
+    https://getbootstrap.com/docs/4.0/layout/grid/
+*/
+
 .horizontal-group-3-topic-container {
     width: 100%;
 }
@@ -11,31 +16,90 @@
     }
 }
 
+/* this is a leftover from a bad design. for one, the breakpoints are wrong.
+for two, the whole point of this media query is so the launch graph button doesnt get hidden. */
 @media only screen and (max-width: 991px) {
-    .horizontal-group-3 .graph-size-1 {
+    /* 
+        the fact that normal is used here is just out of convenience. 
+        left linear algebra equations in n variables how it is ("normal")
+        but calculus one-sided and two-sided limits needed the graph to
+        be  bigger, which is was prompted me to add normal to this
+    */
+    .horizontal-group-3.normal .graph-size-1 {
         max-width: 150px;
     }
-    .horizontal-group-3 .graph-size-2 {
+    .horizontal-group-3.normal .graph-size-2 {
         max-width: 180px;
     }
 }
+
 
 @media only screen and (max-width: 767px) {
     .horizontal-group-3-topic-container {
         max-width: 350px;
     }
-    .horizontal-group-3:not(:first-of-type) {
+}
+
+@media only screen and (max-width: 767px) {
+    .horizontal-group-3.normal:not(:first-of-type) {
         border-left: none !important;
         margin-top: 1rem;
         padding-top: 1rem;
     }
-    .alert-success .horizontal-group-3:not(:first-of-type) {
+    .alert-success .horizontal-group-3.normal:not(:first-of-type) {
         border-top: 1px solid #b1dfbb;
     }
-    .alert-info .horizontal-group-3:not(:first-of-type) {
+    .alert-info .horizontal-group-3.normal:not(:first-of-type) {
         border-top: 1px solid #abdde5;
     }
 }
+
+@media only screen and (max-width: 991px) {
+    .horizontal-group-3-container.wide-horizontal-group-3-container {
+        max-width: 400px;
+    }
+    .horizontal-group-3.wide:not(:first-of-type) {
+        border-left: none !important;
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+    .alert-success .horizontal-group-3.wide:not(:first-of-type) {
+        border-top: 1px solid #b1dfbb;
+    }
+    .alert-info .horizontal-group-3.wide:not(:first-of-type) {
+        border-top: 1px solid #abdde5;
+    }
+}
+
+.horizontal-group-3-container.extra-wide-horizontal-group-3-container {
+    /*
+        this style is used in conjuction with the style below. e.g.
+        @media only screen and (max-width: 1199px) {
+            .horizontal-group-3-container.extra-wide-horizontal-group-3-container {
+                ...
+        without it there is a margin on the right side. not sure what it's from.
+     */
+    width: auto !important;
+}
+
+@media only screen and (max-width: 1199px) {
+    .horizontal-group-3-container.extra-wide-horizontal-group-3-container {
+        width: 100%;
+        max-width: 500px;
+    }
+    .horizontal-group-3.extra-wide:not(:first-of-type) {
+        border-left: none !important;
+        margin-top: 1rem;
+        padding-top: 1rem;
+    }
+    .alert-success .horizontal-group-3.extra-wide:not(:first-of-type) {
+        border-top: 1px solid #b1dfbb;
+    }
+    .alert-info .horizontal-group-3.extra-wide:not(:first-of-type) {
+        border-top: 1px solid #abdde5;
+    }
+}
+
 
 .alert-info .horizontal-group-3:not(:first-of-type) {
     border-left: 1px solid #abdde5;

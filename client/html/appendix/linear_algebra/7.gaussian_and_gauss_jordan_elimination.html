@@ -1,0 +1,171 @@
+<topic>
+    <topic-name>Gaussian and Gauss-Jordan Elimination</topic-name>
+    <topic-definition>
+        <topic-instance>
+            <topic-instance-html>
+                <strong>Gaussian Elimination</strong> is the process of using elementary row operations to rewrite a matrix in row-echelon form.
+            </topic-instance-html>
+        </topic-instance>
+        <topic-instance>
+            <topic-instance-html>
+                <strong>Gauss-Jordan Elimination</strong> is the process of using elementary row operations to rewrite a matrix in reduced row-echelon form.
+            </topic-instance-html>
+        </topic-instance>
+    </topic-definition>
+    <!--▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼-->
+    <topic-example size-class="horizontal-group-2-topic-container">
+        <topic-instance>
+            <horizontal-group-2>
+                <empty-graph>
+                    <text-header center bold pseudo-topic-instance-header>Gaussian Elimination Example</text-header>
+                    <caption-html>
+                        Solve the system.
+                        <div class="matrix-example">
+                            \begin{align}
+                                \phantom{2x_1+6}    x_2 -    \phantom{1\;\;}x_3 &=  \phantom{-}4 \\
+                                        -2x_1    + 6x_2 -             12x_3 &=            -4 \\
+                                        x_1    - 3x_2 +   \phantom{1}7x_3 &=  \phantom{-}7
+                            \end{align}
+                            <br>
+                            <br>
+                            <strong>Step 1: </strong> Rewrite the system as an augmented matrix.
+                            <br>
+                            <matrix>
+                                0  1 -1   4;
+                                -2  6 -12 -4;
+                                1 -3  7   7
+                            </matrix>
+                            <br>
+                            <br>
+                            <strong>Step 2: </strong> Use row operations to rewrite the matrix in row-echelon form.
+                            <br>
+
+                            
+                            <matrix>
+                                0  1  -1;
+                                1 -3  6;
+                                1 -3  7
+                            </matrix>
+
+                            <span class="matrix-step">
+                                \begin{matrix}
+                                                                                \\
+                                    \color{#a38f8c}{-\tfrac{1}{2}R_2 \rightarrow R_2} \\
+                                                                                \\
+                                \end{matrix}
+                            </span>
+                            <br>
+                            <br>
+                            <matrix>
+                                                1  -3  6 2;
+                                \color{#a38f8c}{0}  1 -1 4;
+                                                1  -3  7 7
+                            </matrix>
+                            <span class="matrix-step">
+                                \begin{matrix}
+                                    \color{#a38f8c}{R_1 \leftrightarrow R_2} \\
+                                                                            \\
+                                                                            \\
+                                \end{matrix}
+                            </span>
+                            <br>
+                            <br>
+                            <matrix>
+                                                1                 -3   6 2;
+                                \color{#a38f8c}{0}                 1  -1 4;
+                                \color{#a38f8c}{0} \color{#a38f8c}{0}  1 5
+                            </matrix>
+                            <span class="matrix-step">
+                                \begin{matrix}
+                                                                            \\
+                                                                            \\
+                                    \color{#a38f8c}{-R_1 + R_3 \rightarrow R_3}
+                                \end{matrix}
+                            </span>
+                            <br>
+                            <br>
+                            <strong>Step 3: </strong> Use back-substitution to find the solution.
+                            <br>
+                            \(x_1=          -1\),
+                            \(x_2=9\),
+                            \(x_1=5\)
+                        </div>
+                    </caption-html>
+                </empty-graph>
+                <empty-graph>
+                    <text-header center bold pseudo-topic-instance-header>Gauss-Jordan Elimination Example</text-header>
+                    <caption-html>
+                        Solve the system.
+                        <div class="matrix-example">
+                            \begin{align}
+                                \phantom{2x_1+6}    x_2 -    \phantom{1\;\;}x_3 &=  \phantom{-}4 \\
+                                        -2x_1    + 6x_2 -             12x_3 &=            -4 \\
+                                        x_1    - 3x_2 +   \phantom{1}7x_3 &=  \phantom{-}7
+                            \end{align}
+                            <br>
+                            <br>
+                            <strong>Step 1: </strong> Write the matrix in row-echelon form as was done in the Gaussian Elimination example.
+                            <br>
+                            <matrix>
+                                                1                 -3   6 2;
+                                \color{#a38f8c}{0}                 1  -1 4;
+                                \color{#a38f8c}{0} \color{#a38f8c}{0}  1 5
+                            </matrix>
+                            <br>
+                            <br>
+                            <strong>Step 2: </strong> Use row operations to rewrite the matrix in row-echelon form. 
+                            <br>
+                            <matrix>
+                                                1                  0   3 14;
+                                \color{#a38f8c}{0}                 1  -1 4;
+                                \color{#a38f8c}{0} \color{#a38f8c}{0}  1 5
+                            </matrix>
+                            <span class="matrix-step">
+                                \begin{matrix}
+                                    \color{#a38f8c}{3R_2 + R_1 \rightarrow R_1} \\
+                                                                                \\
+                                                                                \\
+                                \end{matrix}
+                            </span>
+                            <br>
+                            <br>
+                            <matrix>
+                                                1                  0   3 14;
+                                \color{#a38f8c}{0}                 1   0 9;
+                                \color{#a38f8c}{0} \color{#a38f8c}{0}  1 5
+                            </matrix>
+                            <span class="matrix-step">
+                                \begin{matrix}
+                                                                                \\
+                                    \color{#a38f8c}{R_3 + R_2 \rightarrow R_2}  \\
+                                                                                \\
+                                \end{matrix}
+                            </span>
+                            <br>
+                            <br>
+                            <matrix>
+                                                1                  0   0 -1;
+                                \color{#a38f8c}{0}                 1   0  9;
+                                \color{#a38f8c}{0} \color{#a38f8c}{0}  1  5
+                            </matrix>
+                            <span class="matrix-step">
+                                \begin{matrix}
+                                    \color{#a38f8c}{-3R_3 + R_1 \rightarrow R_1} \\
+                                                                                \\
+                                                                                \\
+                                \end{matrix}
+                            </span>
+                            <br>
+                            <br>
+                            <strong>Step 3: </strong> Read the solution off the matrix.
+                            <br>
+                            \(x_1=          -1\),
+                            \(x_2=9\),
+                            \(x_1=5\)
+                        </div>
+                    </caption-html>
+                </empty-graph>
+            </horizontal-group-2>
+        </topic-instance>   
+    </topic-example>
+</topic>
