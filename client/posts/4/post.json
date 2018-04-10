@@ -1,9 +1,9 @@
 {
   "inReview": false,
-  "date": "4/22/2018",
-  "phrase": "Now with more 3's.",
+  "date": "5/6/2018",
+  "phrase": "Post 4 phrase",
   "topics": {
-    "algebra": ["The Multiplication Property of Equality"],
+    "algebra": ["Set-Builder Notation and Interval Notation"],
     "trigonometry": ["Trigonometric Functions at 30°, 45°, and 60°", "Complementary Angles", "Cofunction Identities"],
     "calculus": ["Common Limits", "The Squeeze Theorem"],
     "linear-algebra": ["Gaussian and Gauss-Jordan Elimination", "Homogeneous Systems of Linear Equations"],
