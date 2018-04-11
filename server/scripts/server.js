@@ -171,7 +171,7 @@ const start = () => {
         }
         catch(ex) {
             var errorMessage = `<h1>${(new Date()).toString()}</h1> <br><hr>  ${entities.encode(inspect(ex))}`;
-            errorMessage = errorMessage.replace(/\\n/g, "<br>").replace(/\\\\/g, "\\");
+            errorMessage = errorMessage.replace(/\\n/g, "<br>").replace(/ /g, "&nbsp;").replace(/\\\\/g, "\\");
             console.log(`500: Server Errror ${errorMessage}`);
             res.writeHead(500, mimeTypes.html);
             res.end(errorMessage);
