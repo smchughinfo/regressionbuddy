@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="518"
+   height="222"
+   id="svg143"
+   sodipodi:docname="set-builder-example-3.svg"
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   viewBox="0 0 518 222">
+  <metadata
+     id="metadata147">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="2160"
+     inkscape:window-height="1360"
+     id="namedview145"
+     showgrid="false"
+     inkscape:zoom="0.74822695"
+     inkscape:cx="492.07348"
+     inkscape:cy="-9.0166892"
+     inkscape:window-x="-11"
+     inkscape:window-y="-11"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg143" />
+  <defs
+     id="defs5">
+    <clipPath
+       id="qvoOVSlUqlUw">
+      <path
+         d="M 0,0 H 564 V 245 H 0 Z"
+         id="path2"
+         inkscape:connector-curvature="0"
+         style="fill:none;stroke:none" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1228">
+      <rect
+         style="opacity:1;fill:#ff5cff;fill-opacity:0.453125;stroke:none;stroke-width:2.5;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.4921875"
+         id="rect1230"
+         width="518"
+         height="222"
+         x="-65"
+         y="11.5" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1232">
+      <rect
+         style="opacity:1;fill:#ff5cff;fill-opacity:0.453125;stroke:none;stroke-width:2.5;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.4921875"
+         id="rect1234"
+         width="518"
+         height="222"
+         x="-65"
+         y="11.5" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1294">
+      <rect
+         style="opacity:1;fill:#ff5cff;fill-opacity:0.453125;stroke:none;stroke-width:2.5;stroke-miterlimit:10;stroke-dasharray:none;stroke-opacity:0.4921875"
+         id="rect1296"
+         width="518"
+         height="222"
+         x="24.812508"
+         y="0" />
+    </clipPath>
+  </defs>
+  <g
+     id="g1050"
+     clip-path="url(#clipPath1294)"
+     transform="translate(-24.812508,0.7500025)">
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path9"
+       stroke-miterlimit="10"
+       d="m -182.67678,105.55168 h 1058" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path11"
+       stroke-miterlimit="10"
+       d="m 876.32322,105.55168 -4,-4" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path13"
+       stroke-miterlimit="10"
+       d="m 876.32322,105.55168 -4,4" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path15"
+       stroke-miterlimit="10"
+       d="m -175.67678,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text19"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="-127.17678"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">–2</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path21"
+       stroke-miterlimit="10"
+       d="m -121.67678,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text25"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="-72.176781"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">–1</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path27"
+       stroke-miterlimit="10"
+       d="m -66.676777,105.55168 v 3" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path29"
+       stroke-miterlimit="10"
+       d="m -12.676777,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text33"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="39.823223"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">1</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path35"
+       stroke-miterlimit="10"
+       d="m 42.323223,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text39"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="93.823219"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">2</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path41"
+       stroke-miterlimit="10"
+       d="m 96.323223,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text45"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="147.82323"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">3</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path47"
+       stroke-miterlimit="10"
+       d="m 150.32322,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text51"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="202.82323"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">4</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path53"
+       stroke-miterlimit="10"
+       d="m 205.32322,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text57"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="256.82321"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">5</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path59"
+       stroke-miterlimit="10"
+       d="m 259.32322,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text63"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="311.82321"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">6</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path65"
+       stroke-miterlimit="10"
+       d="m 314.32322,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text69"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="365.82321"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">7</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path71"
+       stroke-miterlimit="10"
+       d="m 368.32322,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text75"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="420.82321"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">8</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path77"
+       stroke-miterlimit="10"
+       d="m 423.32322,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text81"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="474.82321"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">9</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path83"
+       stroke-miterlimit="10"
+       d="m 477.32322,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text87"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="525.82324"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">10</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path89"
+       stroke-miterlimit="10"
+       d="m 531.32322,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text93"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="580.82324"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">11</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path95"
+       stroke-miterlimit="10"
+       d="m 586.32322,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text99"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="634.82324"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">12</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path101"
+       stroke-miterlimit="10"
+       d="m 640.32322,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text105"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="689.82324"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">13</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path107"
+       stroke-miterlimit="10"
+       d="m 695.32322,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text111"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="743.82324"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">14</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path113"
+       stroke-miterlimit="10"
+       d="m 749.32322,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text117"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="798.82324"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">15</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path119"
+       stroke-miterlimit="10"
+       d="m 804.32322,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text123"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="852.82324"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">16</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path125"
+       stroke-miterlimit="10"
+       d="m 858.32322,105.55168 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text129"
+       dominant-baseline="alphabetic"
+       y="121.05167"
+       x="-16.176777"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">0</text>
+    <path
+       id="path1091"
+       d="M 101.28927,105.49911 H 460.27755"
+       style="fill:none;stroke:#6699ff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0" />
+    <path
+       style="fill:#6699ff;fill-opacity:1;fill-rule:evenodd;stroke:none;paint-order:stroke fill markers"
+       inkscape:connector-curvature="0"
+       id="path133"
+       d="m 477.27755,105.49911 -17,4.25 v -8.5 z" />
+    <path
+       style="fill:none;stroke:#6699ff;stroke-width:2.5;stroke-linecap:square;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path137"
+       stroke-miterlimit="10"
+       d="m 101.28927,105.49911 c 0,2.76142 -2.238577,5 -4.999997,5 -2.76142,0 -5,-2.23858 -5,-5 0,-2.76142 2.23858,-5 5,-5 2.76142,0 4.999997,2.23858 4.999997,5 z" />
+  </g>
+</svg>
