@@ -4,7 +4,7 @@
   "phrase": "Post 4 phrase",
   "topics": {
     "algebra": ["Set-Builder Notation and Interval Notation"],
-    "trigonometry": ["Trigonometric Functions at 30°, 45°, and 60°", "Complementary Angles", "Cofunction Identities"],
+    "trigonometry": ["Solving Right Triangles"],
     "calculus": ["Common Limits", "The Squeeze Theorem"],
     "linear-algebra": ["Gaussian and Gauss-Jordan Elimination", "Homogeneous Systems of Linear Equations"],
     "statistics": ["Variance and Standard Deviation"],
