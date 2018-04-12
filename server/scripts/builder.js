@@ -221,7 +221,7 @@ const setPostNavigationLinks = (outFile, postNumber, subject) => {
     subject = subject.replace(/_/g, "-").toLowerCase();
 
     postNumber = parseInt(postNumber, 10);
-    console.log("seriously, fix this!!!".red);
+    console.log("seriously, fix this!!!".red); // it doesn't always come in as an int. have to track down the problem caller and fix it there.
     console.log("UNSET HARDCODE TO TRUE");
 
     // first and prev

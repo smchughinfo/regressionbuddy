@@ -3,8 +3,8 @@ const { getLargestPostNumber } = require("./utilities.js");
 
 module.exports = {
     initialize: () => {
-        process.env.name = "prod"; // if "dev" rebuilds all pages anytime a file in process.env.clientDir is modified.
-        process.env.buildOnRequest = false; // if true only rebuilds page when requested from server. 
+        process.env.name = "dev"; // if "dev" rebuilds all pages anytime a file in process.env.clientDir is modified.
+        process.env.buildOnRequest = true; // if true only rebuilds page when requested from server. 
 
         process.env.port = 8080;
         process.env.defaultSubject = "algebra";
