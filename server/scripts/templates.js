@@ -808,6 +808,7 @@ let templates = {
             $template
                 .find(".alert")
                 .removeClass("alert-info")
+                .removeClass("alert-success")
                 .addClass("alert-warning");
             $template
                 .find("h4")
