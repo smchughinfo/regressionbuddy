@@ -144,3 +144,18 @@
 #post .trig-30-45-60-ratios-table td {
     min-height: 400px;
 }
+
+#post .trigonometry-p3-q3 {
+    width: 250px;
+    max-width: none !important;
+}
+
+@media only screen and (max-width: 500px) {
+    #post .trigonometry-p3-q3 {
+        width: 100%;
+        max-width: 250px !important;
+    }
+    #post .trigonometry-p3-q3 .push-right{
+        right: 0;
+    }
+}
