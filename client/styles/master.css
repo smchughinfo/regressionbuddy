@@ -89,3 +89,7 @@
     display: inline-block;
     text-align: left;
 }
+
+.disc-list li {
+    list-style-type: disc;
+}

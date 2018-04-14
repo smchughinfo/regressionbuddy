@@ -185,7 +185,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/li_text.html`;
         let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
 
-        let childTypes = ["top-text", "text", "html-content"];
+        let childTypes = ["top-text", "text", "html-content", "disclaimer"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "li_text");        
@@ -235,6 +235,16 @@ let templates = {
         }
         else {
             $template.find("html-content").replaceWith($htmlContent.html());
+        }
+
+        // <disclaimer>
+        let $disclaimer = $placeholder.children("disclaimer");
+        if( $disclaimer.length === 0) {
+            $template.find("[disclaimer]").remove();
+        }
+        else {
+            let disclaimer = $disclaimer.html();
+            $template.find("[disclaimer]").removeAttr("disclaimer").html(disclaimer);
         }
 
         $placeholder.after($template.html());
