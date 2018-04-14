@@ -26,5 +26,7 @@
 var isSolutions = window.location.hash === "#solutions";
 var isWork = window.location.hash === "#work";
 if(isSolutions || isWork) {
-    document.querySelector("[href='" + window.location.hash + "']").click();
+    setTimeout(function() {
+        document.querySelector("[href='" + window.location.hash + "']").click();
+    }, 0);
 }
