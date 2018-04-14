@@ -12,4 +12,4 @@ To install locally:
 
 You can change the port by changing `process.env.port = 8080;` in server/scripts/globals.js.
 
-Work Board is at: https://trello.com/b/0iuuQ7Si/regression-buddy
+Work Board is at: https://github.com/smchughinfo/regressionbuddy/projects/1
