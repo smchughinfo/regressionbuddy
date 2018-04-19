@@ -1,10 +1,3 @@
-/* 
-    goal is to not use these when horizontal-group-2 collapses to col-12. 
-    mobile first though. do not set breakpoint using max-width because
-    that leaves a 1px bizarro zone at 767px. work with mobile first by
-    unsetting these properties when horizontal-group-2 is not col-12.
-*/
-
 .horizontal-group-2-topic-container {
     width: 100%;
 }
