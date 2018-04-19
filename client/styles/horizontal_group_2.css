@@ -1,5 +1,16 @@
+/* 
+    goal is to not use these when horizontal-group-2 collapses to col-12. 
+    mobile first though. do not set breakpoint using max-width because
+    that leaves a 1px bizarro zone at 767px. work with mobile first by
+    unsetting these properties when horizontal-group-2 is not col-12.
+*/
+
 .horizontal-group-2-topic-container {
     width: 100%;
+}
+
+.horizontal-group-2-item.second-item > .graph-header {
+    margin-top: 13px;
 }
 
 .alert-success .horizontal-group-2-item {
@@ -11,9 +22,40 @@
     border-bottom: 1px solid #abdde5;
 }
 
+.horizontal-group-2 .display-text {
+    position: static;
+}
+.horizontal-group-2 .space-text {
+    display: none;
+}
+
+.horizontal-group-2 .height-155, 
+.horizontal-group-2 .height-260 {
+    height: inherit;
+}
+
 @media only screen and (min-width: 768px) {
     .horizontal-group-2-item.first-item {
         border-bottom: none;
         border-right: 1px solid #abdde5;
     }
+    .horizontal-group-2 .display-text {
+        position: absolute;
+    }
+    .horizontal-group-2 .space-text {
+        display: inline;
+    }
+    .horizontal-group-2-item.second-item > .graph-header {
+        margin-top: 0;
+    }
+    .horizontal-group-2 .height-155 {
+        height: 155px;
+    }
+    .horizontal-group-2 .height-260 {
+        height: 260px;
+    }
+}
+
+.horizontal-group-2 .horizontal-group-2-item.second-item .table tr:last-child td {
+    padding-bottom: 0;
 }

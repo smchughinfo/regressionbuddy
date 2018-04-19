@@ -1,3 +1,31 @@
+<!-- 
+    TODO: latex \text{foo} here should be sans-serif to match the graph
+
+
+
+
+
+    WARNING - this page uses an unusual technique for alignment.
+
+    <span class="display-text-container">
+        <span class="display-text">
+            THIS TEXT GETS DISPLAYED
+        </span>
+        <span class="space-text">
+            THIS TEXT DOES SPACING ON THE PARENT
+        </span> 
+    </span>
+
+    The reason why is so I could get the height of the cells in the left column to match the height of the cells in the right column (or vice versa).
+    display-text-container is position:relative, .display-text is position:absolute, and .space-text is visibility:hidden.
+
+    Not a great way of doing it but I think it's about on par with some other solutions I could think of:
+        - use two normal tables (one for col-6 and one for col-12). this seemed like it would require coding a lot of one-time logic into the template.
+        - enforce hard coded heights. leaves ugly spacing from a ui pov.
+        - flexbox... maybe, not really sure how that would work.
+
+    The point is, I thought about this one and ended up deciding to cut each piece to fit because that seemed like the easiest solution. Maybe not but idk ¯\_(ツ)_/¯
+-->
 <topic>
     <topic-name>Solving Right Triangles</topic-name>
     <topic-definition>
@@ -12,36 +40,70 @@
         </topic-instance>
     </topic-definition>
     <!--▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼-->
-    <topic-example>
+    <topic-example size-class="max-width-1000 solving-triangles-example">
         <topic-instance>
             <horizontal-group-2>
                 <graph image-size-class="graph-size-1">
                     <text-header bold center>Angle and a Side Example</text-header>
                     <image-url>/images/trigonometry-appendix/solving-right-triangles-example-1.svg</image-url>
                     <caption-html>
-                        <table class="table text-left limit-breakdown">
+                        <table class="table text-left limit-breakdown margin-top-1-em">
                             <tbody>
-                                <tr>
+                                <tr class="height-260">
                                     <td>
-                                        One missing side can be found by setting up a trigonometric equation: 
+                                        <span class="display-text-container">
+                                            <span class="display-text">
+                                                The first missing side can be found by setting up an equation and using a calculator to find the answer:
+                                            </span>
+                                            <span class="space-text">
+                                                The first missing angle can be found by setting up an equation and using a calculator to find the answer: 
+                                            </span> 
+                                        </span>
+                                        <div>
+                                            \begin{align}
+                                                \sin(53.13°) &= \tfrac{\color{#a38f8c}{\text{a}}}{1} \\[2pt]
+                                                .8          &\approx \tfrac{\color{#a38f8c}{\text{a}}}{1} \\[2pt]
+                                                .8          &\approx \color{#a38f8c}{\text{a}} \\[5pt]
+                                            \end{align}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="height-155">
+                                    <td>
+                                        The remaining side, \(\color{#a38f8c}{\text{c}}\), can be found by repeating the same processs or by using the pythagorean theorem.
                                         <br>
                                         <div>
                                             \begin{align}
-                                                sin(53.13°) &= \frac{\color{#a38f8c}{\text{a}}}{1} \\
-                                                .8          &\approx \frac{\color{#a38f8c}{\text{a}}}{1} \\
-                                                .8          &\approx \color{#a38f8c}{\text{a}}
+                                                \color{#a38f8c}{\text{c}} 
+                                                &\approx 
+                                                \sqrt
+                                                {
+                                                    1^2 - .8^2
+                                                }
+                                                \approx
+                                                .6
                                             \end{align}
                                         </div>
-                                        The remaining side, \(\color{#a38f8c}{\text{c}}\), can be found by repeating the same processs or by using the pythagoerean theorem.
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        The missing angle is the complement of the known angle.
-                                        <br>
-                                        <br>
-                                        <div class="text-center">
-                                            \(\color{#a38f8c}{\text{C}}=90°-53.13°=36.87°\)
+                                        <span class="display-text-container">
+                                            <span class="display-text">
+                                                The missing angle, \( \color{#a38f8c}{\text{C}} \) ,is the complement of the known angle.
+                                            </span>
+                                            <span class="space-text">
+                                                The remaining side, \(\color{#a38f8c}{\text{e}}\), can be found in the same way as the Angle and a Side Example or by using the pythagorean theorem.
+                                            </span> 
+                                        </span>
+                                        <div>
+                                            <!-- 
+                                                yes, this doesn't vertically align with the example to the right on the screen.
+                                                yes, i have given it a border:1px solid red to verify that elements themselves are correctly aligned.
+                                            -->
+                                            \begin{align}
+                                                \color{#a38f8c}{\text{C}} &= 90°-53.13°=36.87°
+                                            \end{align}
                                         </div>
                                     </td>
                                 </tr>
@@ -51,29 +113,58 @@
                 </graph>
                 <graph image-size-class="graph-size-1">
                     <text-header bold center>Two sides Example</text-header>
-                    <image-url>/images/trigonometry-appendix/solving-right-triangles-example-1.svg</image-url>
+                    <image-url>/images/trigonometry-appendix/solving-right-triangles-example-2.svg</image-url>
                     <caption-html>
-                        <table class="table text-left limit-breakdown">
+                        <table class="table text-left limit-breakdown margin-top-1-em">
                             <tbody>
-                                <tr>
+                                <tr class="height-260">
                                     <td>
-                                        The missing sides can be found by setting up a trigonometric equation: 
-                                        <br>
+                                        The first missing angle can be found by setting up an equation and using a calculator to find the answer: 
                                         <div>
                                             \begin{align}
-                                                sin(53.13°) &= \frac{\color{#a38f8c}{a}}{1} \\
-                                                .8          &\approx \frac{\color{#a38f8c}{a}}{1} \\
-                                                .8          &\approx \color{#a38f8c}{a}
+                                                \tan(\color{#a38f8c}{\text{D}})    &=       \tfrac{6}{10}             \\[2pt]
+                                                \tan(\color{#a38f8c}{\text{D}})    &=       \tfrac{3}{5}              \\[2pt]
+                                                \tan^{-1}\left(\tfrac{3}{5}\right) &=       \color{#a38f8c}{\text{D}} \\[2pt]
+                                                30.96°                             &\approx \color{#a38f8c}{\text{D}}
+                                            \end{align}
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr class="height-155">
+                                    <td>
+                                        <span class="display-text-container">
+                                            <span class="display-text">
+                                                The remaining angle, \(\color{#a38f8c}{\text{F}}\), is the complement of \(\color{#a38f8c}{\text{D}}\).
+                                            </span>
+                                            <span class="space-text">
+                                                The remaining side, \(\color{#a38f8c}{\text{c}}\), can be found by repeating the same processs or by using the pythagorean theorem.
+                                            </span>
+                                        </span>
+                                        <div>
+                                            \begin{align}
+                                                \color{#a38f8c}{\text{F}} &\approx 90°-30.96 \approx 59.04°
                                             \end{align}
                                         </div>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        The missing angle is the complement of the known angle.
+                                        The remaining side, \(\color{#a38f8c}{\text{e}}\), can be found in the same way as the Angle and a Side Example or by using the pythagorean theorem.
                                         <br>
-                                        <div class="text-center">
-                                            \(C=90°-53.13°=36.87°\)
+                                        <div>
+                                            <!-- 
+                                                yes, this doesn't vertically align with the example to the left on the screen.
+                                                yes, i have given it a border:1px solid red to verify that elements themselves are correctly aligned.
+                                            -->
+                                            \begin{align}
+                                                \color{#a38f8c}{\text{e}} 
+                                                &=
+                                                \sqrt
+                                                {
+                                                    6^2+10^2
+                                                }
+                                                = 2\sqrt{34}
+                                            \end{align}
                                         </div>
                                     </td>
                                 </tr>

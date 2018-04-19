@@ -32,6 +32,9 @@
     max-width: 400px;
 }
 
+.max-width-1000 {
+    max-width: 1000px;
+}
 
     /* this needs some extra uumph. is 100% temporary until i can take a second look. */
     .ideal-width-300 {
@@ -44,4 +47,12 @@
 
 .margin-right-1-em {
     margin-right: 1em;
+}
+
+.height-155 {
+    height: 155px;
+}
+
+.height-260 {
+    height: 260px;
 }

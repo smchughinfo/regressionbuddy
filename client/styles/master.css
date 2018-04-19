@@ -93,3 +93,16 @@
 .disc-list li {
     list-style-type: disc;
 }
+
+/******* BEGIN - THESE TWO CLASSES ARE BUDDIES *********/
+.display-text-container {
+    display: block;
+    position:relative;
+}
+.display-text {
+    position:absolute;
+}
+.space-text {
+    visibility: hidden;
+}
+/******* END - THESE TWO CLASSES ARE BUDDIES *********/
