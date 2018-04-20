@@ -152,16 +152,55 @@ const getCrossTopic = topic => {
     };
 };
 
+const getCrossTopics = (config, targetSubject) => {
+    let crossTopics = [];
+    for(let subject in config.topics) {
+        if(subject !== targetSubject) {
+            let subjectCrossTopics = config.topics[subject].filter(topic => {
+                let crossTopic = getCrossTopic(topic);
+                return crossTopic.subject === targetSubject;
+            });
+            if(subjectCrossTopics.length > 0) {
+                crossTopics = crossTopics.concat(subjectCrossTopics);
+            }
+        }
+    }
+    return crossTopics;
+};
+
+const getAllCrossTopics = (targetSubject, inReview) => {
+    let postNumbers = getPostNumbers(inReview);
+    let configs = postNumbers.map(getPostConfig);
+    let crossTopics = [];
+
+    // go through each config and find the cross topics that belong to the targetSubject
+    for(let i = 0; i < configs.length; i++) {
+        let config = configs[i];
+        let configCrossTopics = getCrossTopics(config, targetSubject);
+        if(configCrossTopics.length > 0) {
+            configCrossTopics = configCrossTopics.map(getCrossTopic);
+            crossTopics = crossTopics.concat(configCrossTopics)
+        }
+    }
+    
+    return crossTopics;
+};
+
 const getAppendixFiles = (subject, inReview)  => {
-    var postNumbers = getPostNumbers(inReview);
-    var configs = postNumbers.map(n => {
+    let postNumbers = getPostNumbers(inReview);
+    let configs = postNumbers.map(n => {
         return getPostConfig(n);
     });
 
-    var topics = [];
+    let topics = [];
     configs.forEach(config => {
-        var postTopics = config.topics[subject.replace(/_/g, "-")]
-        topics = topics.concat(postTopics);
+        let hyphenSubject = subject.replace(/_/g, "-");
+        let subjectTopics = getCrossTopics(config, hyphenSubject)
+            .map(topic => {
+                return getCrossTopic(topic).topic;
+            });
+        let postTopics = config.topics[hyphenSubject];
+        topics = topics.concat(subjectTopics).concat(postTopics);
     });
 
     return getTopicFiles(subject, topics);
@@ -193,5 +232,6 @@ module.exports = {
     getAppendixFiles: getAppendixFiles,
     getSimpleTopicString: getSimpleTopicString,
     isCrossTopic: isCrossTopic,
-    getCrossTopic: getCrossTopic
+    getCrossTopic: getCrossTopic,
+    getAllCrossTopics: getAllCrossTopics
 };

@@ -1,0 +1,168 @@
+<topic deferred>
+    <topic-name>The Equation of a Line</topic-name>
+    <topic-definition>
+        <!--<topic-instance>
+            <topic-instance-name>Set-Builder Notation</topic-instance-name>
+            <topic-instance-html>
+                The general form of <strong>set-builder</strong> notation is
+                \(
+                    \{x | x \text{ has some condition} \}
+                \)
+                and is read "x such that x has some condition".
+            </topic-instance-html>
+        </topic-instance>-->
+        <topic-instance>
+            <topic-instance-html>
+                <strong class="pseudo-topic-instance-header">Set-Builder Notation</strong>
+                <div>
+                        A few configurations of set-builder notation are listed below:
+                </div>
+                <br>
+            </topic-instance-html>
+            <horizontal-group-3>
+                <empty-graph>
+                    <text-header center bold>Enumeration</text-header>
+                    <caption-html>
+                        <div class="text-center">
+                            <br>
+                            \(
+                                \{ a, b, d \}
+                            \)
+                            <br>
+                            <br>
+                            This set is composed of members \(a\text{,}b\text{, and } d\text{.} \)
+                        </div>
+                    </caption-html>
+                </empty-graph> 
+                <empty-graph>
+                    <text-header center bold>Predicate</text-header>
+                    <caption-html>
+                        <div class="text-center">
+                                <br>
+                            \(
+                                \{x | x \text{ has some condition} \}
+                            \)
+                            <br>
+                            <br>
+                            This set only includes members that meet a condition.
+                        </div>
+                    </caption-html>
+                </empty-graph> 
+                <empty-graph>
+                    <text-header center bold>Predicate with Domain</text-header>
+                    <caption-html>
+                        <div class="text-center">
+                            <br>
+                            \(
+                                \{x \in E| x \text{ has some condition} \}
+                            \)
+                            <br>
+                            <br>
+                            Members of this set are subject to the additional constraint of belonging to another set.
+                        </div>
+                    </caption-html>
+                </empty-graph>
+            </horizontal-group-3>
+        </topic-instance>
+        <topic-instance>
+            <topic-instance-name>Interval Notation</topic-instance-name>
+            <topic-instance-html>
+                <div>
+                    Interval notation is used to represent the set of numbers between two endpoints. An interval between the endpoints \(a\) and \(b\) takes the form 
+                    \( (a,b) \), 
+                    \( [a,b) \), 
+                    \( [a,b] \), 
+                    or 
+                    \( (a,b] \).
+                    Interval notation has the following properties:
+                </div>
+                <ul class="list-group large-left-margin">
+                    <li>
+                        Exclusive endpoints use parentheses, ().
+                    </li>
+                    <li>
+                        Inclusive endpoints use brackets, [].
+                    </li>
+                    <li>
+                        Two intervals are joined together with the union operator, \(\cup\).
+                    </li>
+                </ul>
+            </topic-instance-html>
+        </topic-instance>
+    </topic-definition>
+    <!--▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼-->
+    <topic-example>
+        <topic-instance>
+            <horizontal-group-4>
+                <graph>
+                    <text-header center bold>Enumeration Example</text-header>
+                    <image-url>/images/algebra-appendix/set-builder-example-1.svg</image-url>
+                    <graph-url>https://www.geogebra.org/graphing/wscmhEE2</graph-url>
+                    <caption-text>
+                        \(
+                            \{ 6,-1, 5 \}
+                        \)
+                    </caption-text>
+                    <caption-html>
+                        <br>
+                        <p class="text-left">
+                            The set composed of \(6\), \(-1\), and \(5\).
+                        </p>
+                    </caption-html>
+                </graph> 
+                <graph>
+                    <text-header center bold>Predicate Example</text-header>
+                    <image-url>/images/algebra-appendix/set-builder-example-2.svg</image-url>
+                    <graph-url>https://www.geogebra.org/graphing/Yg2KtG9V</graph-url>
+                    <caption-text>
+                        \(
+                            \{x | -3 \leq x \leq 3 \}
+                        \)
+                    </caption-text>
+                    <caption-html>
+                        <br>
+                        <p class="text-left">
+                            The set of \(x\) such that \(x\) is between \(-3\) and \(3\), inclusive.
+                        </p>
+                    </caption-html>
+                </graph> 
+                <graph>
+                    <text-header center bold>Predicate with Domain Example</text-header>
+                    <image-url>/images/algebra-appendix/set-builder-example-3.svg</image-url>
+                    <graph-url>https://www.geogebra.org/graphing/pEEu4ENQ</graph-url>
+                    <caption-text>
+                        \(
+                            \{x \in \mathbb{R}| x > 2 \}
+                        \)
+                    </caption-text>
+                    <caption-html>
+                        <br>
+                        <p class="text-left">
+                            The set of \(x\) such that \(x\) is in the set of real numbers that are greater than two.
+                            <br>
+                            <small><i>
+                                *Note - \(\in\) stands for in and \(\mathbb{R}\) stands for the set of all real numbers.
+                            </i></small>
+                        </p>
+                    </caption-html>
+                </graph>
+                <graph>
+                    <text-header center bold>Interval Notation Example</text-header>
+                    <image-url>/images/algebra-appendix/interval-notation-example.svg</image-url>
+                    <graph-url>https://www.geogebra.org/graphing/BxZ4cgWU</graph-url>
+                    <caption-text>
+                        \(
+                            [-4,1)\cup(2,5]
+                        \)
+                    </caption-text>
+                    <caption-html>
+                        <br>
+                        <p class="text-left">
+                            The set of numbers between \(-4\) (inclusive) and \(1\) (exclusive) and the set of numbers between \(2\) (exclusive) and \(5\) (inclusive).
+                        </p>
+                    </caption-html>
+                </graph>
+            </horizontal-group-4>
+        </topic-instance>
+    </topic-example>
+</topic>

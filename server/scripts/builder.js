@@ -1,7 +1,7 @@
 const { readFileSync, writeFileSync, watchFile, unwatchFile, mkdirSync } = require("fs");
 const { normalize, sep} = require("path");
 const compressor = require("node-minify");
-const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig, sortObjectArrayByKey, orderSubjects, getAppendixFiles, getSimpleTopicString, isCrossTopic, getCrossTopic } = require("./utilities.js");
+const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig, sortObjectArrayByKey, orderSubjects, getAppendixFiles, getSimpleTopicString, isCrossTopic, getCrossTopic, getAllCrossTopics } = require("./utilities.js");
 const { applyTemplates } = require("./templates.js");
 const zlib = require('zlib');
 const { minify } = require("html-minifier");
@@ -478,13 +478,17 @@ const buildReviewAppendix = (postNumber, subject) => {
     buildAppendix(subject, true);
 
     let config = getPostConfig(postNumber);
-    let postTopics = config.topics[subject.replace(/_/g, "-")];            
     let appendix = readFileSync(`${process.env.buildDir}/appendix.${subject}.html`).toString();
     let appendixTitle = `${subject} Appendix`;
     let appendixOutFilePath = `${process.env.buildDir}/${postNumber}.appendix.${subject}.review.html`;
-
+    let postTopics = config.topics[subject.replace(/_/g, "-")];
+    let crossTopics = getAllCrossTopics(subject, true)
+        .map(crossTopic => {
+            return crossTopic.topic;
+        });
+    
+    postTopics = postTopics.concat(crossTopics);
     postTopics = postTopics
-        .filter(topic => isCrossTopic(topic) === false)
         .map(topic => {
             return  getSimpleTopicString(topic);
         });
