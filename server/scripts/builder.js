@@ -1,7 +1,7 @@
 const { readFileSync, writeFileSync, watchFile, unwatchFile, mkdirSync } = require("fs");
 const { normalize, sep} = require("path");
 const compressor = require("node-minify");
-const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig, sortObjectArrayByKey, orderSubjects, getAppendixFiles, getSimpleTopicString } = require("./utilities.js");
+const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig, sortObjectArrayByKey, orderSubjects, getAppendixFiles, getSimpleTopicString, isCrossTopic, getCrossTopic } = require("./utilities.js");
 const { applyTemplates } = require("./templates.js");
 const zlib = require('zlib');
 const { minify } = require("html-minifier");
@@ -201,7 +201,18 @@ const buildPostConfiguration = (postNumber, outFile, subject) => {
 
     subject = subject.replace(/_/g, "-");
     let links = config.topics[subject].map(topic => {
-        return `<a href='/appendix/${subject}#${getSimpleTopicString(topic)}'>${topic}</a>`;
+        let url = "/appendix/";
+        let text = "";
+        if(isCrossTopic(topic)) {
+            let crossTopic = getCrossTopic(topic);
+            url += `${crossTopic.subject}#${getSimpleTopicString(crossTopic.topic)}`;
+            text = crossTopic.topic;
+        }
+        else {
+            url += `${subject}#${getSimpleTopicString(topic)}`;
+            text = topic;
+        }
+        return `<a href='${url}'>${text}</a>`;
     });
     outFile = outFile.replace("[POST TOPICS]", links.join(", "));
 
@@ -472,9 +483,11 @@ const buildReviewAppendix = (postNumber, subject) => {
     let appendixTitle = `${subject} Appendix`;
     let appendixOutFilePath = `${process.env.buildDir}/${postNumber}.appendix.${subject}.review.html`;
 
-    postTopics = postTopics.map(topic => {
-        return  getSimpleTopicString(topic);
-    });
+    postTopics = postTopics
+        .filter(topic => typeof topic === "string")
+        .map(topic => {
+            return  getSimpleTopicString(topic);
+        });
 
     let $ = cheerio.load(appendix);
     let topics = $.root().find("#appendix > *");
@@ -704,7 +717,12 @@ const generateSiteRSS = () => {
         let description = getPostSubjects(postNumber).map(subject => {
             let subjectHumanFormat = capatalizeFirstLetterOfEveryWord(subject.replace(/_/g, " "));
             let subjectIdentifier = subject.replace(/_/g, "-");
-            return subjectHumanFormat + " (" + postJson.topics[subjectIdentifier].join(", ") + ")";
+            let topics = postJson.topics[subjectIdentifier]
+                .map(topic => {
+                    return isCrossTopic(topic) ? getCrossTopic(topic).topic : topic;
+                })
+                .join(", ");
+            return subjectHumanFormat + " (" + topics + ")";
         }).join(", ");
 
         item = item.replace("[DESCRIPTION]", `${description}`);

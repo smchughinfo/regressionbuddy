@@ -128,7 +128,9 @@ const getSimpleTopicString = topicString => {
 }
 
 const getTopicFiles = (subject, topics) => {
-    topics = topics.map(getSimpleTopicString);
+    topics = topics
+        .filter(topic => typeof topic === "string")
+        .map(getSimpleTopicString);
 
     var allFiles = getFiles(`${process.env.clientDir}/html/appendix/${subject}`);
     var topicFiles = allFiles.filter(file => {
@@ -139,6 +141,15 @@ const getTopicFiles = (subject, topics) => {
     });
     
     return topicFiles;
+};
+
+const isCrossTopic = topic => topic instanceof Array;
+
+const getCrossTopic = topic => {
+    return {
+        subject: topic[0],
+        topic: topic[1]
+    };
 };
 
 const getAppendixFiles = (subject, inReview)  => {
@@ -180,5 +191,7 @@ module.exports = {
     sortObjectArrayByKey: sortObjectArrayByKey,
     orderSubjects: orderSubjects,
     getAppendixFiles: getAppendixFiles,
-    getSimpleTopicString: getSimpleTopicString
+    getSimpleTopicString: getSimpleTopicString,
+    isCrossTopic: isCrossTopic,
+    getCrossTopic: getCrossTopic
 };
