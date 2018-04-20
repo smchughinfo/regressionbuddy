@@ -484,7 +484,7 @@ const buildReviewAppendix = (postNumber, subject) => {
     let appendixOutFilePath = `${process.env.buildDir}/${postNumber}.appendix.${subject}.review.html`;
 
     postTopics = postTopics
-        .filter(topic => typeof topic === "string")
+        .filter(topic => isCrossTopic(topic) === false)
         .map(topic => {
             return  getSimpleTopicString(topic);
         });
