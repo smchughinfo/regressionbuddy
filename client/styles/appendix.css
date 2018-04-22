@@ -134,14 +134,13 @@
     height: 66px;
 }
 
-.simple-data-set,
-.step {
-    margin-top: .5em;
-}
-
 @media only screen and (min-width: 1050px) {
     /* the vertical gap this class creates is maximized when the text above it has no line breaks. so reduce that manually... */
     .solving-triangles-example .height-260 {
         height: 235px;
     }
+}
+
+#appendix .simple-data-set {
+    margin-top: 1em;
 }

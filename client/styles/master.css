@@ -106,3 +106,7 @@
     visibility: hidden;
 }
 /******* END - THESE THREE CLASSES ARE BUDDIES *********/
+
+.inline-block {
+    display: inline-block;
+}

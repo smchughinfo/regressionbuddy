@@ -532,7 +532,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/topic_instance.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["topic-instance-name", "topic-instance-html", "horizontal-group-2", "horizontal-group-3", "horizontal-group-4", "group-carrier", "three-group", "graph", "wrapped-graph"];
+        let childTypes = ["topic-instance-name", "topic-instance-html", "horizontal-group-2", "horizontal-group-3", "horizontal-group-4", "group-carrier", "three-group", "graph", "wrapped-graph", "steps"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "topic_instance");
@@ -653,6 +653,17 @@ let templates = {
         }
         else {
             $template.find("wrapped-graph").remove();
+        }
+
+        // <steps>
+        let $steps = $placeholder.children("steps");
+        if($steps.length > 0) {
+            let $templateSteps = $template.find("steps");
+            $templateSteps.replaceWith($steps);
+            templates.steps($steps[0]);
+        }
+        else {
+            $template.find("steps").remove();
         }
 
         $placeholder.replaceWith($template);
@@ -1134,6 +1145,78 @@ let templates = {
         
         $placeholder.replaceWith($template);
     },
+    steps: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/steps.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        let childTypes = ["step"];
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "steps");
+
+        let $repeater = $template.find("[repeater]");
+        let $repeatContainer = $repeater.parent();
+        $repeater.remove();
+        $repeater.removeAttr("repeater");
+
+        // <step>
+        let $steps = $placeholder.find("step");
+        if($steps.length === 0) {
+            throw "steps must have at least one step";
+        }
+        else {
+            let $repeaterClone = $repeater.clone();
+            $steps.each((i, elm) => {
+                let $step = $(elm);
+                let $repeaterClone = $repeater.clone();
+                $repeaterClone.append($step);
+                templates.step(i + 1, elm);
+    
+                $repeatContainer.append($repeaterClone);
+            });
+        }
+
+        $placeholder.replaceWith($template);
+    },
+    step: (i, elm) => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/step.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        let childTypes = ["instructions", "actions-html"];
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "step");
+
+        // number
+        let $templateNumber = $template.find("[number]").removeAttr("number");
+        $templateNumber.html(`Step ${i}:`);
+
+        // <instructions>
+        let $instructions = $placeholder.find("instructions");
+        if($instructions.length === 0) {
+            throw "step must have instructions";
+        }
+        else {
+            let instructions = $instructions.html();
+            let $templateInstructions = $template.find("[instructions]").removeAttr("instructions");
+            $templateInstructions.html(instructions);
+        }
+
+        // <actions-html>
+        let $actions = $placeholder.find("actions-html");
+        if($actions.length === 0) {
+            throw "step must have actionss";
+        }
+        else {
+            let actions = $actions.html();
+            let $templateActions = $template.find("[actions-html]").removeAttr("actions-html");
+            $templateActions.html(actions);
+        }
+
+        $placeholder.replaceWith($template);
+    }
 }
 
 module.exports = {

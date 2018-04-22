@@ -1,0 +1,15 @@
+.steps {
+    margin-top: 1em;
+}
+
+.steps .step-number {
+    padding-right: .5em;
+}
+
+.steps .step-actions {
+    padding-top: 1em;
+}
+
+.steps .step:not(:last-child) .step-actions {
+    padding-bottom: 1em;
+}

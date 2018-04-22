@@ -4,8 +4,10 @@
             <topic-instance>
                 <topic-instance-html>
                     <strong>Mean</strong> is the sum of the values divided by the total number of values.
-                    <div class="step">
-                        Sample Mean 
+                    <div class="margin-top-1-em">
+                        <span class="inline-block width-125">
+                            Sample Mean
+                        </span>
                         \( 
                             \overline{X}
                             = 
@@ -18,8 +20,10 @@
                                 {n}
                         \)
                     </div>
-                    <div class="step">
-                        Population Mean
+                    <div class="margin-top-1-em">
+                        <span class="inline-block width-125">
+                            Population Mean
+                        </span>
                         \( 
                             \overline{\mu}
                             = 
@@ -48,7 +52,7 @@
             <topic-instance>
                 <topic-instance-html>
                     <strong>Midrange</strong> is the value half way between the largest and smallest value.
-                    <div class="step">
+                    <div class="margin-top-1-em">
                         midrange
                         \( 
                             =\frac{\text{largest + smallest}}{2}
@@ -92,19 +96,25 @@
                             5, 13, 9, 3, 5, 7, 10
                         \)
                     </div>
-                    <div class="step">
-                        <strong>Step 1:</strong> Order the data. 
-                        \( 
-                            3, 5, 5, 7, 9, 10, 13
-                        \)
-                    </div>
-                    <div class="step">
-                        <strong>Step 2:</strong> Select the middle value.
-                        \( 
-                            3, 5, 5, \enclose{circle}[mathcolor="#a38f8c"]{7}, 9, 10, 13
-                        \)
-                    </div>
                 </topic-instance-html>
+                <steps>
+                    <step>
+                        <instructions>Order the data.</instructions>
+                        <actions-html>
+                            \( 
+                                3, 5, 5, 7, 9, 10, 13
+                            \)
+                        </actions-html>
+                    </step>
+                    <step>
+                        <instructions>Select the middle value</instructions>
+                        <actions-html>
+                            \( 
+                                3, 5, 5, \enclose{circle}[mathcolor="#a38f8c"]{7}, 9, 10, 13
+                            \)
+                        </actions-html>
+                    </step>
+                </steps>
             </topic-instance>
             <topic-instance>
                 <topic-instance-name>Median Example (even)</topic-instance-name>
@@ -115,25 +125,33 @@
                             5, 13, 9, 3, 5, 7, 10, 12
                         \)
                     </div>
-                    <div class="step">
-                        <strong>Step 1:</strong> Order the data.
-                        \( 
-                            3, 5, 5, 7, 9, 10, 12, 13
-                        \)
-                    </div>
-                    <div class="step">
-                        <strong>Step 2:</strong> Select the middle value.
-                        \( 
-                            3, 5, 5, \enclose{circle}[mathcolor="#a38f8c"]{7, 9}, 10, 12, 13
-                        \)
-                    </div>
-                    <div class="step">
-                        <strong>Step 3:</strong> Take the mean of the middle two values.
-                        \(
-                            \frac{7+9}{2} = \frac{16}{2} = 8
-                        \)
-                    </div>
                 </topic-instance-html>
+                <steps>
+                    <step>
+                        <instructions>Order the data.</instructions>
+                        <actions-html>
+                            \( 
+                                3, 5, 5, 7, 9, 10, 12, 13
+                            \)
+                        </actions-html>
+                    </step>
+                    <step>
+                        <instructions>Select the middle value</instructions>
+                        <actions-html>
+                            \( 
+                                3, 5, 5, \enclose{circle}[mathcolor="#a38f8c"]{7, 9}, 10, 12, 13
+                            \)
+                        </actions-html>
+                    </step>
+                    <step>
+                        <instructions>Take the mean of the middle two values.</instructions>
+                        <actions-html>
+                            \(
+                                \frac{7+9}{2} = \frac{16}{2} = 8
+                            \)
+                        </actions-html>
+                    </step>
+                </steps>
             </topic-instance>
             <topic-instance>
                 <topic-instance-name>Mode Example</topic-instance-name>
@@ -145,9 +163,8 @@
                             2, 2, 1, 2, 3, 1, 5, 0, 2, 3 
                         \)
                     </div>
-                    <div class="step">
-                        \(2\) occurs most often. 
-                    </div>
+                    <br>
+                    \(2\) occurs most often.
                 </topic-instance-html>
             </topic-instance>
             <topic-instance>
@@ -155,9 +172,11 @@
                 <topic-instance-html>
                     The number of pets owned in six different households is record below. Find the midrange.
                     <br>
-                    \(
-                        1, 0, 0, 1, 5, 0
-                    \)
+                    <div class="simple-data-set">
+                        \(
+                            1, 0, 0, 1, 5, 0
+                        \)
+                    </div>
                     <br>
                     \( \frac{5+1}{2}= 3\). 
                 </topic-instance-html>
