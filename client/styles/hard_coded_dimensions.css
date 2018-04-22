@@ -28,6 +28,14 @@
     width: 350px;
 }
 
+.max-width-200 {
+    max-width: 200px;
+}
+
+.max-width-225 {
+    max-width: 225px;
+}
+
 .max-width-350 {
     max-width: 350px;
 }

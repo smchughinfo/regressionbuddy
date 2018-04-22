@@ -2,8 +2,13 @@
     margin-top: 1em;
 }
 
+.steps td {
+    vertical-align: top;
+}
+
 .steps .step-number {
     padding-right: .5em;
+    white-space: nowrap;
 }
 
 .steps .step-actions {
@@ -12,4 +17,14 @@
 
 .steps .step:not(:last-child) .step-actions {
     padding-bottom: 1em;
+}
+
+.steps .simd {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+}
+
+.steps .simd > * {
+    padding-right: 2em;
 }

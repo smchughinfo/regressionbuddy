@@ -98,3 +98,7 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.graph-con-no-image.disallow-grow {
+    flex-grow: 0;
+}

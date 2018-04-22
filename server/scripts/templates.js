@@ -487,7 +487,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/empty_graph.html`;
         let $template = $("<template-container>" + readFileSync(templatePath).toString() + "</template-container>");
 
-        let childTypes = ["text-header", "caption-html"];
+        let childTypes = ["text-header", "caption-html", "steps"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "empty_graph");
@@ -518,12 +518,30 @@ let templates = {
         // <caption-html>
         if($placeholder.children("caption-html").length > 0) {
             let html = $placeholder.children("caption-html").html();
-            $template.find("[content]").removeAttr("content").html(html);
+            let $content = $template.find("[content]").removeAttr("content")
+
+            // [disallow-grow]
+            if($placeholder.children("caption-html").is("[disallow-grow]")) {
+                $content.addClass("disallow-grow");
+            }
+
+            $content.html(html);
         }
         else {
             $template.find("[content]").remove();
         }
 
+        // <steps>
+        let $steps = $placeholder.children("steps");
+        if($steps.length > 0) {
+            let $templateSteps = $template.find("steps");
+            $templateSteps.replaceWith($steps);
+            templates.steps($steps[0]);
+        }
+        else {
+            $template.find("steps").remove();
+        }
+        
        
         $placeholder.replaceWith($template.html());
     },
