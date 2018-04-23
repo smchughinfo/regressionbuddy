@@ -12,7 +12,8 @@
    height="690"
    id="svg145"
    sodipodi:docname="tangent-lines-2.svg"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)">
+   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   viewBox="0 0 690 690">
   <metadata
      id="metadata149">
     <rdf:RDF>
@@ -21,7 +22,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -38,13 +39,14 @@
      inkscape:window-height="1057"
      id="namedview147"
      showgrid="false"
-     inkscape:zoom="0.33956835"
-     inkscape:cx="346.5"
-     inkscape:cy="347.5"
+     inkscape:zoom="0.24011108"
+     inkscape:cx="39.666432"
+     inkscape:cy="463.51458"
      inkscape:window-x="1912"
      inkscape:window-y="-8"
      inkscape:window-maximized="1"
-     inkscape:current-layer="svg145" />
+     inkscape:current-layer="svg145"
+     inkscape:lockguides="false" />
   <defs
      id="defs5">
     <clipPath
@@ -66,576 +68,388 @@
          x="0"
          y="5" />
     </clipPath>
-  </defs>
-  <g
-     clip-path="url(#clipPath958)"
-     id="g143"
-     transform="translate(0,-5)">
-    <g
-       transform="translate(-307,-18)"
-       id="g141">
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath1222">
       <rect
          x="0"
          y="0"
-         width="1478"
-         height="932"
-         id="rect7"
-         style="fill:#ffffff;fill-opacity:1;stroke:none" />
-      <path
-         d="m 666.5,2.5 v 930"
-         stroke-miterlimit="10"
-         id="path9"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <path
-         d="m 666.5,1.5 -4,4"
-         stroke-miterlimit="10"
-         id="path11"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <path
-         d="m 666.5,1.5 4,4"
-         stroke-miterlimit="10"
-         id="path13"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <path
-         d="m 0.5,591.5 h 1476"
-         stroke-miterlimit="10"
-         id="path15"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <path
-         d="m 1477.5,591.5 -4,-4"
-         stroke-miterlimit="10"
-         id="path17"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <path
-         d="m 1477.5,591.5 -4,4"
-         stroke-miterlimit="10"
-         id="path19"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="84"
-         y="607"
-         dominant-baseline="alphabetic"
-         stroke-miterlimit="10"
-         id="text21"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:1">–3</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="84"
-         y="607"
-         dominant-baseline="alphabetic"
-         id="text23"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">–3</text>
-      <path
-         d="m 89.5,591.5 v 3"
-         stroke-miterlimit="10"
-         id="path25"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="276"
-         y="607"
-         dominant-baseline="alphabetic"
-         stroke-miterlimit="10"
-         id="text27"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:1">–2</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="276"
-         y="607"
-         dominant-baseline="alphabetic"
-         id="text29"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">–2</text>
-      <path
-         d="m 281.5,591.5 v 3"
-         stroke-miterlimit="10"
-         id="path31"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="469"
-         y="607"
-         dominant-baseline="alphabetic"
-         stroke-miterlimit="10"
-         id="text33"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:1">–1</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="469"
-         y="607"
-         dominant-baseline="alphabetic"
-         id="text35"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">–1</text>
-      <path
-         d="m 474.5,591.5 v 3"
-         stroke-miterlimit="10"
-         id="path37"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <path
-         d="m 666.5,591.5 v 3"
-         stroke-miterlimit="10"
-         id="path39"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="857"
-         y="607"
-         dominant-baseline="alphabetic"
-         stroke-miterlimit="10"
-         id="text41"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:1">1</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="857"
-         y="607"
-         dominant-baseline="alphabetic"
-         id="text43"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">1</text>
-      <path
-         d="m 859.5,591.5 v 3"
-         stroke-miterlimit="10"
-         id="path45"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="1049"
-         y="607"
-         dominant-baseline="alphabetic"
-         stroke-miterlimit="10"
-         id="text47"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:1">2</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="1049"
-         y="607"
-         dominant-baseline="alphabetic"
-         id="text49"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">2</text>
-      <path
-         d="m 1051.5,591.5 v 3"
-         stroke-miterlimit="10"
-         id="path51"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="1242"
-         y="607"
-         dominant-baseline="alphabetic"
-         stroke-miterlimit="10"
-         id="text53"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:1">3</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="1242"
-         y="607"
-         dominant-baseline="alphabetic"
-         id="text55"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">3</text>
-      <path
-         d="m 1244.5,591.5 v 3"
-         stroke-miterlimit="10"
-         id="path57"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="1434"
-         y="607"
-         dominant-baseline="alphabetic"
-         stroke-miterlimit="10"
-         id="text59"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:1">4</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="1434"
-         y="607"
-         dominant-baseline="alphabetic"
-         id="text61"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">4</text>
-      <path
-         d="m 1436.5,591.5 v 3"
-         stroke-miterlimit="10"
-         id="path63"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <path
-         d="m 663.5,879.5 h 3"
-         stroke-miterlimit="10"
-         id="path65"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <path
-         d="m 663.5,783.5 h 3"
-         stroke-miterlimit="10"
-         id="path67"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <path
-         d="m 663.5,687.5 h 3"
-         stroke-miterlimit="10"
-         id="path69"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <path
-         d="m 663.5,494.5 h 3"
-         stroke-miterlimit="10"
-         id="path71"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <path
-         d="m 663.5,398.5 h 3"
-         stroke-miterlimit="10"
-         id="path73"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <path
-         d="m 663.5,302.5 h 3"
-         stroke-miterlimit="10"
-         id="path75"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <path
-         d="m 663.5,206.5 h 3"
-         stroke-miterlimit="10"
-         id="path77"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <path
-         d="m 663.5,109.5 h 3"
-         stroke-miterlimit="10"
-         id="path79"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <path
-         d="m 663.5,13.5 h 3"
-         stroke-miterlimit="10"
-         id="path81"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="636"
-         y="884"
-         dominant-baseline="alphabetic"
-         stroke-miterlimit="10"
-         id="text83"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:1">–1.5</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="636"
-         y="884"
-         dominant-baseline="alphabetic"
-         id="text85"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">–1.5</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="646"
-         y="788"
-         dominant-baseline="alphabetic"
-         stroke-miterlimit="10"
-         id="text87"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:1">–1</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="646"
-         y="788"
-         dominant-baseline="alphabetic"
-         id="text89"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">–1</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="636"
-         y="692"
-         dominant-baseline="alphabetic"
-         stroke-miterlimit="10"
-         id="text91"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:1">–0.5</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="636"
-         y="692"
-         dominant-baseline="alphabetic"
-         id="text93"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">–0.5</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="643"
-         y="499"
-         dominant-baseline="alphabetic"
-         stroke-miterlimit="10"
-         id="text95"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:1">0.5</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="643"
-         y="499"
-         dominant-baseline="alphabetic"
-         id="text97"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">0.5</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="653"
-         y="403"
-         dominant-baseline="alphabetic"
-         stroke-miterlimit="10"
-         id="text99"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:1">1</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="653"
-         y="403"
-         dominant-baseline="alphabetic"
-         id="text101"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">1</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="643"
-         y="307"
-         dominant-baseline="alphabetic"
-         stroke-miterlimit="10"
-         id="text103"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:1">1.5</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="643"
-         y="307"
-         dominant-baseline="alphabetic"
-         id="text105"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">1.5</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="653"
-         y="211"
-         dominant-baseline="alphabetic"
-         stroke-miterlimit="10"
-         id="text107"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:1">2</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="653"
-         y="211"
-         dominant-baseline="alphabetic"
-         id="text109"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">2</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="643"
-         y="114"
-         dominant-baseline="alphabetic"
-         stroke-miterlimit="10"
-         id="text111"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:1">2.5</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="643"
-         y="114"
-         dominant-baseline="alphabetic"
-         id="text113"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">2.5</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="653"
-         y="18"
-         dominant-baseline="alphabetic"
-         stroke-miterlimit="10"
-         id="text115"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:1">3</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="653"
-         y="18"
-         dominant-baseline="alphabetic"
-         id="text117"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">3</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="653"
-         y="607"
-         dominant-baseline="alphabetic"
-         stroke-miterlimit="10"
-         id="text119"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:none;stroke:#ffffff;stroke-width:3;stroke-linejoin:bevel;stroke-miterlimit:10;stroke-opacity:1">0</text>
-      <text
-         font-size="12px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="653"
-         y="607"
-         dominant-baseline="alphabetic"
-         id="text121"
-         style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">0</text>
-      <path
-         d="m 327.64258,-6.5059607 1.44336,5.0753636 1.44336,5.0537189 1.44336,5.0320743 2.88671,9.9992149 2.88672,9.912636 2.88672,9.826057 2.88672,9.739478 2.88672,9.6529 2.88672,9.566322 2.88672,9.479742 2.88672,9.393164 2.88671,9.306585 2.88672,9.220005 2.88672,9.13343 2.88672,9.04685 2.88672,8.96027 2.88672,8.87369 2.88672,8.78712 2.88672,8.70053 2.88672,8.61396 2.88671,8.52737 2.88672,8.4408 2.88672,8.35422 2.88672,8.26764 2.88672,8.18107 2.88672,8.09448 2.88672,8.00791 2.88671,7.92132 2.88672,7.83475 2.88672,7.74817 2.88672,7.66159 2.88672,7.57501 2.88672,7.48844 2.88672,7.40185 2.88672,7.31528 2.88671,7.22869 2.88672,7.14212 2.88672,7.05554 2.88672,6.96897 2.88672,6.88238 2.88672,6.7958 2.88672,6.70923 2.88672,6.62265 2.88671,6.53606 2.88672,6.44949 2.88672,6.36291 2.88672,6.27634 2.88672,6.18975 2.88672,6.10317 2.88672,6.0166 2.88672,5.93002 2.88671,5.84344 2.88672,5.75686 2.88672,5.67028 2.88672,5.5837 2.88672,5.49713 2.88672,5.41054 2.88672,5.32397 2.88672,5.23739 2.88671,5.15081 2.88672,5.06423 2.88672,4.97765 5.77344,9.69557 5.77344,9.34925 5.77343,9.00294 5.77344,8.65663 5.77344,8.31031 5.77344,7.964 5.77343,7.61768 5.77344,7.27136 5.77344,6.92505 5.77344,6.57874 5.77343,6.23242 5.77344,5.88611 5.77344,5.5398 5.77344,5.19347 5.77343,4.84717 5.77344,4.50085 5.77344,4.15453 5.77344,3.80822 5.77343,3.46191 5.77344,3.11559 5.77344,2.76928 5.77344,2.42296 5.77343,2.07664 5.77344,1.73034 5.77344,1.38401 5.77344,1.03771 5.77343,0.69139 5.77344,0.34507 5.77344,-0.001 5.77344,-0.34756 5.77343,-0.69387 5.77344,-1.04018 5.77344,-1.3865 5.77344,-1.73281 5.77343,-2.07913 5.77344,-2.42545 5.77344,-2.77175 5.77344,-3.11808 5.77343,-3.46438 5.77344,-3.81071 5.77344,-4.15701 5.77344,-4.50333 5.77343,-4.84965 5.77344,-5.19596 5.77344,-5.54227 5.77344,-5.88859 5.77344,-6.23491 5.77343,-6.58122 5.77344,-6.92753 5.77344,-7.27385 5.77344,-7.62016 5.77343,-7.96648 5.77344,-8.31279 5.77344,-8.65911 5.77343,-9.00542 5.77344,-9.35173 5.77344,-9.69805 2.88672,-4.9789 2.88672,-5.06547 2.88672,-5.15205 2.88671,-5.23863 2.88672,-5.32521 2.88672,-5.41178 2.88672,-5.49837 2.88672,-5.58494 2.88672,-5.67152 2.88672,-5.7581 2.88672,-5.84468 2.88671,-5.93126 2.88672,-6.01784 2.88672,-6.10442 2.88672,-6.19099 2.88672,-6.27757 2.88672,-6.36415 2.88672,-6.45073 2.88672,-6.53731 2.88671,-6.62389 2.88672,-6.71047 2.88672,-6.79704 2.88672,-6.88363 2.88672,-6.9702 2.88672,-7.05678 2.88672,-7.14336 2.88672,-7.22994 2.88672,-7.31651 2.88671,-7.4031 2.88672,-7.48967 2.88672,-7.57626 2.88672,-7.66283 2.88672,-7.74941 2.88672,-7.83599 2.88672,-7.92257 2.88671,-8.00914 2.88672,-8.09573 2.88672,-8.1823 2.88672,-8.26888 2.88672,-8.35546 2.88672,-8.44204 2.88672,-8.52862 2.88672,-8.6152 2.88671,-8.70177 2.88672,-8.78836 2.88672,-8.87493 2.88672,-8.96151 2.88672,-9.04809 2.88672,-9.13467 2.88672,-9.221248 2.88672,-9.307826 2.88671,-9.394404 2.88672,-9.480984 2.88672,-9.567562 2.88672,-9.654141 2.88672,-9.740719 2.88672,-9.827298 2.88672,-9.913877 1.44331,-4.989405 1.4434,-5.0110499 1.4434,-5.0326946 1.4433,-5.0543393 1.4434,-5.075984"
-         stroke-miterlimit="10"
-         id="path123"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#6699ff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:0.69803922;paint-order:fill stroke markers" />
-      <path
-         d="m 363.72656,942.29393 5.77344,-5.77344 5.77344,-5.77343 5.77344,-5.77344 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77344,-5.77344 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77344,-5.77344 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77344,-5.77344 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77341,-5.77344 5.7735,-5.77344 5.7734,-5.77344 5.7734,-5.77343 5.7735,-5.77344 5.7734,-5.77344 5.7735,-5.77344 5.7734,-5.77343 5.7734,-5.77344 5.7735,-5.77344 5.7734,-5.77344 5.7734,-5.77343 5.7735,-5.77344 5.7734,-5.77344 5.7735,-5.77344 5.7734,-5.77343 5.7734,-5.77344 5.7735,-5.77344 5.7734,-5.77344 5.7734,-5.77343 5.7735,-5.77344 5.7734,-5.77344 5.7735,-5.77344 5.7734,-5.77343 5.7734,-5.77344 5.7735,-5.77344 5.7734,-5.77344 5.7734,-5.77343 5.7735,-5.77344 5.7734,-5.77344 5.7735,-5.77344 5.7734,-5.77343 5.7734,-5.77344 5.7735,-5.77344 5.7734,-5.77344 5.7734,-5.773433 5.7735,-5.773438 5.7734,-5.773437 5.7735,-5.773438 5.7734,-5.773437 5.7734,-5.773438 5.7735,-5.773437 5.7734,-5.773438 5.7734,-5.773437 5.7735,-5.773438 5.7734,-5.773437 5.7735,-5.773438 5.7734,-5.773437 5.7734,-5.773438 5.7735,-5.773437 5.7734,-5.773438 5.7734,-5.7734373 5.7735,-5.7734375 5.7734,-5.7734375 5.7735,-5.7734377"
-         stroke-miterlimit="10"
-         id="path125"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#606060;stroke-width:2.5;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:10.5, 8;stroke-opacity:0.69803922;paint-order:fill stroke markers" />
-      <path
-         d="m 496.51562,942.77744 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77343,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77343,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77343,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77343,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77343,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77343,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77343,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77343,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77343,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77341,-8.66015 5.7735,-8.66016 5.7734,-8.66016 5.7734,-8.66015 5.7735,-8.66016 5.7734,-8.66015 5.7735,-8.66016 5.7734,-8.66016 5.7734,-8.66015 5.7735,-8.66016 5.7734,-8.660155 5.7734,-8.660156 5.7735,-8.660157 5.7734,-8.660156 5.7735,-8.660156 5.7734,-8.660156 5.7734,-8.660157 5.7735,-8.660156 5.7734,-8.660156 5.7734,-8.660156 5.7735,-8.6601566 5.7734,-8.6601562 5.7735,-8.6601563"
-         stroke-miterlimit="10"
-         id="path127"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#ff0000;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:0.69803922;paint-order:fill stroke markers" />
-      <path
-         d="m 863.31018,398.58561 c 0,2.20914 -1.79086,4 -4,4 -2.20914,0 -4,-1.79086 -4,-4 0,-2.20914 1.79086,-4 4,-4 2.20914,0 4,1.79086 4,4 z"
-         id="path129"
-         inkscape:connector-curvature="0"
-         style="fill:#444444;fill-opacity:1;stroke:none;paint-order:stroke fill markers" />
-      <path
-         d="m 863.31018,398.58561 c 0,2.20914 -1.79086,4 -4,4 -2.20914,0 -4,-1.79086 -4,-4 0,-2.20914 1.79086,-4 4,-4 2.20914,0 4,1.79086 4,4 z"
-         stroke-miterlimit="10"
-         id="path131"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <path
-         d="m 767.06076,542.95973 c 0,2.20914 -1.79086,4 -4,4 -2.20914,0 -4,-1.79086 -4,-4 0,-2.20914 1.79086,-4 4,-4 2.20914,0 4,1.79086 4,4 z"
-         id="path133"
-         inkscape:connector-curvature="0"
-         style="fill:#444444;fill-opacity:1;stroke:none;paint-order:stroke fill markers" />
-      <path
-         d="m 767.06076,542.95973 c 0,2.20914 -1.79086,4 -4,4 -2.20914,0 -4,-1.79086 -4,-4 0,-2.20914 1.79086,-4 4,-4 2.20914,0 4,1.79086 4,4 z"
-         stroke-miterlimit="10"
-         id="path135"
-         inkscape:connector-curvature="0"
-         style="fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers" />
-      <text
-         font-size="16px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="750"
-         y="531"
-         dominant-baseline="alphabetic"
-         id="text137"
-         style="font-style:normal;font-weight:normal;font-size:16px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">P</text>
-      <text
-         font-size="16px"
-         font-style="normal"
-         font-weight="normal"
-         text-decoration="normal"
-         x="842"
-         y="386"
-         dominant-baseline="alphabetic"
-         id="text139"
-         style="font-style:normal;font-weight:normal;font-size:16px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none">Q</text>
-    </g>
+         width="690"
+         height="690"
+         id="rect1224"
+         style="fill:#000000;fill-opacity:0.29145729;stroke-width:0.58790064" />
+    </clipPath>
+  </defs>
+  <g
+     id="g1118"
+     clip-path="url(#clipPath1222)">
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path9"
+       stroke-miterlimit="10"
+       d="m 359.5,-20.5 v 930" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path11"
+       stroke-miterlimit="10"
+       d="m 359.5,-21.5 -4,4" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path13"
+       stroke-miterlimit="10"
+       d="m 359.5,-21.5 4,4" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path15"
+       stroke-miterlimit="10"
+       d="m -306.5,568.5 h 1476" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path17"
+       stroke-miterlimit="10"
+       d="m 1170.5,568.5 -4,-4" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path19"
+       stroke-miterlimit="10"
+       d="m 1170.5,568.5 -4,4" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text23"
+       dominant-baseline="alphabetic"
+       y="584"
+       x="-223"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">–3</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path25"
+       stroke-miterlimit="10"
+       d="m -217.5,568.5 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text29"
+       dominant-baseline="alphabetic"
+       y="584"
+       x="-31"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">–2</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path31"
+       stroke-miterlimit="10"
+       d="m -25.5,568.5 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text35"
+       dominant-baseline="alphabetic"
+       y="584"
+       x="162"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">–1</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path37"
+       stroke-miterlimit="10"
+       d="m 167.5,568.5 v 3" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path39"
+       stroke-miterlimit="10"
+       d="m 359.5,568.5 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text43"
+       dominant-baseline="alphabetic"
+       y="584"
+       x="550"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">1</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path45"
+       stroke-miterlimit="10"
+       d="m 552.5,568.5 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text49"
+       dominant-baseline="alphabetic"
+       y="584"
+       x="742"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">2</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path51"
+       stroke-miterlimit="10"
+       d="m 744.5,568.5 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text55"
+       dominant-baseline="alphabetic"
+       y="584"
+       x="935"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">3</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path57"
+       stroke-miterlimit="10"
+       d="m 937.5,568.5 v 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text61"
+       dominant-baseline="alphabetic"
+       y="584"
+       x="1127"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">4</text>
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path63"
+       stroke-miterlimit="10"
+       d="m 1129.5,568.5 v 3" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path65"
+       stroke-miterlimit="10"
+       d="m 356.5,856.5 h 3" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path67"
+       stroke-miterlimit="10"
+       d="m 356.5,760.5 h 3" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path69"
+       stroke-miterlimit="10"
+       d="m 356.5,664.5 h 3" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path71"
+       stroke-miterlimit="10"
+       d="m 356.5,471.5 h 3" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path73"
+       stroke-miterlimit="10"
+       d="m 356.5,375.5 h 3" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path75"
+       stroke-miterlimit="10"
+       d="m 356.5,279.5 h 3" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path77"
+       stroke-miterlimit="10"
+       d="m 356.5,183.5 h 3" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path79"
+       stroke-miterlimit="10"
+       d="m 356.5,86.5 h 3" />
+    <path
+       style="fill:none;stroke:#000000;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path81"
+       stroke-miterlimit="10"
+       d="m 356.5,-9.5 h 3" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text85"
+       dominant-baseline="alphabetic"
+       y="861"
+       x="329"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">–1.5</text>
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text89"
+       dominant-baseline="alphabetic"
+       y="765"
+       x="339"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">–1</text>
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text93"
+       dominant-baseline="alphabetic"
+       y="669"
+       x="329"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">–0.5</text>
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text97"
+       dominant-baseline="alphabetic"
+       y="476"
+       x="336"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">0.5</text>
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text101"
+       dominant-baseline="alphabetic"
+       y="380"
+       x="346"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">1</text>
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text105"
+       dominant-baseline="alphabetic"
+       y="284"
+       x="336"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">1.5</text>
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text109"
+       dominant-baseline="alphabetic"
+       y="188"
+       x="346"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">2</text>
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text113"
+       dominant-baseline="alphabetic"
+       y="91"
+       x="336"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">2.5</text>
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text117"
+       dominant-baseline="alphabetic"
+       y="-5"
+       x="346"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">3</text>
+    <text
+       style="font-style:normal;font-weight:normal;font-size:12px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text121"
+       dominant-baseline="alphabetic"
+       y="584"
+       x="346"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="12px">0</text>
+    <path
+       style="fill:none;stroke:#6699ff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:0.69803922;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path123"
+       stroke-miterlimit="10"
+       d="m 20.64258,-29.505961 1.44336,5.075364 1.44336,5.053719 1.44336,5.032074 2.88671,9.999215 2.88672,9.912636 2.88672,9.826057 2.88672,9.739478 2.88672,9.6529 2.88672,9.566322 2.88672,9.479742 2.88672,9.393164 2.88671,9.306585 2.88672,9.220005 2.88672,9.13343 2.88672,9.04685 2.88672,8.96027 2.88672,8.87369 2.88672,8.78712 2.88672,8.70053 2.88672,8.61396 2.88671,8.52737 2.88672,8.4408 2.88672,8.35422 2.88672,8.26764 2.88672,8.18107 2.88672,8.09448 2.88672,8.00791 2.88671,7.92132 2.88672,7.83475 2.88672,7.74817 2.88672,7.66159 2.88672,7.57501 2.88672,7.48844 2.88672,7.40185 2.88672,7.31528 2.88671,7.22869 2.88672,7.14212 2.88672,7.05554 2.88672,6.96897 2.88672,6.88238 2.88672,6.7958 2.88672,6.70923 2.88672,6.62265 2.88671,6.53606 2.88672,6.44949 2.88672,6.36291 2.88672,6.27634 2.88672,6.18975 2.88672,6.10317 2.88672,6.0166 2.88672,5.93002 2.88671,5.84344 2.88672,5.75686 2.88672,5.67028 2.88672,5.5837 2.88672,5.49713 2.88672,5.41054 2.88672,5.32397 2.88672,5.23739 2.88671,5.15081 2.88672,5.06423 2.88672,4.97765 5.77344,9.69557 5.77344,9.34925 5.77343,9.00294 5.77344,8.65663 5.77344,8.31031 5.77344,7.964 5.77343,7.61768 5.77344,7.27136 5.77344,6.92505 5.77344,6.57874 5.77343,6.23242 5.77344,5.88611 5.77344,5.5398 5.77344,5.19347 5.77343,4.84717 5.77344,4.50085 5.77344,4.15453 5.77344,3.80822 5.77343,3.46191 5.77344,3.11559 5.77344,2.76928 5.77344,2.42296 5.77343,2.07664 5.77344,1.73034 5.77344,1.38401 5.77344,1.03771 5.77343,0.69139 5.77344,0.34507 5.77344,-0.001 5.77344,-0.34756 5.77343,-0.69387 5.77344,-1.04018 5.77344,-1.3865 5.77344,-1.73281 5.77343,-2.07913 5.77344,-2.42545 5.77344,-2.77175 5.77344,-3.11808 5.77343,-3.46438 5.77344,-3.81071 5.77344,-4.15701 5.77344,-4.50333 5.77343,-4.84965 5.77344,-5.19596 5.77344,-5.54227 5.77344,-5.88859 5.77344,-6.23491 5.77343,-6.58122 5.77344,-6.92753 5.77344,-7.27385 5.77344,-7.62016 5.77343,-7.96648 5.77344,-8.31279 5.77344,-8.65911 5.77343,-9.00542 5.77344,-9.35173 5.77344,-9.69805 2.88672,-4.9789 2.88672,-5.06547 2.88672,-5.15205 2.88671,-5.23863 2.88672,-5.32521 2.88672,-5.41178 2.88672,-5.49837 2.88672,-5.58494 2.88672,-5.67152 2.88672,-5.7581 2.88672,-5.84468 2.88671,-5.93126 2.88672,-6.01784 2.88672,-6.10442 2.88672,-6.19099 2.88672,-6.27757 2.88672,-6.36415 2.88672,-6.45073 2.88672,-6.53731 2.88671,-6.62389 2.88672,-6.71047 2.88672,-6.79704 2.88672,-6.88363 2.88672,-6.9702 2.88672,-7.05678 2.88672,-7.14336 2.88672,-7.22994 2.88672,-7.31651 2.88671,-7.4031 2.88672,-7.48967 2.88672,-7.57626 2.88672,-7.66283 2.88672,-7.74941 2.88672,-7.83599 2.88672,-7.92257 2.88671,-8.00914 2.88672,-8.09573 2.88672,-8.1823 2.88672,-8.26888 2.88672,-8.35546 2.88672,-8.44204 2.88672,-8.52862 2.88672,-8.6152 2.88671,-8.70177 2.88672,-8.78836 2.88672,-8.87493 2.88672,-8.96151 2.88672,-9.04809 2.88672,-9.13467 2.88672,-9.221248 2.88672,-9.307826 2.88671,-9.394404 2.88672,-9.480984 2.88672,-9.567562 2.88672,-9.654141 2.88672,-9.740719 2.88672,-9.827298 2.88672,-9.913877 1.44331,-4.989405 1.4434,-5.01105 1.4434,-5.032694 1.4433,-5.05434 1.4434,-5.075984" />
+    <path
+       style="fill:none;stroke:#606060;stroke-width:2.5;stroke-linejoin:round;stroke-miterlimit:10;stroke-dasharray:10.5, 8;stroke-opacity:0.69803922;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path125"
+       stroke-miterlimit="10"
+       d="m 56.72656,919.29393 5.77344,-5.77344 5.77344,-5.77343 5.77344,-5.77344 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77344,-5.77344 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77344,-5.77344 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77344,-5.77344 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77343,-5.77344 5.77344,-5.77344 5.77344,-5.77344 5.77344,-5.77343 5.77341,-5.77344 5.7735,-5.77344 5.7734,-5.77344 5.7734,-5.77343 5.7735,-5.77344 5.7734,-5.77344 5.7735,-5.77344 5.7734,-5.77343 5.7734,-5.77344 5.7735,-5.77344 5.7734,-5.77344 5.7734,-5.77343 5.7735,-5.77344 5.7734,-5.77344 5.7735,-5.77344 5.7734,-5.77343 5.7734,-5.77344 5.7735,-5.77344 5.7734,-5.77344 5.7734,-5.77343 5.7735,-5.77344 5.7734,-5.77344 5.7735,-5.77344 5.7734,-5.77343 5.7734,-5.77344 5.7735,-5.77344 5.7734,-5.77344 5.7734,-5.77343 5.7735,-5.77344 5.7734,-5.77344 5.7735,-5.77344 5.7734,-5.77343 5.7734,-5.77344 5.7735,-5.77344 5.7734,-5.77344 5.7734,-5.773433 5.7735,-5.773438 5.7734,-5.773437 5.7735,-5.773438 5.7734,-5.773437 5.7734,-5.773438 5.7735,-5.773437 5.7734,-5.773438 5.7734,-5.773437 5.7735,-5.773438 5.7734,-5.773437 5.7735,-5.773438 5.7734,-5.773437 5.7734,-5.773438 5.7735,-5.773437 5.7734,-5.773438 5.7734,-5.773437 5.7735,-5.773438 5.7734,-5.773437 5.7735,-5.773438" />
+    <path
+       style="fill:none;stroke:#ff0000;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:0.69803922;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path127"
+       stroke-miterlimit="10"
+       d="m 189.51562,919.77744 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77343,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77343,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77343,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77343,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77343,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77343,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77343,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77343,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77343,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77344,-8.66015 5.77343,-8.66016 5.77344,-8.66015 5.77344,-8.66016 5.77344,-8.66016 5.77341,-8.66015 5.7735,-8.66016 5.7734,-8.66016 5.7734,-8.66015 5.7735,-8.66016 5.7734,-8.66015 5.7735,-8.66016 5.7734,-8.66016 5.7734,-8.66015 5.7735,-8.66016 5.7734,-8.660155 5.7734,-8.660156 5.7735,-8.660157 5.7734,-8.660156 5.7735,-8.660156 5.7734,-8.660156 5.7734,-8.660157 5.7735,-8.660156 5.7734,-8.660156 5.7734,-8.660156 5.7735,-8.660157 5.7734,-8.660156 5.7735,-8.660156" />
+    <path
+       style="fill:#444444;fill-opacity:1;stroke:none;paint-order:stroke fill markers"
+       inkscape:connector-curvature="0"
+       id="path129"
+       d="m 556.31018,375.58561 c 0,2.20914 -1.79086,4 -4,4 -2.20914,0 -4,-1.79086 -4,-4 0,-2.20914 1.79086,-4 4,-4 2.20914,0 4,1.79086 4,4 z" />
+    <path
+       style="fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path131"
+       stroke-miterlimit="10"
+       d="m 556.31018,375.58561 c 0,2.20914 -1.79086,4 -4,4 -2.20914,0 -4,-1.79086 -4,-4 0,-2.20914 1.79086,-4 4,-4 2.20914,0 4,1.79086 4,4 z" />
+    <path
+       style="fill:#444444;fill-opacity:1;stroke:none;paint-order:stroke fill markers"
+       inkscape:connector-curvature="0"
+       id="path133"
+       d="m 460.06076,519.95973 c 0,2.20914 -1.79086,4 -4,4 -2.20914,0 -4,-1.79086 -4,-4 0,-2.20914 1.79086,-4 4,-4 2.20914,0 4,1.79086 4,4 z" />
+    <path
+       style="fill:none;stroke:#000000;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-opacity:1;paint-order:fill stroke markers"
+       inkscape:connector-curvature="0"
+       id="path135"
+       stroke-miterlimit="10"
+       d="m 460.06076,519.95973 c 0,2.20914 -1.79086,4 -4,4 -2.20914,0 -4,-1.79086 -4,-4 0,-2.20914 1.79086,-4 4,-4 2.20914,0 4,1.79086 4,4 z" />
+    <text
+       style="font-style:normal;font-weight:normal;font-size:26.66666603px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text137"
+       dominant-baseline="alphabetic"
+       y="512"
+       x="433"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="16px">P</text>
+    <text
+       style="font-style:normal;font-weight:normal;font-size:26.66666603px;font-family:geogebra-sans-serif, sans-serif;dominant-baseline:alphabetic;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none"
+       id="text139"
+       dominant-baseline="alphabetic"
+       y="363"
+       x="525"
+       text-decoration="normal"
+       font-weight="normal"
+       font-style="normal"
+       font-size="16px">Q</text>
   </g>
 </svg>
