@@ -52,6 +52,11 @@
     .ideal-width-300 {
         width: 300px;
     }
+    /* works fine for me though. vector calculus appendix real-valued functions*/
+    .ideal-width-800 {
+        width: 100%;
+        max-width: 800px;
+    }
 
 .margin-top-1-em {
     margin-top: 1em;

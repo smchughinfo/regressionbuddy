@@ -11,6 +11,6 @@
     ],
     "linear-algebra": ["Gaussian and Gauss-Jordan Elimination", "Homogeneous Systems of Linear Equations"],
     "statistics": ["Variance and Standard Deviation"],
-    "vector-calculus": ["Point-Direction Form of a Line", "The Line Through Two Points"]
+    "vector-calculus": ["Real-valued Functions"]
   }
 }
