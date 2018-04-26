@@ -75,3 +75,7 @@
         width: 180px !important;
     }
 }
+
+.topic-instance + .topic-instance > .horizontal-group-4 {
+    margin-top: -1em;
+}
