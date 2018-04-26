@@ -77,12 +77,6 @@
     right:4px;
 }
 
-@media only screen and (min-width: 1230px) {
-    #appendix .widest-width-1100 {
-        width: 1100px;
-    }
-}
-
 #appendix .matrix-step {
     display: inline-block;
 }

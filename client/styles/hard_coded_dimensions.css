@@ -48,6 +48,10 @@
     max-width: 1000px;
 }
 
+.max-width-1600 {
+    max-width: 1600px;
+}
+
     /* this needs some extra uumph. is 100% temporary until i can take a second look. */
     .ideal-width-300 {
         width: 300px;
@@ -56,6 +60,10 @@
     .ideal-width-800 {
         width: 100%;
         max-width: 800px;
+    }
+    .ideal-width-1100 {
+        width: 100%;
+        max-width: 1100px;
     }
 
 .margin-top-1-em {
