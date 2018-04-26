@@ -2,13 +2,21 @@
     margin-top: 1em;
 }
 
+.steps table {
+    width: 100%;
+}
+
 .steps td {
     vertical-align: top;
 }
 
 .steps .step-number {
-    padding-right: .5em;
+    width: 62px;
     white-space: nowrap;
+}
+
+.steps .step-instructions {
+    text-align: left;
 }
 
 .steps .step-actions {
@@ -27,4 +35,8 @@
 
 .steps .simd > * {
     padding-right: 2em;
+}
+
+.steps .step:last-child {
+    margin-bottom: 1em;
 }

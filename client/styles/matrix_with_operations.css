@@ -1,0 +1,8 @@
+.matrix-with-operations .matrix {
+    display: inline-block;
+    text-align: right;
+}
+
+.matrix-with-operation .matrix-step {
+    text-align: left;
+}

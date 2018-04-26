@@ -75,7 +75,8 @@ const integrateSiteCSS = () => {
             `${process.env.clientDir}/styles/little_pseudo_table.css`,
             `${process.env.clientDir}/styles/wrapped_graph.css`,
             `${process.env.clientDir}/styles/steps.css`,
-
+            `${process.env.clientDir}/styles/matrix_with_operations.css`,
+            
         // individual pages
         `${process.env.clientDir}/styles/post.css`,
             `${process.env.clientDir}/styles/component_nav.css`,

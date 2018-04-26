@@ -144,3 +144,19 @@
 #appendix .simple-data-set {
     margin-top: 1em;
 }
+
+#appendix .gaussian-elimination-examples .horizontal-group-2-item.first-item .matrix {
+    width: 170px;
+}
+
+#appendix .gaussian-elimination-examples .horizontal-group-2-item.first-item .matrix-step {
+    width: 155px;
+}
+
+#appendix .gaussian-elimination-examples .horizontal-group-2-item.second-item .matrix {
+    width: 180px;
+}
+
+#appendix .gaussian-elimination-examples .horizontal-group-2-item.second-item .matrix-step {
+    width: 150px;
+}

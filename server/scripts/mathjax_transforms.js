@@ -1,5 +1,5 @@
 let transforms = {
-    matrix: text => {
+    matrix: (text, forceNegativeSigns) => {
         // parse a matrix template string into [['a','b'],['c','d']] format
         let partitionText = text => {
             let rows = text.split(";");
@@ -101,7 +101,7 @@ let transforms = {
             let isNegative = getValue(value).startsWith('-');
             anyNegatives = isNegative ? true : anyNegatives;
         });
-        if(anyNegatives) {
+        if(forceNegativeSigns || anyNegatives) {
             iterateMatrix(matrix, (value, r, c) => {
                 let isFirstColumn = c === 0;
                 let addNegativeToFirstColumn = false;

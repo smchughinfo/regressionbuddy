@@ -70,7 +70,8 @@ let templates = {
         let $template = $(readFileSync(templatePath).toString());
 
         let innerHTML = $(elm).html();
-        let transformedMathjax = mathjaxTransforms.matrix(innerHTML);
+        let forceNegativeSigns = $(elm).is("[force-negative-signs]");
+        let transformedMathjax = mathjaxTransforms.matrix(innerHTML, forceNegativeSigns);
         $template.html(transformedMathjax);
 
         $(elm).replaceWith($template);
@@ -1202,7 +1203,7 @@ let templates = {
         let templatePath = `${process.env.templatesDir}/step.html`;
         let $template = $(readFileSync(templatePath).toString());
 
-        let childTypes = ["instructions", "actions-html"];
+        let childTypes = ["instructions", "matrix-with-operation", "actions-html"];
 
         // validate template
         validateChildTypes(childTypes, $placeholder, "step");
@@ -1222,15 +1223,74 @@ let templates = {
             $templateInstructions.html(instructions);
         }
 
-        // <actions-html>
+        // <matrix-with-operation>
         let $actions = $placeholder.find("actions-html");
-        if($actions.length === 0) {
-            throw "step must have actionss";
+        let $matrixWithOperation = $placeholder.find("matrix-with-operation");
+
+        let isActions = $actions.length === 1 && $matrixWithOperation.length === 0;
+        let isMatrixWithOperation = $actions.length === 0 && $matrixWithOperation.length > 0; // it can have more than one matrix-with-operation per step.
+        let isInvalid = !isActions && !isMatrixWithOperation;                
+
+        if(isInvalid) {
+            throw "step must have only actions-html or only matrix-with-operation"
+        }
+
+        // [full-width]
+        let isFullWidth = $placeholder.is("[full-width]");
+        if(isFullWidth) {
+            $template.find("[full-width]").attr("colspan", "2");
+            $template.find("[not-full-width]").remove();
+        }
+        $template.find("[full-width]").removeAttr("full-width");
+        $template.find("[not-full-width]").removeAttr("not-full-width");
+
+        let $templateActions = $template.find("[actions-html]").removeAttr("actions-html");
+        if(isActions) {
+            // <actions-html>
+            $templateActions.html($actions.html());
+        }
+        else if(isMatrixWithOperation) {
+            // <matrix-with-operation>
+            $templateActions.html(""); // being consistent. below we append but in actions-html it does a .html('foo').
+            $matrixWithOperation.each((i, elm) => {
+                // $tmp is used to contain $matrixWithOperation because after the template
+                // is applied i wasn't able to use the same reference for $templateActions.html(myTemplatedElement);
+                let $tmp = $("<div>").append(elm);
+                templates.matrix_with_operation(elm);
+                $templateActions.append($tmp.html());
+            });
+        }
+
+        $placeholder.replaceWith($template);
+    },
+    matrix_with_operation: elm => {
+        let $placeholder = $(elm);
+        let templatePath = `${process.env.templatesDir}/matrix_with_operation.html`;
+        let $template = $(readFileSync(templatePath).toString());
+
+        let childTypes = [".matrix", "operation"];
+
+        // validate template
+        validateChildTypes(childTypes, $placeholder, "matrix-with-operation");
+
+        // <matrix> gets done before the non-mathjax templates. so by this time it has already been transformed into regular html.
+        let $matrix = $placeholder.find(".matrix");
+        if($matrix.length === 0) {
+            throw "matrix_with_operation must have a matrix"
         }
         else {
-            let actions = $actions.html();
-            let $templateActions = $template.find("[actions-html]").removeAttr("actions-html");
-            $templateActions.html(actions);
+            $template.find("matrix").replaceWith($matrix);
+        }
+
+        // <operation>
+        let $operation = $placeholder.find("operation");
+        if($operation.length === 0) {
+            throw "matrix_with_operation must have an operation";
+        }
+        else {
+            let operation = $operation.html();
+            let $templateOperation = $template.find("[operation]").removeAttr("operation");
+            $templateOperation.html(operation);
         }
 
         $placeholder.replaceWith($template);

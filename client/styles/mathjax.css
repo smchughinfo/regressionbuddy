@@ -65,3 +65,15 @@
 .fix-mathjax-align > .mjx-chtml {
     margin-top: 0;
 }
+
+.matrix-step > .mjx-chtml {
+    text-align: left !important;
+}
+
+.steps > .step .matrix-with-operation:first-child > .matrix-step > .mjx-chtml {
+    margin-top: 0;
+}
+
+.steps > .step .matrix-with-operation > .matrix-step > .mjx-chtml {
+    margin-bottom: 0;
+}
