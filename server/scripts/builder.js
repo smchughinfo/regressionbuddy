@@ -123,7 +123,7 @@ const buildMasterPage = () => {
 
     if(isDev()) {
         console.log("WARNING: hosting mathjax locally. if problems, use the cdn or make sure the mathjax repository in /public/MathJax is set to version 2.7.2: \n cd regressionbuddy/client/public/MathJax \n git checkout 2.7.2".yellow);
-        // yes, there are differences if you use latest (which at this time is 2.7.4). one thing is the brackets on matrices don't go to the borrom row.
+        // yes, there are differences if you use latest (which at this time is 2.7.4). one thing is the brackets on matrices don't go to the bottom row.
     }
 
     masterPage = replacePlaceholderWithHTMLFile(masterPage);
