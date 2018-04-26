@@ -872,6 +872,31 @@ let templates = {
             throw `horizontal-group-2 must have two children but has ${$items.length} children.`;
         }
 
+        let sizeClass = $placeholder.attr("size-class");
+        $template.addClass(sizeClass);
+
+        // [wide] and [extra-wide]
+        let isWide = $placeholder.is("[wide]");
+        let isExtraWide = $placeholder.is("[extra-wide]");
+        if(isWide) {
+            $template.addClass("wide-horizontal-group-2-container")
+            $template.find("[wide]").removeAttr("wide");
+            $template.find("[normal]").remove();
+            $template.find("[extra-wide]").remove();
+        }
+        else if(isExtraWide) {
+            $template.addClass("extra-wide-horizontal-group-2-container")
+            $template.find("[extra-wide]").removeAttr("extra-wide");
+            $template.find("[normal]").remove();
+            $template.find("[wide]").remove();
+        }
+        else {
+            $template.addClass("normal-horizontal-group-2-container")
+            $template.find("[normal]").removeAttr("normal");
+            $template.find("[wide]").remove();
+            $template.find("[extra-wide]").remove();
+        }
+
         let $repeater = $template.find("[repeater]");
         let $repeatContainer = $repeater.parent();
         $repeater.removeAttr("repeater").remove();
