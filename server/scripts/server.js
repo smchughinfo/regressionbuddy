@@ -24,7 +24,9 @@ const mimeTypes = {
         sitemap: "application/xml",
         rss: "application/rss+xml"
     },
-    ggb: "application-x/geogebra-file"
+    ggb: "application-x/geogebra-file",
+    woff: "font/woff",
+    map: "application/json" // https://stackoverflow.com/questions/44183545/correct-mime-type-for-css-map-files
 };
 const defaultSubject = process.env.defaultSubject;
 
@@ -39,6 +41,7 @@ let isAppendixReviewRegex = /\/[0-9]+\/appendix\/(algebra|trigonometry|calculus|
 let subjectRegex = /(algebra|trigonometry|calculus|vector-calculus|statistics|linear-algebra)/;
 
 const serveFile = (filePath, req, res) => {
+    filePath = filePath.replace(/\?.*$/, ""); // truncate requests for files that have a query string in the url (e.g. mathjax.js?V=2.7.4)
     stat(filePath, err => {
         if(err) {
             serve404(req, res);
@@ -70,6 +73,8 @@ const serve404 = (req, res) => {
 const handleFileRequest = (req, res) => {
     let urn = req.url;    
     let filePath = `${process.env.publicDir}${normalize(urn)}`;
+
+    urn = urn.replace("?V=2.7.4", ""); // ignore mathjax version.
 
     if(urn === "/") {
         buildIndex();
@@ -123,7 +128,7 @@ const handleFileRequest = (req, res) => {
 
         filePath = `${process.env.publicDir}/build/${urn.replace("/", "").replace(/\//g, ".").replace(/-/g, "_")}.html`;
     }
-
+    
     console.log(filePath);
     serveFile(filePath, req, res);
 }

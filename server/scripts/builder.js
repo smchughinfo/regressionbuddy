@@ -114,10 +114,18 @@ const buildMasterPage = () => {
     
     let generalPath = normalize(`${process.env.clientDir}/html`);
     let masterPage = readFileSync(`${generalPath}/master.html`).toString();
-    let cssFile = process.env.name === "dev" ? "site.css" : "site.min.css";
-    let jsFile = process.env.name === "dev" ? "site.js" : "site.min.js";
+    let cssFile = isDev() ? "site.css" : "site.min.css";
+    let jsFile = isDev() ? "site.js" : "site.min.js";
     masterPage = masterPage.replace("[SITE CSS]", "<style>\n" + readFileSync(`${process.env.buildDir}/${cssFile}`) + "\n</style>");
     masterPage = masterPage.replace("[SITE JS]", "<script>\n" + readFileSync(`${process.env.buildDir}/${jsFile}`) + "\n</script>");
+    masterPage = masterPage.replace("[BOOTSTRAP CSS]", `<link rel="stylesheet" href="${isDev() ? "/Bootstrap/css/bootstrap.min.css" : "https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"}">`);
+    masterPage = masterPage.replace("[MATHJAX JS]", `<script src='${isDev() ? "/MathJax/MathJax.js?config=TeX-MML-AM_CHTML" : "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML"}'></script>`);
+
+    if(isDev()) {
+        console.log("WARNING: hosting mathjax locally. if problems, use the cdn or make sure the mathjax repository in /public/MathJax is set to version 2.7.2: \n cd regressionbuddy/client/public/MathJax \n git checkout 2.7.2".yellow);
+        // yes, there are differences if you use latest (which at this time is 2.7.4). one thing is the brackets on matrices don't go to the borrom row.
+    }
+
     masterPage = replacePlaceholderWithHTMLFile(masterPage);
     
     writeFileSync(siteHTMLPath, masterPage);
