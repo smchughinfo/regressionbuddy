@@ -1244,6 +1244,12 @@ let templates = {
         $template.find("[full-width]").removeAttr("full-width");
         $template.find("[not-full-width]").removeAttr("not-full-width");
 
+        // [double-vertical-padding]
+        let isDoubleVerticalMargin = $placeholder.is("[double-vertical-padding]");
+        if(isDoubleVerticalMargin) {
+            $template.addClass("double-step-vertical-padding");
+        }
+
         let $templateActions = $template.find("[actions-html]").removeAttr("actions-html");
         if(isActions) {
             // <actions-html>

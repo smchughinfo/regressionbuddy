@@ -1,5 +1,5 @@
 .steps {
-    margin-top: 1em;
+    margin-top: .5em;
 }
 
 .steps table {
@@ -20,10 +20,18 @@
 }
 
 .steps .step-actions {
-    padding-top: 1em;
+    padding-top: .5em;
 }
 
 .steps .step:not(:last-child) .step-actions {
+    padding-bottom: .5em;
+}
+
+.steps .double-step-vertical-padding .step-actions {
+    padding-top: 1em;
+}
+
+.steps .step:not(:last-child) .double-step-vertical-padding .step-actions {
     padding-bottom: 1em;
 }
 
@@ -38,5 +46,5 @@
 }
 
 .steps .step:last-child {
-    margin-bottom: 1em;
+    /*margin-bottom: 1em; TODOOOOOOOOOOOOOOOOOOOOOO */
 }

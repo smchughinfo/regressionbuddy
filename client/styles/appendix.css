@@ -142,7 +142,8 @@
 }
 
 #appendix .simple-data-set {
-    margin-top: 1em;
+    margin-top: .5em;
+    margin-bottom: .5em;
 }
 
 #appendix .gaussian-elimination-examples .horizontal-group-2-item.first-item .matrix {
