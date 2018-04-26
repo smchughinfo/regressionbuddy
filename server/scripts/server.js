@@ -74,8 +74,6 @@ const handleFileRequest = (req, res) => {
     let urn = req.url;    
     let filePath = `${process.env.publicDir}${normalize(urn)}`;
 
-    urn = urn.replace("?V=2.7.4", ""); // ignore mathjax version.
-
     if(urn === "/") {
         buildIndex();
         filePath = `${process.env.publicDir}/index.html`;
