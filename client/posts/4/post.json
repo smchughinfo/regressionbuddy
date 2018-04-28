@@ -9,7 +9,7 @@
       ["algebra", "The Equation of a Line"],
       "Tangent Lines"
     ],
-    "linear-algebra": ["Gaussian and Gauss-Jordan Elimination", "Homogeneous Systems of Linear Equations"],
+    "linear-algebra": ["Polynomial Curve Fitting"],
     "statistics": ["Variance and Standard Deviation"],
     "vector-calculus": [
       ["algebra", "Set-Builder Notation and Interval Notation"],

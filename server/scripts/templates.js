@@ -556,6 +556,12 @@ let templates = {
         // validate template
         validateChildTypes(childTypes, $placeholder, "topic_instance");
 
+        // [no-bottom-padding]
+        let isNoBottomPadding = $placeholder.is("[no-bottom-padding]");
+        if(isNoBottomPadding) {
+            $template.addClass("no-bottom-padding");
+        }
+
         // <topic-instance-name>
         let $topicName = $placeholder.children("topic-instance-name");
         if($topicName.length > 0) {

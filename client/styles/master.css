@@ -113,3 +113,7 @@
 .inline-block {
     display: inline-block;
 }
+
+.no-bottom-padding {
+    padding-bottom: 0 !important;
+}

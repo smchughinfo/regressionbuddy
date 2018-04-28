@@ -77,3 +77,7 @@
 .steps > .step .matrix-with-operation > .matrix-step > .mjx-chtml {
     margin-bottom: 0;
 }
+
+.no-mathjax-margin-top > .mjx-chtml {
+    margin-top: 0;
+}
