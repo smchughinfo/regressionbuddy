@@ -2,6 +2,9 @@
 .header-text {
     margin-top: 20px;
 }
+.phrase-container + .header-text {
+    margin-top: 1rem; /* same top margin as .phrase-container */
+}
 
 /******* SHOW/HIDE *********/
 [data-showing="true"]  {
