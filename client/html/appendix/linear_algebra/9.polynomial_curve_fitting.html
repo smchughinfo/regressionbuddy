@@ -59,56 +59,74 @@
     <!--▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼-->
     <topic-example size-class="limit-950">
         <topic-instance>
-            <topic-instance-name>Example</topic-instance-name>
-            <horizontal-group-3>
+            <horizontal-group-2>
                 <empty-graph>
-                    <text-header center>System of Equations</text-header>
+                    <text-header center bold pseudo-topic-instance-header>Exact Example</text-header>
                     <caption-html>
-                        <div class="matrix-example">
+                        Find a polynomial that fits the following points.
+                        <div class="simple-data-set">
                             \(
-                                \begin{align*}
-                                    \phantom{2}x  + 3y               - 10z               &= 1 \\
-                                    2x            - 2y               + \phantom{1}5z     &= 8 \\
-                                    \phantom{2}x  \phantom{- 2y\;\;} - \phantom{1}5z     &= 3
-                                \end{align*}
+                                (-1,-4),
+                                (0,1),
+                                (1,0),
+                                (2,-1)
                             \)
                         </div>
                     </caption-html>
-                </empty-graph>    
-                    <empty-graph>
-                        <text-header center>Augmented Matrix</text-header>
-                        <caption-html>
-                            <div class="matrix-example">
-                                \(
-                                    \left[
-                                        \begin{matrix}
-                                            1 &  \phantom{-}3 &            -10 & 1 \\
-                                            2 &            -2 &  \phantom{-}5  & 8 \\
-                                            1 &  \phantom{-}0 &            -5  & 3
-                                        \end{matrix}
-                                    \right] 
-                                \)
-                            </div>
-                        </caption-html>
-                    </empty-graph>    
-
-                        <empty-graph>
-                            <text-header center>Coeffecient Matrix</text-header>
-                            <caption-html>
-                                <div class="matrix-example">
-                                    \(
-                                        \left[
-                                            \begin{matrix}
-                                                1 &  \phantom{-}3 &            -10 \\
-                                                2 &            -2 &  \phantom{-}5  \\
-                                                1 &  \phantom{-}0 &            -5
-                                            \end{matrix}
-                                        \right] 
-                                    \)
+                    <steps>
+                        <step full-width double-vertical-padding>
+                            <instructions>Create the system.</instructions>
+                            <actions-html>
+                                <matrix>
+                                    1 -1 -1^2 -1^3 -4;
+                                    1  0  0^2  0^3  1;
+                                    1  1  1^2  1^3  0;
+                                    1  2  2^2  2^3 -1
+                                </matrix>
+                            </actions-html>
+                        </step>
+                        <step>
+                            <instructions>Solve the system using Gaussian elimination with back-substitution or Gauss-Jordan elimination. </instructions>
+                            <actions-html>
+                                <div class="text-left">
+                                    \(a_1= 1\),
+                                    \(a_2= 1\),
+                                    \(a_3=-3\),
+                                    \(a_4= 1\)
                                 </div>
-                            </caption-html>
-                        </empty-graph>    
-                    </horizontal-group-3>
+                            </actions-html>
+                        </step>
+                        <step>
+                            <instructions>Create the polynomial.</instructions>
+                            <actions-html>
+                                <div class="text-left">
+                                    \( p(x)=1+x-3x^2+x^3 \)
+                                </div>
+                            </actions-html>
+                        </step>
+                    </steps>
+                    <graph image-size-class="graph-size-1">
+                        <image-url>/images/linear-algebra-appendix/exact-curve-fitting.png</image-url>
+                        <graph-url>https://www.geogebra.org/graphing/pk4s7AE6</graph-url>
+                    </graph>
+                </empty-graph>    
+                <empty-graph>
+                    <text-header center>Approximate Example</text-header>
+                    <caption-html>
+                        <div class="matrix-example">
+                            \(
+                                \left[
+                                    \begin{matrix}
+                                        1 &  \phantom{-}3 &            -10 & 1 \\
+                                        2 &            -2 &  \phantom{-}5  & 8 \\
+                                        1 &  \phantom{-}0 &            -5  & 3
+                                    \end{matrix}
+                                \right] 
+                            \)
+                        </div>
+                    </caption-html>
+                </empty-graph>
+            </horizontal-group-2>
         </topic-instance>
     </topic-example>
 </topic>
