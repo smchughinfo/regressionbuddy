@@ -111,20 +111,44 @@
                     </graph>
                 </empty-graph>    
                 <empty-graph>
-                    <text-header center>Approximate Example</text-header>
+                    <text-header center bold pseudo-topic-instance-header>Approximate Example</text-header>
                     <caption-html>
-                        <div class="matrix-example">
+                        Find a polynomial that fits the following points.
+                        <div class="simple-data-set">
                             \(
-                                \left[
-                                    \begin{matrix}
-                                        1 &  \phantom{-}3 &            -10 & 1 \\
-                                        2 &            -2 &  \phantom{-}5  & 8 \\
-                                        1 &  \phantom{-}0 &            -5  & 3
-                                    \end{matrix}
-                                \right] 
+                                (-4,3.75),
+                                (-2,-.33),
+                                (0,1),
+                                (2,-.33),
+                                (4,3.75)
                             \)
                         </div>
                     </caption-html>
+                    <steps>
+                        <step full-width double-vertical-padding>
+                            <instructions>Create the system.</instructions>
+                            <actions-html>
+                                <matrix>
+                                    1 -2 -4^2 -4^3  3.75;
+                                    1 -2 -2^2 -2^3 -1.33;
+                                    1  0  0^2  0^3  1.00;
+                                    1  2  2^2  2^3 -0.33;
+                                    1 -2  4^2  4^3  3.75
+                                </matrix>
+                            </actions-html>
+                        </step>
+                        <step>
+                            <instructions>Use a computer to solve the system.</instructions>
+                            <actions-html>
+                                <div class="text-left">
+                                    \(a_1= 1\),
+                                    \(a_2= 1\),
+                                    \(a_3=-3\),
+                                    \(a_4= 1\)
+                                </div>
+                            </actions-html>
+                        </step>
+                    </steps>
                 </empty-graph>
             </horizontal-group-2>
         </topic-instance>
