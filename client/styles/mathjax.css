@@ -81,3 +81,9 @@
 .no-mathjax-margin-top > .mjx-chtml {
     margin-top: 0;
 }
+
+/* dont let matrix braces wrap */
+.matrix .mjx-block,
+.matrix-example .mjx-block {
+    display: inline-block !important;
+}

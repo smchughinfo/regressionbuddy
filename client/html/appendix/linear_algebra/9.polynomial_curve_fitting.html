@@ -1,180 +1,180 @@
 <topic>
-    <topic-name>Polynomial Curve Fitting</topic-name>
-    <topic-definition size-class="ideal-width-1200 ideal-width-500-under-1199">
-        <topic-instance no-bottom-padding>
-            <topic-instance-html>
-                <p>
-                    Through a process known as <strong>polynomial curve fitting</strong> a polynomial of degree \(n-1\) can be found that passes through a collection of \(n\) points.
-                </p>
-            </topic-instance-html>
-        </topic-instance>
-        <topic-instance>
-            <horizontal-group-3 extra-wide>
-                <empty-graph>
-                    <text-header center bold>Points</text-header>
-                    <caption-html>
-                        <div class="text-center margin-top-1-em">
-                            \((x_1,y_1),(x_2,y_2), . . . , (x_n,y_n) \)
-                        </div>
-                    </caption-html>
-                </empty-graph> 
-
-                <empty-graph>
-                    <text-header center bold>System</text-header>
-                    <caption-html>
-                        <div class="text-center no-mathjax-margin-top margin-top-1-em">
-                            \begin{align}
-                                a_0 + a_{1}x_1\;  + a_{2}x_1^2\; + \cdots + a_{n-1}x_1^{n-1}\; &= y_1 \\
-                                a_0 + a_{1}x_2\;  + a_{2}x_2^2\; + \cdots + a_{n-1}x_2^{n-1}\; &= y_2 \\
-                                &\;\; \vdots \\
-                                a_0 + a_{1}x_n\;  + a_{2}x_n^2\; + \cdots + a_{n-1}x_n^{n-1}\; &= y_n
-                            \end{align}
-                        </div>
-                    </caption-html>
-                </empty-graph> 
-
-                <empty-graph>
-                    <text-header center bold>Polynomial</text-header>
-                    <caption-html>
-                        <div class="text-center margin-top-1-em">
-                            \(
-                                p(x)=b_0+b_1x+b_2x^2+\cdots+b_{n-1}x^{n-1}
-                            \)
-                        </div>
-                        <div class="margin-top-1-em">
-                            Where the vector
-                            \(
-                                \mathbf{b}=(b_0, b_1, b_2, \cdots, b_{n-1})
-                            \) 
-                            is the solution of the system.
-                        </div>
-                    </caption-html>
-                </empty-graph> 
-
-
-            </horizontal-group-3>
-        
-        </topic-instance>
-    </topic-definition>
-    <!--▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼-->
-    <topic-example size-class="limit-950">
-        <topic-instance>
-            <horizontal-group-2>
-                <empty-graph>
-                    <text-header center bold pseudo-topic-instance-header>Exact Fit Example</text-header>
-                    <caption-html>
-                        Find a polynomial that fits the following points.
-                        <div class="simple-data-set">
-                            \(
-                                (-1,-4),
-                                (0,1),
-                                (1,0),
-                                (2,-1)
-                            \)
-                        </div>
-                    </caption-html>
-                    <steps>
-                        <step full-width double-vertical-padding>
-                            <instructions>Create the system.</instructions>
-                            <actions-html>
-                                <matrix>
-                                    1 -1 -1^2 -1^3 -4;
-                                    1  0  0^2  0^3  1;
-                                    1  1  1^2  1^3  0;
-                                    1  2  2^2  2^3 -1
-                                </matrix>
-                            </actions-html>
-                        </step>
-                        <step>
-                            <instructions>Solve the system using Gaussian elimination with back-substitution or Gauss-Jordan elimination. </instructions>
-                            <actions-html>
-                                <div class="text-left">
-                                    \(a_0= 1\),
-                                    \(a_1= 1\),
-                                    \(a_2=-3\),
-                                    \(a_3= 1\)
-                                </div>
-                            </actions-html>
-                        </step>
-                        <step>
-                            <instructions>Create the polynomial.</instructions>
-                            <actions-html>
-                                <div class="text-left">
-                                    \( p(x)=1+x-3x^2+x^3 \)
-                                </div>
-                            </actions-html>
-                        </step>
-                    </steps>
-                    <graph image-size-class="graph-size-1">
-                        <image-url>/images/linear-algebra-appendix/exact-curve-fitting.png</image-url>
-                        <graph-url>https://www.geogebra.org/graphing/sXMzj4Pp</graph-url>
-                    </graph>
-                </empty-graph>    
-                <empty-graph>
-                    <text-header center bold pseudo-topic-instance-header>Approximate Fit Example</text-header>
-                    <caption-html>
-                        Find a polynomial that fits the following points.
-                        <div class="simple-data-set">
-                            \(
-                                (-4.58, -0.58),
-                                (-2.22,  2.42),
-                                (-1.12,  4.56),
-                                ( 2.78, -3.66),
-                                ( 4.72, -0.58)
-                            \)
-                        </div>
-                    </caption-html>
-                    <steps>
-                        <step full-width double-vertical-padding>
-                            <instructions>Create the system.</instructions>
-                            <actions-html>
-                                <matrix>
-                                    1 -4.58 -4.58^2 -4.58^3 -4.58^4 -0.58;
-                                    1 -2.22 -2.22^2 -2.22^3 -2.22^4  2.42;
-                                    1 -1.12 -1.12^2 -1.12^3 -1.12^4  4.56;
-                                    1  2.78  2.78^2  2.78^3  2.78^4 -3.66;
-                                    1  4.72  4.72^2  4.72^3  4.72^4 -0.58
-                                </matrix>
-                            </actions-html>
-                        </step>
-                        <step>
-                            <instructions>Use a computer to solve the system.</instructions>
-                            <actions-html>
-                                <div class="text-left">
-                                    \(a_0 \approx  4.49\),
-                                    \(a_1 \approx -1.24\),
-                                    \(a_2 \approx -1.04\),
-                                    \(a_3 \approx  0.05\),
-                                    \(a_4 \approx -0.04\)
-                                </div>
-                            </actions-html>
-                        </step>
-                        <step>
-                            <instructions>Create the polynomial.</instructions>
-                            <actions-html>
-                                <div class="text-left">
-                                    \( 
-                                        p(x)=
-                                        4.49
-                                        -
-                                        1.24x
-                                        -
-                                        1.04x^2
-                                        +
-                                        .05x^3
-                                        -
-                                        .04x^4
-                                    \)
-                                </div>
-                            </actions-html>
-                        </step>
-                    </steps>
-                    <graph image-size-class="graph-size-1">
-                        <image-url>/images/linear-algebra-appendix/approximate-curve-fitting.png</image-url>
-                        <graph-url>https://www.geogebra.org/graphing/vgjmyGyu</graph-url>
-                    </graph>
-                </empty-graph>
-            </horizontal-group-2>
-        </topic-instance>
-    </topic-example>
-</topic>
+        <topic-name>Polynomial Curve Fitting</topic-name>
+        <topic-definition size-class="ideal-width-1200 ideal-width-500-under-1199">
+            <topic-instance no-bottom-padding>
+                <topic-instance-html>
+                    <p>
+                        Through a process known as <strong>polynomial curve fitting</strong> a polynomial of degree \(n-1\) can be found that passes through a collection of \(n\) points.
+                    </p>
+                </topic-instance-html>
+            </topic-instance>
+            <topic-instance>
+                <horizontal-group-3 extra-wide>
+                    <empty-graph>
+                        <text-header center bold>Points</text-header>
+                        <caption-html>
+                            <div class="text-center margin-top-1-em">
+                                \((x_1,y_1),(x_2,y_2), . . . , (x_n,y_n) \)
+                            </div>
+                        </caption-html>
+                    </empty-graph> 
+    
+                    <empty-graph>
+                        <text-header center bold>System</text-header>
+                        <caption-html>
+                            <div class="text-center no-mathjax-margin-top margin-top-1-em min-width-350">
+                                \begin{align}
+                                    a_0 + a_{1}x_1\;  + a_{2}x_1^2\; + \cdots + a_{n-1}x_1^{n-1}\; &= y_1 \\
+                                    a_0 + a_{1}x_2\;  + a_{2}x_2^2\; + \cdots + a_{n-1}x_2^{n-1}\; &= y_2 \\
+                                    &\;\; \vdots \\
+                                    a_0 + a_{1}x_n\;  + a_{2}x_n^2\; + \cdots + a_{n-1}x_n^{n-1}\; &= y_n
+                                \end{align}
+                            </div>
+                        </caption-html>
+                    </empty-graph> 
+    
+                    <empty-graph>
+                        <text-header center bold>Polynomial</text-header>
+                        <caption-html>
+                            <div class="text-center margin-top-1-em">
+                                \(
+                                    p(x)=b_0+b_1x+b_2x^2+\cdots+b_{n-1}x^{n-1}
+                                \)
+                            </div>
+                            <div class="margin-top-1-em">
+                                Where the vector
+                                \(
+                                    \mathbf{b}=(b_0, b_1, b_2, \cdots, b_{n-1})
+                                \) 
+                                is the solution of the system.
+                            </div>
+                        </caption-html>
+                    </empty-graph> 
+    
+    
+                </horizontal-group-3>
+            
+            </topic-instance>
+        </topic-definition>
+        <!--▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼▲▼-->
+        <topic-example size-class="limit-950">
+            <topic-instance>
+                <horizontal-group-2>
+                    <empty-graph>
+                        <text-header center bold pseudo-topic-instance-header>Exact Fit Example</text-header>
+                        <caption-html>
+                            Find a polynomial that fits the following points.
+                            <div class="simple-data-set">
+                                \(
+                                    (-1,-4),
+                                    (0,1),
+                                    (1,0),
+                                    (2,-1)
+                                \)
+                            </div>
+                        </caption-html>
+                        <steps>
+                            <step full-width double-vertical-padding>
+                                <instructions>Write the system as an augmented matrix.</instructions>
+                                <actions-html>
+                                    <matrix>
+                                        1 -1 -1^2 -1^3 -4;
+                                        1  0  0^2  0^3  1;
+                                        1  1  1^2  1^3  0;
+                                        1  2  2^2  2^3 -1
+                                    </matrix>
+                                </actions-html>
+                            </step>
+                            <step>
+                                <instructions>Solve the system using Gaussian elimination with back-substitution or Gauss-Jordan elimination. </instructions>
+                                <actions-html>
+                                    <div class="text-left">
+                                        \(a_0= 1\),
+                                        \(a_1= 1\),
+                                        \(a_2=-3\),
+                                        \(a_3= 1\)
+                                    </div>
+                                </actions-html>
+                            </step>
+                            <step>
+                                <instructions>Create the polynomial.</instructions>
+                                <actions-html>
+                                    <div class="text-left">
+                                        \( p(x)=1+x-3x^2+x^3 \)
+                                    </div>
+                                </actions-html>
+                            </step>
+                        </steps>
+                        <graph image-size-class="graph-size-1">
+                            <image-url>/images/linear-algebra-appendix/exact-curve-fitting.png</image-url>
+                            <graph-url>https://www.geogebra.org/graphing/sXMzj4Pp</graph-url>
+                        </graph>
+                    </empty-graph>    
+                    <empty-graph>
+                        <text-header center bold pseudo-topic-instance-header>Approximate Fit Example</text-header>
+                        <caption-html>
+                            Find a polynomial that fits the following points.
+                            <div class="simple-data-set">
+                                \(
+                                    (-4.58, -0.58),
+                                    (-2.22,  2.42),
+                                    (-1.12,  4.56),
+                                    ( 2.78, -3.66),
+                                    ( 4.72, -0.58)
+                                \)
+                            </div>
+                        </caption-html>
+                        <steps>
+                            <step full-width double-vertical-padding>
+                                <instructions>Write the system as an augmented matrix.</instructions>
+                                <actions-html>
+                                    <matrix>
+                                        1 -4.58 -4.58^2 -4.58^3 -4.58^4 -0.58;
+                                        1 -2.22 -2.22^2 -2.22^3 -2.22^4  2.42;
+                                        1 -1.12 -1.12^2 -1.12^3 -1.12^4  4.56;
+                                        1  2.78  2.78^2  2.78^3  2.78^4 -3.66;
+                                        1  4.72  4.72^2  4.72^3  4.72^4 -0.58
+                                    </matrix>
+                                </actions-html>
+                            </step>
+                            <step>
+                                <instructions>Use a computer to solve the system.</instructions>
+                                <actions-html>
+                                    <div class="text-left">
+                                        \(a_0 \approx  4.49\),
+                                        \(a_1 \approx -1.24\),
+                                        \(a_2 \approx -1.04\),
+                                        \(a_3 \approx  0.05\),
+                                        \(a_4 \approx -0.04\)
+                                    </div>
+                                </actions-html>
+                            </step>
+                            <step>
+                                <instructions>Create the polynomial.</instructions>
+                                <actions-html>
+                                    <div class="text-left">
+                                        \( 
+                                            p(x)=
+                                            4.49
+                                            -
+                                            1.24x
+                                            -
+                                            1.04x^2
+                                            +
+                                            .05x^3
+                                            -
+                                            .04x^4
+                                        \)
+                                    </div>
+                                </actions-html>
+                            </step>
+                        </steps>
+                        <graph image-size-class="graph-size-1">
+                            <image-url>/images/linear-algebra-appendix/approximate-curve-fitting.png</image-url>
+                            <graph-url>https://www.geogebra.org/graphing/vgjmyGyu</graph-url>
+                        </graph>
+                    </empty-graph>
+                </horizontal-group-2>
+            </topic-instance>
+        </topic-example>
+    </topic>

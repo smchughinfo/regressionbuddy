@@ -311,7 +311,7 @@ let templates = {
         // count-horizontally
         let isCountHorizontally = $placeholder.is("[count-horizontally]");
         if(isCountHorizontally) {
-            console.log("--- IMPLEMENT COUNT-HORIZONTALLY ---");
+            // TODO: console.log("--- IMPLEMENT COUNT-HORIZONTALLY ---");
         }
 
         // <group>

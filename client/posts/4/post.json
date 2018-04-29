@@ -9,7 +9,7 @@
       ["algebra", "The Equation of a Line"],
       "Tangent Lines"
     ],
-    "linear-algebra": ["Polynomial Curve Fitting"],
+    "linear-algebra": ["Polynomial Curve Fitting", "Network Flow"],
     "statistics": ["Variance and Standard Deviation"],
     "vector-calculus": [
       ["algebra", "Set-Builder Notation and Interval Notation"],

@@ -237,8 +237,8 @@ const setPostNavigationLinks = (outFile, postNumber, subject) => {
     subject = subject.replace(/_/g, "-").toLowerCase();
 
     postNumber = parseInt(postNumber, 10);
-    console.log("seriously, fix this!!!".red); // it doesn't always come in as an int. have to track down the problem caller and fix it there.
-    console.log("UNSET HARDCODE TO TRUE");
+    // TODO: console.log("seriously, fix this!!!".red); // it doesn't always come in as an int. have to track down the problem caller and fix it there.
+    // TODO: console.log("UNSET HARDCODE TO TRUE");
 
     // first and prev
     if(postNumber === 1 || inReview) {
@@ -522,7 +522,7 @@ const buildReviewAppendix = (postNumber, subject) => {
     nav.after('<div class="alert alert-warning" role="alert">The contents of this page are under review.</div>');
     appendixElm.append('<div class="container-fluid">' + readFileSync(`${process.env.postTemplatesDir}/show_comments_link.html`).toString() + '</div><br>');
     appendixElm.after(readFileSync(`${process.env.postTemplatesDir}/comments.html`).toString());
-    console.log("HAS THIS BECOME AN ISSUE?");
+    // TODO: console.log("HAS THIS BECOME AN ISSUE?");
     body.find("#comments > br:first-of-type").remove(); // this is pretty bad.
     body.append("<br><br>"); // make it easier to see comments
     let outFile = $.html();
