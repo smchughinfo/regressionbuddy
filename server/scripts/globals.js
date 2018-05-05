@@ -6,6 +6,8 @@ module.exports = {
         process.env.name = "dev"; // if "dev" rebuilds all pages anytime a file in process.env.clientDir is modified.
         process.env.buildOnRequest = true; // if true only rebuilds page when requested from server. 
 
+        process.env.displayAnnouncementPage = true;
+
         process.env.port = 8080;
         process.env.defaultSubject = "algebra";
         process.env.hostName = process.env.name === "dev" ? `http://localhost:${process.env.port}` : "https://regressionbuddy.com" 

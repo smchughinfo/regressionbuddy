@@ -1,5 +1,9 @@
 /****** REDIRECT TO NORMALIZED URL ******/
 (function () {
+    if(document.title === "Announcement") {
+        return;
+    }
+
     var a = document.createElement("a");
     a.href = window.location.href;
     if (a.pathname === "" || a.pathname === "/") {

@@ -448,21 +448,28 @@ const buildPages = () => {
 };
 
 const buildIndex = () => {
-    buildPost(process.env.lastPost, process.env.defaultSubject); // this page gets built twice now (when building all pages). added this line so calls to buildIndex didn't have to know to build the latest post for the default subject first. 
-
-    let lastPost = getLargestPostNumber();
-    let defaultSubject = process.env.defaultSubject;
-    let indexFileContentPath = `${process.env.buildDir}/${lastPost}.${defaultSubject}.html`;
     let indexFilePath = `${process.env.publicDir}/index.html`;
 
-    let indexContent = readFileSync(indexFileContentPath).toString();
+    if(process.env.displayAnnouncementPage) {
+        let announcementPage = readFileSync(`${process.env.clientDir}/html/announcement.html`).toString();
+        let title = `Announcement`;
+        buildStaticContentPage(announcementPage, title, title, indexFilePath);
+    }
+    else {
+        buildPost(process.env.lastPost, process.env.defaultSubject); // this page gets built twice now (when building all pages). added this line so calls to buildIndex didn't have to know to build the latest post for the default subject first. 
 
-    let $ = cheerio.load(indexContent);
-    $.root().find("title").html(shortDescription);
-    $.root().find("meta[name='description']").attr("content", description);
-    indexContent = $.html();
+        let lastPost = getLargestPostNumber();
+        let defaultSubject = process.env.defaultSubject;
+        let indexFileContentPath = `${process.env.buildDir}/${lastPost}.${defaultSubject}.html`;
+        let indexContent = readFileSync(indexFileContentPath).toString();
+    
+        let $ = cheerio.load(indexContent);
+        $.root().find("title").html(shortDescription);
+        $.root().find("meta[name='description']").attr("content", description);
+        indexContent = $.html();
 
-    writeFileSync(indexFilePath, indexContent);
+        writeFileSync(indexFilePath, indexContent);
+    };
 }
 
 const buildReviewAppendixes = () => {
