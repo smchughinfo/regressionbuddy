@@ -211,6 +211,9 @@ const decodeHTML = html => {
     return $.root().find("#decoder").text();
 };
 
+const buildOnRequest = () => process.env.buildOnRequest === "true";
+const displayAnnouncementPage = () => process.env.displayAnnouncementPage === "true";
+
 module.exports = {
     existsSync: existsSync,
     getDirectories: getDirectories,
@@ -233,5 +236,7 @@ module.exports = {
     getSimpleTopicString: getSimpleTopicString,
     isCrossTopic: isCrossTopic,
     getCrossTopic: getCrossTopic,
-    getAllCrossTopics: getAllCrossTopics
+    getAllCrossTopics: getAllCrossTopics,
+    buildOnRequest: buildOnRequest,
+    displayAnnouncementPage: displayAnnouncementPage
 };

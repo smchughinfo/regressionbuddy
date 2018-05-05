@@ -6,6 +6,7 @@ const { extname, normalize } = require("path");
 const { stat, createReadStream } = require("fs");
 const colors = require('colors');
 const { buildIndex, buildPost, buildAppendix } = require("./builder.js");
+const { buildOnRequest } = require("./utilities.js");
 
 const Entities = require('html-entities').AllHtmlEntities;
 const entities = new Entities();
@@ -98,7 +99,7 @@ const handleFileRequest = (req, res) => {
         isAppendixRegex.test(urn) ||
         isGlossaryRegex.test(urn)) {
           
-        if(process.env.buildOnRequest) {
+        if(buildOnRequest()) {
             rebuild(urn);  
         }
         
@@ -120,7 +121,7 @@ const handleFileRequest = (req, res) => {
         isPostReviewRegex.test(urn) || 
         isAppendixReviewRegex.test(urn)) {
             
-        if(process.env.buildOnRequest) {
+        if(buildOnRequest()) {
             rebuild(urn);  
         }
 
