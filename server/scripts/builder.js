@@ -1,7 +1,7 @@
 const { readFileSync, writeFileSync, watchFile, unwatchFile, mkdirSync } = require("fs");
 const { normalize, sep} = require("path");
 const compressor = require("node-minify");
-const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig, sortObjectArrayByKey, orderSubjects, getAppendixFiles, getSimpleTopicString, isCrossTopic, getCrossTopic, getAllCrossTopics } = require("./utilities.js");
+const { existsSync, getDirectories, deleteFilesFromDirectory, getPostNumbers, getPostNumbersInReview, getLargestPostNumber, getFiles, getFilesRecursively, isDev, getPostSubjects, getGlossarySubjects, getAppendixSubjects, getRandomInt, capatalizeFirstLetterOfEveryWord, getPostConfig, sortObjectArrayByKey, orderSubjects, getAppendixFiles, getSimpleTopicString, isCrossTopic, getCrossTopic, getAllCrossTopics, buildOnRequest, displayAnnouncementPage } = require("./utilities.js");
 const { applyTemplates } = require("./templates.js");
 const zlib = require('zlib');
 const { minify } = require("html-minifier");
@@ -450,7 +450,7 @@ const buildPages = () => {
 const buildIndex = () => {
     let indexFilePath = `${process.env.publicDir}/index.html`;
 
-    if(process.env.displayAnnouncementPage) {
+    if(displayAnnouncementPage()) {
         let announcementPage = readFileSync(`${process.env.clientDir}/html/announcement.html`).toString();
         let title = `Announcement`;
         buildStaticContentPage(announcementPage, title, title, indexFilePath);
@@ -839,7 +839,7 @@ const buildAll = () => {
 
     lint();
 
-    if(isDev() && process.env.buildOnRequest === false) {
+    if(isDev() && buildOnRequest()  === false) {
         rebuildOnChange();
     }
 
