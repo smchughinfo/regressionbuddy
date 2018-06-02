@@ -601,7 +601,6 @@ const rebuildOnChange = () => {
 };
 
 const generateSiteMap = () => {
-    // TODO: remove these www's?
     let siteMap = '\
 <?xml version="1.0" encoding="UTF-8"?>\n\
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
@@ -630,7 +629,7 @@ const generateSiteMap = () => {
     let mostRecentPostDate = postJsons[postJsons.length - 1].date;
     let pages = [
         { 
-            loc: "https://www.regressionbuddy.com",
+            loc: "https://regressionbuddy.com",
             mod: mostRecentPostDate,
             freq: "weekly",
             priority: "1.0"
@@ -640,7 +639,7 @@ const generateSiteMap = () => {
     console.log("If subjects ever change this will need updated.");
     getPostSubjects(1).forEach(subject => {
         let appendix = {
-            loc: `https://www.regressionbuddy.com/appendix/${subject}`,
+            loc: `https://regressionbuddy.com/appendix/${subject}`,
             mod: mostRecentPostDate,
             freq: "weekly",
             priority: ".9"
@@ -649,19 +648,19 @@ const generateSiteMap = () => {
     });
 
     pages.push({ 
-        loc: "https://www.regressionbuddy.com/about",
+        loc: "https://regressionbuddy.com/about",
         mod: mostRecentPostDate,
         freq: "weekly",
         priority: ".8"
     });
     pages.push({ 
-        loc: "https://www.regressionbuddy.com/review",
+        loc: "https://regressionbuddy.com/review",
         mod: mostRecentPostDate,
         freq: "weekly",
         priority: ".7"
     });
     pages.push({ 
-        loc: "https://www.regressionbuddy.com/rss.xml",
+        loc: "https://regressionbuddy.com/rss.xml",
         mod: mostRecentPostDate,
         freq: "weekly",
         priority: ".6"
@@ -669,7 +668,7 @@ const generateSiteMap = () => {
     
     getPostSubjects(1).forEach(subject => {
         let glossary = {
-            loc: `https://www.regressionbuddy.com/glossary/${subject}`,
+            loc: `https://regressionbuddy.com/glossary/${subject}`,
             mod: mostRecentPostDate,
             freq: "weekly",
             priority: ".6"
@@ -679,7 +678,7 @@ const generateSiteMap = () => {
 
     getPostNumbers().forEach(postNumber=> {
         let postJson = postJsons.filter(post => post.postNumber === postNumber)[0];
-        postJson.loc = `https://www.regressionbuddy.com/${postNumber}`;
+        postJson.loc = `https://regressionbuddy.com/${postNumber}`;
         postJson.mod = postJson.date;
         postJson.freq = "never";
         postJson.priority = ".5";
@@ -705,9 +704,9 @@ const generateSiteRSS = () => {
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">\n\
     <channel>\n\
         <title>Regression Buddy RSS</title>\n\
-        <link>https://www.regressionbuddy.com/</link>\n\
+        <link>https://regressionbuddy.com/</link>\n\
         <description>' + description + '</description>\n\
-        <atom:link href="https://www.regressionbuddy.com/rss.xml" rel="self" type="application/rss+xml" />';
+        <atom:link href="https://regressionbuddy.com/rss.xml" rel="self" type="application/rss+xml" />';
 
     let template  = '\
         <item>\n\
@@ -723,7 +722,7 @@ const generateSiteRSS = () => {
         let postJson = JSON.parse(readFileSync(postJSONPath));        
         let item = template;
         item = item.replace("[TITLE]", postJson.date);
-        item = item.replace(/\[LINK\]/g, `https://www.regressionbuddy.com/${postNumber}`);
+        item = item.replace(/\[LINK\]/g, `https://regressionbuddy.com/${postNumber}`);
 
         let year = parseInt(postJson.date.split("/")[2], 10);
         let month = parseInt(postJson.date.split("/")[0], 10) - 1;
