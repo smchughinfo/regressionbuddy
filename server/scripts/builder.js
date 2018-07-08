@@ -827,7 +827,7 @@ const lint = () => { // async but i guess it doesn't matter (the rest of the bui
 const buildAll = () => {
     console.log("building...");
     console.log("WHEN YOU DO SPECIAL LIMITS MAKE SURE TO INCLUDE PAGE 105.");
-
+    console.log("3d standard basis vectors link goes to 2d");
     createOrCleanBuildDirectory();
 
     buildMasterPage();
