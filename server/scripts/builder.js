@@ -828,6 +828,7 @@ const buildAll = () => {
     console.log("building...");
     console.log("WHEN YOU DO SPECIAL LIMITS MAKE SURE TO INCLUDE PAGE 105.");
     console.log("3d standard basis vectors link goes to 2d");
+    console.log("geogebra links need to be double checked so they can't be accidentally edited by users");
     createOrCleanBuildDirectory();
 
     buildMasterPage();
